@@ -107,7 +107,10 @@ export async function generateFees(
 export async function bulkMarkPaid(ids: string[], paid: boolean) {
   if (!ids.length) return;
   const supabase = await createClient();
-  await supabase.from("fees").update({ paid }).in("id", ids);
+  await supabase
+    .from("fees")
+    .update({ paid, paid_at: paid ? new Date().toISOString() : null })
+    .in("id", ids);
   revalidatePath("/admin/fees");
 }
 
