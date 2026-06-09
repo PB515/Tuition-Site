@@ -5,17 +5,18 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          Phase 4 + Phase 5 done. Form WORKS locally (Supabase + Resend tested OK via .env.local). Phase 5:
-                Vercel cookieless Analytics, JSON-LD (EducationalOrganization/LocalBusiness in layout + Person on
-                About), app/sitemap.ts + app/robots.ts, metadataBase = SITE_URL. 22 routes, prod build green.
-LAST COMPLETED: Logo made resilient: layout checks public/brand/logo.png server-side (existsSync) -> shows logo if
-                present, else the text Wordmark (no broken image). Phase 5 SEO + analytics. SITE_URL in lib/site.ts
-                (override via NEXT_PUBLIC_SITE_URL when a custom domain lands).
-NEXT UP:        (1) USER: add the 5 env vars in Vercel (Settings > Env Vars) + redeploy so the LIVE form works.
-                (2) USER: save logo to public/brand/logo.png, then I commit it. (3) Enable Analytics in Vercel
-                dashboard. Launch QA. NEEDS FROM SIR: hero/about photo, result creatives, gap-test review, privacy
-                legal-entity details. Resend still sandbox (only delivers to purvenbhavsar05@gmail.com until domain verified).
-LAST COMMIT:    Phase 5 (analytics/SEO) + logo fallback on main (auto-deploys to Vercel).
+PHASE:          Phase 1.5 (admin leads dashboard) code-complete - the first AUTH phase (PART 7, security-first).
+                Form is LIVE on prod (smoke test passed). Phase 5 (analytics/SEO/sitemap) + medium motion shipped.
+                Logo: temporary purple in public/brand/logo.png pending; resilient wordmark fallback. 23 routes, build green.
+LAST COMPLETED: Phase 1.5: @supabase/ssr auth (lib/supabase/{client,server}.ts), middleware.ts guards /admin,
+                /admin/login + /admin dashboard (lead list, status select via server action, one-click wa.me follow-up),
+                signOut. Nav/Footer hide on /admin (usePathname). robots disallows /admin. RLS gated on a staff table
+                (future-proof vs Phase 3 parent accounts). Setup SQL in docs/phase-1.5-setup.md.
+NEXT UP:        USER to activate admin: run docs/phase-1.5-setup.md SQL (staff table + leads staff policies), create a
+                Supabase auth user, insert their UID into staff, disable public signup. Then test /admin (denial gate +
+                login + status + WhatsApp). THEN Phase 2 (student management). Still pending: logo file, Sir photos/
+                result creatives, gap-test review, privacy legal details, Vercel Analytics enable, Resend domain verify.
+LAST COMMIT:    Phase 1.5 admin dashboard on main (auto-deploys to Vercel).
 ```
 
 ## Stack
