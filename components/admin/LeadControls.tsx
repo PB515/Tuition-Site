@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { MessageCircle } from "lucide-react";
-import { updateLeadStatus } from "@/app/admin/actions";
+import { MessageCircle, Trash2 } from "lucide-react";
+import { updateLeadStatus, deleteLead } from "@/app/admin/actions";
 
 const STATUS = [
   { v: "new", l: "New" },
@@ -29,6 +29,11 @@ export default function LeadControls({
   const wa = `https://wa.me/91${phone}?text=${encodeURIComponent(
     `Hello ${name}, this is Inspire Academy of Mathematics about your maths coaching enquiry.`,
   )}`;
+
+  function onDelete() {
+    if (!confirm(`Delete the lead from ${name}? This cannot be undone.`)) return;
+    start(() => deleteLead(id));
+  }
 
   return (
     <div className="flex items-center gap-2">
@@ -57,6 +62,15 @@ export default function LeadControls({
       >
         <MessageCircle size={15} strokeWidth={2} /> WhatsApp
       </a>
+      <button
+        type="button"
+        onClick={onDelete}
+        disabled={pending}
+        title="Delete lead"
+        className="inline-flex items-center rounded-lg border border-error/40 px-2.5 py-1.5 text-error hover:bg-error/5 disabled:opacity-60"
+      >
+        <Trash2 size={15} strokeWidth={1.75} />
+      </button>
     </div>
   );
 }

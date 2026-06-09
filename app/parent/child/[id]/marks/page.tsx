@@ -10,9 +10,19 @@ const PAGE_SIZE = 20;
 
 type MarkRow = {
   marks_obtained: number | null;
+  status: string | null;
   remark: string | null;
   tests: { name: string; date: string | null; total_marks: number | null } | null;
 };
+
+function markCell(m: MarkRow) {
+  if (m.marks_obtained != null) {
+    return `${m.marks_obtained}${m.tests?.total_marks != null ? `/${m.tests.total_marks}` : ""}`;
+  }
+  if (m.status === "absent") return "Absent";
+  if (m.status === "not_submitted") return "Not submitted";
+  return "-";
+}
 
 export default async function Page({
   params,
@@ -45,7 +55,7 @@ export default async function Page({
 
   const { data, count } = await supabase
     .from("marks")
-    .select("marks_obtained, remark, tests(name, date, total_marks)", { count: "exact" })
+    .select("marks_obtained, status, remark, tests(name, date, total_marks)", { count: "exact" })
     .eq("student_id", id)
     .order("created_at", { ascending: false })
     .range(from, from + PAGE_SIZE - 1);
@@ -86,11 +96,7 @@ export default async function Page({
                 <tr key={i}>
                   <td className="px-4 py-3 font-medium text-ink">{m.tests?.name ?? "-"}</td>
                   <td className="px-4 py-3 text-ink-muted">{m.tests?.date ?? "-"}</td>
-                  <td className="px-4 py-3 text-ink-muted">
-                    {m.marks_obtained != null
-                      ? `${m.marks_obtained}${m.tests?.total_marks != null ? `/${m.tests.total_marks}` : ""}`
-                      : "-"}
-                  </td>
+                  <td className="px-4 py-3 text-ink-muted">{markCell(m)}</td>
                   <td className="px-4 py-3 text-ink-muted">{m.remark ?? "-"}</td>
                 </tr>
               ))}

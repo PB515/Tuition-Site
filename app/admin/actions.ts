@@ -15,6 +15,22 @@ export async function updateLeadStatus(id: string, status: string) {
   revalidatePath("/admin");
 }
 
+export async function deleteLead(id: string) {
+  if (!id) return;
+  const supabase = await createClient();
+  const { error } = await supabase.from("leads").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/leads");
+}
+
+export async function deleteAllLeads() {
+  const supabase = await createClient();
+  // PostgREST requires a filter; this matches every row.
+  const { error } = await supabase.from("leads").delete().not("id", "is", null);
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/leads");
+}
+
 export async function signOut() {
   const supabase = await createClient();
   await supabase.auth.signOut();
