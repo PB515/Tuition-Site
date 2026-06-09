@@ -11,6 +11,7 @@ const LINKS = [
   { href: "/admin/batches", label: "Batches" },
   { href: "/admin/attendance", label: "Attendance" },
   { href: "/admin/tests", label: "Tests" },
+  { href: "/admin/fees", label: "Fees" },
 ];
 
 export default function AdminNav({ email }: { email: string }) {

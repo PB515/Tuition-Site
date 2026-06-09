@@ -5,17 +5,17 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          Phase 2a (students + batches) code-complete. Phase 1.5 admin leads ACTIVE + denial gate verified
-                (anon cannot read leads/staff; insert works). Admin shell: shared AdminNav (Leads/Students/Batches/
-                Sign out) + app/admin/layout.tsx. Staff-only RLS on all new tables. Build green.
-LAST COMPLETED: Phase 2a: /admin/batches (add/list/delete), /admin/students (list), /admin/students/new + /[id]
-                (add/edit/delete via StudentForm + server actions). Tables students+batches with staff-only deny-by-
-                default RLS (docs/phase-2a-setup.md). Leads page signout moved into AdminNav.
-NEXT UP:        USER: run docs/phase-2a-setup.md SQL (students + batches tables + RLS). Then test /admin/batches +
-                /admin/students. THEN Phase 2b Attendance, 2c Tests+Marks, 2d Fees (+CSV) - each its own SQL + screens.
-                Still pending: logo file, Sir photos/result creatives, gap-test review, privacy legal details, Vercel
-                Analytics enable, Resend domain verify.
-LAST COMMIT:    Phase 2a students/batches on main (auto-deploys to Vercel).
+PHASE:          PHASE 2 COMPLETE (student management system). Admin: Leads · Students · Batches · Attendance ·
+                Tests · Fees, all staff-only RLS. 2a-2d done (tables: students, batches, attendance, tests, marks, fees).
+                Plus search/filter/pagination on Students+Tests, student profile (attendance%/marks/fees), CSV export
+                (students+leads). Phases 0-5 + 1.5 + 2 all shipped. 24 routes, build green.
+LAST COMPLETED: Phase 2 finale: /admin/fees (track/paid/WhatsApp reminder), student profile at /admin/students/[id]
+                (edit moved to /[id]/edit), CSV routes /admin/export/{students,leads}. SQL setup docs phase-2a..2d.
+NEXT UP:        USER: run docs/phase-2d-setup.md SQL (fees table) to activate Fees; test profile + CSV export. Phase 3
+                = parent/student portal + PWA (per-child private data; cross-user denial gate is non-negotiable) when
+                ready. Still pending (non-blocking): logo file, Sir photos/result creatives, gap-test review, privacy
+                legal details, Vercel Analytics enable, Resend domain verify, WhatsApp BSP automation (later).
+LAST COMMIT:    Phase 2 finale (fees/profile/CSV) on main (auto-deploys to Vercel).
 ```
 
 ## Stack

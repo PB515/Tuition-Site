@@ -73,12 +73,20 @@ export default async function Page({
     <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h1 className="font-heading text-2xl font-bold text-ink">Students</h1>
-        <Link
-          href="/admin/students/new"
-          className="inline-flex items-center gap-2 rounded-full bg-primary-strong px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-deep"
-        >
-          <Plus size={16} strokeWidth={2.5} /> Add student
-        </Link>
+        <div className="flex items-center gap-2">
+          <a
+            href="/admin/export/students"
+            className="rounded-full border border-border px-4 py-2.5 text-sm font-medium text-ink-muted hover:text-ink"
+          >
+            Export CSV
+          </a>
+          <Link
+            href="/admin/students/new"
+            className="inline-flex items-center gap-2 rounded-full bg-primary-strong px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-deep"
+          >
+            <Plus size={16} strokeWidth={2.5} /> Add student
+          </Link>
+        </div>
       </div>
 
       <form
