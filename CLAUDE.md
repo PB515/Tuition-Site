@@ -5,20 +5,18 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          PHASE 3 in progress - PARENT PORTAL FOUNDATION built (auth + RLS + views). Decisions: email login,
-                WhatsApp invite, SMTP email reset. Done: parents link table + parent read-only RLS (docs/phase-3-setup.md),
-                /parent/login + set-password + reset + forgot, /auth/confirm (verifyOtp), parent layout, /parent dashboard
-                (children, RLS-scoped) + /parent/child/[id] read-only attendance%/marks/fees. middleware guards /parent.
-                Nav/Footer hide on /parent; robots disallow /parent. 25 routes, build green.
-LAST COMPLETED: Parent auth flows (ParentLoginForm/UpdatePasswordForm/ForgotForm), confirm route, parent views.
-                SUPABASE_SECRET_KEY placeholder added to .env.local (user pasted; value LOOKS like the earlier-exposed
-                sb_secret_LMuXdy - VERIFY/rotate when wiring invite).
-NEXT UP:        Phase 3 remaining: (3) staff "Invite parent" + "Send reset link" via WhatsApp (uses SUPABASE_SECRET_KEY -
-                build lib/supabase/admin.ts + generateLink invite/recovery -> /auth/confirm link). (4) PROVE cross-user
-                denial (Parent A cannot open Parent B child -> RLS returns null -> notFound; verify). (6) PWA manifest +
-                service worker. USER: run docs/phase-3-setup.md SQL + add Redirect URLs in Supabase Auth; to test now,
-                create a parent user + insert into parents(user_id, student_id).
-LAST COMMIT:    Phase 3 parent portal foundation on main (auto-deploys to Vercel).
+PHASE:          PHASE 3 COMPLETE (parent portal). Email login, WhatsApp invite, SMTP/staff reset. Parent auth + RLS +
+                role separation (staff<->parent guards) + explicit cross-user denial. Read-only child views (attendance%/
+                marks/fees) with latest-5 + paginated view-all. Staff "Invite parent" (generateLink invite/recovery ->
+                /auth/confirm -> WhatsApp link) via SUPABASE_SECRET_KEY (admin client, verified working). PWA: app/manifest.ts
+                + public/sw.js + ServiceWorkerRegister + theme-color/appleWebApp. 26 routes, build green.
+LAST COMPLETED: Invite (lib/supabase/admin.ts, invite-actions.ts, InviteParentForm, Parent access section on profile).
+                PWA installable (svg icon public/icons/icon.svg; PNG 192/512 + apple-touch recommended later).
+NEXT UP:        ALL build phases done (public 0-5, admin 1.5/2, scale, parent 3). USER actions to fully activate:
+                run docs/phase-3-setup.md SQL; add SUPABASE_SECRET_KEY to Vercel env (Prod+Preview) for live invites;
+                configure Supabase SMTP + verify a Resend domain for self-serve email reset. Pending content: logo PNG,
+                Sir photos/result creatives, gap-test review, privacy legal details, PWA PNG icons. Then full launch QA.
+LAST COMMIT:    Phase 3 invite + PWA on main (auto-deploys to Vercel).
 ```
 
 ## Stack

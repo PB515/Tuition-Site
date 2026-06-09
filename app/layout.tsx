@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { existsSync } from "fs";
@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/site/Nav";
 import Footer from "@/components/site/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 import JsonLd from "@/components/JsonLd";
 import { organizationLd } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
@@ -33,7 +34,10 @@ export const metadata: Metadata = {
   },
   description:
     "Focused Maths coaching in Vadodara led by Snehal Soni Sir, with 25+ years of teaching. Class 9 to 12, Applied Maths, NCERT, JEE and GUJCET. Concept clarity, regular tests, personal attention.",
+  appleWebApp: { capable: true, title: "Inspire Academy", statusBarStyle: "default" },
 };
+
+export const viewport: Viewport = { themeColor: "#069494" };
 
 export default function RootLayout({
   children,
@@ -57,6 +61,7 @@ export default function RootLayout({
         <div className="flex-1">{children}</div>
         <Footer />
         <ScrollReveal />
+        <ServiceWorkerRegister />
         <Analytics />
       </body>
     </html>
