@@ -29,7 +29,7 @@ export default function PagePlaceholder({
           href={WA_ENQUIRY}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-primary-strong"
+          className="inline-flex items-center gap-2 rounded-full bg-primary-strong px-6 py-3 text-sm font-semibold text-white hover:bg-primary-deep"
         >
           <MessageCircle size={18} strokeWidth={2} /> WhatsApp Enquiry
         </a>

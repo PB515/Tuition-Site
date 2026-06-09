@@ -11,9 +11,10 @@
   --border: #e2e8f0;
   --ink: #0f172a;
   --ink-muted: #475569;
-  --primary: #0f766e;
-  --primary-strong: #0d5c56;
-  --primary-tint: #ccfbf1;
+  --primary: #069494; /* highlight: large numbers, icons, accents, fills behind icons */
+  --primary-strong: #056e6e; /* interactive: button fills + text links on white (WCAG AA ~6:1) */
+  --primary-deep: #044f4f; /* button hover / active */
+  --primary-tint: #d4f1f1; /* soft cyan wash for chip + icon backgrounds */
   --accent: #b45309; /* sparingly — achievement/result badges only */
   --success: #15803d;
   --warning: #b45309;
@@ -32,6 +33,7 @@
   --color-ink-muted: var(--ink-muted);
   --color-primary: var(--primary);
   --color-primary-strong: var(--primary-strong);
+  --color-primary-deep: var(--primary-deep);
   --color-primary-tint: var(--primary-tint);
   --color-accent: var(--accent);
   --color-success: var(--success);

@@ -5,15 +5,15 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          Phase 1 (homepage) built on main, deployed via Vercel (project "tuition-site", Purven's account).
-                Real static homepage with the taste skill (design-taste-frontend): 11 sections, white+teal,
-                segment-router chips, killer-feature promo, real 97/100 proof, FAQ, map. Prod build passes, 17 routes.
-LAST COMPLETED: Phase 0 merged to main (Vercel now detects Next.js). Phase 1 homepage: Nav + Footer in layout,
-                CtaButton, Faq (client), lib/site.ts single-source content. Zero em-dashes (taste rule). Placeholder
-                pages upgraded to a friendly WhatsApp/back-home soft-launch state.
-NEXT UP:        Build out secondary pages (About Sir, Courses, Results, Method, Contact, 5 SEO pages) page by page.
-                Then Phase 3 Concept-Gap Test, Phase 4 enquiry form + Supabase. IMAGES NEEDED from Sir (see below).
-LAST COMMIT:    Phase 1 homepage on main (auto-deploys to Vercel).
+PHASE:          Phase 1-2 (homepage + ALL secondary pages) built on main, deploying via Vercel. Brand colour
+                changed to teal-blue #069494 (was #0F766E green-teal): --primary highlight, --primary-strong
+                interactive (AA), --primary-deep hover. Real pages: home, About Sir, Courses, Results, Method,
+                Contact, + 5 SEO pages (unique content, SeoPage template). Prod build passes, 17 routes, zero em-dashes.
+LAST COMPLETED: Secondary pages via reusable PageHeader / EnquiryBand / SeoPage components. Color token swap across
+                globals.css + doc 04. Only placeholders left: blog, blog/[slug], privacy, maths-concept-gap-test.
+NEXT UP:        Phase 3 Concept-Gap Test (needs Sir's question bank), Phase 4 enquiry form + Supabase + Resend,
+                blog seed posts, privacy policy. IMAGES STILL NEEDED from Sir: hero/about photo + result creatives.
+LAST COMMIT:    Phase 1-2 pages + #069494 colour on main (auto-deploys to Vercel).
 ```
 
 ## Stack

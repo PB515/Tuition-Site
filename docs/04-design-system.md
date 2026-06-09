@@ -16,15 +16,16 @@ REFERENCES:      restrained academic/education sites; the CA-firm warm-trust fee
 --border          #E2E8F0   hairlines (slate-200)
 --ink             #0F172A   primary text (slate-900) — ~16:1 on white
 --ink-muted       #475569   secondary text (slate-600) — ~7:1 on white
---primary         #0F766E   teal-700 — CTAs / links / brand (white text on it ~4.9:1, use bold/large)
---primary-strong  #0D5C56   hover / active / link text on white (~6.5:1 — AA for body)
---primary-tint    #CCFBF1   soft teal wash for highlights / chips (teal-100)
+--primary         #069494   teal-blue HIGHLIGHT: large numbers / icons / accents / nav mark (3.7:1 -> large+icon only)
+--primary-strong  #056E6E   interactive: button fills + text links on white (~6:1, AA body)
+--primary-deep    #044F4F   button hover / active
+--primary-tint    #D4F1F1   soft cyan wash for chips / icon backgrounds
 --accent          #B45309   amber-700 — SPARINGLY, achievement/result badges only (~5.6:1 on white)
 --success         #15803D   green-700
 --warning         #B45309   amber-700
 --error           #B91C1C   red-700
 ```
-*Rule: teal is the only brand colour; amber appears only on result/achievement badges. No other hues. Buttons = `--primary` bg + white text (bold); text links on white use `--primary-strong`.*
+*Rule: teal-blue (`#069494`) is the only brand colour; amber appears only on result/achievement badges. No other hues. `--primary` is the bright highlight (large numbers, icons, nav mark) where contrast allows; buttons + bands + small text use `--primary-strong` (white text passes AA), hover `--primary-deep`; text links on white use `--primary-strong`.*
 
 **TYPE**
 ```

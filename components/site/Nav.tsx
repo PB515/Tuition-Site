@@ -39,7 +39,7 @@ export default function Nav() {
             href={WA_ENQUIRY}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-strong"
+            className="inline-flex items-center gap-2 rounded-full bg-primary-strong px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-deep"
           >
             <MessageCircle size={16} strokeWidth={2} />
             WhatsApp Enquiry
@@ -74,7 +74,7 @@ export default function Nav() {
               href={WA_ENQUIRY}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary-strong px-5 py-3 text-sm font-semibold text-white"
             >
               <MessageCircle size={18} strokeWidth={2} />
               WhatsApp {SITE.teacher.split(" ")[0]}

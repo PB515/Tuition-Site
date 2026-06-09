@@ -17,7 +17,7 @@ export default function Footer() {
               href={WA_ENQUIRY}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-strong"
+              className="inline-flex items-center gap-2 rounded-full bg-primary-strong px-4 py-2 text-sm font-semibold text-white hover:bg-primary-deep"
             >
               <MessageCircle size={16} strokeWidth={2} /> WhatsApp Enquiry
             </a>

@@ -21,7 +21,7 @@ export default function CtaButton({
     "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2";
   const styles =
     variant === "primary"
-      ? "bg-primary text-white shadow-sm hover:bg-primary-strong"
+      ? "bg-primary-strong text-white shadow-sm hover:bg-primary-deep"
       : "border border-primary text-primary-strong hover:bg-primary-tint";
   const cls = cn(base, styles, className);
 

@@ -120,7 +120,7 @@ export default function Home() {
       </section>
 
       {/* 4. CONCEPT-GAP TEST PROMO (cta band) */}
-      <section className="bg-primary">
+      <section className="bg-primary-strong">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-12 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:py-14">
           <div className="max-w-2xl">
             <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl">
@@ -220,7 +220,7 @@ export default function Home() {
           <ol className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
             {METHOD_STEPS.map((step, i) => (
               <li key={step.title} className="flex gap-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-strong text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <div>
