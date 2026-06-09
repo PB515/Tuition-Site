@@ -5,18 +5,24 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          PHASE 3 COMPLETE (parent portal). Email login, WhatsApp invite, SMTP/staff reset. Parent auth + RLS +
-                role separation (staff<->parent guards) + explicit cross-user denial. Read-only child views (attendance%/
-                marks/fees) with latest-5 + paginated view-all. Staff "Invite parent" (generateLink invite/recovery ->
-                /auth/confirm -> WhatsApp link) via SUPABASE_SECRET_KEY (admin client, verified working). PWA: app/manifest.ts
-                + public/sw.js + ServiceWorkerRegister + theme-color/appleWebApp. 26 routes, build green.
-LAST COMPLETED: Invite (lib/supabase/admin.ts, invite-actions.ts, InviteParentForm, Parent access section on profile).
-                PWA installable (svg icon public/icons/icon.svg; PNG 192/512 + apple-touch recommended later).
-NEXT UP:        ALL build phases done (public 0-5, admin 1.5/2, scale, parent 3). USER actions to fully activate:
-                run docs/phase-3-setup.md SQL; add SUPABASE_SECRET_KEY to Vercel env (Prod+Preview) for live invites;
-                configure Supabase SMTP + verify a Resend domain for self-serve email reset. Pending content: logo PNG,
-                Sir photos/result creatives, gap-test review, privacy legal details, PWA PNG icons. Then full launch QA.
-LAST COMMIT:    Phase 3 invite + PWA on main (auto-deploys to Vercel).
+PHASE:          ADMIN 1000-STUDENT REDESIGN in progress (8 phases). DONE: P1 admin shell (AdminShell: left sidebar
+                Dashboard/Leads/Students/Batches/Attendance/Tests&Marks/Fees/Messages/Reports/Settings + top bar global
+                student search + sign out + mobile drawer; replaced top AdminNav). P2 Attendance daily screen
+                (AttendanceGrid: summary cards, Mark-All, colour segmented status, per-student note, block-on-unmarked,
+                edit mode, bulk upsert w/ batch_id, post-save Notify panel: absent/late WhatsApp + Copy list + Mark notified).
+                P3 Fees collection dashboard (KPI cards, filters month/batch/status/search, FeeGenerator preview->generate,
+                FeesTable bulk select + mark paid/pending/reminded/delete + row WhatsApp/view, export pending CSV). Parent
+                portal (prior Phase 3) shipped. 27 routes, build green.
+LAST COMPLETED: P3 fees. docs/redesign-schema.md (run: students roll_number/default_monthly_fee/alternate_number, batches
+                days/capacity, attendance batch_id/notified_at/note, marks status, fees batch_id/reminded_at, indexes) +
+                docs/phase-3-fees-sql.md (dedupe + backfill batch_id + unique(student_id,month)). ALL SQL RUN by user.
+NEXT UP:        Redesign remaining: P4 Students (rich table att%/fee-status/last-test via a DB view, bulk actions, CSV
+                import, duplicate detection by name+parent phone, roll number, Save&AddAnother etc). P5 operational
+                Dashboard (Today's Ops + This Month + Alerts + Quick Actions; needs batch days for "scheduled today").
+                P6 Tests&Marks (status appeared/absent/not_submitted + test summary stats). P7 Reports (filterable + CSV).
+                P8 Messages (WhatsApp hub: templates + notified log) + Settings. Vercel Deployment Protection was ON
+                (whole site behind Vercel login) - user turning it OFF. SUPABASE_SECRET_KEY must be in Vercel env for live invites.
+LAST COMMIT:    Redesign P3 fees on main (auto-deploys to Vercel).
 ```
 
 ## Stack
