@@ -5,15 +5,15 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          Phase 1-2 (homepage + ALL secondary pages) built on main, deploying via Vercel. Brand colour
-                changed to teal-blue #069494 (was #0F766E green-teal): --primary highlight, --primary-strong
-                interactive (AA), --primary-deep hover. Real pages: home, About Sir, Courses, Results, Method,
-                Contact, + 5 SEO pages (unique content, SeoPage template). Prod build passes, 17 routes, zero em-dashes.
-LAST COMPLETED: Secondary pages via reusable PageHeader / EnquiryBand / SeoPage components. Color token swap across
-                globals.css + doc 04. Only placeholders left: blog, blog/[slug], privacy, maths-concept-gap-test.
-NEXT UP:        Phase 3 Concept-Gap Test (needs Sir's question bank), Phase 4 enquiry form + Supabase + Resend,
-                blog seed posts, privacy policy. IMAGES STILL NEEDED from Sir: hero/about photo + result creatives.
-LAST COMMIT:    Phase 1-2 pages + #069494 colour on main (auto-deploys to Vercel).
+PHASE:          ENTIRE public site is now real content on main, deploying via Vercel. 20 routes, prod build green,
+                zero em-dashes, brand teal-blue #069494. Done: home + About Sir + Courses + Results + Method +
+                Contact + 5 SEO pages + Privacy (DPDP) + Blog (3 SSG posts) + the Concept-Gap Test (killer feature).
+LAST COMPLETED: Phase 3 Concept-Gap Test (client self-assessment, chapter lists in lib/gap-test-config.ts, WhatsApp
+                handoff). DPDP privacy page (legal-entity details TBD). Blog (lib/blog.ts + index + [slug] SSG).
+NEXT UP:        Phase 4: enquiry form + Supabase (Mumbai) + Resend = needs the user to create accounts + put keys in
+                .env.local (BLOCKED on keys). Then analytics + launch QA. NEEDS FROM SIR: hero/about photo, result
+                creatives, gap-test chapter review, privacy legal-entity details (legal name + DPO).
+LAST COMMIT:    Gap test + privacy + blog on main (auto-deploys to Vercel).
 ```
 
 ## Stack
