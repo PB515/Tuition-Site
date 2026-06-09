@@ -2,6 +2,7 @@ import { Trash2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { ENQUIRY_CLASSES } from "@/lib/site";
 import { createBatch, deleteBatch } from "./actions";
+import BatchTimingInput from "@/components/admin/BatchTimingInput";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Batches", robots: { index: false, follow: false } };
@@ -40,7 +41,7 @@ export default async function Page() {
         </label>
         <label className="block text-sm">
           <span className="font-medium text-ink">Timing</span>
-          <input name="timing" className={`mt-1 ${field}`} placeholder="e.g. 6-7:30 PM" />
+          <BatchTimingInput />
         </label>
         <button
           type="submit"
