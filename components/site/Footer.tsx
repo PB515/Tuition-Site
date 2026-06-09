@@ -7,7 +7,7 @@ import { SITE, NAV, AREAS, WA_ENQUIRY, MAPS_LINK } from "@/lib/site";
 
 export default function Footer() {
   const pathname = usePathname();
-  if (pathname?.startsWith("/admin")) return null;
+  if (pathname?.startsWith("/admin") || pathname?.startsWith("/parent")) return null;
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">

@@ -25,8 +25,8 @@ export default function Nav({ hasLogo = false }: { hasLogo?: boolean }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // The admin area has its own chrome; hide the public nav there.
-  if (pathname?.startsWith("/admin")) return null;
+  // The admin and parent areas have their own chrome; hide the public nav there.
+  if (pathname?.startsWith("/admin") || pathname?.startsWith("/parent")) return null;
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur">

@@ -1,8 +1,9 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
-// Guards /admin: anyone not logged in is bounced to /admin/login; a logged-in
-// user hitting /admin/login is sent to the dashboard. Also refreshes the session.
+// Public parent routes (the invite / reset / login flows) must be reachable logged-out.
+const PARENT_PUBLIC = ["/parent/login", "/parent/set-password", "/parent/reset", "/parent/forgot"];
+
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request });
 
@@ -30,18 +31,34 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
   const path = request.nextUrl.pathname;
 
-  if (!user && path !== "/admin/login") {
-    const url = request.nextUrl.clone();
-    url.pathname = "/admin/login";
-    return NextResponse.redirect(url);
+  if (path.startsWith("/admin")) {
+    if (!user && path !== "/admin/login") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/admin/login";
+      return NextResponse.redirect(url);
+    }
+    if (user && path === "/admin/login") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/admin";
+      return NextResponse.redirect(url);
+    }
   }
-  if (user && path === "/admin/login") {
-    const url = request.nextUrl.clone();
-    url.pathname = "/admin";
-    return NextResponse.redirect(url);
+
+  if (path.startsWith("/parent")) {
+    const isPublic = PARENT_PUBLIC.some((p) => path === p || path.startsWith(p + "/"));
+    if (!user && !isPublic) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/parent/login";
+      return NextResponse.redirect(url);
+    }
+    if (user && path === "/parent/login") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/parent";
+      return NextResponse.redirect(url);
+    }
   }
 
   return response;
 }
 
-export const config = { matcher: ["/admin/:path*"] };
+export const config = { matcher: ["/admin/:path*", "/parent/:path*"] };

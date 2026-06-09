@@ -5,18 +5,20 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          PHASE 2 + SCALE HARDENING (1000-student) COMPLETE. Admin nav now: Dashboard · Leads · Students ·
-                Batches · Attendance · Tests · Fees. Scale steps: (1) DB indexes doc, (2) fees bulk-add-to-batch +
-                cascading batch->student picker + batch/student/status filters, (3) quick add-fee from student profile,
-                (4) Leads moved to /admin/leads with search/status/pagination, (5) /admin = dashboard (counts + recent
-                + quick actions). All lists paginated. 25 routes, build green.
-LAST COMPLETED: Scale 1-5. AddFeeForm (client, browser-session reads batch students). createFeesForBatch bulk action.
-                Dashboard head:true counts (students/active/new-leads/pending-fees). Leads search via /admin/leads.
-NEXT UP:        USER: run docs/scale-indexes.md (indexes) + docs/phase-2d-setup.md (fees table) if not yet. Phase 3 =
-                parent/student portal + PWA (per-child private data; cross-user denial gate non-negotiable) when ready.
-                Pending (non-blocking): logo file, Sir photos/result creatives, gap-test review, privacy legal details,
-                Vercel Analytics enable, Resend domain verify, WhatsApp BSP automation (later).
-LAST COMMIT:    Scale hardening (indexes/fees/dashboard/leads) on main (auto-deploys to Vercel).
+PHASE:          PHASE 3 in progress - PARENT PORTAL FOUNDATION built (auth + RLS + views). Decisions: email login,
+                WhatsApp invite, SMTP email reset. Done: parents link table + parent read-only RLS (docs/phase-3-setup.md),
+                /parent/login + set-password + reset + forgot, /auth/confirm (verifyOtp), parent layout, /parent dashboard
+                (children, RLS-scoped) + /parent/child/[id] read-only attendance%/marks/fees. middleware guards /parent.
+                Nav/Footer hide on /parent; robots disallow /parent. 25 routes, build green.
+LAST COMPLETED: Parent auth flows (ParentLoginForm/UpdatePasswordForm/ForgotForm), confirm route, parent views.
+                SUPABASE_SECRET_KEY placeholder added to .env.local (user pasted; value LOOKS like the earlier-exposed
+                sb_secret_LMuXdy - VERIFY/rotate when wiring invite).
+NEXT UP:        Phase 3 remaining: (3) staff "Invite parent" + "Send reset link" via WhatsApp (uses SUPABASE_SECRET_KEY -
+                build lib/supabase/admin.ts + generateLink invite/recovery -> /auth/confirm link). (4) PROVE cross-user
+                denial (Parent A cannot open Parent B child -> RLS returns null -> notFound; verify). (6) PWA manifest +
+                service worker. USER: run docs/phase-3-setup.md SQL + add Redirect URLs in Supabase Auth; to test now,
+                create a parent user + insert into parents(user_id, student_id).
+LAST COMMIT:    Phase 3 parent portal foundation on main (auto-deploys to Vercel).
 ```
 
 ## Stack
