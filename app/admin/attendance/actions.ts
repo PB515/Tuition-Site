@@ -5,23 +5,41 @@ import { createClient } from "@/lib/supabase/server";
 
 const VALID = ["present", "absent", "late", "leave"];
 
-export async function saveAttendance(formData: FormData) {
-  const date = String(formData.get("date") || "");
-  if (!date) return;
+export async function saveAttendance(
+  batchId: string,
+  date: string,
+  rows: { student_id: string; status: string; note?: string }[],
+) {
+  if (!date) return { ok: false, error: "Missing date." };
+  const clean = rows
+    .filter((r) => VALID.includes(r.status))
+    .map((r) => ({
+      student_id: r.student_id,
+      date,
+      status: r.status,
+      note: r.note?.trim() || null,
+      batch_id: batchId || null,
+    }));
 
-  const rows: { student_id: string; date: string; status: string }[] = [];
-  for (const [key, value] of formData.entries()) {
-    if (key.startsWith("s_")) {
-      const status = String(value);
-      if (VALID.includes(status)) {
-        rows.push({ student_id: key.slice(2), date, status });
-      }
-    }
-  }
-
-  if (rows.length) {
+  if (clean.length) {
     const supabase = await createClient();
-    await supabase.from("attendance").upsert(rows, { onConflict: "student_id,date" });
+    const { error } = await supabase
+      .from("attendance")
+      .upsert(clean, { onConflict: "student_id,date" });
+    if (error) return { ok: false, error: error.message };
   }
   revalidatePath("/admin/attendance");
+  return { ok: true };
+}
+
+export async function markNotified(batchId: string, date: string) {
+  const supabase = await createClient();
+  await supabase
+    .from("attendance")
+    .update({ notified_at: new Date().toISOString() })
+    .eq("date", date)
+    .eq("batch_id", batchId)
+    .in("status", ["absent", "late"]);
+  revalidatePath("/admin/attendance");
+  return { ok: true };
 }
