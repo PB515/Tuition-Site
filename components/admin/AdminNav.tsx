@@ -6,7 +6,8 @@ import { signOut } from "@/app/admin/actions";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
-  { href: "/admin", label: "Leads" },
+  { href: "/admin", label: "Dashboard" },
+  { href: "/admin/leads", label: "Leads" },
   { href: "/admin/students", label: "Students" },
   { href: "/admin/batches", label: "Batches" },
   { href: "/admin/attendance", label: "Attendance" },

@@ -2,6 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Pencil, MessageCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import { createFee } from "@/app/admin/fees/actions";
+
+const feeField =
+  "w-full rounded-lg border border-border bg-bg px-3 py-2 text-sm text-ink focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Student profile", robots: { index: false, follow: false } };
@@ -141,6 +145,32 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
       <section className="mt-10">
         <h2 className="font-heading text-lg font-bold text-ink">Fees</h2>
+
+        <form
+          action={createFee}
+          className="mt-3 grid gap-2 rounded-2xl border border-border bg-surface p-3 sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-end"
+        >
+          <input type="hidden" name="student_id" value={id} />
+          <label className="block text-sm">
+            <span className="font-medium text-ink">Month</span>
+            <input name="month" className={`mt-1 ${feeField}`} placeholder="June 2026" />
+          </label>
+          <label className="block text-sm">
+            <span className="font-medium text-ink">Amount (Rs)</span>
+            <input name="amount" type="number" min="0" className={`mt-1 ${feeField}`} />
+          </label>
+          <label className="block text-sm">
+            <span className="font-medium text-ink">Due date</span>
+            <input name="due_date" type="date" className={`mt-1 ${feeField}`} />
+          </label>
+          <button
+            type="submit"
+            className="rounded-full bg-primary-strong px-5 py-2 text-sm font-semibold text-white hover:bg-primary-deep"
+          >
+            Add fee
+          </button>
+        </form>
+
         {fees.length === 0 ? (
           <p className="mt-3 text-sm text-ink-muted">No fee records yet.</p>
         ) : (

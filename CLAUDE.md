@@ -5,17 +5,18 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          PHASE 2 COMPLETE (student management system). Admin: Leads · Students · Batches · Attendance ·
-                Tests · Fees, all staff-only RLS. 2a-2d done (tables: students, batches, attendance, tests, marks, fees).
-                Plus search/filter/pagination on Students+Tests, student profile (attendance%/marks/fees), CSV export
-                (students+leads). Phases 0-5 + 1.5 + 2 all shipped. 24 routes, build green.
-LAST COMPLETED: Phase 2 finale: /admin/fees (track/paid/WhatsApp reminder), student profile at /admin/students/[id]
-                (edit moved to /[id]/edit), CSV routes /admin/export/{students,leads}. SQL setup docs phase-2a..2d.
-NEXT UP:        USER: run docs/phase-2d-setup.md SQL (fees table) to activate Fees; test profile + CSV export. Phase 3
-                = parent/student portal + PWA (per-child private data; cross-user denial gate is non-negotiable) when
-                ready. Still pending (non-blocking): logo file, Sir photos/result creatives, gap-test review, privacy
-                legal details, Vercel Analytics enable, Resend domain verify, WhatsApp BSP automation (later).
-LAST COMMIT:    Phase 2 finale (fees/profile/CSV) on main (auto-deploys to Vercel).
+PHASE:          PHASE 2 + SCALE HARDENING (1000-student) COMPLETE. Admin nav now: Dashboard · Leads · Students ·
+                Batches · Attendance · Tests · Fees. Scale steps: (1) DB indexes doc, (2) fees bulk-add-to-batch +
+                cascading batch->student picker + batch/student/status filters, (3) quick add-fee from student profile,
+                (4) Leads moved to /admin/leads with search/status/pagination, (5) /admin = dashboard (counts + recent
+                + quick actions). All lists paginated. 25 routes, build green.
+LAST COMPLETED: Scale 1-5. AddFeeForm (client, browser-session reads batch students). createFeesForBatch bulk action.
+                Dashboard head:true counts (students/active/new-leads/pending-fees). Leads search via /admin/leads.
+NEXT UP:        USER: run docs/scale-indexes.md (indexes) + docs/phase-2d-setup.md (fees table) if not yet. Phase 3 =
+                parent/student portal + PWA (per-child private data; cross-user denial gate non-negotiable) when ready.
+                Pending (non-blocking): logo file, Sir photos/result creatives, gap-test review, privacy legal details,
+                Vercel Analytics enable, Resend domain verify, WhatsApp BSP automation (later).
+LAST COMMIT:    Scale hardening (indexes/fees/dashboard/leads) on main (auto-deploys to Vercel).
 ```
 
 ## Stack

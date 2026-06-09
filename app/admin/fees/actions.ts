@@ -16,6 +16,7 @@ export async function createFee(formData: FormData) {
     paid: false,
   });
   revalidatePath("/admin/fees");
+  revalidatePath(`/admin/students/${student_id}`);
 }
 
 export async function createFeesForBatch(formData: FormData) {
