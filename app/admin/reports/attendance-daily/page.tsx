@@ -1,0 +1,76 @@
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { createClient } from "@/lib/supabase/server";
+import ReportTable from "@/components/admin/ReportTable";
+
+export const dynamic = "force-dynamic";
+export const metadata = { title: "Daily attendance", robots: { index: false, follow: false } };
+
+const field =
+  "w-full rounded-lg border border-border bg-bg px-3 py-2 text-sm text-ink focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
+
+type Row = { status: string; note: string | null; students: { name: string; roll_number: string | null } | null };
+
+export default async function Page({ searchParams }: { searchParams: Promise<{ date?: string; batch?: string }> }) {
+  const sp = await searchParams;
+  const supabase = await createClient();
+  const { data: batches } = await supabase.from("batches").select("id, name").order("name");
+  const date = sp.date ?? new Date(Date.now() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
+  const batch = sp.batch ?? "";
+
+  let q = supabase
+    .from("attendance")
+    .select("status, note, students!inner(name, roll_number)")
+    .eq("date", date);
+  if (batch) q = q.eq("batch_id", batch);
+  const { data } = await q;
+  const rows = ((data ?? []) as unknown as Row[])
+    .map((a) => ({
+      roll: a.students?.roll_number ?? "",
+      student: a.students?.name ?? "",
+      status: a.status,
+      note: a.note ?? "",
+    }))
+    .sort((x, y) => x.student.localeCompare(y.student));
+
+  return (
+    <div className="px-4 py-8 sm:px-6 lg:px-8">
+      <Link href="/admin/reports" className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-muted hover:text-primary-strong">
+        <ArrowLeft size={15} strokeWidth={2} /> Reports
+      </Link>
+      <h1 className="mt-4 font-heading text-2xl font-bold text-ink">Daily attendance by batch</h1>
+
+      <form method="get" className="mt-6 grid max-w-lg gap-3 rounded-2xl border border-border bg-surface p-4 sm:grid-cols-[1fr_1fr_auto] sm:items-end">
+        <label className="block text-sm">
+          <span className="font-medium text-ink">Date</span>
+          <input type="date" name="date" defaultValue={date} className={`mt-1 ${field}`} />
+        </label>
+        <label className="block text-sm">
+          <span className="font-medium text-ink">Batch</span>
+          <select name="batch" defaultValue={batch} className={`mt-1 ${field}`}>
+            <option value="">All</option>
+            {(batches ?? []).map((b) => (
+              <option key={b.id} value={b.id}>
+                {b.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <button type="submit" className="rounded-full border border-primary px-5 py-2 text-sm font-semibold text-primary-strong hover:bg-primary-tint">
+          Run
+        </button>
+      </form>
+
+      <ReportTable
+        columns={[
+          { key: "roll", label: "Roll" },
+          { key: "student", label: "Student" },
+          { key: "status", label: "Status" },
+          { key: "note", label: "Note" },
+        ]}
+        rows={rows}
+        filename={`attendance-${date}.csv`}
+      />
+    </div>
+  );
+}
