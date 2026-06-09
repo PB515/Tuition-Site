@@ -6,6 +6,7 @@ import { join } from "path";
 import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/site/Nav";
 import Footer from "@/components/site/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 import JsonLd from "@/components/JsonLd";
 import { organizationLd } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
@@ -46,10 +47,16 @@ export default function RootLayout({
       className={`${inter.variable} ${jakarta.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-bg font-sans text-ink">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
         <JsonLd data={organizationLd()} />
         <Nav hasLogo={hasLogo} />
         <div className="flex-1">{children}</div>
         <Footer />
+        <ScrollReveal />
         <Analytics />
       </body>
     </html>

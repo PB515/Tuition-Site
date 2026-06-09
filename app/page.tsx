@@ -184,7 +184,7 @@ export default function Home() {
               <Link
                 key={c.label}
                 href={c.href}
-                className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-bg p-5 transition-colors hover:border-primary"
+                className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-bg p-5 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
               >
                 <div>
                   <p className="font-heading text-lg font-semibold text-ink">{c.label}</p>
