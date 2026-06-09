@@ -57,6 +57,12 @@ export default function Nav({ hasLogo = false }: { hasLogo?: boolean }) {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/parent/login"
+            className="inline-flex items-center rounded-full border border-border px-4 py-2 text-sm font-semibold text-ink-muted transition-colors hover:border-primary hover:text-primary-strong"
+          >
+            Parent login
+          </Link>
           <InstallButton />
           <a
             href={WA_ENQUIRY}
@@ -93,6 +99,13 @@ export default function Nav({ hasLogo = false }: { hasLogo?: boolean }) {
                 {item.label}
               </Link>
             ))}
+            <Link
+              href="/parent/login"
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex items-center justify-center rounded-full border border-border px-5 py-3 text-sm font-semibold text-ink-muted"
+            >
+              Parent login
+            </Link>
             <InstallButton
               label="Install app"
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-primary px-5 py-3 text-sm font-semibold text-primary-strong"

@@ -5,24 +5,24 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          ADMIN 1000-STUDENT REDESIGN in progress (8 phases). DONE: P1 admin shell (AdminShell: left sidebar
-                Dashboard/Leads/Students/Batches/Attendance/Tests&Marks/Fees/Messages/Reports/Settings + top bar global
-                student search + sign out + mobile drawer; replaced top AdminNav). P2 Attendance daily screen
-                (AttendanceGrid: summary cards, Mark-All, colour segmented status, per-student note, block-on-unmarked,
-                edit mode, bulk upsert w/ batch_id, post-save Notify panel: absent/late WhatsApp + Copy list + Mark notified).
-                P3 Fees collection dashboard (KPI cards, filters month/batch/status/search, FeeGenerator preview->generate,
-                FeesTable bulk select + mark paid/pending/reminded/delete + row WhatsApp/view, export pending CSV). Parent
-                portal (prior Phase 3) shipped. 27 routes, build green.
-LAST COMPLETED: P3 fees. docs/redesign-schema.md (run: students roll_number/default_monthly_fee/alternate_number, batches
-                days/capacity, attendance batch_id/notified_at/note, marks status, fees batch_id/reminded_at, indexes) +
-                docs/phase-3-fees-sql.md (dedupe + backfill batch_id + unique(student_id,month)). ALL SQL RUN by user.
-NEXT UP:        Redesign remaining: P4 Students (rich table att%/fee-status/last-test via a DB view, bulk actions, CSV
-                import, duplicate detection by name+parent phone, roll number, Save&AddAnother etc). P5 operational
-                Dashboard (Today's Ops + This Month + Alerts + Quick Actions; needs batch days for "scheduled today").
-                P6 Tests&Marks (status appeared/absent/not_submitted + test summary stats). P7 Reports (filterable + CSV).
-                P8 Messages (WhatsApp hub: templates + notified log) + Settings. Vercel Deployment Protection was ON
-                (whole site behind Vercel login) - user turning it OFF. SUPABASE_SECRET_KEY must be in Vercel env for live invites.
-LAST COMMIT:    Redesign P3 fees on main (auto-deploys to Vercel).
+PHASE:          ADMIN 1000-STUDENT REDESIGN COMPLETE (P1-P8) + public login entry points. P1 shell (AdminShell sidebar +
+                top global search). P2 Attendance daily grid (segmented status, Mark-All, block-on-unmarked, Notify panel).
+                P3 Fees dashboard (KPIs, FeeGenerator preview->generate, FeesTable bulk, export, paid_at). P4 Students
+                (student_overview view: att%/fee/last-test; StudentsTable bulk; CSV import + dup detection; roll/alt/default-fee;
+                Save&AddAnother/OpenProfile/AddFee). P5 Dashboard (Today's Ops/This Month/Alerts/Quick Actions; batches got
+                days+capacity + operational list). P6 Tests&Marks (MarksGrid status + test summary). P7 Reports (hub +
+                ReportTable client CSV; daily/monthly attendance, absentees, collection, test-performance, weak-students).
+                P8 Messages (templates CRUD + BroadcastComposer: batch/all -> {name} msg -> per-parent wa links + copy numbers)
+                + Settings (app_settings academy details/default fee + staff email list via admin client). Login: navbar
+                "Parent login" -> /parent/login, footer "Staff login" -> /admin/login. 27 routes, build green.
+LAST COMPLETED: P8 + login links. SQL run by user through P7. STILL TO RUN: docs/phase-8-sql.md (message_templates +
+                app_settings tables). Reusable: components/admin/{AdminShell,AttendanceGrid,FeeGenerator,FeesTable,
+                StudentsTable,ImportStudents,MarksGrid,ReportTable,BroadcastComposer,BatchTimingInput}.
+NEXT UP:        User: run docs/phase-8-sql.md (else Messages/Settings error on missing tables). Redesign done - remaining is
+                content/config + launch: logo PNG, Sir photos, gap-test review, /privacy legal details, PWA PNG icons,
+                SUPABASE_SECRET_KEY in Vercel (for invites + Settings staff list), Vercel Deployment Protection OFF (was ON),
+                Resend domain verify. Optional: wire app_settings.default_monthly_fee into student/fee defaults.
+LAST COMMIT:    Redesign P8 + login entry points on main (auto-deploys to Vercel).
 ```
 
 ## Stack
