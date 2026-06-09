@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Pencil, MessageCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { createFee } from "@/app/admin/fees/actions";
+import InviteParentForm from "@/components/admin/InviteParentForm";
 
 const feeField =
   "w-full rounded-lg border border-border bg-bg px-3 py-2 text-sm text-ink focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
@@ -37,7 +38,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
     .single();
   if (!student) notFound();
 
-  const [att, marksRes, feesRes] = await Promise.all([
+  const [att, marksRes, feesRes, parentCountRes] = await Promise.all([
     supabase.from("attendance").select("status").eq("student_id", id),
     supabase
       .from("marks")
@@ -50,6 +51,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
       .select("month, amount, paid, due_date")
       .eq("student_id", id)
       .order("created_at", { ascending: false }),
+    supabase.from("parents").select("*", { count: "exact", head: true }).eq("student_id", id),
   ]);
 
   const attRows = att.data ?? [];
@@ -60,6 +62,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   const marks = (marksRes.data ?? []) as unknown as MarkRow[];
   const fees = (feesRes.data ?? []) as unknown as FeeRow[];
   const pendingTotal = fees.filter((f) => !f.paid).reduce((sum, f) => sum + (f.amount ?? 0), 0);
+  const parentCount = parentCountRes.count ?? 0;
 
   const waParent = student.parent_whatsapp
     ? `https://wa.me/91${student.parent_whatsapp}?text=${encodeURIComponent(
@@ -96,10 +99,9 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         </div>
       </div>
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-4">
+      <div className="mt-6 grid gap-3 sm:grid-cols-3">
         <Stat label="Attendance" value={attPct != null ? `${attPct}%` : "-"} />
         <Stat label="Classes marked" value={String(totalDays)} />
-        <Stat label="Tests recorded" value={String(marks.length)} />
         <Stat label="Pending fees" value={pendingTotal > 0 ? `Rs ${pendingTotal}` : "Rs 0"} />
       </div>
 
@@ -109,6 +111,18 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           {student.parent_whatsapp ? `  ·  ${student.parent_whatsapp}` : ""}
         </p>
       )}
+
+      <section className="mt-10">
+        <h2 className="font-heading text-lg font-bold text-ink">Parent access</h2>
+        <p className="mt-1 text-sm text-ink-muted">
+          {parentCount > 0
+            ? `${parentCount} parent login${parentCount > 1 ? "s" : ""} linked to this student.`
+            : "No parent login yet. Create a link and send it to the parent on WhatsApp."}
+        </p>
+        <div className="mt-3">
+          <InviteParentForm studentId={id} parentWhatsapp={student.parent_whatsapp ?? null} />
+        </div>
+      </section>
 
       <section className="mt-10">
         <div className="flex items-center justify-between">
