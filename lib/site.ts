@@ -1,6 +1,12 @@
 // Single source of truth for site content + contact. No hardcoded copy in components.
 // Shape rule (locked): buttons = full pill, cards = rounded-2xl (16px), chips/inputs = rounded-lg.
 
+// Canonical site URL (sitemap, robots, OG, structured data). Override with
+// NEXT_PUBLIC_SITE_URL once a custom domain is connected.
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  "https://tuition-site-git-main-purven-s-projects.vercel.app";
+
 export const SITE = {
   name: "Inspire Academy of Mathematics",
   teacher: "Snehal Soni Sir",

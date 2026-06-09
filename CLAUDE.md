@@ -5,17 +5,17 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          Phase 4 (data wiring) code-complete. Enquiry form on /contact: server action with honeypot +
-                server validation + consent, Supabase insert (anon, insert-only RLS), Resend email, graceful
-                WhatsApp fallback when keys absent. 20 routes, prod build green, zero em-dashes, teal-blue #069494.
-LAST COMPLETED: Phase 4 form (app/actions/enquiry.ts, components/EnquiryForm.tsx, lib/supabase.ts). Setup steps +
-                SQL in docs/phase-4-setup.md, .env.example added. GOTCHA: a "use server" file may only export async
-                functions - moved CLASS_OPTIONS const to lib/site.ts (was "h.map is not a function" at prerender).
-NEXT UP:        USER ACTION to activate the form: create Supabase (Mumbai) + Resend, run the SQL, set 5 env vars in
-                .env.local + Vercel, redeploy (see docs/phase-4-setup.md). Then Phase 5: cookieless analytics, JSON-LD
-                (LocalBusiness/Person/FAQ), sitemap/robots, launch QA. NEEDS FROM SIR: hero/about photo, result
-                creatives, gap-test chapter review, privacy legal-entity details.
-LAST COMMIT:    Phase 4 enquiry form on main (auto-deploys to Vercel).
+PHASE:          Phase 4 + Phase 5 done. Form WORKS locally (Supabase + Resend tested OK via .env.local). Phase 5:
+                Vercel cookieless Analytics, JSON-LD (EducationalOrganization/LocalBusiness in layout + Person on
+                About), app/sitemap.ts + app/robots.ts, metadataBase = SITE_URL. 22 routes, prod build green.
+LAST COMPLETED: Logo made resilient: layout checks public/brand/logo.png server-side (existsSync) -> shows logo if
+                present, else the text Wordmark (no broken image). Phase 5 SEO + analytics. SITE_URL in lib/site.ts
+                (override via NEXT_PUBLIC_SITE_URL when a custom domain lands).
+NEXT UP:        (1) USER: add the 5 env vars in Vercel (Settings > Env Vars) + redeploy so the LIVE form works.
+                (2) USER: save logo to public/brand/logo.png, then I commit it. (3) Enable Analytics in Vercel
+                dashboard. Launch QA. NEEDS FROM SIR: hero/about photo, result creatives, gap-test review, privacy
+                legal-entity details. Resend still sandbox (only delivers to purvenbhavsar05@gmail.com until domain verified).
+LAST COMMIT:    Phase 5 (analytics/SEO) + logo fallback on main (auto-deploys to Vercel).
 ```
 
 ## Stack

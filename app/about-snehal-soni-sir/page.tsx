@@ -1,6 +1,8 @@
 import { GraduationCap, Check } from "lucide-react";
 import PageHeader from "@/components/site/PageHeader";
 import EnquiryBand from "@/components/site/EnquiryBand";
+import JsonLd from "@/components/JsonLd";
+import { personLd } from "@/lib/structured-data";
 import { SITE } from "@/lib/site";
 
 export const metadata = { title: "About Snehal Soni Sir" };
@@ -16,6 +18,7 @@ const POINTS = [
 export default function Page() {
   return (
     <main>
+      <JsonLd data={personLd()} />
       <PageHeader
         eyebrow="The teacher"
         title="Learn maths from Snehal Soni Sir"

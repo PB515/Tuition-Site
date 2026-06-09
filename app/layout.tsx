@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { existsSync } from "fs";
+import { join } from "path";
+import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/site/Nav";
 import Footer from "@/components/site/Footer";
+import JsonLd from "@/components/JsonLd";
+import { organizationLd } from "@/lib/structured-data";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,7 +25,7 @@ const jakarta = Plus_Jakarta_Sans({
 
 // metadataBase: production URL is TBD (set at launch; canonical/OG depend on it).
 export const metadata: Metadata = {
-  metadataBase: new URL("https://inspire-academy.example"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Inspire Academy of Mathematics, Maths Coaching in Vadodara",
     template: "%s | Inspire Academy of Mathematics",
@@ -33,15 +39,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const hasLogo = existsSync(join(process.cwd(), "public", "brand", "logo.png"));
   return (
     <html
       lang="en"
       className={`${inter.variable} ${jakarta.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-bg font-sans text-ink">
-        <Nav />
+        <JsonLd data={organizationLd()} />
+        <Nav hasLogo={hasLogo} />
         <div className="flex-1">{children}</div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

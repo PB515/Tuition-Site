@@ -2,27 +2,43 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, MessageCircle, FunctionSquare } from "lucide-react";
 import { NAV, WA_ENQUIRY, SITE } from "@/lib/site";
 
-export default function Nav() {
+function Wordmark() {
+  return (
+    <span className="flex items-center gap-2">
+      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-white">
+        <FunctionSquare size={20} strokeWidth={1.75} />
+      </span>
+      <span className="flex flex-col leading-none">
+        <span className="font-heading text-base font-bold text-ink">Inspire Academy</span>
+        <span className="text-[11px] font-medium text-ink-muted">of Mathematics, Vadodara</span>
+      </span>
+    </span>
+  );
+}
+
+export default function Nav({ hasLogo = false }: { hasLogo?: boolean }) {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link
-          href="/"
-          className="flex items-center gap-2"
-          onClick={() => setOpen(false)}
-        >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-white">
-            <FunctionSquare size={20} strokeWidth={1.75} />
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-heading text-base font-bold text-ink">Inspire Academy</span>
-            <span className="text-[11px] font-medium text-ink-muted">of Mathematics, Vadodara</span>
-          </span>
+        <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+          {hasLogo ? (
+            <Image
+              src="/brand/logo.png"
+              alt={SITE.name}
+              width={2240}
+              height={980}
+              priority
+              className="h-9 w-auto sm:h-10"
+            />
+          ) : (
+            <Wordmark />
+          )}
         </Link>
 
         <div className="hidden items-center gap-7 lg:flex">
