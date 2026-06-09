@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Inspire Academy of Mathematics",
     short_name: "Inspire Academy",
     description: "Maths coaching in Vadodara. Parent portal and academy info.",
-    start_url: "/",
+    start_url: "/parent",
     display: "standalone",
     background_color: "#ffffff",
     theme_color: "#069494",
