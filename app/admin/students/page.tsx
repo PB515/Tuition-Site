@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Plus } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { ENQUIRY_CLASSES } from "@/lib/site";
+import StudentsTable from "@/components/admin/StudentsTable";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Students", robots: { index: false, follow: false } };
@@ -11,15 +11,6 @@ const field =
   "w-full rounded-lg border border-border bg-bg px-3 py-2 text-sm text-ink focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
 
 type Batch = { id: string; name: string };
-type Row = {
-  id: string;
-  name: string;
-  class: string | null;
-  parent_name: string | null;
-  parent_whatsapp: string | null;
-  active: boolean;
-  batches: { name: string } | null;
-};
 
 function href(params: Record<string, string | number | undefined>) {
   const sp = new URLSearchParams();
@@ -33,69 +24,81 @@ function href(params: Record<string, string | number | undefined>) {
 export default async function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; class?: string; batch?: string; active?: string; page?: string }>;
+  searchParams: Promise<{
+    q?: string;
+    class?: string;
+    batch?: string;
+    active?: string;
+    fee?: string;
+    page?: string;
+  }>;
 }) {
   const sp = await searchParams;
+  const supabase = await createClient();
+
+  const { data: batches } = await supabase.from("batches").select("id, name").order("name");
+  const batchList = (batches ?? []) as Batch[];
+
   const q = (sp.q ?? "").trim();
   const cls = sp.class ?? "";
   const batch = sp.batch ?? "";
   const active = sp.active ?? "";
+  const fee = sp.fee ?? "";
   const page = Math.max(1, Number(sp.page ?? "1") || 1);
   const from = (page - 1) * PAGE_SIZE;
 
-  const supabase = await createClient();
-  const { data: batches } = await supabase.from("batches").select("id, name").order("name");
-  const batchList = (batches ?? []) as Batch[];
-
-  let query = supabase
-    .from("students")
-    .select("id, name, class, parent_name, parent_whatsapp, active, batches(name)", {
-      count: "exact",
-    });
+  let query = supabase.from("student_overview").select("*", { count: "exact" });
   if (q) {
-    const safe = q.replace(/[,%()]/g, " ");
+    const safe = q.replace(/[,()%]/g, " ");
     query = query.or(
-      `name.ilike.%${safe}%,parent_name.ilike.%${safe}%,parent_whatsapp.ilike.%${safe}%`,
+      `name.ilike.%${safe}%,parent_name.ilike.%${safe}%,parent_whatsapp.ilike.%${safe}%,roll_number.ilike.%${safe}%`,
     );
   }
   if (cls) query = query.eq("class", cls);
   if (batch) query = query.eq("batch_id", batch);
-  if (active === "true") query = query.eq("active", true);
-  if (active === "false") query = query.eq("active", false);
+  if (active === "active") query = query.eq("active", true);
+  if (active === "inactive") query = query.eq("active", false);
+  if (fee === "pending") query = query.gt("fee_pending", 0);
+  if (fee === "clear") query = query.eq("fee_pending", 0);
 
   const { data, count } = await query.order("name").range(from, from + PAGE_SIZE - 1);
-  const rows = (data ?? []) as unknown as Row[];
+  const rows = (data ?? []) as unknown as Parameters<typeof StudentsTable>[0]["rows"];
   const total = count ?? 0;
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
-  const base = { q, class: cls, batch, active };
 
   return (
-    <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-      <div className="flex flex-wrap items-center justify-between gap-4">
+    <div className="px-4 py-8 sm:px-6 lg:px-8">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="font-heading text-2xl font-bold text-ink">Students</h1>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap gap-2">
           <a
             href="/admin/export/students"
-            className="rounded-full border border-border px-4 py-2.5 text-sm font-medium text-ink-muted hover:text-ink"
+            className="rounded-full border border-border px-4 py-2 text-sm font-medium text-ink-muted hover:text-ink"
           >
-            Export CSV
+            Export all CSV
           </a>
           <Link
-            href="/admin/students/new"
-            className="inline-flex items-center gap-2 rounded-full bg-primary-strong px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-deep"
+            href="/admin/students/import"
+            className="rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary-strong hover:bg-primary-tint"
           >
-            <Plus size={16} strokeWidth={2.5} /> Add student
+            Import CSV
+          </Link>
+          <Link
+            href="/admin/students/new"
+            className="rounded-full bg-primary-strong px-5 py-2 text-sm font-semibold text-white hover:bg-primary-deep"
+          >
+            Add student
           </Link>
         </div>
       </div>
 
       <form
         method="get"
-        className="mt-6 grid gap-3 rounded-2xl border border-border bg-surface p-4 sm:grid-cols-[2fr_1fr_1fr_1fr_auto] sm:items-end"
+        className="mt-6 grid gap-3 rounded-2xl border border-border bg-surface p-4 sm:grid-cols-[1.6fr_1fr_1fr_1fr_1fr_auto] sm:items-end"
       >
         <label className="block text-sm">
           <span className="font-medium text-ink">Search</span>
-          <input name="q" defaultValue={q} placeholder="name, parent or phone" className={`mt-1 ${field}`} />
+          <input name="q" defaultValue={q} placeholder="name, parent, phone, roll" className={`mt-1 ${field}`} />
         </label>
         <label className="block text-sm">
           <span className="font-medium text-ink">Class</span>
@@ -123,76 +126,40 @@ export default async function Page({
           <span className="font-medium text-ink">Status</span>
           <select name="active" defaultValue={active} className={`mt-1 ${field}`}>
             <option value="">All</option>
-            <option value="true">Active</option>
-            <option value="false">Inactive</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </label>
+        <label className="block text-sm">
+          <span className="font-medium text-ink">Fee</span>
+          <select name="fee" defaultValue={fee} className={`mt-1 ${field}`}>
+            <option value="">All</option>
+            <option value="pending">Pending</option>
+            <option value="clear">Clear</option>
           </select>
         </label>
         <button
           type="submit"
           className="rounded-full border border-primary px-5 py-2 text-sm font-semibold text-primary-strong hover:bg-primary-tint"
         >
-          Search
+          Filter
         </button>
       </form>
 
-      <p className="mt-5 text-sm text-ink-muted">
-        {total === 0
-          ? "No students match."
-          : `Showing ${from + 1}-${Math.min(from + PAGE_SIZE, total)} of ${total}`}
+      <p className="mt-4 text-sm text-ink-muted">
+        {total === 0 ? "No students match." : `Showing ${from + 1}-${Math.min(from + PAGE_SIZE, total)} of ${total}`}
       </p>
 
       {rows.length > 0 && (
-        <div className="mt-3 overflow-x-auto rounded-2xl border border-border">
-          <table className="w-full min-w-[720px] text-left text-sm">
-            <thead className="border-b border-border bg-surface text-xs uppercase tracking-wide text-ink-muted">
-              <tr>
-                <th className="px-4 py-3 font-semibold">Name</th>
-                <th className="px-4 py-3 font-semibold">Class</th>
-                <th className="px-4 py-3 font-semibold">Batch</th>
-                <th className="px-4 py-3 font-semibold">Parent</th>
-                <th className="px-4 py-3 font-semibold">WhatsApp</th>
-                <th className="px-4 py-3 font-semibold">Status</th>
-                <th className="px-4 py-3" />
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border">
-              {rows.map((r) => (
-                <tr key={r.id}>
-                  <td className="px-4 py-3 font-medium text-ink">{r.name}</td>
-                  <td className="px-4 py-3 text-ink-muted">{r.class ?? "-"}</td>
-                  <td className="px-4 py-3 text-ink-muted">{r.batches?.name ?? "-"}</td>
-                  <td className="px-4 py-3 text-ink-muted">{r.parent_name ?? "-"}</td>
-                  <td className="px-4 py-3 text-ink-muted">{r.parent_whatsapp ?? "-"}</td>
-                  <td className="px-4 py-3">
-                    <span
-                      className={
-                        r.active
-                          ? "rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-medium text-primary-strong"
-                          : "rounded-full bg-surface px-2.5 py-0.5 text-xs font-medium text-ink-muted"
-                      }
-                    >
-                      {r.active ? "Active" : "Inactive"}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3 text-right">
-                    <Link
-                      href={`/admin/students/${r.id}`}
-                      className="text-sm font-medium text-primary-strong hover:underline"
-                    >
-                      Open
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-3">
+          <StudentsTable rows={rows} batches={batchList} />
         </div>
       )}
 
       {totalPages > 1 && (
         <div className="mt-5 flex items-center justify-between text-sm">
           {page > 1 ? (
-            <Link href={href({ ...base, page: page - 1 })} className="font-medium text-primary-strong hover:underline">
+            <Link href={href({ q, class: cls, batch, active, fee, page: page - 1 })} className="font-medium text-primary-strong hover:underline">
               Previous
             </Link>
           ) : (
@@ -202,7 +169,7 @@ export default async function Page({
             Page {page} of {totalPages}
           </span>
           {page < totalPages ? (
-            <Link href={href({ ...base, page: page + 1 })} className="font-medium text-primary-strong hover:underline">
+            <Link href={href({ q, class: cls, batch, active, fee, page: page + 1 })} className="font-medium text-primary-strong hover:underline">
               Next
             </Link>
           ) : (
@@ -210,6 +177,6 @@ export default async function Page({
           )}
         </div>
       )}
-    </main>
+    </div>
   );
 }
