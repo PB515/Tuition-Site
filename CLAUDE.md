@@ -5,14 +5,15 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          Phase 0 (scaffold) COMPLETE on branch phase-0. Next.js 16 + Tailwind v4 tokens (white+teal) +
-                shadcn foundation (components.json + lib/utils cn) + all 03b routes (empty PagePlaceholder).
-                Prod build passes — 17 routes. Fonts: Inter (body) + Plus Jakarta Sans (headings).
-LAST COMPLETED: Step 4 image prompts (main) + Phase 0 scaffold (phase-0): create-next-app merged, globals.css
-                tokenised, default boilerplate removed, metadata set (prod URL still TBD in layout.tsx).
-NEXT UP:        (1) Vercel: connect repo + blank deploy. (2) Merge phase-0 → main when green. (3) Phase 1 —
-                static segment-router homepage. Real photos + gap-test question bank still needed from Sir.
-LAST COMMIT:    phase-0 scaffold. main carries planning docs + image prompts.
+PHASE:          Phase 1 (homepage) built on main, deployed via Vercel (project "tuition-site", Purven's account).
+                Real static homepage with the taste skill (design-taste-frontend): 11 sections, white+teal,
+                segment-router chips, killer-feature promo, real 97/100 proof, FAQ, map. Prod build passes, 17 routes.
+LAST COMPLETED: Phase 0 merged to main (Vercel now detects Next.js). Phase 1 homepage: Nav + Footer in layout,
+                CtaButton, Faq (client), lib/site.ts single-source content. Zero em-dashes (taste rule). Placeholder
+                pages upgraded to a friendly WhatsApp/back-home soft-launch state.
+NEXT UP:        Build out secondary pages (About Sir, Courses, Results, Method, Contact, 5 SEO pages) page by page.
+                Then Phase 3 Concept-Gap Test, Phase 4 enquiry form + Supabase. IMAGES NEEDED from Sir (see below).
+LAST COMMIT:    Phase 1 homepage on main (auto-deploys to Vercel).
 ```
 
 ## Stack
