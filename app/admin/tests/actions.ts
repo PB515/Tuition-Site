@@ -33,26 +33,21 @@ export async function deleteTest(formData: FormData) {
   redirect("/admin/tests");
 }
 
-export async function saveMarks(formData: FormData) {
-  const testId = String(formData.get("test_id") || "");
-  if (!testId) return;
-
-  const studentIds = new Set<string>();
-  for (const [key] of formData.entries()) {
-    if (key.startsWith("m_")) studentIds.add(key.slice(2));
-    if (key.startsWith("r_")) studentIds.add(key.slice(2));
-  }
-
-  const rows = Array.from(studentIds).map((sid) => {
-    const m = formData.get(`m_${sid}`);
-    const remark = String(formData.get(`r_${sid}`) || "").trim();
-    const obtained = m !== null && String(m).trim() !== "" ? Number(m) : null;
-    return { test_id: testId, student_id: sid, marks_obtained: obtained, remark: remark || null };
-  });
-
-  if (rows.length) {
-    const supabase = await createClient();
-    await supabase.from("marks").upsert(rows, { onConflict: "test_id,student_id" });
-  }
+export async function saveMarks(
+  testId: string,
+  rows: { student_id: string; marks: number | null; status: string; remark: string | null }[],
+) {
+  if (!testId || !rows.length) return { ok: false };
+  const clean = rows.map((r) => ({
+    test_id: testId,
+    student_id: r.student_id,
+    marks_obtained: r.marks,
+    status: r.status || null,
+    remark: r.remark?.trim() || null,
+  }));
+  const supabase = await createClient();
+  const { error } = await supabase.from("marks").upsert(clean, { onConflict: "test_id,student_id" });
+  if (error) return { ok: false, error: error.message };
   revalidatePath(`/admin/tests/${testId}`);
+  return { ok: true };
 }
