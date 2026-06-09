@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { MessageCircle, CheckCircle2 } from "lucide-react";
 import { submitEnquiry, type EnquiryState } from "@/app/actions/enquiry";
-import { WA_ENQUIRY, ENQUIRY_CLASSES } from "@/lib/site";
+import { WA_ENQUIRY, ENQUIRY_CLASSES, SITE } from "@/lib/site";
 
 const initial: EnquiryState = { ok: false };
 
@@ -19,8 +19,8 @@ export default function EnquiryForm() {
         <CheckCircle2 size={36} strokeWidth={1.75} className="mx-auto text-primary" />
         <h3 className="mt-3 font-heading text-xl font-bold text-ink">Thank you, we have your enquiry</h3>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-          Snehal Soni Sir or the academy team will get back to you soon. For anything urgent, message
-          us on WhatsApp.
+          {SITE.teacher} or the {SITE.name} team will get back to you soon. For anything urgent,
+          message us on WhatsApp.
         </p>
       </div>
     );
