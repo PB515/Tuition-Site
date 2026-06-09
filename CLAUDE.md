@@ -5,15 +5,17 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          ENTIRE public site is now real content on main, deploying via Vercel. 20 routes, prod build green,
-                zero em-dashes, brand teal-blue #069494. Done: home + About Sir + Courses + Results + Method +
-                Contact + 5 SEO pages + Privacy (DPDP) + Blog (3 SSG posts) + the Concept-Gap Test (killer feature).
-LAST COMPLETED: Phase 3 Concept-Gap Test (client self-assessment, chapter lists in lib/gap-test-config.ts, WhatsApp
-                handoff). DPDP privacy page (legal-entity details TBD). Blog (lib/blog.ts + index + [slug] SSG).
-NEXT UP:        Phase 4: enquiry form + Supabase (Mumbai) + Resend = needs the user to create accounts + put keys in
-                .env.local (BLOCKED on keys). Then analytics + launch QA. NEEDS FROM SIR: hero/about photo, result
-                creatives, gap-test chapter review, privacy legal-entity details (legal name + DPO).
-LAST COMMIT:    Gap test + privacy + blog on main (auto-deploys to Vercel).
+PHASE:          Phase 4 (data wiring) code-complete. Enquiry form on /contact: server action with honeypot +
+                server validation + consent, Supabase insert (anon, insert-only RLS), Resend email, graceful
+                WhatsApp fallback when keys absent. 20 routes, prod build green, zero em-dashes, teal-blue #069494.
+LAST COMPLETED: Phase 4 form (app/actions/enquiry.ts, components/EnquiryForm.tsx, lib/supabase.ts). Setup steps +
+                SQL in docs/phase-4-setup.md, .env.example added. GOTCHA: a "use server" file may only export async
+                functions - moved CLASS_OPTIONS const to lib/site.ts (was "h.map is not a function" at prerender).
+NEXT UP:        USER ACTION to activate the form: create Supabase (Mumbai) + Resend, run the SQL, set 5 env vars in
+                .env.local + Vercel, redeploy (see docs/phase-4-setup.md). Then Phase 5: cookieless analytics, JSON-LD
+                (LocalBusiness/Person/FAQ), sitemap/robots, launch QA. NEEDS FROM SIR: hero/about photo, result
+                creatives, gap-test chapter review, privacy legal-entity details.
+LAST COMMIT:    Phase 4 enquiry form on main (auto-deploys to Vercel).
 ```
 
 ## Stack

@@ -24,6 +24,17 @@ export const WA_ENQUIRY = waLink(
 export const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.mapsQuery)}`;
 export const MAPS_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(SITE.mapsQuery)}&output=embed`;
 
+export const ENQUIRY_CLASSES = [
+  "Class 9",
+  "Class 10",
+  "Class 11",
+  "Class 12",
+  "Applied Maths",
+  "JEE",
+  "GUJCET",
+  "Other",
+];
+
 export const NAV = [
   { label: "About Sir", href: "/about-snehal-soni-sir" },
   { label: "Courses", href: "/courses" },
