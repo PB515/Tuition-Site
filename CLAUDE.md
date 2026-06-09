@@ -5,18 +5,17 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          Phase 1.5 (admin leads dashboard) code-complete - the first AUTH phase (PART 7, security-first).
-                Form is LIVE on prod (smoke test passed). Phase 5 (analytics/SEO/sitemap) + medium motion shipped.
-                Logo: temporary purple in public/brand/logo.png pending; resilient wordmark fallback. 23 routes, build green.
-LAST COMPLETED: Phase 1.5: @supabase/ssr auth (lib/supabase/{client,server}.ts), middleware.ts guards /admin,
-                /admin/login + /admin dashboard (lead list, status select via server action, one-click wa.me follow-up),
-                signOut. Nav/Footer hide on /admin (usePathname). robots disallows /admin. RLS gated on a staff table
-                (future-proof vs Phase 3 parent accounts). Setup SQL in docs/phase-1.5-setup.md.
-NEXT UP:        USER to activate admin: run docs/phase-1.5-setup.md SQL (staff table + leads staff policies), create a
-                Supabase auth user, insert their UID into staff, disable public signup. Then test /admin (denial gate +
-                login + status + WhatsApp). THEN Phase 2 (student management). Still pending: logo file, Sir photos/
-                result creatives, gap-test review, privacy legal details, Vercel Analytics enable, Resend domain verify.
-LAST COMMIT:    Phase 1.5 admin dashboard on main (auto-deploys to Vercel).
+PHASE:          Phase 2a (students + batches) code-complete. Phase 1.5 admin leads ACTIVE + denial gate verified
+                (anon cannot read leads/staff; insert works). Admin shell: shared AdminNav (Leads/Students/Batches/
+                Sign out) + app/admin/layout.tsx. Staff-only RLS on all new tables. Build green.
+LAST COMPLETED: Phase 2a: /admin/batches (add/list/delete), /admin/students (list), /admin/students/new + /[id]
+                (add/edit/delete via StudentForm + server actions). Tables students+batches with staff-only deny-by-
+                default RLS (docs/phase-2a-setup.md). Leads page signout moved into AdminNav.
+NEXT UP:        USER: run docs/phase-2a-setup.md SQL (students + batches tables + RLS). Then test /admin/batches +
+                /admin/students. THEN Phase 2b Attendance, 2c Tests+Marks, 2d Fees (+CSV) - each its own SQL + screens.
+                Still pending: logo file, Sir photos/result creatives, gap-test review, privacy legal details, Vercel
+                Analytics enable, Resend domain verify.
+LAST COMMIT:    Phase 2a students/batches on main (auto-deploys to Vercel).
 ```
 
 ## Stack
