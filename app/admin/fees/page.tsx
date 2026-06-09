@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Trash2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { createFee, togglePaid, deleteFee } from "./actions";
+import AddFeeForm from "@/components/admin/AddFeeForm";
+import { createFeesForBatch, togglePaid, deleteFee } from "./actions";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Fees", robots: { index: false, follow: false } };
@@ -10,7 +11,7 @@ const PAGE_SIZE = 20;
 const field =
   "w-full rounded-lg border border-border bg-bg px-3 py-2 text-sm text-ink focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
 
-type StudentOpt = { id: string; name: string };
+type Batch = { id: string; name: string };
 type FeeRow = {
   id: string;
   month: string | null;
@@ -45,28 +46,28 @@ function waReminder(
 export default async function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ status?: string; page?: string }>;
+  searchParams: Promise<{ status?: string; batch?: string; q?: string; page?: string }>;
 }) {
   const sp = await searchParams;
   const status = sp.status ?? "";
+  const batch = sp.batch ?? "";
+  const q = (sp.q ?? "").trim();
   const page = Math.max(1, Number(sp.page ?? "1") || 1);
   const from = (page - 1) * PAGE_SIZE;
 
   const supabase = await createClient();
-  const { data: students } = await supabase
-    .from("students")
-    .select("id, name")
-    .eq("active", true)
-    .order("name");
-  const studentList = (students ?? []) as StudentOpt[];
+  const { data: batches } = await supabase.from("batches").select("id, name").order("name");
+  const batchList = (batches ?? []) as Batch[];
 
   let query = supabase
     .from("fees")
-    .select("id, month, amount, paid, due_date, students(name, parent_whatsapp)", {
+    .select("id, month, amount, paid, due_date, students!inner(name, parent_whatsapp, batch_id)", {
       count: "exact",
     });
   if (status === "pending") query = query.eq("paid", false);
   if (status === "paid") query = query.eq("paid", true);
+  if (batch) query = query.eq("students.batch_id", batch);
+  if (q) query = query.ilike("students.name", `%${q.replace(/[,%()]/g, " ")}%`);
 
   const { data, count } = await query
     .order("created_at", { ascending: false })
@@ -76,63 +77,91 @@ export default async function Page({
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
+    <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
       <h1 className="font-heading text-2xl font-bold text-ink">Fees</h1>
 
+      {/* Bulk: one fee row for every active student in a batch */}
+      <section className="mt-6 rounded-2xl border border-border bg-surface p-4">
+        <p className="text-sm font-semibold text-ink">Add a monthly fee to a whole batch</p>
+        <form
+          action={createFeesForBatch}
+          className="mt-3 grid gap-3 sm:grid-cols-[1fr_1fr_1fr_1fr_auto] sm:items-end"
+        >
+          <label className="block text-sm">
+            <span className="font-medium text-ink">Batch</span>
+            <select name="batch_id" required className={`mt-1 ${field}`}>
+              <option value="">Select batch</option>
+              {batchList.map((b) => (
+                <option key={b.id} value={b.id}>
+                  {b.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="block text-sm">
+            <span className="font-medium text-ink">Month</span>
+            <input name="month" className={`mt-1 ${field}`} placeholder="June 2026" />
+          </label>
+          <label className="block text-sm">
+            <span className="font-medium text-ink">Amount (Rs)</span>
+            <input name="amount" type="number" min="0" className={`mt-1 ${field}`} />
+          </label>
+          <label className="block text-sm">
+            <span className="font-medium text-ink">Due date</span>
+            <input name="due_date" type="date" className={`mt-1 ${field}`} />
+          </label>
+          <button
+            type="submit"
+            className="rounded-full bg-primary-strong px-5 py-2 text-sm font-semibold text-white hover:bg-primary-deep"
+          >
+            Add to batch
+          </button>
+        </form>
+      </section>
+
+      {/* Single student */}
+      <section className="mt-4 rounded-2xl border border-border bg-surface p-4">
+        <p className="text-sm font-semibold text-ink">Add a fee for one student</p>
+        <div className="mt-3">
+          <AddFeeForm batches={batchList} />
+        </div>
+      </section>
+
+      {/* Filters */}
       <form
-        action={createFee}
-        className="mt-6 grid gap-3 rounded-2xl border border-border bg-surface p-4 sm:grid-cols-[2fr_1fr_1fr_1fr_auto] sm:items-end"
+        method="get"
+        className="mt-8 grid gap-3 rounded-2xl border border-border bg-surface p-4 sm:grid-cols-[2fr_1fr_1fr_auto] sm:items-end"
       >
         <label className="block text-sm">
-          <span className="font-medium text-ink">Student</span>
-          <select name="student_id" required className={`mt-1 ${field}`}>
-            <option value="">Select</option>
-            {studentList.map((s) => (
-              <option key={s.id} value={s.id}>
-                {s.name}
+          <span className="font-medium text-ink">Search student</span>
+          <input name="q" defaultValue={q} placeholder="student name" className={`mt-1 ${field}`} />
+        </label>
+        <label className="block text-sm">
+          <span className="font-medium text-ink">Batch</span>
+          <select name="batch" defaultValue={batch} className={`mt-1 ${field}`}>
+            <option value="">All</option>
+            {batchList.map((b) => (
+              <option key={b.id} value={b.id}>
+                {b.name}
               </option>
             ))}
           </select>
         </label>
         <label className="block text-sm">
-          <span className="font-medium text-ink">Month</span>
-          <input name="month" className={`mt-1 ${field}`} placeholder="June 2026" />
-        </label>
-        <label className="block text-sm">
-          <span className="font-medium text-ink">Amount (Rs)</span>
-          <input name="amount" type="number" min="0" className={`mt-1 ${field}`} />
-        </label>
-        <label className="block text-sm">
-          <span className="font-medium text-ink">Due date</span>
-          <input name="due_date" type="date" className={`mt-1 ${field}`} />
+          <span className="font-medium text-ink">Status</span>
+          <select name="status" defaultValue={status} className={`mt-1 ${field}`}>
+            <option value="">All</option>
+            <option value="pending">Pending</option>
+            <option value="paid">Paid</option>
+          </select>
         </label>
         <button
           type="submit"
-          className="rounded-full bg-primary-strong px-5 py-2 text-sm font-semibold text-white hover:bg-primary-deep"
+          className="rounded-full border border-primary px-5 py-2 text-sm font-semibold text-primary-strong hover:bg-primary-tint"
         >
-          Add fee
+          Filter
         </button>
       </form>
-
-      <div className="mt-6 flex gap-2 text-sm">
-        {[
-          { v: "", l: "All" },
-          { v: "pending", l: "Pending" },
-          { v: "paid", l: "Paid" },
-        ].map((f) => (
-          <Link
-            key={f.v}
-            href={href({ status: f.v })}
-            className={
-              status === f.v
-                ? "rounded-full bg-primary-tint px-3 py-1.5 font-medium text-primary-strong"
-                : "rounded-full border border-border px-3 py-1.5 font-medium text-ink-muted hover:text-ink"
-            }
-          >
-            {f.l}
-          </Link>
-        ))}
-      </div>
 
       <p className="mt-4 text-sm text-ink-muted">
         {total === 0 ? "No fee records." : `Showing ${from + 1}-${Math.min(from + PAGE_SIZE, total)} of ${total}`}
@@ -212,7 +241,7 @@ export default async function Page({
       {totalPages > 1 && (
         <div className="mt-5 flex items-center justify-between text-sm">
           {page > 1 ? (
-            <Link href={href({ status, page: page - 1 })} className="font-medium text-primary-strong hover:underline">
+            <Link href={href({ status, batch, q, page: page - 1 })} className="font-medium text-primary-strong hover:underline">
               Previous
             </Link>
           ) : (
@@ -222,7 +251,7 @@ export default async function Page({
             Page {page} of {totalPages}
           </span>
           {page < totalPages ? (
-            <Link href={href({ status, page: page + 1 })} className="font-medium text-primary-strong hover:underline">
+            <Link href={href({ status, batch, q, page: page + 1 })} className="font-medium text-primary-strong hover:underline">
               Next
             </Link>
           ) : (

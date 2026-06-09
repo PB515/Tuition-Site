@@ -18,6 +18,32 @@ export async function createFee(formData: FormData) {
   revalidatePath("/admin/fees");
 }
 
+export async function createFeesForBatch(formData: FormData) {
+  const batch_id = String(formData.get("batch_id") || "");
+  if (!batch_id) return;
+  const month = String(formData.get("month") || "").trim() || null;
+  const amountRaw = formData.get("amount");
+  const amount = amountRaw && String(amountRaw).trim() !== "" ? Number(amountRaw) : null;
+  const due_date = String(formData.get("due_date") || "") || null;
+
+  const supabase = await createClient();
+  const { data: students } = await supabase
+    .from("students")
+    .select("id")
+    .eq("batch_id", batch_id)
+    .eq("active", true);
+
+  const rows = ((students ?? []) as { id: string }[]).map((s) => ({
+    student_id: s.id,
+    month,
+    amount,
+    due_date,
+    paid: false,
+  }));
+  if (rows.length) await supabase.from("fees").insert(rows);
+  revalidatePath("/admin/fees");
+}
+
 export async function togglePaid(formData: FormData) {
   const id = String(formData.get("id") || "");
   const paid = String(formData.get("paid") || "") === "true";
