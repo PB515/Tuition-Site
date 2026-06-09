@@ -10,6 +10,7 @@ const LINKS = [
   { href: "/admin/students", label: "Students" },
   { href: "/admin/batches", label: "Batches" },
   { href: "/admin/attendance", label: "Attendance" },
+  { href: "/admin/tests", label: "Tests" },
 ];
 
 export default function AdminNav({ email }: { email: string }) {
