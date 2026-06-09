@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────
+   Design tokens — Inspire Academy of Mathematics (doc 04)
+   White surface + teal primary. Hex lives ONLY here. No hardcoded
+   hex anywhere else in the build — use the token utilities.
+   ─────────────────────────────────────────────────────────── */
+:root {
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --border: #e2e8f0;
+  --ink: #0f172a;
+  --ink-muted: #475569;
+  --primary: #0f766e;
+  --primary-strong: #0d5c56;
+  --primary-tint: #ccfbf1;
+  --accent: #b45309; /* sparingly — achievement/result badges only */
+  --success: #15803d;
+  --warning: #b45309;
+  --error: #b91c1c;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-tint: var(--primary-tint);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-jakarta);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Motion: honor reduced-motion globally (doc 04 / QA gate). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

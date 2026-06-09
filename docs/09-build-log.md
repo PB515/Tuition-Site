@@ -4,8 +4,12 @@
 
 ```
 DATE | PHASE | PROMPT SUMMARY | RESULT / NOTES | COMMIT
-2026-06-09 | plan | Generated full doc set (01–11, 03b, 06b, app docs) from Brief + Research | Done; 03b approved | (pending)
+2026-06-09 | plan | Generated full doc set (01–11, 03b, 06b, app docs) from Brief + Research | Done; 03b approved | 5079cbc
+2026-06-09 | 4    | Image prompts (8 AI-OK) + real-photo shot list (06b)                     | Done (main)        | (main)
+2026-06-09 | 0    | Scaffold: Next.js 16 + Tailwind v4 white+teal tokens + shadcn + 03b routes | Prod build OK, 17 routes | (phase-0)
 ```
+
+> **Gotcha logged:** `create-next-app` emits its own `CLAUDE.md` + `AGENTS.md`; the temp→repo copy clobbered our Context Anchor — restored it from git and deleted `AGENTS.md`. If re-scaffolding, exclude both. Also: SSH push uses the `github-pb515` host alias (key `id_pb515`), not `github.com`.
 
 ### Resume notes (conversational, for future-you)
 

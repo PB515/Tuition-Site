@@ -5,10 +5,14 @@ A conversion-first marketing website for **Inspire Academy of Mathematics**, a m
 
 ## Current status
 ```
-PHASE:          Planning complete. Docs 01–11 + 03b + 06b + portal app docs generated & reconciled. 03b APPROVED.
-LAST COMPLETED: Full doc set written to /docs from a real Business Brief + web-grounded Research Report.
-NEXT UP:        Phase 0 scaffold — Next.js + Tailwind tokens (white+teal) + shadcn + empty 03b routes → deploy blank.
-LAST COMMIT:    initial planning docs (main).
+PHASE:          Phase 0 (scaffold) COMPLETE on branch phase-0. Next.js 16 + Tailwind v4 tokens (white+teal) +
+                shadcn foundation (components.json + lib/utils cn) + all 03b routes (empty PagePlaceholder).
+                Prod build passes — 17 routes. Fonts: Inter (body) + Plus Jakarta Sans (headings).
+LAST COMPLETED: Step 4 image prompts (main) + Phase 0 scaffold (phase-0): create-next-app merged, globals.css
+                tokenised, default boilerplate removed, metadata set (prod URL still TBD in layout.tsx).
+NEXT UP:        (1) Vercel: connect repo + blank deploy. (2) Merge phase-0 → main when green. (3) Phase 1 —
+                static segment-router homepage. Real photos + gap-test question bank still needed from Sir.
+LAST COMMIT:    phase-0 scaffold. main carries planning docs + image prompts.
 ```
 
 ## Stack
