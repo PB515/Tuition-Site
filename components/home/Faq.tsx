@@ -17,7 +17,7 @@ export default function Faq() {
               type="button"
               onClick={() => setOpen(isOpen ? null : i)}
               aria-expanded={isOpen}
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6"
+              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-surface sm:px-6"
             >
               <span className="font-medium text-ink">{item.q}</span>
               <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-tint text-primary-strong">

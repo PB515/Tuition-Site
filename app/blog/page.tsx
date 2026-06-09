@@ -34,9 +34,14 @@ export default function Page() {
                 <p className="mt-3 text-base leading-relaxed text-ink-muted">{post.excerpt}</p>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-strong hover:text-primary-deep"
+                  className="group mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-strong hover:text-primary-deep"
                 >
-                  Read more <ArrowRight size={16} strokeWidth={2} />
+                  Read more{" "}
+                  <ArrowRight
+                    size={16}
+                    strokeWidth={2}
+                    className="transition-transform group-hover:translate-x-1"
+                  />
                 </Link>
               </article>
             ))}

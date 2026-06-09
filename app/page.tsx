@@ -51,18 +51,30 @@ export default function Home() {
       {/* 1. HERO (asymmetric split) */}
       <section className="border-b border-border">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 pt-12 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:pb-24 lg:pt-20">
-          <div className="animate-fade-up">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong">
+          <div>
+            <p
+              className="animate-fade-up text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong"
+              style={{ animationDelay: "0ms" }}
+            >
               Maths-only academy in Vadodara
             </p>
-            <h1 className="mt-4 font-heading text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl">
+            <h1
+              className="animate-fade-up mt-4 font-heading text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl"
+              style={{ animationDelay: "90ms" }}
+            >
               Strong maths concepts, taught by Snehal Soni Sir.
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted">
+            <p
+              className="animate-fade-up mt-5 max-w-xl text-lg leading-relaxed text-ink-muted"
+              style={{ animationDelay: "170ms" }}
+            >
               Focused Class 9 to 12, Applied, JEE and GUJCET coaching in New Sama Road, with{" "}
               {SITE.yearsExperience} years of teaching.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div
+              className="animate-fade-up mt-8 flex flex-wrap gap-3"
+              style={{ animationDelay: "250ms" }}
+            >
               <CtaButton href={WA_ENQUIRY} external>
                 <MessageCircle size={18} strokeWidth={2} /> WhatsApp Enquiry
               </CtaButton>
@@ -73,7 +85,7 @@ export default function Home() {
           </div>
 
           {/* Photo slot: real photo of Sir goes here (see docs/image-prompts.md shot list). */}
-          <div className="animate-fade-up">
+          <div className="animate-fade-up" style={{ animationDelay: "150ms" }}>
             <div className="relative flex aspect-[4/5] w-full flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-border bg-primary-tint/60 text-center sm:aspect-[5/4] lg:aspect-[4/5]">
               <span className="flex h-16 w-16 items-center justify-center rounded-full bg-bg text-primary">
                 <GraduationCap size={30} strokeWidth={1.5} />
@@ -96,7 +108,7 @@ export default function Home() {
               <Link
                 key={c.label}
                 href={c.href}
-                className="rounded-lg border border-border bg-bg px-3.5 py-1.5 text-sm font-medium text-ink transition-colors hover:border-primary hover:text-primary-strong"
+                className="rounded-lg border border-border bg-bg px-3.5 py-1.5 text-sm font-medium text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:text-primary-strong"
               >
                 {c.label}
               </Link>
@@ -199,7 +211,7 @@ export default function Home() {
             ))}
             <Link
               href="/courses"
-              className="flex items-center justify-between gap-4 rounded-2xl border border-dashed border-primary bg-primary-tint/50 p-5 text-primary-strong transition-colors hover:bg-primary-tint"
+              className="flex items-center justify-between gap-4 rounded-2xl border border-dashed border-primary bg-primary-tint/50 p-5 text-primary-strong transition-all duration-200 hover:-translate-y-1 hover:bg-primary-tint hover:shadow-md"
             >
               <p className="font-heading text-lg font-semibold">See all courses</p>
               <ArrowUpRight size={20} strokeWidth={1.75} className="shrink-0" />
