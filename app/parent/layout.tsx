@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { parentSignOut } from "./actions";
 
@@ -16,6 +17,14 @@ export default async function ParentLayout({
 
   // Logged-out flows (login / forgot / set / reset) render without the bar.
   if (!user) return <>{children}</>;
+
+  // Staff belong in the admin, not the parent portal.
+  const { data: staffRow } = await supabase
+    .from("staff")
+    .select("user_id")
+    .eq("user_id", user.id)
+    .maybeSingle();
+  if (staffRow) redirect("/admin");
 
   return (
     <>

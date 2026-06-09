@@ -25,8 +25,20 @@ function Stat({ label, value }: { label: string; value: string }) {
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  // RLS: if this is not the logged-in parent's child, the row is invisible -> notFound.
+  // Explicit cross-user denial: this child must be linked to THIS parent
+  // (belt-and-suspenders on top of RLS).
+  const { data: link } = await supabase
+    .from("parents")
+    .select("student_id")
+    .eq("user_id", user?.id ?? "")
+    .eq("student_id", id)
+    .maybeSingle();
+  if (!link) notFound();
+
   const { data: student } = await supabase
     .from("students")
     .select("name, class, batches(name)")

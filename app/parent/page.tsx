@@ -9,12 +9,26 @@ type Kid = { id: string; name: string; class: string | null; batches: { name: st
 
 export default async function Page() {
   const supabase = await createClient();
-  // RLS scopes this to only the parent's linked children.
-  const { data: students } = await supabase
-    .from("students")
-    .select("id, name, class, batches(name)")
-    .order("name");
-  const kids = (students ?? []) as unknown as Kid[];
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  // Only this parent's linked children (explicit, plus RLS).
+  const { data: links } = await supabase
+    .from("parents")
+    .select("student_id")
+    .eq("user_id", user?.id ?? "");
+  const ids = (links ?? []).map((l) => l.student_id);
+
+  let kids: Kid[] = [];
+  if (ids.length) {
+    const { data } = await supabase
+      .from("students")
+      .select("id, name, class, batches(name)")
+      .in("id", ids)
+      .order("name");
+    kids = (data ?? []) as unknown as Kid[];
+  }
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
