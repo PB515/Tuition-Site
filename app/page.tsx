@@ -12,6 +12,7 @@ import {
   BellRing,
 } from "lucide-react";
 import CtaButton from "@/components/site/CtaButton";
+import InstallButton from "@/components/InstallButton";
 import Faq from "@/components/home/Faq";
 import {
   SITE,
@@ -287,12 +288,27 @@ export default function Home() {
       <section className="border-b border-border">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
           <div>
-            <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              Parents stay in the loop
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong">
+              The parent app
+            </p>
+            <h2 className="mt-4 font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+              See your child&apos;s progress anytime
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-ink-muted">
-              You receive important test, class and progress updates from the academy team when
-              required, so you always know how your child is doing in maths.
+              Inspire Academy gives parents a private app. Log in to check attendance, test marks
+              and fees, and get class and test updates. Install it on your phone in one tap.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <InstallButton
+                label="Install the app"
+                className="inline-flex items-center gap-2 rounded-full bg-primary-strong px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-primary-deep"
+              />
+              <CtaButton href="/parent/login" variant="secondary">
+                Parent login
+              </CtaButton>
+            </div>
+            <p className="mt-3 text-xs text-ink-muted">
+              On iPhone: open in Safari, tap Share, then Add to Home Screen.
             </p>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6">

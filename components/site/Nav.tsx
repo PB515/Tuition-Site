@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, MessageCircle, FunctionSquare } from "lucide-react";
+import InstallButton from "@/components/InstallButton";
 import { NAV, WA_ENQUIRY, SITE } from "@/lib/site";
 
 function Wordmark() {
@@ -56,6 +57,7 @@ export default function Nav({ hasLogo = false }: { hasLogo?: boolean }) {
               {item.label}
             </Link>
           ))}
+          <InstallButton />
           <a
             href={WA_ENQUIRY}
             target="_blank"
@@ -91,6 +93,10 @@ export default function Nav({ hasLogo = false }: { hasLogo?: boolean }) {
                 {item.label}
               </Link>
             ))}
+            <InstallButton
+              label="Install app"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-primary px-5 py-3 text-sm font-semibold text-primary-strong"
+            />
             <a
               href={WA_ENQUIRY}
               target="_blank"
