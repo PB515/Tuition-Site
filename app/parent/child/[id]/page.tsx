@@ -57,7 +57,8 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
       .from("marks")
       .select("marks_obtained, remark, tests(name, date, total_marks)")
       .eq("student_id", id)
-      .order("created_at", { ascending: false }),
+      .order("created_at", { ascending: false })
+      .limit(5),
     supabase
       .from("fees")
       .select("month, amount, paid, due_date")
@@ -94,7 +95,17 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
       </div>
 
       <section className="mt-10">
-        <h2 className="font-heading text-lg font-bold text-ink">Marks</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="font-heading text-lg font-bold text-ink">Recent marks</h2>
+          {marks.length === 5 && (
+            <Link
+              href={`/parent/child/${id}/marks`}
+              className="text-sm font-medium text-primary-strong hover:underline"
+            >
+              View all
+            </Link>
+          )}
+        </div>
         {marks.length === 0 ? (
           <p className="mt-3 text-sm text-ink-muted">No marks recorded yet.</p>
         ) : (
