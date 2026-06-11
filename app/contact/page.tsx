@@ -1,5 +1,6 @@
 import { MapPin, Phone, MessageCircle } from "lucide-react";
 import PageHeader from "@/components/site/PageHeader";
+import SmartImage from "@/components/site/SmartImage";
 import CtaButton from "@/components/site/CtaButton";
 import EnquiryForm from "@/components/EnquiryForm";
 import { SITE, AREAS, WA_ENQUIRY, MAPS_EMBED, MAPS_LINK } from "@/lib/site";
@@ -54,6 +55,13 @@ export default function Page() {
                 <Phone size={18} strokeWidth={2} /> {SITE.phoneDisplay}
               </CtaButton>
             </div>
+            <SmartImage
+              src="/images/contact.jpg"
+              alt="Inspire Academy of Mathematics"
+              label="Academy / entrance photo (optional)"
+              className="mt-6 aspect-[16/9] w-full rounded-2xl border border-border"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
             <div className="mt-6 overflow-hidden rounded-2xl border border-border">
               <iframe
                 title={`Map to ${SITE.name}`}

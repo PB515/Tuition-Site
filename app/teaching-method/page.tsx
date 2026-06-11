@@ -1,4 +1,5 @@
 import PageHeader from "@/components/site/PageHeader";
+import SmartImage from "@/components/site/SmartImage";
 import EnquiryBand from "@/components/site/EnquiryBand";
 import { METHOD_STEPS } from "@/lib/site";
 
@@ -28,6 +29,18 @@ export default function Page() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 pb-12 sm:px-6">
+          <SmartImage
+            src="/images/method.jpg"
+            alt="Snehal Soni Sir explaining a maths method on the board"
+            label="Sir explaining on the board"
+            className="aspect-[16/9] w-full rounded-2xl border border-border"
+            sizes="(max-width: 1024px) 100vw, 1152px"
+          />
         </div>
       </section>
 

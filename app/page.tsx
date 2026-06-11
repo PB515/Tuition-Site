@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
   MessageCircle,
   Phone,
-  GraduationCap,
   ArrowRight,
   ArrowUpRight,
   Check,
@@ -13,7 +12,9 @@ import {
 } from "lucide-react";
 import CtaButton from "@/components/site/CtaButton";
 import InstallButton from "@/components/InstallButton";
+import HeroCarousel from "@/components/site/HeroCarousel";
 import Faq from "@/components/home/Faq";
+import { publicExists } from "@/lib/images";
 import {
   SITE,
   WA_ENQUIRY,
@@ -46,7 +47,16 @@ const UPDATES = [
   "Reminder: Class 12 Maths test on Sunday. Syllabus: Matrices and Determinants.",
 ];
 
+const HERO_SLOTS = [
+  { src: "/images/hero/1.jpg", label: "Sir teaching in class" },
+  { src: "/images/hero/2.jpg", label: "Students in classroom" },
+  { src: "/images/hero/3.jpg", label: "Sir explaining on board" },
+  { src: "/images/hero/4.jpg", label: "Students solving problems" },
+  { src: "/images/hero/5.jpg", label: "Test or practice session" },
+];
+
 export default function Home() {
+  const heroSlides = HERO_SLOTS.map((s) => ({ ...s, exists: publicExists(s.src) }));
   return (
     <main>
       {/* 1. HERO (asymmetric split) */}
@@ -85,17 +95,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Photo slot: real photo of Sir goes here (see docs/image-prompts.md shot list). */}
+          {/* Hero carousel: drop photos at /public/images/hero/1.jpg ... 5.jpg */}
           <div className="animate-fade-up" style={{ animationDelay: "150ms" }}>
-            <div className="relative flex aspect-[4/5] w-full flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-border bg-primary-tint/60 text-center sm:aspect-[5/4] lg:aspect-[4/5]">
-              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-bg text-primary">
-                <GraduationCap size={30} strokeWidth={1.5} />
-              </span>
-              <p className="px-6 text-sm font-medium text-ink-muted">
-                Photo of {SITE.teacher}
-              </p>
-              <p className="text-xs text-ink-muted">Teaching since {SITE.since}</p>
-            </div>
+            <HeroCarousel slides={heroSlides} />
           </div>
         </div>
       </section>

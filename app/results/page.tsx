@@ -1,5 +1,6 @@
 import { Award } from "lucide-react";
 import PageHeader from "@/components/site/PageHeader";
+import SmartImage from "@/components/site/SmartImage";
 import EnquiryBand from "@/components/site/EnquiryBand";
 
 export const metadata = { title: "Results" };
@@ -27,16 +28,16 @@ export default function Page() {
             </p>
           </div>
 
-          {/* Result creative slots: drop the real result images here (see docs/image-prompts.md). */}
           <div className="grid grid-cols-2 gap-4">
-            {["Applied Maths 2026 result", "Board results creative"].map((label) => (
-              <div
-                key={label}
-                className="flex aspect-[3/4] flex-col items-center justify-center gap-2 rounded-2xl border border-border bg-surface p-5 text-center"
-              >
-                <Award size={26} strokeWidth={1.5} className="text-primary" />
-                <p className="text-xs font-medium text-ink-muted">{label}</p>
-              </div>
+            {[1, 2, 3, 4].map((n) => (
+              <SmartImage
+                key={n}
+                src={`/images/results/${n}.jpg`}
+                alt={`Student result ${n}`}
+                label={`Result poster ${n}`}
+                className="aspect-[3/4] rounded-2xl border border-border"
+                sizes="(max-width: 1024px) 50vw, 25vw"
+              />
             ))}
           </div>
         </div>

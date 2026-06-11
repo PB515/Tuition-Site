@@ -1,5 +1,6 @@
-import { GraduationCap, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import PageHeader from "@/components/site/PageHeader";
+import SmartImage from "@/components/site/SmartImage";
 import EnquiryBand from "@/components/site/EnquiryBand";
 import JsonLd from "@/components/JsonLd";
 import { personLd } from "@/lib/structured-data";
@@ -44,13 +45,12 @@ export default function Page() {
             </p>
           </div>
 
-          {/* Portrait slot: real photo of Sir goes here (see docs/image-prompts.md). */}
-          <div className="flex aspect-[4/5] w-full flex-col items-center justify-center gap-3 rounded-2xl border border-border bg-primary-tint/60 text-center">
-            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-bg text-primary">
-              <GraduationCap size={30} strokeWidth={1.5} />
-            </span>
-            <p className="px-6 text-sm font-medium text-ink-muted">Photo of {SITE.teacher}</p>
-          </div>
+          <SmartImage
+            src="/images/about/portrait.jpg"
+            alt={`${SITE.teacher} portrait`}
+            label="Portrait photo of Sir"
+            className="aspect-[4/5] w-full rounded-2xl border border-border"
+          />
         </div>
       </section>
 
@@ -67,6 +67,18 @@ export default function Page() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+          <SmartImage
+            src="/images/about/teaching.jpg"
+            alt="Snehal Soni Sir teaching students"
+            label="Sir teaching / with students"
+            className="aspect-[16/9] w-full rounded-2xl border border-border"
+            sizes="(max-width: 1024px) 100vw, 1152px"
+          />
         </div>
       </section>
 
