@@ -10,11 +10,13 @@ export default function SlotUploader({
   label,
   currentUrl,
   ratio,
+  size,
 }: {
   slot: string;
   label: string;
   currentUrl: string | null;
   ratio: string;
+  size?: string;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -46,6 +48,7 @@ export default function SlotUploader({
   return (
     <div className="rounded-2xl border border-border bg-surface p-3">
       <p className="text-xs font-medium text-ink">{label}</p>
+      {size && <p className="text-[11px] text-ink-muted">Recommended: {size}</p>}
       <div
         className="relative mt-2 overflow-hidden rounded-lg border border-border bg-primary-tint/30"
         style={{ aspectRatio: ratio }}

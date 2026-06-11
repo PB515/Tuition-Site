@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import PageHeader from "./PageHeader";
+import SmartImage from "./SmartImage";
 import EnquiryBand from "./EnquiryBand";
 
 export type SeoContent = {
@@ -12,10 +13,23 @@ export type SeoContent = {
   faqs: { q: string; a: string }[];
 };
 
-export default function SeoPage({ content }: { content: SeoContent }) {
+export default function SeoPage({ content, imageSlug }: { content: SeoContent; imageSlug?: string }) {
   return (
     <main>
       <PageHeader eyebrow={content.eyebrow} title={content.title} subtitle={content.intro} />
+
+      {imageSlug && (
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6">
+            <SmartImage
+              src={`/images/courses/${imageSlug}.jpg`}
+              alt={content.title}
+              label={`${content.title} header`}
+              className="aspect-[16/9] w-full rounded-2xl border border-border lg:aspect-[21/9]"
+            />
+          </div>
+        </section>
+      )}
 
       <section className="border-b border-border">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">

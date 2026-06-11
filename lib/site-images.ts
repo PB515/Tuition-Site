@@ -38,20 +38,33 @@ export async function resolveImage(publicSrc: string): Promise<string | null> {
   return null;
 }
 
-export const IMAGE_SLOTS: { slot: string; label: string; src: string; ratio: string }[] = [
-  { slot: "hero/1", label: "Hero 1 - Sir teaching in class", src: "/images/hero/1.jpg", ratio: "4 / 5" },
-  { slot: "hero/2", label: "Hero 2 - Students in classroom", src: "/images/hero/2.jpg", ratio: "4 / 5" },
-  { slot: "hero/3", label: "Hero 3 - Sir explaining on board", src: "/images/hero/3.jpg", ratio: "4 / 5" },
-  { slot: "hero/4", label: "Hero 4 - Students solving problems", src: "/images/hero/4.jpg", ratio: "4 / 5" },
-  { slot: "hero/5", label: "Hero 5 - Test or practice session", src: "/images/hero/5.jpg", ratio: "4 / 5" },
-  { slot: "about/portrait", label: "About - Portrait of Sir", src: "/images/about/portrait.jpg", ratio: "4 / 5" },
-  { slot: "about/teaching", label: "About - Teaching photo", src: "/images/about/teaching.jpg", ratio: "16 / 9" },
-  { slot: "method", label: "Method - Board photo", src: "/images/method.jpg", ratio: "16 / 9" },
-  { slot: "courses/main", label: "Courses - Header", src: "/images/courses/main.jpg", ratio: "16 / 9" },
-  { slot: "results/1", label: "Results - Poster 1", src: "/images/results/1.jpg", ratio: "3 / 4" },
-  { slot: "results/2", label: "Results - Poster 2", src: "/images/results/2.jpg", ratio: "3 / 4" },
-  { slot: "results/3", label: "Results - Poster 3", src: "/images/results/3.jpg", ratio: "3 / 4" },
-  { slot: "results/4", label: "Results - Poster 4", src: "/images/results/4.jpg", ratio: "3 / 4" },
-  { slot: "contact", label: "Contact - Academy photo", src: "/images/contact.jpg", ratio: "16 / 9" },
-  { slot: "brand/logo", label: "Website logo", src: "/brand/logo.png", ratio: "16 / 6" },
+export const IMAGE_SLOTS: { slot: string; label: string; src: string; ratio: string; size: string }[] = [
+  { slot: "hero/1", label: "Hero 1 - Sir teaching in class", src: "/images/hero/1.jpg", ratio: "4 / 5", size: "1200 x 1500 px" },
+  { slot: "hero/2", label: "Hero 2 - Students in classroom", src: "/images/hero/2.jpg", ratio: "4 / 5", size: "1200 x 1500 px" },
+  { slot: "hero/3", label: "Hero 3 - Sir explaining on board", src: "/images/hero/3.jpg", ratio: "4 / 5", size: "1200 x 1500 px" },
+  { slot: "hero/4", label: "Hero 4 - Students solving problems", src: "/images/hero/4.jpg", ratio: "4 / 5", size: "1200 x 1500 px" },
+  { slot: "hero/5", label: "Hero 5 - Test or practice session", src: "/images/hero/5.jpg", ratio: "4 / 5", size: "1200 x 1500 px" },
+  { slot: "about/portrait", label: "About - Portrait of Sir", src: "/images/about/portrait.jpg", ratio: "4 / 5", size: "1200 x 1500 px" },
+  { slot: "about/teaching", label: "About - Teaching photo", src: "/images/about/teaching.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
+  { slot: "method", label: "Method - Board photo", src: "/images/method.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
+  { slot: "courses/main", label: "Courses page - Header", src: "/images/courses/main.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
+  { slot: "courses/class-9", label: "Course - Class 9", src: "/images/courses/class-9.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
+  { slot: "courses/class-10", label: "Course - Class 10", src: "/images/courses/class-10.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
+  { slot: "courses/class-11", label: "Course - Class 11", src: "/images/courses/class-11.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
+  { slot: "courses/class-12", label: "Course - Class 12", src: "/images/courses/class-12.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
+  { slot: "courses/applied", label: "Course - Applied Maths", src: "/images/courses/applied.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
+  { slot: "courses/gujcet", label: "Course - GUJCET", src: "/images/courses/gujcet.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
+  { slot: "courses/jee", label: "Course - JEE", src: "/images/courses/jee.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
+  { slot: "courses/location", label: "New Sama Road page", src: "/images/courses/location.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
+  { slot: "results/1", label: "Results - Poster 1", src: "/images/results/1.jpg", ratio: "3 / 4", size: "1080 x 1350 px" },
+  { slot: "results/2", label: "Results - Poster 2", src: "/images/results/2.jpg", ratio: "3 / 4", size: "1080 x 1350 px" },
+  { slot: "results/3", label: "Results - Poster 3", src: "/images/results/3.jpg", ratio: "3 / 4", size: "1080 x 1350 px" },
+  { slot: "results/4", label: "Results - Poster 4", src: "/images/results/4.jpg", ratio: "3 / 4", size: "1080 x 1350 px" },
+  { slot: "contact", label: "Contact - Academy photo", src: "/images/contact.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
+  { slot: "brand/logo", label: "Website logo", src: "/brand/logo.png", ratio: "16 / 6", size: "1000 x 300 px, transparent PNG" },
 ];
+
+const SLOT_BY_KEY = new Map(IMAGE_SLOTS.map((s) => [s.slot, s]));
+export function slotMeta(src: string) {
+  return SLOT_BY_KEY.get(slotFromSrc(src));
+}

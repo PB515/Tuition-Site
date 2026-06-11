@@ -44,5 +44,5 @@ const content: SeoContent = {
 };
 
 export default function Page() {
-  return <SeoPage content={content} />;
+  return <SeoPage content={content} imageSlug="class-9" />;
 }

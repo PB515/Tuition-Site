@@ -19,7 +19,7 @@ export default async function Page() {
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {slots.map((s) => (
-          <SlotUploader key={s.slot} slot={s.slot} label={s.label} currentUrl={s.url} ratio={s.ratio} />
+          <SlotUploader key={s.slot} slot={s.slot} label={s.label} currentUrl={s.url} ratio={s.ratio} size={s.size} />
         ))}
       </div>
     </div>
