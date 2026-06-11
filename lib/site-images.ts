@@ -2,7 +2,8 @@ import { cache } from "react";
 import { createClient } from "@/lib/supabase/server";
 import { publicExists } from "@/lib/images";
 
-const BUCKET = "site-images";
+import { storagePublicUrl } from "@/lib/storage";
+export { storagePublicUrl };
 
 // Memoised per request: all stored slot -> path mappings in one query.
 export const getSiteImages = cache(async (): Promise<Map<string, string>> => {
@@ -16,10 +17,6 @@ export const getSiteImages = cache(async (): Promise<Map<string, string>> => {
     return new Map();
   }
 });
-
-export function storagePublicUrl(path: string) {
-  return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${path}`;
-}
 
 // "/images/hero/1.jpg" -> "hero/1"; "/brand/logo.png" -> "brand/logo"
 export function slotFromSrc(src: string) {
