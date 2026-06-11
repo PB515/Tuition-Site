@@ -17,9 +17,9 @@ type FeeRow = { month: string | null; amount: number | null; paid: boolean; due_
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-border bg-surface p-4">
-      <p className="text-xs uppercase tracking-wide text-ink-muted">{label}</p>
-      <p className="mt-1 font-heading text-xl font-bold text-ink">{value}</p>
+    <div className="rounded-xl border border-border bg-surface p-3 text-center">
+      <p className="font-heading text-lg font-bold leading-tight text-ink sm:text-xl">{value}</p>
+      <p className="mt-0.5 text-[10px] uppercase tracking-wide text-ink-muted sm:text-xs">{label}</p>
     </div>
   );
 }
@@ -92,7 +92,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   )}`;
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
       <Link
         href="/parent"
         className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-muted hover:text-primary-strong"
@@ -124,13 +124,13 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         </a>
       </div>
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+      <div className="mt-6 grid grid-cols-3 gap-2.5">
         <Stat label="Attendance" value={attPct != null ? `${attPct}%` : "-"} />
-        <Stat label="Classes marked" value={String(totalDays)} />
-        <Stat label="Pending fees" value={pendingTotal > 0 ? `Rs ${pendingTotal}` : "Rs 0"} />
+        <Stat label="Classes" value={String(totalDays)} />
+        <Stat label="Pending" value={pendingTotal > 0 ? `Rs ${pendingTotal}` : "Rs 0"} />
       </div>
 
-      <section className="mt-10">
+      <section className="mt-8">
         <div className="flex items-center justify-between">
           <h2 className="font-heading text-lg font-bold text-ink">Recent marks</h2>
           {marks.length === 5 && (
@@ -142,72 +142,54 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         {marks.length === 0 ? (
           <p className="mt-3 text-sm text-ink-muted">No marks recorded yet.</p>
         ) : (
-          <div className="mt-3 overflow-x-auto rounded-2xl border border-border">
-            <table className="w-full min-w-[480px] text-left text-sm">
-              <thead className="border-b border-border bg-surface text-xs uppercase tracking-wide text-ink-muted">
-                <tr>
-                  <th className="px-4 py-3 font-semibold">Test</th>
-                  <th className="px-4 py-3 font-semibold">Date</th>
-                  <th className="px-4 py-3 font-semibold">Marks</th>
-                  <th className="px-4 py-3 font-semibold">Focus area</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border">
-                {marks.map((m, i) => (
-                  <tr key={i}>
-                    <td className="px-4 py-3 font-medium text-ink">{m.tests?.name ?? "-"}</td>
-                    <td className="px-4 py-3 text-ink-muted">{m.tests?.date ?? "-"}</td>
-                    <td className="px-4 py-3 text-ink-muted">{markCell(m)}</td>
-                    <td className="px-4 py-3 text-ink-muted">{m.remark ?? "-"}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="mt-3 divide-y divide-border rounded-2xl border border-border">
+            {marks.map((m, i) => (
+              <div key={i} className="flex items-center justify-between gap-3 px-4 py-3">
+                <div className="min-w-0">
+                  <p className="truncate font-medium text-ink">{m.tests?.name ?? "-"}</p>
+                  <p className="mt-0.5 text-xs text-ink-muted">
+                    {[m.tests?.date, m.remark].filter(Boolean).join("  ·  ") || "-"}
+                  </p>
+                </div>
+                <span className="shrink-0 font-heading text-base font-bold text-ink">{markCell(m)}</span>
+              </div>
+            ))}
           </div>
         )}
       </section>
 
-      <section className="mt-10">
+      <section className="mt-8">
         <h2 className="font-heading text-lg font-bold text-ink">Fees</h2>
         {fees.length === 0 ? (
           <p className="mt-3 text-sm text-ink-muted">No fee records yet.</p>
         ) : (
-          <div className="mt-3 overflow-x-auto rounded-2xl border border-border">
-            <table className="w-full min-w-[420px] text-left text-sm">
-              <thead className="border-b border-border bg-surface text-xs uppercase tracking-wide text-ink-muted">
-                <tr>
-                  <th className="px-4 py-3 font-semibold">Month</th>
-                  <th className="px-4 py-3 font-semibold">Amount</th>
-                  <th className="px-4 py-3 font-semibold">Due</th>
-                  <th className="px-4 py-3 font-semibold">Status</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border">
-                {fees.map((f, i) => {
-                  const overdue = !f.paid && !!f.due_date && f.due_date < today;
-                  return (
-                    <tr key={i}>
-                      <td className="px-4 py-3 text-ink-muted">{f.month ?? "-"}</td>
-                      <td className="px-4 py-3 text-ink-muted">{f.amount != null ? `Rs ${f.amount}` : "-"}</td>
-                      <td className="px-4 py-3 text-ink-muted">{f.due_date ?? "-"}</td>
-                      <td className="px-4 py-3">
-                        <span
-                          className={
-                            f.paid
-                              ? "rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-medium text-primary-strong"
-                              : overdue
-                                ? "rounded-full bg-error/10 px-2.5 py-0.5 text-xs font-medium text-error"
-                                : "rounded-full bg-surface px-2.5 py-0.5 text-xs font-medium text-accent"
-                          }
-                        >
-                          {f.paid ? "Paid" : overdue ? "Overdue" : "Pending"}
-                        </span>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+          <div className="mt-3 divide-y divide-border rounded-2xl border border-border">
+            {fees.map((f, i) => {
+              const overdue = !f.paid && !!f.due_date && f.due_date < today;
+              return (
+                <div key={i} className="flex items-center justify-between gap-3 px-4 py-3">
+                  <div className="min-w-0">
+                    <p className="font-medium text-ink">{f.month ?? "-"}</p>
+                    <p className="mt-0.5 text-xs text-ink-muted">
+                      {[f.amount != null ? `Rs ${f.amount}` : null, f.due_date ? `due ${f.due_date}` : null]
+                        .filter(Boolean)
+                        .join("  ·  ") || "-"}
+                    </p>
+                  </div>
+                  <span
+                    className={
+                      f.paid
+                        ? "shrink-0 rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-medium text-primary-strong"
+                        : overdue
+                          ? "shrink-0 rounded-full bg-error/10 px-2.5 py-0.5 text-xs font-medium text-error"
+                          : "shrink-0 rounded-full bg-surface px-2.5 py-0.5 text-xs font-medium text-accent"
+                    }
+                  >
+                    {f.paid ? "Paid" : overdue ? "Overdue" : "Pending"}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         )}
       </section>
