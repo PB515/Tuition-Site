@@ -178,10 +178,13 @@ export default async function Home() {
               </CtaButton>
             </div>
           </div>
-          <div className="grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:col-span-7">
+          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
             {WHY.map((w) => (
-              <div key={w.t} className="flex gap-3">
-                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-tint text-primary-strong">
+              <div
+                key={w.t}
+                className="group flex gap-3 rounded-2xl border border-border bg-bg p-4 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
+              >
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-tint text-primary-strong transition-transform duration-200 group-hover:scale-110">
                   <Check size={16} strokeWidth={2.5} />
                 </span>
                 <div>
