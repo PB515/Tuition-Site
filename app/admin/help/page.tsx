@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Help", robots: { index: false, follow: false } };
 
@@ -101,9 +103,16 @@ export default function Page() {
     <div className="px-4 py-8 sm:px-6 lg:px-8">
       <h1 className="font-heading text-2xl font-bold text-ink">Help &amp; how-to</h1>
       <p className="mt-1 max-w-2xl text-sm text-ink-muted">
-        Step-by-step for everyday tasks. Press <b>Ctrl+P</b> (or <b>Cmd+P</b>) to print this page and
-        hand it to a new assistant.
+        Step-by-step for everyday tasks.
       </p>
+      <div className="mt-4">
+        <Link
+          href="/admin/help/sop"
+          className="inline-flex items-center rounded-full bg-primary-strong px-5 py-2 text-sm font-semibold text-white hover:bg-primary-deep"
+        >
+          One-page SOP (print / save as PDF)
+        </Link>
+      </div>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
         {GUIDES.map((g) => (

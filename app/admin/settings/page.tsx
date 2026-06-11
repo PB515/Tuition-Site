@@ -1,6 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { saveSettings } from "./actions";
+import InviteAssistantForm from "@/components/admin/InviteAssistantForm";
+import RemoveAssistantButton from "@/components/admin/RemoveAssistantButton";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Settings", robots: { index: false, follow: false } };
@@ -17,20 +19,26 @@ type Settings = {
 
 export default async function Page() {
   const supabase = await createClient();
+  const {
+    data: { user: currentUser },
+  } = await supabase.auth.getUser();
   const { data: settings } = await supabase.from("app_settings").select("*").eq("id", 1).maybeSingle();
   const { data: staffRows } = await supabase.from("staff").select("user_id");
 
-  let staffEmails: string[] = [];
+  let staffList: { user_id: string; email: string; self: boolean }[] = [];
+  let adminKeyOk = false;
   try {
     const admin = createAdminClient();
     const list = await admin.auth.admin.listUsers();
-    const ids = new Set((staffRows ?? []).map((s) => s.user_id));
-    staffEmails = (list.data?.users ?? [])
-      .filter((u) => ids.has(u.id))
-      .map((u) => u.email ?? "")
-      .filter(Boolean);
+    adminKeyOk = true;
+    const emailById = new Map((list.data?.users ?? []).map((u) => [u.id, u.email ?? ""]));
+    staffList = (staffRows ?? []).map((r) => ({
+      user_id: r.user_id,
+      email: emailById.get(r.user_id) || r.user_id,
+      self: r.user_id === currentUser?.id,
+    }));
   } catch {
-    // Admin key not configured in this environment; show count instead.
+    // Admin key not configured; cannot resolve emails or invite from here.
   }
 
   const s = (settings ?? {}) as Settings;
@@ -72,19 +80,33 @@ export default async function Page() {
       </form>
 
       <section className="mt-8 max-w-xl">
-        <h2 className="font-heading text-lg font-bold text-ink">Staff access</h2>
-        {staffEmails.length > 0 ? (
-          <ul className="mt-3 divide-y divide-border rounded-2xl border border-border">
-            {staffEmails.map((e) => (
-              <li key={e} className="px-4 py-2.5 text-sm text-ink">
-                {e}
-              </li>
-            ))}
-          </ul>
+        <h2 className="font-heading text-lg font-bold text-ink">Staff &amp; assistants</h2>
+        <p className="mt-1 text-sm text-ink-muted">
+          Invite an assistant by email and they get their own login. Remove their access in one click
+          when they leave.
+        </p>
+
+        {adminKeyOk ? (
+          <>
+            <div className="mt-4">
+              <InviteAssistantForm />
+            </div>
+            <ul className="mt-4 divide-y divide-border rounded-2xl border border-border">
+              {staffList.map((m) => (
+                <li key={m.user_id} className="flex items-center justify-between gap-3 px-4 py-2.5 text-sm">
+                  <span className="text-ink">
+                    {m.email}
+                    {m.self && <span className="ml-2 text-xs text-ink-muted">(you)</span>}
+                  </span>
+                  {!m.self && <RemoveAssistantButton userId={m.user_id} email={m.email} />}
+                </li>
+              ))}
+            </ul>
+          </>
         ) : (
           <p className="mt-3 rounded-2xl border border-border bg-surface p-4 text-sm text-ink-muted">
-            {staffCount} staff account(s). Add staff in Supabase (Authentication, then insert their
-            user id into the staff table).
+            {staffCount} staff account(s). To invite or remove assistants here, set SUPABASE_SECRET_KEY
+            in the environment.
           </p>
         )}
       </section>

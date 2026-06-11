@@ -82,7 +82,7 @@ export default function AdminShell({
   return (
     <div className="flex min-h-screen bg-bg">
       {/* Desktop sidebar */}
-      <aside className="hidden w-60 shrink-0 flex-col border-r border-border bg-surface lg:flex">
+      <aside className="hidden w-60 shrink-0 flex-col border-r border-border bg-surface lg:flex print:hidden">
         <div className="flex h-14 items-center border-b border-border px-4 font-heading text-base font-bold text-ink">
           Inspire Admin
         </div>
@@ -111,7 +111,7 @@ export default function AdminShell({
 
       {/* Main column */}
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border bg-bg/90 px-4 backdrop-blur sm:px-6">
+        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border bg-bg/90 px-4 backdrop-blur sm:px-6 print:hidden">
           <button
             type="button"
             className="lg:hidden"
