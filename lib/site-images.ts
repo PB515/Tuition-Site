@@ -60,6 +60,11 @@ export const IMAGE_SLOTS: { slot: string; label: string; src: string; ratio: str
   { slot: "results/2", label: "Results - Poster 2", src: "/images/results/2.jpg", ratio: "3 / 4", size: "1080 x 1350 px" },
   { slot: "results/3", label: "Results - Poster 3", src: "/images/results/3.jpg", ratio: "3 / 4", size: "1080 x 1350 px" },
   { slot: "results/4", label: "Results - Poster 4", src: "/images/results/4.jpg", ratio: "3 / 4", size: "1080 x 1350 px" },
+  { slot: "results/banner-1", label: "Results banner 1 (group photo)", src: "/images/results/banner-1.jpg", ratio: "16 / 9", size: "wide ~1600 x 900 px" },
+  { slot: "results/banner-2", label: "Results banner 2 (group photo)", src: "/images/results/banner-2.jpg", ratio: "16 / 9", size: "wide ~1600 x 900 px" },
+  { slot: "results/banner-3", label: "Results banner 3 (group photo)", src: "/images/results/banner-3.jpg", ratio: "16 / 9", size: "wide ~1600 x 900 px" },
+  { slot: "results/banner-4", label: "Results banner 4 (group photo)", src: "/images/results/banner-4.jpg", ratio: "16 / 9", size: "wide ~1600 x 900 px" },
+  { slot: "results/banner-5", label: "Results banner 5 (group photo)", src: "/images/results/banner-5.jpg", ratio: "16 / 9", size: "wide ~1600 x 900 px" },
   { slot: "contact", label: "Contact - Academy photo", src: "/images/contact.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
   { slot: "brand/logo", label: "Website logo", src: "/brand/logo.svg", ratio: "16 / 6", size: "wide ~1000 x 300 px works best in the navbar" },
 ];

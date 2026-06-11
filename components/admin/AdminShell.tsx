@@ -17,6 +17,7 @@ import {
   Quote,
   BarChart3,
   Settings as SettingsIcon,
+  HelpCircle,
   Menu,
   X,
   Search,
@@ -38,6 +39,7 @@ const NAV = [
   { href: "/admin/testimonials", label: "Testimonials", icon: Quote },
   { href: "/admin/reports", label: "Reports", icon: BarChart3 },
   { href: "/admin/settings", label: "Settings", icon: SettingsIcon },
+  { href: "/admin/help", label: "Help", icon: HelpCircle },
 ];
 
 function active(pathname: string, href: string) {

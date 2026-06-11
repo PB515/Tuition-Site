@@ -5,7 +5,13 @@ import { ImageIcon } from "lucide-react";
 
 type Slide = { url: string | null; label: string; src: string };
 
-export default function HeroCarousel({ slides }: { slides: Slide[] }) {
+export default function HeroCarousel({
+  slides,
+  aspectClass = "aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5]",
+}: {
+  slides: Slide[];
+  aspectClass?: string;
+}) {
   const [i, setI] = useState(0);
   const n = slides.length;
 
@@ -16,7 +22,7 @@ export default function HeroCarousel({ slides }: { slides: Slide[] }) {
   }, [n]);
 
   return (
-    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-border bg-primary-tint/40 sm:aspect-[5/4] lg:aspect-[4/5]">
+    <div className={`relative w-full overflow-hidden rounded-2xl border border-border bg-primary-tint/40 ${aspectClass}`}>
       {slides.map((s, idx) => (
         <div
           key={idx}

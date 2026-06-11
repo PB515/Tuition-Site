@@ -2,12 +2,20 @@ import PageHeader from "@/components/site/PageHeader";
 import EnquiryBand from "@/components/site/EnquiryBand";
 import ResultCard from "@/components/site/ResultCard";
 import TestimonialCard from "@/components/site/TestimonialCard";
+import HeroCarousel from "@/components/site/HeroCarousel";
 import { getResults, getTestimonials } from "@/lib/content";
+import { resolveImage } from "@/lib/site-images";
 
 export const metadata = { title: "Results" };
 
 export default async function Page() {
   const [results, testimonials] = await Promise.all([getResults(), getTestimonials()]);
+  const bannerSlides = await Promise.all(
+    [1, 2, 3, 4, 5].map(async (nn) => {
+      const src = `/images/results/banner-${nn}.jpg`;
+      return { url: await resolveImage(src), label: `Results banner ${nn}`, src };
+    }),
+  );
 
   return (
     <main>
@@ -15,6 +23,12 @@ export default async function Page() {
         title="Results that speak for the teaching"
         subtitle="Real scores from real students, shared with permission."
       />
+
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6">
+          <HeroCarousel slides={bannerSlides} aspectClass="aspect-[16/9] sm:aspect-[21/8]" />
+        </div>
+      </section>
 
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
