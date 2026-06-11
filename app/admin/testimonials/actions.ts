@@ -37,6 +37,7 @@ function fields(formData: FormData) {
     quote: String(formData.get("quote") || "").trim() || null,
     author_name: String(formData.get("author_name") || "").trim() || null,
     author_detail: String(formData.get("author_detail") || "").trim() || null,
+    video_url: String(formData.get("video_url") || "").trim() || null,
     published: formData.get("published") === "on",
     sort_order: Number(formData.get("sort_order") || "0") || 0,
   };
@@ -47,7 +48,7 @@ export async function createTestimonial(formData: FormData) {
   if (!supabase) return;
   const f = fields(formData);
   const image_path = await uploadImage(supabase, formData.get("file") as File | null);
-  if (!f.quote && !image_path) return; // need at least a quote or a screenshot
+  if (!f.quote && !image_path && !f.video_url) return; // need a quote, a screenshot, or a video
   await supabase.from("testimonials").insert({ ...f, image_path });
   revalidatePath("/admin/testimonials");
   revalidatePath("/results");
@@ -85,6 +86,18 @@ export async function deleteTestimonial(formData: FormData) {
   const { data: old } = await supabase.from("testimonials").select("image_path").eq("id", id).maybeSingle();
   if (old?.image_path) await supabase.storage.from(BUCKET).remove([old.image_path]);
   await supabase.from("testimonials").delete().eq("id", id);
+  revalidatePath("/admin/testimonials");
+  revalidatePath("/results");
+  revalidatePath("/");
+}
+
+export async function deleteAllTestimonials() {
+  const supabase = await staffClient();
+  if (!supabase) return;
+  const { data } = await supabase.from("testimonials").select("image_path");
+  const paths = (data ?? []).map((r) => r.image_path).filter(Boolean) as string[];
+  if (paths.length) await supabase.storage.from(BUCKET).remove(paths);
+  await supabase.from("testimonials").delete().not("id", "is", null);
   revalidatePath("/admin/testimonials");
   revalidatePath("/results");
   revalidatePath("/");

@@ -3,7 +3,8 @@ import { Trash2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { storagePublicUrl } from "@/lib/site-images";
 import ResultForm from "@/components/admin/ResultForm";
-import { createResult, deleteResult, toggleResultPublished } from "./actions";
+import DeleteAllButton from "@/components/admin/DeleteAllButton";
+import { createResult, deleteResult, toggleResultPublished, deleteAllResults } from "./actions";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Results", robots: { index: false, follow: false } };
@@ -30,8 +31,13 @@ export default async function Page() {
 
   return (
     <div className="px-4 py-8 sm:px-6 lg:px-8">
-      <h1 className="font-heading text-2xl font-bold text-ink">Results</h1>
-      <p className="mt-1 text-sm text-ink-muted">These appear on the public Results page, newest first.</p>
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h1 className="font-heading text-2xl font-bold text-ink">Results</h1>
+          <p className="mt-1 text-sm text-ink-muted">These appear on the public Results page, newest first.</p>
+        </div>
+        {results.length > 0 && <DeleteAllButton action={deleteAllResults} count={results.length} noun="results" />}
+      </div>
 
       <details className="mt-6 rounded-2xl border border-border bg-surface p-4">
         <summary className="cursor-pointer text-sm font-semibold text-primary-strong">+ Add a result</summary>

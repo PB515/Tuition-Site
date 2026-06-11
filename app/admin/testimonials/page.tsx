@@ -3,7 +3,8 @@ import { Trash2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { storagePublicUrl } from "@/lib/site-images";
 import TestimonialForm from "@/components/admin/TestimonialForm";
-import { createTestimonial, deleteTestimonial, toggleTestimonialPublished } from "./actions";
+import DeleteAllButton from "@/components/admin/DeleteAllButton";
+import { createTestimonial, deleteTestimonial, toggleTestimonialPublished, deleteAllTestimonials } from "./actions";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Testimonials", robots: { index: false, follow: false } };
@@ -28,8 +29,13 @@ export default async function Page() {
 
   return (
     <div className="px-4 py-8 sm:px-6 lg:px-8">
-      <h1 className="font-heading text-2xl font-bold text-ink">Testimonials</h1>
-      <p className="mt-1 text-sm text-ink-muted">Shown on the Results page and featured on the homepage.</p>
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h1 className="font-heading text-2xl font-bold text-ink">Testimonials</h1>
+          <p className="mt-1 text-sm text-ink-muted">Shown on the Results page and featured on the homepage.</p>
+        </div>
+        {items.length > 0 && <DeleteAllButton action={deleteAllTestimonials} count={items.length} noun="testimonials" />}
+      </div>
 
       <details className="mt-6 rounded-2xl border border-border bg-surface p-4">
         <summary className="cursor-pointer text-sm font-semibold text-primary-strong">+ Add a testimonial</summary>

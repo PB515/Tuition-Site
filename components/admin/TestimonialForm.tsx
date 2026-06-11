@@ -8,6 +8,7 @@ export type TestimonialValues = {
   quote?: string | null;
   author_name?: string | null;
   author_detail?: string | null;
+  video_url?: string | null;
   image_path?: string | null;
   published?: boolean;
   sort_order?: number;
@@ -46,6 +47,12 @@ export default function TestimonialForm({
           <input name="author_detail" defaultValue={t.author_detail ?? ""} placeholder="Parent of Class 10 student" className={`mt-1 ${field}`} />
         </label>
       </div>
+
+      <label className="block">
+        <L>YouTube video link (optional)</L>
+        <input name="video_url" defaultValue={t.video_url ?? ""} placeholder="https://youtu.be/VIDEO_ID" className={`mt-1 ${field}`} />
+        <p className="mt-1 text-xs text-ink-muted">Paste a YouTube link and it plays right on the page.</p>
+      </label>
 
       <div>
         <L>Screenshot / photo (optional)</L>

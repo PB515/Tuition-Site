@@ -18,6 +18,7 @@ export type TestimonialItem = {
   quote: string | null;
   author_name: string | null;
   author_detail: string | null;
+  video_url: string | null;
   image_path: string | null;
 };
 
@@ -41,7 +42,7 @@ export const getTestimonials = cache(async (): Promise<TestimonialItem[]> => {
     const supabase = await createClient();
     const { data } = await supabase
       .from("testimonials")
-      .select("id, quote, author_name, author_detail, image_path")
+      .select("id, quote, author_name, author_detail, video_url, image_path")
       .eq("published", true)
       .order("sort_order")
       .order("created_at", { ascending: false });

@@ -91,6 +91,17 @@ export async function deleteResult(formData: FormData) {
   revalidatePath("/results");
 }
 
+export async function deleteAllResults() {
+  const supabase = await staffClient();
+  if (!supabase) return;
+  const { data } = await supabase.from("results").select("image_path");
+  const paths = (data ?? []).map((r) => r.image_path).filter(Boolean) as string[];
+  if (paths.length) await supabase.storage.from(BUCKET).remove(paths);
+  await supabase.from("results").delete().not("id", "is", null);
+  revalidatePath("/admin/results");
+  revalidatePath("/results");
+}
+
 export async function toggleResultPublished(formData: FormData) {
   const supabase = await staffClient();
   if (!supabase) return;
