@@ -127,3 +127,43 @@ export async function bulkDeleteFees(ids: string[]) {
   await supabase.from("fees").delete().in("id", ids);
   revalidatePath("/admin/fees");
 }
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const pad = (n: number) => String(n).padStart(2, "0");
+
+// Split a student's total into installments spaced by intervalMonths, starting at startDate.
+export async function generateFeePlan(
+  studentId: string,
+  total: number,
+  count: number,
+  startDate: string,
+  intervalMonths: number,
+) {
+  if (!studentId || !total || !count || count < 1 || !startDate) return { created: 0 };
+  const [y, m, d] = startDate.split("-").map(Number);
+  if (!y || !m || !d) return { created: 0 };
+
+  const supabase = await createClient();
+  const { data: stu } = await supabase.from("students").select("batch_id").eq("id", studentId).maybeSingle();
+
+  const base = Math.floor(total / count);
+  const rows = [];
+  for (let i = 0; i < count; i++) {
+    const dt = new Date(y, m - 1 + i * intervalMonths, d);
+    const amount = i < count - 1 ? base : total - base * (count - 1);
+    rows.push({
+      student_id: studentId,
+      batch_id: stu?.batch_id ?? null,
+      month: `${MONTHS[dt.getMonth()]} ${dt.getFullYear()}`,
+      amount,
+      due_date: `${dt.getFullYear()}-${pad(dt.getMonth() + 1)}-${pad(dt.getDate())}`,
+      paid: false,
+    });
+  }
+  const { error } = await supabase
+    .from("fees")
+    .upsert(rows, { onConflict: "student_id,month", ignoreDuplicates: true });
+  revalidatePath(`/admin/students/${studentId}`);
+  revalidatePath("/admin/fees");
+  return { created: error ? 0 : rows.length };
+}

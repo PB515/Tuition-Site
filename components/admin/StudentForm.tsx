@@ -15,6 +15,7 @@ export type StudentValues = {
   batch_id?: string | null;
   admission_date?: string | null;
   default_monthly_fee?: number | null;
+  annual_fee?: number | null;
   active?: boolean;
   remarks?: string | null;
 };
@@ -132,12 +133,12 @@ export default function StudentForm({
           />
         </label>
         <label className="block">
-          <Label>Default monthly fee (Rs)</Label>
+          <Label>Annual fee (Rs)</Label>
           <input
-            name="default_monthly_fee"
+            name="annual_fee"
             type="number"
             min="0"
-            defaultValue={s.default_monthly_fee ?? ""}
+            defaultValue={s.annual_fee ?? ""}
             className={`mt-1 ${field}`}
           />
         </label>

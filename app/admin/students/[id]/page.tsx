@@ -4,6 +4,7 @@ import { Pencil, MessageCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { createFee } from "@/app/admin/fees/actions";
 import InviteParentForm from "@/components/admin/InviteParentForm";
+import FeePlanGenerator from "@/components/admin/FeePlanGenerator";
 
 const feeField =
   "w-full rounded-lg border border-border bg-bg px-3 py-2 text-sm text-ink focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
@@ -170,6 +171,8 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
       <section className="mt-10">
         <h2 className="font-heading text-lg font-bold text-ink">Fees</h2>
+
+        <FeePlanGenerator studentId={id} defaultTotal={student.annual_fee ?? null} />
 
         <form
           action={createFee}

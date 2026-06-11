@@ -7,7 +7,7 @@ import { createClient } from "@/lib/supabase/server";
 function parseStudent(formData: FormData) {
   const digits = String(formData.get("parent_whatsapp") || "").replace(/\D/g, "");
   const alt = String(formData.get("alternate_number") || "").replace(/\D/g, "");
-  const fee = String(formData.get("default_monthly_fee") || "").trim();
+  const fee = String(formData.get("annual_fee") || "").trim();
   return {
     name: String(formData.get("name") || "").trim(),
     roll_number: String(formData.get("roll_number") || "").trim() || null,
@@ -19,7 +19,7 @@ function parseStudent(formData: FormData) {
     school: String(formData.get("school") || "").trim() || null,
     batch_id: String(formData.get("batch_id") || "") || null,
     admission_date: String(formData.get("admission_date") || "") || null,
-    default_monthly_fee: fee ? Number(fee) : null,
+    annual_fee: fee ? Number(fee) : null,
     active: formData.get("active") === "on",
     remarks: String(formData.get("remarks") || "").trim() || null,
   };
