@@ -43,7 +43,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const logoUrl = await resolveImage("/brand/logo.png");
+  const logoUrl = await resolveImage("/brand/logo.svg");
   return (
     <html
       lang="en"
