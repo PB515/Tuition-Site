@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { existsSync } from "fs";
-import { join } from "path";
 import { Analytics } from "@vercel/analytics/next";
+import { resolveImage } from "@/lib/site-images";
 import Nav from "@/components/site/Nav";
 import Footer from "@/components/site/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -39,12 +38,12 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#069494" };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const hasLogo = existsSync(join(process.cwd(), "public", "brand", "logo.png"));
+  const logoUrl = await resolveImage("/brand/logo.png");
   return (
     <html
       lang="en"
@@ -58,7 +57,7 @@ export default function RootLayout({
           }}
         />
         <JsonLd data={organizationLd()} />
-        <Nav hasLogo={hasLogo} />
+        <Nav logoUrl={logoUrl} />
         <div className="flex-1">{children}</div>
         <Footer />
         <ScrollReveal />

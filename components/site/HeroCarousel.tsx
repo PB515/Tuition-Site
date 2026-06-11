@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { ImageIcon } from "lucide-react";
 
-type Slide = { src: string; exists: boolean; label: string };
+type Slide = { url: string | null; label: string; src: string };
 
 export default function HeroCarousel({ slides }: { slides: Slide[] }) {
   const [i, setI] = useState(0);
@@ -23,15 +22,9 @@ export default function HeroCarousel({ slides }: { slides: Slide[] }) {
           key={idx}
           className={`absolute inset-0 transition-opacity duration-700 ${idx === i ? "opacity-100" : "opacity-0"}`}
         >
-          {s.exists ? (
-            <Image
-              src={s.src}
-              alt={s.label}
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-              priority={idx === 0}
-            />
+          {s.url ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={s.url} alt={s.label} className="absolute inset-0 h-full w-full object-cover" />
           ) : (
             <div className="flex h-full flex-col items-center justify-center gap-2 p-6 text-center">
               <ImageIcon size={28} strokeWidth={1.5} className="text-primary" />

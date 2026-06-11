@@ -14,7 +14,7 @@ import CtaButton from "@/components/site/CtaButton";
 import InstallButton from "@/components/InstallButton";
 import HeroCarousel from "@/components/site/HeroCarousel";
 import Faq from "@/components/home/Faq";
-import { publicExists } from "@/lib/images";
+import { resolveImage } from "@/lib/site-images";
 import {
   SITE,
   WA_ENQUIRY,
@@ -55,8 +55,10 @@ const HERO_SLOTS = [
   { src: "/images/hero/5.jpg", label: "Test or practice session" },
 ];
 
-export default function Home() {
-  const heroSlides = HERO_SLOTS.map((s) => ({ ...s, exists: publicExists(s.src) }));
+export default async function Home() {
+  const heroSlides = await Promise.all(
+    HERO_SLOTS.map(async (s) => ({ url: await resolveImage(s.src), label: s.label, src: s.src })),
+  );
   return (
     <main>
       {/* 1. HERO (asymmetric split) */}

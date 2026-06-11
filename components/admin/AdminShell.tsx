@@ -12,6 +12,7 @@ import {
   ClipboardList,
   Wallet,
   MessageSquare,
+  ImageIcon,
   BarChart3,
   Settings as SettingsIcon,
   Menu,
@@ -30,6 +31,7 @@ const NAV = [
   { href: "/admin/tests", label: "Tests & Marks", icon: ClipboardList },
   { href: "/admin/fees", label: "Fees", icon: Wallet },
   { href: "/admin/messages", label: "Messages", icon: MessageSquare },
+  { href: "/admin/images", label: "Images", icon: ImageIcon },
   { href: "/admin/reports", label: "Reports", icon: BarChart3 },
   { href: "/admin/settings", label: "Settings", icon: SettingsIcon },
 ];

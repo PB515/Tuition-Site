@@ -1,15 +1,13 @@
-import Image from "next/image";
 import { ImageIcon } from "lucide-react";
-import { publicExists } from "@/lib/images";
+import { resolveImage } from "@/lib/site-images";
 
-// Shows the real photo if a file exists at `src` under /public, otherwise a
-// labelled placeholder that names the shot and the exact path to drop the file.
-export default function SmartImage({
+// Shows the uploaded image (admin Images) if set, else a /public file, else a
+// labelled placeholder naming the shot and the exact path to drop the file.
+export default async function SmartImage({
   src,
   alt,
   label,
   className,
-  sizes = "(max-width: 1024px) 100vw, 50vw",
 }: {
   src: string;
   alt: string;
@@ -17,11 +15,12 @@ export default function SmartImage({
   className?: string;
   sizes?: string;
 }) {
-  const exists = publicExists(src);
+  const url = await resolveImage(src);
   return (
     <div className={`relative overflow-hidden bg-primary-tint/40 ${className ?? ""}`}>
-      {exists ? (
-        <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
+      {url ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={url} alt={alt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4 text-center">
           <ImageIcon size={26} strokeWidth={1.5} className="text-primary" />

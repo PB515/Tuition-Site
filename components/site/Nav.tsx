@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, MessageCircle, FunctionSquare } from "lucide-react";
 import InstallButton from "@/components/InstallButton";
@@ -22,7 +21,7 @@ function Wordmark() {
   );
 }
 
-export default function Nav({ hasLogo = false }: { hasLogo?: boolean }) {
+export default function Nav({ logoUrl = null }: { logoUrl?: string | null }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -33,15 +32,9 @@ export default function Nav({ hasLogo = false }: { hasLogo?: boolean }) {
     <header className="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
-          {hasLogo ? (
-            <Image
-              src="/brand/logo.png"
-              alt={SITE.name}
-              width={2240}
-              height={980}
-              priority
-              className="h-9 w-auto sm:h-10"
-            />
+          {logoUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={logoUrl} alt={SITE.name} className="h-9 w-auto sm:h-10" />
           ) : (
             <Wordmark />
           )}
