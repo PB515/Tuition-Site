@@ -45,9 +45,9 @@ const WHY = [
 ];
 
 const UPDATES = [
-  "Rahul attended today's Class 10 Maths lecture. Topic covered: Quadratic Equations.",
-  "Test result: 38 out of 50 in Trigonometry. Focus area for revision: identities.",
-  "Reminder: Class 12 Maths test on Sunday. Syllabus: Matrices and Determinants.",
+  "Absent today: Rahul was not present in the Class 10 Maths class. Please let us know if it was planned.",
+  "Test result: Diya scored 38 out of 50 in Trigonometry. Focus area for revision: identities.",
+  "Exam reminder: Class 12 Maths test on Sunday. Syllabus: Matrices and Determinants.",
 ];
 
 const HERO_SLOTS = [
@@ -304,7 +304,8 @@ export default async function Home() {
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-ink-muted">
               Inspire Academy gives parents a private app. Log in to check attendance, test marks
-              and fees, and get class and test updates. Install it on your phone in one tap.
+              and fees, and get WhatsApp updates for absences, marks and exams. Install it on your
+              phone in one tap.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <InstallButton
@@ -322,7 +323,7 @@ export default async function Home() {
           <div className="rounded-2xl border border-border bg-surface p-6">
             <div className="flex items-center gap-2 text-sm font-semibold text-ink">
               <BellRing size={18} strokeWidth={1.75} className="text-primary" />
-              Examples of updates parents receive
+              Examples of WhatsApp updates parents get
             </div>
             <ul className="mt-4 space-y-3">
               {UPDATES.map((u) => (
