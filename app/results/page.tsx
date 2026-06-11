@@ -1,11 +1,14 @@
-import { Award } from "lucide-react";
 import PageHeader from "@/components/site/PageHeader";
-import SmartImage from "@/components/site/SmartImage";
 import EnquiryBand from "@/components/site/EnquiryBand";
+import ResultCard from "@/components/site/ResultCard";
+import TestimonialCard from "@/components/site/TestimonialCard";
+import { getResults, getTestimonials } from "@/lib/content";
 
 export const metadata = { title: "Results" };
 
-export default function Page() {
+export default async function Page() {
+  const [results, testimonials] = await Promise.all([getResults(), getTestimonials()]);
+
   return (
     <main>
       <PageHeader
@@ -14,44 +17,38 @@ export default function Page() {
       />
 
       <section className="border-b border-border">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
-          <div>
-            <div className="flex items-baseline gap-4">
-              <span className="font-heading text-6xl font-bold text-primary-strong sm:text-7xl">
-                97<span className="text-3xl text-ink-muted">/100</span>
-              </span>
-              <Award size={28} strokeWidth={1.5} className="text-accent" />
-            </div>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-ink-muted">
-              The highest score in Navrachana Applied Maths, by our student Chirayu Jani. More board
-              and Applied Maths results are added each year, with student permission.
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+          {results.length === 0 ? (
+            <p className="rounded-2xl border border-border bg-surface p-6 text-sm text-ink-muted">
+              Results are published here through the year, with student permission.
             </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            {[1, 2, 3, 4].map((n) => (
-              <SmartImage
-                key={n}
-                src={`/images/results/${n}.jpg`}
-                alt={`Student result ${n}`}
-                label={`Result poster ${n}`}
-                className="aspect-[3/4] rounded-2xl border border-border"
-                sizes="(max-width: 1024px) 50vw, 25vw"
-              />
-            ))}
-          </div>
+          ) : (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {results.map((r) => (
+                <ResultCard key={r.id} r={r} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 lg:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
           <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             Student and parent feedback
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink-muted">
-            We are collecting written testimonials from students and parents, and will publish them
-            here with permission. For now, the results above speak for the teaching.
-          </p>
+          {testimonials.length === 0 ? (
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-muted">
+              We are collecting testimonials from students and parents, and will publish them here
+              with permission.
+            </p>
+          ) : (
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {testimonials.map((t) => (
+                <TestimonialCard key={t.id} t={t} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

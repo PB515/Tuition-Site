@@ -15,6 +15,9 @@ import InstallButton from "@/components/InstallButton";
 import HeroCarousel from "@/components/site/HeroCarousel";
 import Faq from "@/components/home/Faq";
 import { resolveImage } from "@/lib/site-images";
+import ResultCard from "@/components/site/ResultCard";
+import TestimonialCard from "@/components/site/TestimonialCard";
+import { getResults, getTestimonials } from "@/lib/content";
 import {
   SITE,
   WA_ENQUIRY,
@@ -59,6 +62,7 @@ export default async function Home() {
   const heroSlides = await Promise.all(
     HERO_SLOTS.map(async (s) => ({ url: await resolveImage(s.src), label: s.label, src: s.src })),
   );
+  const [featuredResults, featuredTestimonials] = await Promise.all([getResults(), getTestimonials()]);
   return (
     <main>
       {/* 1. HERO (asymmetric split) */}
@@ -333,6 +337,43 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* 9b. RESULTS + TESTIMONIALS (from the admin collections) */}
+      {(featuredResults.length > 0 || featuredTestimonials.length > 0) && (
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+            {featuredResults.length > 0 && (
+              <div>
+                <div className="flex items-center justify-between">
+                  <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+                    Recent results
+                  </h2>
+                  <Link href="/results" className="text-sm font-medium text-primary-strong hover:underline">
+                    All results
+                  </Link>
+                </div>
+                <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  {featuredResults.slice(0, 4).map((r) => (
+                    <ResultCard key={r.id} r={r} />
+                  ))}
+                </div>
+              </div>
+            )}
+            {featuredTestimonials.length > 0 && (
+              <div className={featuredResults.length > 0 ? "mt-16" : ""}>
+                <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+                  What students and parents say
+                </h2>
+                <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {featuredTestimonials.slice(0, 3).map((t) => (
+                    <TestimonialCard key={t.id} t={t} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* 10. FAQ */}
       <section className="border-b border-border bg-surface">

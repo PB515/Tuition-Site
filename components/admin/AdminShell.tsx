@@ -13,6 +13,8 @@ import {
   Wallet,
   MessageSquare,
   ImageIcon,
+  Award,
+  Quote,
   BarChart3,
   Settings as SettingsIcon,
   Menu,
@@ -32,6 +34,8 @@ const NAV = [
   { href: "/admin/fees", label: "Fees", icon: Wallet },
   { href: "/admin/messages", label: "Messages", icon: MessageSquare },
   { href: "/admin/images", label: "Images", icon: ImageIcon },
+  { href: "/admin/results", label: "Results", icon: Award },
+  { href: "/admin/testimonials", label: "Testimonials", icon: Quote },
   { href: "/admin/reports", label: "Reports", icon: BarChart3 },
   { href: "/admin/settings", label: "Settings", icon: SettingsIcon },
 ];
