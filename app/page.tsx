@@ -238,10 +238,13 @@ export default async function Home() {
           <h2 className="mt-4 max-w-2xl font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             How a topic goes from confusing to clear
           </h2>
-          <ol className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
+          <ol className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {METHOD_STEPS.map((step, i) => (
-              <li key={step.title} className="flex gap-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-strong text-sm font-bold text-white">
+              <li
+                key={step.title}
+                className="group flex gap-4 rounded-2xl border border-border bg-bg p-5 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-strong text-sm font-bold text-white transition-transform duration-200 group-hover:scale-110">
                   {i + 1}
                 </span>
                 <div>
@@ -329,7 +332,7 @@ export default async function Home() {
               {UPDATES.map((u) => (
                 <li
                   key={u}
-                  className="rounded-lg border border-border bg-bg px-4 py-3 text-sm leading-relaxed text-ink-muted"
+                  className="rounded-lg border border-border bg-bg px-4 py-3 text-sm leading-relaxed text-ink-muted transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:text-ink hover:shadow-sm"
                 >
                   {u}
                 </li>

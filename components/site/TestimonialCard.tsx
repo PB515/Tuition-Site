@@ -13,7 +13,7 @@ export default function TestimonialCard({ t }: { t: TestimonialItem }) {
   // Video testimonial
   if (vid) {
     return (
-      <figure className="overflow-hidden rounded-2xl border border-border bg-bg">
+      <figure className="overflow-hidden rounded-2xl border border-border bg-bg transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md">
         <div className="aspect-video w-full">
           <iframe
             className="h-full w-full"
@@ -36,7 +36,7 @@ export default function TestimonialCard({ t }: { t: TestimonialItem }) {
   // Screenshot-only testimonial
   if (t.image_path && !t.quote) {
     return (
-      <div className="overflow-hidden rounded-2xl border border-border bg-bg">
+      <div className="overflow-hidden rounded-2xl border border-border bg-bg transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={storagePublicUrl(t.image_path)} alt="Review" className="w-full object-cover" loading="lazy" />
       </div>
@@ -45,7 +45,7 @@ export default function TestimonialCard({ t }: { t: TestimonialItem }) {
 
   // Quote testimonial (with optional photo)
   return (
-    <figure className="flex flex-col rounded-2xl border border-border bg-surface p-5">
+    <figure className="flex flex-col rounded-2xl border border-border bg-surface p-5 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md">
       {t.image_path && (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={storagePublicUrl(t.image_path)} alt="" className="mb-3 h-14 w-14 rounded-full object-cover" loading="lazy" />

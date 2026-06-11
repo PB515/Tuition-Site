@@ -16,10 +16,13 @@ export default function Page() {
 
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
-          <ol className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
+          <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {METHOD_STEPS.map((step, i) => (
-              <li key={step.title} className="flex gap-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-strong text-sm font-bold text-white">
+              <li
+                key={step.title}
+                className="group flex gap-4 rounded-2xl border border-border bg-bg p-5 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-strong text-sm font-bold text-white transition-transform duration-200 group-hover:scale-110">
                   {i + 1}
                 </span>
                 <div>
