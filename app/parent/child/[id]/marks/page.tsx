@@ -66,7 +66,7 @@ export default async function Page({
     p > 1 ? `/parent/child/${id}/marks?page=${p}` : `/parent/child/${id}/marks`;
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
       <Link
         href={`/parent/child/${id}`}
         className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-muted hover:text-primary-strong"
@@ -81,27 +81,18 @@ export default async function Page({
       </p>
 
       {marks.length > 0 && (
-        <div className="mt-6 overflow-x-auto rounded-2xl border border-border">
-          <table className="w-full min-w-[480px] text-left text-sm">
-            <thead className="border-b border-border bg-surface text-xs uppercase tracking-wide text-ink-muted">
-              <tr>
-                <th className="px-4 py-3 font-semibold">Test</th>
-                <th className="px-4 py-3 font-semibold">Date</th>
-                <th className="px-4 py-3 font-semibold">Marks</th>
-                <th className="px-4 py-3 font-semibold">Focus area</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border">
-              {marks.map((m, i) => (
-                <tr key={i}>
-                  <td className="px-4 py-3 font-medium text-ink">{m.tests?.name ?? "-"}</td>
-                  <td className="px-4 py-3 text-ink-muted">{m.tests?.date ?? "-"}</td>
-                  <td className="px-4 py-3 text-ink-muted">{markCell(m)}</td>
-                  <td className="px-4 py-3 text-ink-muted">{m.remark ?? "-"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-6 divide-y divide-border rounded-2xl border border-border">
+          {marks.map((m, i) => (
+            <div key={i} className="flex items-center justify-between gap-3 px-4 py-3">
+              <div className="min-w-0">
+                <p className="truncate font-medium text-ink">{m.tests?.name ?? "-"}</p>
+                <p className="mt-0.5 text-xs text-ink-muted">
+                  {[m.tests?.date, m.remark].filter(Boolean).join("  ·  ") || "-"}
+                </p>
+              </div>
+              <span className="shrink-0 font-heading text-base font-bold text-ink">{markCell(m)}</span>
+            </div>
+          ))}
         </div>
       )}
 
