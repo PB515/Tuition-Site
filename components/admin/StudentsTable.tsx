@@ -138,7 +138,7 @@ export default function StudentsTable({ rows, batches }: { rows: Row[]; batches:
             onChange={(e) => setPromoteBatch(e.target.value)}
             className="rounded-lg border border-border bg-bg px-2 py-1.5 text-sm"
           >
-            <option value="">into batch...</option>
+            <option value="">into batch (optional)...</option>
             {batches.map((b) => (
               <option key={b.id} value={b.id}>
                 {b.name}
