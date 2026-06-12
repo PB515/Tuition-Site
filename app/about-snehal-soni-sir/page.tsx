@@ -28,7 +28,7 @@ const CREDENTIALS = [
   },
   {
     label: "Founder",
-    items: ["Co-founded Inspire Academy with his wife, who manages the administration"],
+    items: ["Co-founded Inspire Academy of Mathematics with his wife, who manages the administration"],
   },
 ];
 
@@ -53,11 +53,11 @@ export default function Page() {
             <p>
               From 2006 to 2024 he taught Higher Secondary mathematics at Navrachana School, Sama,
               where he also served as Head of the Mathematics Department, and he taught at Navrachana
-              International, Bhayli. While teaching there, he co-founded Inspire Academy with his wife,
+              International, Bhayli. While teaching there, he co-founded Inspire Academy of Mathematics with his wife,
               who runs the academy&apos;s administration.
             </p>
             <p>
-              Inspire Academy is built around one idea: do one subject, and do it deeply. There is no
+              Inspire Academy of Mathematics is built around one idea: do one subject, and do it deeply. There is no
               spreading thin across many subjects. Every batch is taught by Sir himself, so students
               get steady, personal attention from someone who knows exactly where they get stuck.
             </p>
