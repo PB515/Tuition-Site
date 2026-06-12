@@ -20,6 +20,7 @@ const SECTIONS: { id: string; title: string }[] = [
   { id: "assistants", title: "Assistants: add and remove logins" },
   { id: "leads", title: "Leads (website enquiries)" },
   { id: "content", title: "Website content (photos, results, blog)" },
+  { id: "yearend", title: "Year-end: promote students and archive" },
   { id: "settings", title: "Settings, reports and troubleshooting" },
 ];
 
@@ -119,8 +120,9 @@ export default function Page() {
         />
         <Fields
           items={[
-            ["Name", "what you call the batch, e.g. Class 10 Evening"],
+            ["Name", "what you call the batch, e.g. 10-A Evening"],
             ["Class", "9, 10, 11 or 12"],
+            ["Academic year", "e.g. 2026-2027. Fills in with the current year automatically. It keeps each year's batches separate, so '10-A 2026-2027' and '10-A 2027-2028' never clash"],
             ["Timing", "free text, e.g. 6-7:30 PM"],
             ["Capacity", "the maximum number of students for the batch"],
             ["Class days", "which days it runs. The Dashboard uses this to know which batches run today"],
@@ -155,6 +157,7 @@ export default function Page() {
           <b className="text-ink">The four Save buttons:</b> Save (go back to the list), Save & add
           another (keep adding more students quickly), Save & open profile, Save & add fee.
         </p>
+        <Tip text="The moment you save, the student gets an automatic admission number like 2026-001 (join year + count). It is permanent and never changes, even after they move up a class - so it is the one id that follows a student across every year. It is separate from the optional Roll number you can type yourself." />
       </Section>
 
       <Section id="assign" n={4} title="Put a student in a batch">
@@ -298,7 +301,41 @@ export default function Page() {
         />
       </Section>
 
-      <Section id="settings" n={15} title="Settings, reports and troubleshooting">
+      <Section id="yearend" n={15} title="Year-end: promote students and archive">
+        <p>
+          At the end of the year students move up a class - 9 to 10, 10 to 11, 11 to 12 - and the 12th
+          batch leaves. A class usually splits: some take Regular, some take Applied, some leave. You
+          handle this by ticking each group and promoting it. <b className="text-ink">Nothing is ever
+          deleted:</b> promotion only changes a student&apos;s class and batch, so all their attendance,
+          marks and fees stay attached to them.
+        </p>
+        <p>
+          <b className="text-ink">There is a guide page for this:</b> Sidebar → Year-end. It has the
+          steps and the yearly download in one place.
+        </p>
+        <Steps
+          items={[
+            "First, in Batches, create next year's batches and set their Academic year (e.g. 2027-2028). Make one per new class and stream, like '11 Regular A' and '11 Applied A'.",
+            "Go to Students. Set Batch to the old batch (e.g. 10-A) and set Show to 100, so the whole batch is on one screen.",
+            "Tick the students staying for Regular. In the blue bar choose 'Promote to class' (Class 11) and 'into batch' (the 11 Regular batch), then press Promote.",
+            "Tick the students going to Applied, choose Class 11 and the 11 Applied batch, press Promote.",
+            "Tick the students who are leaving, and press 'Mark inactive'. They keep all their history; they just drop off the active lists.",
+            "Repeat for each old batch (10-B, 10-C, 10-D, and the graduating 12th batches).",
+          ]}
+        />
+        <p>
+          <b className="text-ink">Academic year:</b> every batch carries an academic year, so the same
+          name in two different years is never confused. New batches default to the current year.
+        </p>
+        <p>
+          <b className="text-ink">Keep a copy for your records:</b> on the Year-end page, pick a year and
+          download its Attendance, Test marks, Fees, or the Students roster as CSV (opens in Excel). This
+          is a copy for research or backup - the live data stays safe in the system either way.
+        </p>
+        <Tip text="Promote moves a whole group in one click - you never open students one by one. Tick the group, pick the class and batch, press Promote. After a batch is fully promoted it is empty, and you can delete that empty batch row in Batches." />
+      </Section>
+
+      <Section id="settings" n={16} title="Settings, reports and troubleshooting">
         <p>
           <b className="text-ink">Settings:</b> academy details and the default fee. <b className="text-ink">Reports</b>{" "}
           (Sidebar → Reports): daily and monthly attendance, absent students, monthly collection, test

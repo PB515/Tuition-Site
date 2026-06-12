@@ -49,6 +49,7 @@ const GUIDES: { title: string; steps: string[] }[] = [
       "Sidebar → Students → Add student.",
       "Fill the name (required), parent WhatsApp, class, board, batch and so on.",
       "Click Save (or 'Save & add another' to keep adding more).",
+      "On save the student gets an automatic, permanent admission number like 2026-001. It never changes, even after they move up a class.",
       "To add many at once: Students → Import CSV → download the sample file, fill it, and upload. Duplicates (same name + parent phone) are skipped automatically.",
     ],
   },
@@ -56,9 +57,19 @@ const GUIDES: { title: string; steps: string[] }[] = [
     title: "Create a batch",
     steps: [
       "Sidebar → Batches.",
-      "Fill the name, class and timing, tick the class days, and set a capacity.",
+      "Fill the name, class, academic year (fills in automatically), and timing, tick the class days, and set a capacity.",
       "Click Add batch.",
-      "Set the class days so the dashboard knows which batches run today.",
+      "The academic year keeps each year's batches separate, so '10-A 2026-2027' and '10-A 2027-2028' never clash.",
+    ],
+  },
+  {
+    title: "Promote students at year-end",
+    steps: [
+      "Sidebar → Year-end has the full steps in one place.",
+      "First create next year's batches in Batches (set the new academic year).",
+      "Students → filter to the old batch → set Show to 100 → tick the group going Regular → 'Promote to class' + 'into batch' → Promote.",
+      "Tick the Applied group → promote into the Applied batch. Tick leavers → 'Mark inactive'.",
+      "Nothing is deleted: promotion only changes class and batch, so all history stays. Download a year's data as CSV from the Year-end page for your records.",
     ],
   },
   {

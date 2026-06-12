@@ -3,17 +3,26 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, MessageCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { SITE } from "@/lib/site";
+import { academicYearOf, feeAcademicYear, currentAcademicYear } from "@/lib/academic-year";
+import YearScope from "@/components/YearScope";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Progress", robots: { index: false, follow: false } };
 
+type AttRow = { status: string | null; date: string | null };
 type MarkRow = {
   marks_obtained: number | null;
   status: string | null;
   remark: string | null;
   tests: { name: string; date: string | null; total_marks: number | null } | null;
 };
-type FeeRow = { month: string | null; amount: number | null; paid: boolean; due_date: string | null };
+type FeeRow = {
+  month: string | null;
+  amount: number | null;
+  paid: boolean;
+  due_date: string | null;
+  created_at: string | null;
+};
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
@@ -33,8 +42,15 @@ function markCell(m: MarkRow) {
   return "-";
 }
 
-export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ year?: string }>;
+}) {
   const { id } = await params;
+  const { year: yearParam } = await searchParams;
   const supabase = await createClient();
   const {
     data: { user },
@@ -63,27 +79,48 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   };
 
   const [att, marksRes, feesRes] = await Promise.all([
-    supabase.from("attendance").select("status").eq("student_id", id),
+    supabase.from("attendance").select("status, date").eq("student_id", id),
     supabase
       .from("marks")
       .select("marks_obtained, status, remark, tests(name, date, total_marks)")
       .eq("student_id", id)
-      .order("created_at", { ascending: false })
-      .limit(5),
+      .order("created_at", { ascending: false }),
     supabase
       .from("fees")
-      .select("month, amount, paid, due_date")
+      .select("month, amount, paid, due_date, created_at")
       .eq("student_id", id)
       .order("created_at", { ascending: false }),
   ]);
 
-  const attRows = att.data ?? [];
+  const allAtt = (att.data ?? []) as AttRow[];
+  const allMarks = (marksRes.data ?? []) as unknown as MarkRow[];
+  const allFees = (feesRes.data ?? []) as unknown as FeeRow[];
+
+  // Which academic years does this child have data in? Newest first.
+  const current = currentAcademicYear();
+  const years = Array.from(
+    new Set(
+      [
+        ...allAtt.map((a) => academicYearOf(a.date)),
+        ...allMarks.map((m) => academicYearOf(m.tests?.date)),
+        ...allFees.map((f) => feeAcademicYear(f)),
+      ].filter(Boolean) as string[],
+    ),
+  ).sort((a, b) => b.localeCompare(a));
+
+  // Default to the live year (latest present); "all" shows everything.
+  const selected =
+    yearParam === "all" ? "all" : yearParam && years.includes(yearParam) ? yearParam : years[0] ?? current;
+  const inYear = (ay: string | null) => selected === "all" || ay === selected;
+
+  const attRows = allAtt.filter((a) => inYear(academicYearOf(a.date)));
+  const marks = allMarks.filter((m) => inYear(academicYearOf(m.tests?.date)));
+  const fees = allFees.filter((f) => inYear(feeAcademicYear(f)));
+
   const totalDays = attRows.length;
   const attended = attRows.filter((a) => a.status === "present" || a.status === "late").length;
   const attPct = totalDays ? Math.round((attended / totalDays) * 100) : null;
 
-  const marks = (marksRes.data ?? []) as unknown as MarkRow[];
-  const fees = (feesRes.data ?? []) as unknown as FeeRow[];
   const pendingTotal = fees.filter((f) => !f.paid).reduce((sum, f) => sum + (f.amount ?? 0), 0);
   const today = new Date(Date.now() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
 
@@ -124,6 +161,8 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         </a>
       </div>
 
+      <YearScope years={years} selected={selected} current={current} base={`/parent/child/${id}`} />
+
       <div className="mt-6 grid grid-cols-3 gap-2.5">
         <Stat label="Attendance" value={attPct != null ? `${attPct}%` : "-"} />
         <Stat label="Classes" value={String(totalDays)} />
@@ -133,7 +172,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
       <section className="mt-8">
         <div className="flex items-center justify-between">
           <h2 className="font-heading text-lg font-bold text-ink">Recent marks</h2>
-          {marks.length === 5 && (
+          {marks.length > 5 && (
             <Link href={`/parent/child/${id}/marks`} className="text-sm font-medium text-primary-strong hover:underline">
               View all
             </Link>
@@ -143,7 +182,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           <p className="mt-3 text-sm text-ink-muted">No marks recorded yet.</p>
         ) : (
           <div className="mt-3 divide-y divide-border rounded-2xl border border-border">
-            {marks.map((m, i) => (
+            {marks.slice(0, 5).map((m, i) => (
               <div key={i} className="flex items-center justify-between gap-3 px-4 py-3">
                 <div className="min-w-0">
                   <p className="truncate font-medium text-ink">{m.tests?.name ?? "-"}</p>

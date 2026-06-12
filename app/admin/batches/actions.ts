@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { currentAcademicYear } from "@/lib/academic-year";
 
 export async function createBatch(formData: FormData) {
   const name = String(formData.get("name") || "").trim();
@@ -12,6 +13,7 @@ export async function createBatch(formData: FormData) {
   await supabase.from("batches").insert({
     name,
     class: String(formData.get("class") || "").trim() || null,
+    academic_year: String(formData.get("academic_year") || "").trim() || currentAcademicYear(),
     timing: String(formData.get("timing") || "").trim() || null,
     days: days || null,
     capacity: capacity ? Number(capacity) : null,

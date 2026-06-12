@@ -5,6 +5,8 @@ import { createClient } from "@/lib/supabase/server";
 import { createFee } from "@/app/admin/fees/actions";
 import InviteParentForm from "@/components/admin/InviteParentForm";
 import FeePlanGenerator from "@/components/admin/FeePlanGenerator";
+import YearScope from "@/components/YearScope";
+import { academicYearOf, feeAcademicYear, currentAcademicYear } from "@/lib/academic-year";
 
 const feeField =
   "w-full rounded-lg border border-border bg-bg px-3 py-2 text-sm text-ink focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
@@ -12,12 +14,19 @@ const feeField =
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Student profile", robots: { index: false, follow: false } };
 
+type AttRow = { status: string | null; date: string | null };
 type MarkRow = {
   marks_obtained: number | null;
   remark: string | null;
   tests: { name: string; date: string | null; total_marks: number | null } | null;
 };
-type FeeRow = { month: string | null; amount: number | null; paid: boolean; due_date: string | null };
+type FeeRow = {
+  month: string | null;
+  amount: number | null;
+  paid: boolean;
+  due_date: string | null;
+  created_at: string | null;
+};
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
@@ -28,8 +37,15 @@ function Stat({ label, value }: { label: string; value: string }) {
   );
 }
 
-export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ year?: string }>;
+}) {
   const { id } = await params;
+  const { year: yearParam } = await searchParams;
   const supabase = await createClient();
 
   const { data: student } = await supabase
@@ -40,28 +56,47 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   if (!student) notFound();
 
   const [att, marksRes, feesRes, parentCountRes] = await Promise.all([
-    supabase.from("attendance").select("status").eq("student_id", id),
+    supabase.from("attendance").select("status, date").eq("student_id", id),
     supabase
       .from("marks")
       .select("marks_obtained, remark, tests(name, date, total_marks)")
       .eq("student_id", id)
-      .order("created_at", { ascending: false })
-      .limit(5),
+      .order("created_at", { ascending: false }),
     supabase
       .from("fees")
-      .select("month, amount, paid, due_date")
+      .select("month, amount, paid, due_date, created_at")
       .eq("student_id", id)
       .order("created_at", { ascending: false }),
     supabase.from("parents").select("*", { count: "exact", head: true }).eq("student_id", id),
   ]);
 
-  const attRows = att.data ?? [];
+  const allAtt = (att.data ?? []) as AttRow[];
+  const allMarks = (marksRes.data ?? []) as unknown as MarkRow[];
+  const allFees = (feesRes.data ?? []) as unknown as FeeRow[];
+
+  const current = currentAcademicYear();
+  const years = Array.from(
+    new Set(
+      [
+        ...allAtt.map((a) => academicYearOf(a.date)),
+        ...allMarks.map((m) => academicYearOf(m.tests?.date)),
+        ...allFees.map((f) => feeAcademicYear(f)),
+      ].filter(Boolean) as string[],
+    ),
+  ).sort((a, b) => b.localeCompare(a));
+
+  const selected =
+    yearParam === "all" ? "all" : yearParam && years.includes(yearParam) ? yearParam : years[0] ?? current;
+  const inYear = (ay: string | null) => selected === "all" || ay === selected;
+
+  const attRows = allAtt.filter((a) => inYear(academicYearOf(a.date)));
+  const marks = allMarks.filter((m) => inYear(academicYearOf(m.tests?.date)));
+  const fees = allFees.filter((f) => inYear(feeAcademicYear(f)));
+
   const totalDays = attRows.length;
   const attended = attRows.filter((a) => a.status === "present" || a.status === "late").length;
   const attPct = totalDays ? Math.round((attended / totalDays) * 100) : null;
 
-  const marks = (marksRes.data ?? []) as unknown as MarkRow[];
-  const fees = (feesRes.data ?? []) as unknown as FeeRow[];
   const pendingTotal = fees.filter((f) => !f.paid).reduce((sum, f) => sum + (f.amount ?? 0), 0);
   const parentCount = parentCountRes.count ?? 0;
 
@@ -75,9 +110,18 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
     <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="font-heading text-2xl font-bold text-ink">{student.name}</h1>
+          <h1 className="font-heading text-2xl font-bold text-ink">
+            {student.name}
+            {student.admission_no && (
+              <span className="ml-2 align-middle text-sm font-medium text-ink-muted">
+                {student.admission_no}
+              </span>
+            )}
+          </h1>
           <p className="mt-1 text-sm text-ink-muted">
-            {[student.class, student.batches?.name, student.school].filter(Boolean).join("  ·  ") || "No details"}
+            {[student.class, student.batches?.name, student.school, student.roll_number ? `Roll ${student.roll_number}` : null]
+              .filter(Boolean)
+              .join("  ·  ") || "No details"}
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -99,6 +143,8 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           </Link>
         </div>
       </div>
+
+      <YearScope years={years} selected={selected} current={current} base={`/admin/students/${id}`} />
 
       <div className="mt-6 grid gap-3 sm:grid-cols-3">
         <Stat label="Attendance" value={attPct != null ? `${attPct}%` : "-"} />
@@ -128,7 +174,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
       <section className="mt-10">
         <div className="flex items-center justify-between">
           <h2 className="font-heading text-lg font-bold text-ink">Recent marks</h2>
-          {marks.length === 5 && (
+          {marks.length > 5 && (
             <Link
               href={`/admin/students/${id}/marks`}
               className="text-sm font-medium text-primary-strong hover:underline"
@@ -151,7 +197,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
-                {marks.map((m, i) => (
+                {marks.slice(0, 5).map((m, i) => (
                   <tr key={i}>
                     <td className="px-4 py-3 font-medium text-ink">{m.tests?.name ?? "-"}</td>
                     <td className="px-4 py-3 text-ink-muted">{m.tests?.date ?? "-"}</td>

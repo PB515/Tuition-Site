@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Trash2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { ENQUIRY_CLASSES } from "@/lib/site";
+import { currentAcademicYear } from "@/lib/academic-year";
 import { createBatch, deleteBatch } from "./actions";
 import BatchTimingInput from "@/components/admin/BatchTimingInput";
 
@@ -16,6 +17,7 @@ type Batch = {
   id: string;
   name: string;
   class: string | null;
+  academic_year: string | null;
   timing: string | null;
   days: string | null;
   capacity: number | null;
@@ -23,7 +25,12 @@ type Batch = {
 
 export default async function Page() {
   const supabase = await createClient();
-  const { data: batches } = await supabase.from("batches").select("*").order("name");
+  const thisYear = currentAcademicYear();
+  const { data: batches } = await supabase
+    .from("batches")
+    .select("*")
+    .order("academic_year", { ascending: false })
+    .order("name");
   const { data: activeStuds } = await supabase.from("students").select("batch_id").eq("active", true);
 
   const countByBatch: Record<string, number> = {};
@@ -38,10 +45,10 @@ export default async function Page() {
       <h1 className="font-heading text-2xl font-bold text-ink">Batches</h1>
 
       <form action={createBatch} className="mt-6 rounded-2xl border border-border bg-surface p-4">
-        <div className="grid gap-3 sm:grid-cols-4">
+        <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-5">
           <label className="block text-sm">
             <span className="font-medium text-ink">Name</span>
-            <input name="name" required className={`mt-1 ${field}`} placeholder="e.g. Class 10 Evening" />
+            <input name="name" required className={`mt-1 ${field}`} placeholder="e.g. 10-A Evening" />
           </label>
           <label className="block text-sm">
             <span className="font-medium text-ink">Class</span>
@@ -53,6 +60,15 @@ export default async function Page() {
                 </option>
               ))}
             </select>
+          </label>
+          <label className="block text-sm">
+            <span className="font-medium text-ink">Academic year</span>
+            <input
+              name="academic_year"
+              defaultValue={thisYear}
+              placeholder="2026-2027"
+              className={`mt-1 ${field}`}
+            />
           </label>
           <label className="block text-sm">
             <span className="font-medium text-ink">Timing</span>
@@ -93,6 +109,7 @@ export default async function Page() {
               <tr>
                 <th className="px-4 py-3 font-semibold">Name</th>
                 <th className="px-4 py-3 font-semibold">Class</th>
+                <th className="px-4 py-3 font-semibold">Year</th>
                 <th className="px-4 py-3 font-semibold">Timing</th>
                 <th className="px-4 py-3 font-semibold">Days</th>
                 <th className="px-4 py-3 font-semibold">Students</th>
@@ -107,6 +124,22 @@ export default async function Page() {
                   <tr key={b.id}>
                     <td className="px-4 py-3 font-medium text-ink">{b.name}</td>
                     <td className="px-4 py-3 text-ink-muted">{b.class ?? "-"}</td>
+                    <td className="px-4 py-3">
+                      {b.academic_year ? (
+                        <span
+                          className={
+                            b.academic_year === thisYear
+                              ? "rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-medium text-primary-strong"
+                              : "text-ink-muted"
+                          }
+                        >
+                          {b.academic_year}
+                          {b.academic_year === thisYear ? " · now" : ""}
+                        </span>
+                      ) : (
+                        <span className="text-ink-muted">-</span>
+                      )}
+                    </td>
                     <td className="px-4 py-3 text-ink-muted">{b.timing ?? "-"}</td>
                     <td className="px-4 py-3 text-ink-muted">{b.days ?? "-"}</td>
                     <td className="px-4 py-3 text-ink-muted">

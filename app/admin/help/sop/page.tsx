@@ -12,7 +12,8 @@ const SOP: { t: string; s: string }[] = [
   { t: "Add a student", s: "Students > Add student (name + parent WhatsApp + class + batch). Many at once: Students > Import CSV." },
   { t: "Parent login", s: "Open student profile > Parent access > type email > Create login link > Send on WhatsApp." },
   { t: "Enquiries (leads)", s: "Leads > set status, tap Call or WhatsApp to follow up, delete old ones." },
-  { t: "Batches", s: "Batches > name + class + timing + tick class days + capacity > Add batch." },
+  { t: "Batches", s: "Batches > name + class + academic year + timing + tick class days + capacity > Add batch." },
+  { t: "Year-end promotion", s: "Year-end page. Make next year's batches first. Students > filter old batch > Show 100 > tick a group > Promote to class + into batch. Leavers > Mark inactive. Nothing is deleted." },
   { t: "Website photos / results", s: "Images, Results or Testimonials > upload or add, then Publish. Goes live instantly." },
   { t: "WhatsApp (important)", s: "Every WhatsApp button opens a ready-written message. You just press send. Nothing is sent automatically." },
 ];

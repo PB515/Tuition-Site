@@ -5,6 +5,7 @@ type Batch = { id: string; name: string };
 export type StudentValues = {
   id?: string;
   name?: string;
+  admission_no?: string | null;
   roll_number?: string | null;
   parent_name?: string | null;
   parent_whatsapp?: string | null;
@@ -45,6 +46,13 @@ export default function StudentForm({
   return (
     <form action={action} className="mt-6 max-w-2xl space-y-4">
       {s.id && <input type="hidden" name="id" value={s.id} />}
+
+      {s.admission_no && (
+        <p className="text-sm text-ink-muted">
+          Admission no <span className="font-semibold text-ink">{s.admission_no}</span>
+          <span className="ml-1 text-xs">(auto, permanent)</span>
+        </p>
+      )}
 
       <div className="grid gap-4 sm:grid-cols-[1fr_2fr]">
         <label className="block">

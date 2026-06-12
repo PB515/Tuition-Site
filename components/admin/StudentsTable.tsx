@@ -3,11 +3,13 @@
 import { useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { bulkAssignBatch, bulkSetActive } from "@/app/admin/students/actions";
+import { ENQUIRY_CLASSES } from "@/lib/site";
+import { bulkAssignBatch, bulkSetActive, bulkPromote } from "@/app/admin/students/actions";
 
 type Row = {
   id: string;
   name: string;
+  admission_no: string | null;
   roll_number: string | null;
   class: string | null;
   batch_name: string | null;
@@ -28,6 +30,8 @@ export default function StudentsTable({ rows, batches }: { rows: Row[]; batches:
   const router = useRouter();
   const [sel, setSel] = useState<Set<string>>(new Set());
   const [assignBatch, setAssignBatch] = useState("");
+  const [promoteClass, setPromoteClass] = useState("");
+  const [promoteBatch, setPromoteBatch] = useState("");
   const [pending, start] = useTransition();
 
   const ids = Array.from(sel);
@@ -53,13 +57,14 @@ export default function StudentsTable({ rows, batches }: { rows: Row[]; batches:
 
   function exportSelected() {
     const chosen = rows.filter((r) => sel.has(r.id));
-    const header = ["Roll", "Name", "Class", "Batch", "Parent", "WhatsApp", "Attendance", "Fee", "Last test", "Status"];
+    const header = ["Admission no", "Roll", "Name", "Class", "Batch", "Parent", "WhatsApp", "Attendance", "Fee", "Last test", "Status"];
     const esc = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
     const lines = [header.join(",")];
     chosen.forEach((r) => {
       const pct = r.att_total ? Math.round((r.att_present / r.att_total) * 100) + "%" : "";
       lines.push(
         [
+          r.admission_no,
           r.roll_number,
           r.name,
           r.class,
@@ -97,6 +102,7 @@ export default function StudentsTable({ rows, batches }: { rows: Row[]; batches:
       {sel.size > 0 && (
         <div className="mb-3 flex flex-wrap items-center gap-2 rounded-xl border border-primary bg-primary-tint/40 px-4 py-2 text-sm">
           <span className="font-medium text-ink">{sel.size} selected</span>
+
           <select
             value={assignBatch}
             onChange={(e) => setAssignBatch(e.target.value)}
@@ -112,6 +118,43 @@ export default function StudentsTable({ rows, batches }: { rows: Row[]; batches:
           <button onClick={() => run(() => bulkAssignBatch(ids, assignBatch))} disabled={!assignBatch} className={cellBtn}>
             Apply
           </button>
+
+          <span className="mx-1 hidden h-5 w-px bg-border sm:inline-block" />
+
+          <select
+            value={promoteClass}
+            onChange={(e) => setPromoteClass(e.target.value)}
+            className="rounded-lg border border-border bg-bg px-2 py-1.5 text-sm"
+          >
+            <option value="">Promote to class...</option>
+            {ENQUIRY_CLASSES.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+          <select
+            value={promoteBatch}
+            onChange={(e) => setPromoteBatch(e.target.value)}
+            className="rounded-lg border border-border bg-bg px-2 py-1.5 text-sm"
+          >
+            <option value="">into batch...</option>
+            {batches.map((b) => (
+              <option key={b.id} value={b.id}>
+                {b.name}
+              </option>
+            ))}
+          </select>
+          <button
+            onClick={() => run(() => bulkPromote(ids, promoteClass, promoteBatch))}
+            disabled={!promoteClass && !promoteBatch}
+            className="rounded-full bg-primary-strong px-3 py-1.5 text-sm font-semibold text-white hover:bg-primary-deep disabled:opacity-40"
+          >
+            Promote
+          </button>
+
+          <span className="mx-1 hidden h-5 w-px bg-border sm:inline-block" />
+
           <button onClick={() => run(() => bulkSetActive(ids, true))} className={cellBtn}>Mark active</button>
           <button onClick={() => run(() => bulkSetActive(ids, false))} className={cellBtn}>Mark inactive</button>
           <button onClick={exportSelected} className={cellBtn}>Export selected</button>
@@ -148,7 +191,13 @@ export default function StudentsTable({ rows, batches }: { rows: Row[]; batches:
                   </td>
                   <td className="px-4 py-2">
                     <div className="font-medium text-ink">{r.name}</div>
-                    {r.roll_number && <div className="text-xs text-ink-muted">#{r.roll_number}</div>}
+                    {(r.admission_no || r.roll_number) && (
+                      <div className="text-xs text-ink-muted">
+                        {[r.admission_no, r.roll_number ? `Roll ${r.roll_number}` : null]
+                          .filter(Boolean)
+                          .join("  ·  ")}
+                      </div>
+                    )}
                   </td>
                   <td className="px-4 py-2 text-ink-muted">{r.class ?? "-"}</td>
                   <td className="px-4 py-2 text-ink-muted">{r.batch_name ?? "-"}</td>

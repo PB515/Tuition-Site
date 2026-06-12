@@ -73,6 +73,17 @@ export async function bulkSetActive(ids: string[], active: boolean) {
   revalidatePath("/admin/students");
 }
 
+// Year-end promotion: move the selected students to a new class + batch in one go.
+// Never deletes; only updates class/batch, so all history stays attached to the id.
+export async function bulkPromote(ids: string[], newClass: string, newBatchId: string) {
+  if (!ids.length) return;
+  const patch: { class?: string; batch_id: string | null } = { batch_id: newBatchId || null };
+  if (newClass) patch.class = newClass;
+  const supabase = await createClient();
+  await supabase.from("students").update(patch).in("id", ids);
+  revalidatePath("/admin/students");
+}
+
 type RawRow = Record<string, string>;
 
 // CSV import with duplicate detection (by student name + parent phone).

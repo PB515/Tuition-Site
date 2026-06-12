@@ -13,6 +13,7 @@ const LINKS = [
   { href: "/admin/attendance", label: "Attendance" },
   { href: "/admin/tests", label: "Tests" },
   { href: "/admin/fees", label: "Fees" },
+  { href: "/admin/promote", label: "Year-end" },
 ];
 
 export default function AdminNav({ email }: { email: string }) {

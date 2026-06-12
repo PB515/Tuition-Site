@@ -7,6 +7,8 @@ function esc(v: unknown) {
 }
 
 type S = {
+  admission_no: string | null;
+  roll_number: string | null;
   name: string;
   class: string | null;
   board: string | null;
@@ -28,11 +30,13 @@ export async function GET() {
   const { data } = await supabase
     .from("students")
     .select(
-      "name, class, board, school, parent_name, parent_whatsapp, admission_date, active, batches(name)",
+      "admission_no, roll_number, name, class, board, school, parent_name, parent_whatsapp, admission_date, active, batches(name)",
     )
     .order("name");
 
   const head = [
+    "Admission no",
+    "Roll",
     "Name",
     "Class",
     "Board",
@@ -44,6 +48,8 @@ export async function GET() {
     "Active",
   ];
   const rows = ((data ?? []) as unknown as S[]).map((s) => [
+    s.admission_no,
+    s.roll_number,
     s.name,
     s.class,
     s.board,

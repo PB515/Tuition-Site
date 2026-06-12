@@ -6,7 +6,7 @@ import StudentsTable from "@/components/admin/StudentsTable";
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Students", robots: { index: false, follow: false } };
 
-const PAGE_SIZE = 20;
+const PAGE_SIZES = [20, 50, 100];
 const field =
   "w-full rounded-lg border border-border bg-bg px-3 py-2 text-sm text-ink focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
 
@@ -31,6 +31,7 @@ export default async function Page({
     active?: string;
     fee?: string;
     page?: string;
+    per?: string;
   }>;
 }) {
   const sp = await searchParams;
@@ -44,8 +45,9 @@ export default async function Page({
   const batch = sp.batch ?? "";
   const active = sp.active ?? "";
   const fee = sp.fee ?? "";
+  const per = PAGE_SIZES.includes(Number(sp.per)) ? Number(sp.per) : 20;
   const page = Math.max(1, Number(sp.page ?? "1") || 1);
-  const from = (page - 1) * PAGE_SIZE;
+  const from = (page - 1) * per;
 
   let query = supabase.from("student_overview").select("*", { count: "exact" });
   if (q) {
@@ -61,10 +63,10 @@ export default async function Page({
   if (fee === "pending") query = query.gt("fee_pending", 0);
   if (fee === "clear") query = query.eq("fee_pending", 0);
 
-  const { data, count } = await query.order("name").range(from, from + PAGE_SIZE - 1);
+  const { data, count } = await query.order("name").range(from, from + per - 1);
   const rows = (data ?? []) as unknown as Parameters<typeof StudentsTable>[0]["rows"];
   const total = count ?? 0;
-  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  const totalPages = Math.max(1, Math.ceil(total / per));
 
   return (
     <div className="px-4 py-8 sm:px-6 lg:px-8">
@@ -94,7 +96,7 @@ export default async function Page({
 
       <form
         method="get"
-        className="mt-6 grid gap-3 rounded-2xl border border-border bg-surface p-4 sm:grid-cols-[1.6fr_1fr_1fr_1fr_1fr_auto] sm:items-end"
+        className="mt-6 grid gap-3 rounded-2xl border border-border bg-surface p-4 sm:grid-cols-[1.6fr_1fr_1fr_1fr_1fr_0.9fr_auto] sm:items-end"
       >
         <label className="block text-sm">
           <span className="font-medium text-ink">Search</span>
@@ -138,6 +140,16 @@ export default async function Page({
             <option value="clear">Clear</option>
           </select>
         </label>
+        <label className="block text-sm">
+          <span className="font-medium text-ink">Show</span>
+          <select name="per" defaultValue={String(per)} className={`mt-1 ${field}`}>
+            {PAGE_SIZES.map((n) => (
+              <option key={n} value={n}>
+                {n}
+              </option>
+            ))}
+          </select>
+        </label>
         <button
           type="submit"
           className="rounded-full border border-primary px-5 py-2 text-sm font-semibold text-primary-strong hover:bg-primary-tint"
@@ -147,7 +159,7 @@ export default async function Page({
       </form>
 
       <p className="mt-4 text-sm text-ink-muted">
-        {total === 0 ? "No students match." : `Showing ${from + 1}-${Math.min(from + PAGE_SIZE, total)} of ${total}`}
+        {total === 0 ? "No students match." : `Showing ${from + 1}-${Math.min(from + per, total)} of ${total}`}
       </p>
 
       {rows.length > 0 && (
@@ -159,7 +171,7 @@ export default async function Page({
       {totalPages > 1 && (
         <div className="mt-5 flex items-center justify-between text-sm">
           {page > 1 ? (
-            <Link href={href({ q, class: cls, batch, active, fee, page: page - 1 })} className="font-medium text-primary-strong hover:underline">
+            <Link href={href({ q, class: cls, batch, active, fee, per, page: page - 1 })} className="font-medium text-primary-strong hover:underline">
               Previous
             </Link>
           ) : (
@@ -169,7 +181,7 @@ export default async function Page({
             Page {page} of {totalPages}
           </span>
           {page < totalPages ? (
-            <Link href={href({ q, class: cls, batch, active, fee, page: page + 1 })} className="font-medium text-primary-strong hover:underline">
+            <Link href={href({ q, class: cls, batch, active, fee, per, page: page + 1 })} className="font-medium text-primary-strong hover:underline">
               Next
             </Link>
           ) : (
