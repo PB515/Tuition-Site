@@ -86,7 +86,7 @@ export default async function Home() {
               className="animate-fade-up mt-4 font-heading text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl"
               style={{ animationDelay: "90ms" }}
             >
-              25 years of teaching. One goal: make students love mathematics.
+              25 years of making students love mathematics.
             </h1>
             <p
               className="animate-fade-up mt-5 max-w-xl text-lg leading-relaxed text-ink-muted"

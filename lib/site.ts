@@ -75,16 +75,7 @@ export const NAV = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const AREAS = [
-  "New Sama Road",
-  "Sama",
-  "Karelibaug",
-  "Fatehgunj",
-  "Nizampura",
-  "Chhani",
-  "Harni",
-  "Alkapuri",
-];
+export const AREAS = ["New Sama Road", "Alkapuri"];
 
 // Course tiles. Launch SEO pages get their own route; staged ones point to /courses for now.
 export const COURSES = [
