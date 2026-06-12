@@ -83,10 +83,15 @@ export default async function Home() {
               Mathematics coaching in Alkapuri and Sama, Vadodara
             </p>
             <h1
-              className="animate-fade-up mt-4 font-heading text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl"
+              className="animate-fade-up mt-4 font-heading font-bold leading-[1.1] tracking-tight text-ink"
               style={{ animationDelay: "90ms" }}
             >
-              25 years of making students love mathematics.
+              <span className="block text-xl font-semibold text-ink-muted sm:text-2xl">
+                25 years of teaching, one goal
+              </span>
+              <span className="mt-2 block text-4xl sm:text-5xl">
+                Make students love mathematics
+              </span>
             </h1>
             <p
               className="animate-fade-up mt-5 max-w-xl text-lg leading-relaxed text-ink-muted"
