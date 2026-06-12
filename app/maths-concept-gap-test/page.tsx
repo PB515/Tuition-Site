@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import PageHeader from "@/components/site/PageHeader";
 import GapTest from "@/components/gap-test/GapTest";
 import { WA_ENQUIRY } from "@/lib/site";
@@ -34,7 +34,7 @@ export default function Page() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 font-semibold text-primary-strong hover:text-primary-deep"
             >
-              <MessageCircle size={15} strokeWidth={2} /> Message Snehal Sir
+              <WhatsappIcon size={15} strokeWidth={2} /> Message Snehal Sir
             </a>
           </p>
         </div>

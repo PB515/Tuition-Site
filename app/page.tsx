@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  MessageCircle,
   Phone,
   ArrowRight,
   ArrowUpRight,
@@ -10,6 +9,7 @@ import {
   Award,
   BellRing,
 } from "lucide-react";
+import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import CtaButton from "@/components/site/CtaButton";
 import InstallButton from "@/components/InstallButton";
 import HeroCarousel from "@/components/site/HeroCarousel";
@@ -105,7 +105,7 @@ export default async function Home() {
               style={{ animationDelay: "250ms" }}
             >
               <CtaButton href={WA_ENQUIRY} external>
-                <MessageCircle size={18} strokeWidth={2} /> WhatsApp Enquiry
+                <WhatsappIcon size={18} strokeWidth={2} /> WhatsApp Enquiry
               </CtaButton>
               <CtaButton href={`tel:${SITE.tel}`} variant="secondary" external>
                 <Phone size={18} strokeWidth={2} /> Call Sir
@@ -186,7 +186,7 @@ export default async function Home() {
             </p>
             <div className="mt-7">
               <CtaButton href={WA_ENQUIRY} external>
-                <MessageCircle size={18} strokeWidth={2} /> WhatsApp Enquiry
+                <WhatsappIcon size={18} strokeWidth={2} /> WhatsApp Enquiry
               </CtaButton>
             </div>
           </div>
@@ -266,7 +266,7 @@ export default async function Home() {
                 Explore Applied Math <ArrowRight size={18} strokeWidth={2} />
               </CtaButton>
               <CtaButton href={WA_ENQUIRY} variant="secondary" external>
-                <MessageCircle size={18} strokeWidth={2} /> WhatsApp Enquiry
+                <WhatsappIcon size={18} strokeWidth={2} /> WhatsApp Enquiry
               </CtaButton>
             </div>
           </div>
@@ -481,7 +481,7 @@ export default async function Home() {
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
               <CtaButton href={WA_ENQUIRY} external>
-                <MessageCircle size={18} strokeWidth={2} /> WhatsApp Enquiry
+                <WhatsappIcon size={18} strokeWidth={2} /> WhatsApp Enquiry
               </CtaButton>
               <CtaButton href={`tel:${SITE.tel}`} variant="secondary" external>
                 <Phone size={18} strokeWidth={2} /> {SITE.phoneDisplay}

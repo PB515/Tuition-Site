@@ -1,4 +1,5 @@
-import { MapPin, Phone, MessageCircle, Mail } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
+import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import PageHeader from "@/components/site/PageHeader";
 import SmartImage from "@/components/site/SmartImage";
 import CtaButton from "@/components/site/CtaButton";
@@ -68,7 +69,7 @@ export default function Page() {
             </div>
             <div className="mt-5 flex flex-wrap gap-3">
               <CtaButton href={WA_ENQUIRY} external>
-                <MessageCircle size={18} strokeWidth={2} /> WhatsApp Enquiry
+                <WhatsappIcon size={18} strokeWidth={2} /> WhatsApp Enquiry
               </CtaButton>
               <CtaButton href={`tel:${SITE.tel}`} variant="secondary" external>
                 <Phone size={18} strokeWidth={2} /> {SITE.phoneDisplay}

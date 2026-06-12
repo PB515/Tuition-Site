@@ -1,4 +1,5 @@
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
+import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import CtaButton from "./CtaButton";
 import { WA_ENQUIRY, SITE } from "@/lib/site";
 
@@ -21,7 +22,7 @@ export default function EnquiryBand({
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <CtaButton href={WA_ENQUIRY} external>
-            <MessageCircle size={18} strokeWidth={2} /> WhatsApp Enquiry
+            <WhatsappIcon size={18} strokeWidth={2} /> WhatsApp Enquiry
           </CtaButton>
           <CtaButton href={`tel:${SITE.tel}`} variant="secondary" external>
             <Phone size={18} strokeWidth={2} /> Call Sir

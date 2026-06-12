@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, MessageCircle } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import { createClient } from "@/lib/supabase/server";
 import { SITE } from "@/lib/site";
 import { academicYearOf, feeAcademicYear, currentAcademicYear } from "@/lib/academic-year";
@@ -157,7 +158,7 @@ export default async function Page({
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary-strong hover:bg-primary-tint"
         >
-          <MessageCircle size={15} strokeWidth={2} /> Message academy
+          <WhatsappIcon size={15} strokeWidth={2} /> Message academy
         </a>
       </div>
 

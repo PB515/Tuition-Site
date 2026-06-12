@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import LoginForm from "@/components/admin/LoginForm";
 
 export const metadata: Metadata = {
@@ -16,6 +18,18 @@ export default function Page() {
       <div className="mt-6">
         <LoginForm />
       </div>
+      <p className="mt-6 text-sm text-ink-muted">
+        Parent?{" "}
+        <Link href="/parent/login" className="font-medium text-primary-strong hover:underline">
+          Use the parent login
+        </Link>
+      </p>
+      <Link
+        href="/"
+        className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-ink-muted hover:text-primary-strong"
+      >
+        <ArrowLeft size={15} strokeWidth={2} /> Back to website
+      </Link>
     </main>
   );
 }

@@ -19,9 +19,24 @@ export default function LoginForm() {
     setPending(true);
     setError(null);
     const supabase = createClient();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data: signInData, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
       setError("Wrong email or password.");
+      setPending(false);
+      return;
+    }
+    // Staff area is staff-only. A parent account signing in here is rejected
+    // (and signed back out) rather than bounced to the parent portal. Checked
+    // with the same client that just authenticated, so there is no cookie race.
+    const userId = signInData.user?.id;
+    const { data: staffRow } = await supabase
+      .from("staff")
+      .select("user_id")
+      .eq("user_id", userId ?? "")
+      .maybeSingle();
+    if (!staffRow) {
+      await supabase.auth.signOut();
+      setError("This login is for academy staff. If you are a parent, please use the parent login.");
       setPending(false);
       return;
     }

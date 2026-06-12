@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ParentLoginForm from "@/components/parent/ParentLoginForm";
+import WebsiteLink from "@/components/parent/WebsiteLink";
 
 export const metadata: Metadata = { title: "Parent login", robots: { index: false, follow: false } };
 
@@ -10,6 +11,9 @@ export default function Page() {
       <p className="mt-2 text-sm text-ink-muted">Inspire Academy of Mathematics</p>
       <div className="mt-6">
         <ParentLoginForm />
+      </div>
+      <div className="mt-6">
+        <WebsiteLink />
       </div>
     </main>
   );

@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, MessageCircle, FunctionSquare } from "lucide-react";
+import { Menu, X, FunctionSquare } from "lucide-react";
+import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import InstallButton from "@/components/InstallButton";
 import { NAV, WA_ENQUIRY, SITE } from "@/lib/site";
 
@@ -63,7 +64,7 @@ export default function Nav({ logoUrl = null }: { logoUrl?: string | null }) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-primary-strong px-5 py-2.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-primary-deep"
           >
-            <MessageCircle size={16} strokeWidth={2} />
+            <WhatsappIcon size={16} strokeWidth={2} />
             WhatsApp Enquiry
           </a>
         </div>
@@ -109,7 +110,7 @@ export default function Nav({ logoUrl = null }: { logoUrl?: string | null }) {
               rel="noopener noreferrer"
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary-strong px-5 py-3 text-sm font-semibold text-white"
             >
-              <MessageCircle size={18} strokeWidth={2} />
+              <WhatsappIcon size={18} strokeWidth={2} />
               WhatsApp {SITE.teacher.split(" ")[0]}
             </a>
           </div>

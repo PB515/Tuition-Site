@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { MessageCircle, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import { SITE, WA_ENQUIRY } from "@/lib/site";
 
 /**
@@ -31,7 +32,7 @@ export default function PagePlaceholder({
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-full bg-primary-strong px-6 py-3 text-sm font-semibold text-white hover:bg-primary-deep"
         >
-          <MessageCircle size={18} strokeWidth={2} /> WhatsApp Enquiry
+          <WhatsappIcon size={18} strokeWidth={2} /> WhatsApp Enquiry
         </a>
         <Link
           href="/"

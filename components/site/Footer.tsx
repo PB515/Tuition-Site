@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MapPin, Phone, MessageCircle, Mail } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
+import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import { SITE, NAV, AREAS, WA_ENQUIRY, BRANCHES } from "@/lib/site";
 
 export default function Footer() {
@@ -24,7 +25,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-primary-strong px-4 py-2 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-primary-deep"
             >
-              <MessageCircle size={16} strokeWidth={2} /> WhatsApp Enquiry
+              <WhatsappIcon size={16} strokeWidth={2} /> WhatsApp Enquiry
             </a>
             <a
               href={`tel:${SITE.tel}`}

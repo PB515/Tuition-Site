@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { MessageCircle, Phone, RotateCcw, Check, ArrowLeft } from "lucide-react";
+import { Phone, RotateCcw, Check, ArrowLeft } from "lucide-react";
+import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import { GAP_CLASSES, RATINGS, type Rating } from "@/lib/gap-test-config";
 import { waLink, SITE } from "@/lib/site";
 
@@ -98,7 +99,7 @@ export default function GapTest() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-primary-strong px-6 py-3 text-sm font-semibold text-white hover:bg-primary-deep"
           >
-            <MessageCircle size={18} strokeWidth={2} /> WhatsApp Sir these chapters
+            <WhatsappIcon size={18} strokeWidth={2} /> WhatsApp Sir these chapters
           </a>
           <a
             href={`tel:${SITE.tel}`}

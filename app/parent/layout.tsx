@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { parentSignOut } from "./actions";
+import WebsiteLink from "@/components/parent/WebsiteLink";
 
 export const dynamic = "force-dynamic";
 
@@ -33,14 +34,20 @@ export default async function ParentLayout({
           <Link href="/parent" className="font-heading text-sm font-bold text-ink">
             Inspire Academy · Parent
           </Link>
-          <form action={parentSignOut}>
-            <button
-              type="submit"
-              className="rounded-full border border-border px-3 py-1.5 text-sm font-medium text-ink-muted transition-colors hover:text-ink"
-            >
-              Sign out
-            </button>
-          </form>
+          <div className="flex items-center gap-2">
+            <WebsiteLink
+              label="Website"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-sm font-medium text-ink-muted transition-colors hover:text-ink"
+            />
+            <form action={parentSignOut}>
+              <button
+                type="submit"
+                className="rounded-full border border-border px-3 py-1.5 text-sm font-medium text-ink-muted transition-colors hover:text-ink"
+              >
+                Sign out
+              </button>
+            </form>
+          </div>
         </div>
       </header>
       {children}
