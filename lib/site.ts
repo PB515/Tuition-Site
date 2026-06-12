@@ -25,7 +25,7 @@ export function waLink(message: string) {
 }
 
 export const WA_ENQUIRY = waLink(
-  "Hi Inspire Academy, I want admission details for Math coaching.",
+  "Hi Inspire Academy of Mathematics, I want admission details for Math coaching.",
 );
 
 export const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.mapsQuery)}`;
