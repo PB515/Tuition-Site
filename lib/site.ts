@@ -33,11 +33,10 @@ export const MAPS_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(S
 export const ENQUIRY_CLASSES = [
   "Class 9",
   "Class 10",
-  "Class 11",
-  "Class 12",
-  "Applied Math",
-  "JEE",
-  "GUJCET",
+  "Class 11 Regular",
+  "Class 11 Applied",
+  "Class 12 Regular",
+  "Class 12 Applied",
   "Other",
 ];
 

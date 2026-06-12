@@ -72,7 +72,7 @@ export default function Footer() {
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-5 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p>{SITE.name}, New Sama Road, Vadodara.</p>
-          <p>Offline Math coaching for Class 9 to 12, Applied, JEE and GUJCET.</p>
+          <p>Offline Math coaching for Class 9 to 12, Regular and Applied.</p>
           <Link href="/admin/login" className="hover:text-primary-strong">
             Staff login
           </Link>
