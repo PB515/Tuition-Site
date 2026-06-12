@@ -16,7 +16,7 @@ export default function Footer({ logoUrl = null }: { logoUrl?: string | null }) 
           {logoUrl ? (
             <Link href="/" aria-label={SITE.name}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={logoUrl} alt={SITE.name} className="h-12 w-auto sm:h-14" />
+              <img src={logoUrl} alt={SITE.name} className="h-16 w-auto sm:h-20" />
             </Link>
           ) : (
             <p className="font-heading text-lg font-bold text-ink">{SITE.name}</p>
