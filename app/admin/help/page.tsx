@@ -105,12 +105,18 @@ export default function Page() {
       <p className="mt-1 max-w-2xl text-sm text-ink-muted">
         Step-by-step for everyday tasks.
       </p>
-      <div className="mt-4">
+      <div className="mt-4 flex flex-wrap gap-2">
         <Link
-          href="/admin/help/sop"
+          href="/admin/help/manual"
           className="inline-flex items-center rounded-full bg-primary-strong px-5 py-2 text-sm font-semibold text-white hover:bg-primary-deep"
         >
-          One-page SOP (print / save as PDF)
+          Full operating manual (detailed)
+        </Link>
+        <Link
+          href="/admin/help/sop"
+          className="inline-flex items-center rounded-full border border-primary px-5 py-2 text-sm font-semibold text-primary-strong hover:bg-primary-tint"
+        >
+          One-page SOP (cheat sheet)
         </Link>
       </div>
 
