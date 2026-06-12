@@ -39,9 +39,14 @@ export default function SeoPage({ content, imageSlug }: { content: SeoContent; i
             </h2>
             <ul className="mt-6 space-y-3">
               {content.whoFor.map((w) => (
-                <li key={w} className="flex gap-3 text-ink-muted">
-                  <Check size={20} strokeWidth={2.5} className="mt-0.5 shrink-0 text-primary" />
-                  <span>{w}</span>
+                <li
+                  key={w}
+                  className="group flex gap-3 rounded-2xl border border-border bg-surface p-4 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
+                >
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-tint text-primary-strong transition-transform duration-200 group-hover:scale-110">
+                    <Check size={16} strokeWidth={2.5} />
+                  </span>
+                  <span className="text-ink-muted">{w}</span>
                 </li>
               ))}
             </ul>
@@ -52,9 +57,14 @@ export default function SeoPage({ content, imageSlug }: { content: SeoContent; i
             </h2>
             <ul className="mt-6 space-y-3">
               {content.covered.map((c) => (
-                <li key={c} className="flex gap-3 text-ink-muted">
-                  <Check size={20} strokeWidth={2.5} className="mt-0.5 shrink-0 text-primary" />
-                  <span>{c}</span>
+                <li
+                  key={c}
+                  className="group flex gap-3 rounded-2xl border border-border bg-surface p-4 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
+                >
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-tint text-primary-strong transition-transform duration-200 group-hover:scale-110">
+                    <Check size={16} strokeWidth={2.5} />
+                  </span>
+                  <span className="text-ink-muted">{c}</span>
                 </li>
               ))}
             </ul>
@@ -76,9 +86,12 @@ export default function SeoPage({ content, imageSlug }: { content: SeoContent; i
           <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             Common questions
           </h2>
-          <dl className="mt-8 space-y-7">
+          <dl className="mt-8 space-y-3">
             {content.faqs.map((f) => (
-              <div key={f.q}>
+              <div
+                key={f.q}
+                className="rounded-2xl border border-border bg-surface p-5 transition-colors duration-200 hover:border-primary"
+              >
                 <dt className="font-semibold text-ink">{f.q}</dt>
                 <dd className="mt-2 text-sm leading-relaxed text-ink-muted">{f.a}</dd>
               </div>

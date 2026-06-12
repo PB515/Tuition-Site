@@ -61,9 +61,13 @@ export default function Page() {
                   href={br.mapsLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3 text-base text-ink-muted hover:text-primary-strong"
+                  className="group flex items-start gap-3 rounded-2xl border border-border bg-bg p-4 text-base text-ink-muted transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
                 >
-                  <MapPin size={22} strokeWidth={1.75} className="mt-0.5 shrink-0 text-primary" />
+                  <MapPin
+                    size={22}
+                    strokeWidth={1.75}
+                    className="mt-0.5 shrink-0 text-primary transition-transform duration-200 group-hover:scale-110"
+                  />
                   <span>
                     <span className="font-semibold text-ink">
                       {br.name}
@@ -115,10 +119,13 @@ export default function Page() {
             <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
               How admission works
             </h2>
-            <ol className="mt-6 space-y-4">
+            <ol className="mt-6 space-y-3">
               {STEPS.map((s, i) => (
-                <li key={s} className="flex gap-3">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-strong text-xs font-bold text-white">
+                <li
+                  key={s}
+                  className="group flex gap-3 rounded-2xl border border-border bg-bg p-4 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
+                >
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-strong text-xs font-bold text-white transition-transform duration-200 group-hover:scale-110">
                     {i + 1}
                   </span>
                   <span className="text-sm leading-relaxed text-ink-muted">{s}</span>
@@ -133,11 +140,16 @@ export default function Page() {
             <p className="mt-6 text-sm leading-relaxed text-ink-muted">{AREAS.join(", ")}.</p>
 
             <h3 className="mt-8 font-heading text-lg font-bold text-ink">Good to know</h3>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-4 space-y-3">
               {GOOD_TO_KNOW.map((g) => (
-                <li key={g} className="flex gap-2.5 text-sm leading-relaxed text-ink-muted">
-                  <Check size={18} strokeWidth={2.5} className="mt-0.5 shrink-0 text-primary" />
-                  <span>{g}</span>
+                <li
+                  key={g}
+                  className="group flex gap-3 rounded-2xl border border-border bg-bg p-4 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
+                >
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-tint text-primary-strong transition-transform duration-200 group-hover:scale-110">
+                    <Check size={16} strokeWidth={2.5} />
+                  </span>
+                  <span className="text-sm leading-relaxed text-ink-muted">{g}</span>
                 </li>
               ))}
             </ul>

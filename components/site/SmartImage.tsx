@@ -18,10 +18,15 @@ export default async function SmartImage({
   const url = await resolveImage(src);
   const size = slotMeta(src)?.size;
   return (
-    <div className={`relative overflow-hidden bg-primary-tint/40 ${className ?? ""}`}>
+    <div className={`group relative overflow-hidden bg-primary-tint/40 ${className ?? ""}`}>
       {url ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={url} alt={alt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+        <img
+          src={url}
+          alt={alt}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          loading="lazy"
+        />
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5 p-4 text-center">
           <ImageIcon size={26} strokeWidth={1.5} className="text-primary" />

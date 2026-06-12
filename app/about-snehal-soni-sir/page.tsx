@@ -83,7 +83,10 @@ export default function Page() {
           </h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {CREDENTIALS.map((c) => (
-              <div key={c.label} className="rounded-2xl border border-border bg-surface p-5">
+              <div
+                key={c.label}
+                className="group rounded-2xl border border-border bg-surface p-5 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
+              >
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary-strong">
                   {c.label}
                 </p>
@@ -106,11 +109,16 @@ export default function Page() {
           <h2 className="max-w-2xl font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             What makes his teaching different
           </h2>
-          <ul className="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2">
             {POINTS.map((p) => (
-              <li key={p} className="flex gap-3 text-ink-muted">
-                <Check size={20} strokeWidth={2.5} className="mt-0.5 shrink-0 text-primary" />
-                <span>{p}</span>
+              <li
+                key={p}
+                className="group flex gap-3 rounded-2xl border border-border bg-bg p-4 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
+              >
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-tint text-primary-strong transition-transform duration-200 group-hover:scale-110">
+                  <Check size={16} strokeWidth={2.5} />
+                </span>
+                <span className="text-ink-muted">{p}</span>
               </li>
             ))}
           </ul>

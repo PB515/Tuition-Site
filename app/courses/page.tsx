@@ -65,11 +65,16 @@ export default function Page() {
           <h2 className="max-w-2xl font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Every batch includes
           </h2>
-          <ul className="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2">
             {INCLUDED.map((i) => (
-              <li key={i} className="flex gap-3 text-ink-muted">
-                <Check size={20} strokeWidth={2.5} className="mt-0.5 shrink-0 text-primary" />
-                <span>{i}</span>
+              <li
+                key={i}
+                className="group flex gap-3 rounded-2xl border border-border bg-bg p-4 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
+              >
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-tint text-primary-strong transition-transform duration-200 group-hover:scale-110">
+                  <Check size={16} strokeWidth={2.5} />
+                </span>
+                <span className="text-ink-muted">{i}</span>
               </li>
             ))}
           </ul>
