@@ -316,11 +316,11 @@ export default function Page() {
         <Steps
           items={[
             "First, in Batches, create next year's batches and set their Academic year (e.g. 2027-2028). Make one per new class and stream, like '11 Regular A' and '11 Applied A'.",
-            "Go to Students. Set Batch to the old batch (e.g. 10-A) and set Show to 100, so the whole batch is on one screen.",
-            "Tick the students staying for Regular. In the blue bar choose 'Promote to class' (Class 11) and 'into batch' (the 11 Regular batch), then press Promote.",
-            "Tick the students going to Applied, choose Class 11 and the 11 Applied batch, press Promote.",
-            "Tick the students who are leaving, and press 'Mark inactive'. They keep all their history; they just drop off the active lists.",
-            "Repeat for each old batch (10-B, 10-C, 10-D, and the graduating 12th batches).",
+            "Open the Year-end tab. Pick the old batch (e.g. 10-A) - its students appear in a list below.",
+            "Choose where the ticked students go: the new class (Class 11) and the new batch (the 11 Regular batch).",
+            "Tick the students staying for Regular and press 'Promote selected'. Then change the batch to the Applied one, tick the Applied group, and promote them too.",
+            "Tick the students who are leaving and press 'Mark selected as left'. They keep all their history; they just drop off the active lists.",
+            "Pick the next old batch and repeat (10-B, 10-C, 10-D, and the graduating 12th batches).",
           ]}
         />
         <p>
@@ -332,7 +332,7 @@ export default function Page() {
           download its Attendance, Test marks, Fees, or the Students roster as CSV (opens in Excel). This
           is a copy for research or backup - the live data stays safe in the system either way.
         </p>
-        <Tip text="Promote moves a whole group in one click - you never open students one by one. Tick the group, pick the class and batch, press Promote. After a batch is fully promoted it is empty, and you can delete that empty batch row in Batches." />
+        <Tip text="The Year-end tool moves a whole group at once - you never open students one by one. Pick the batch, tick the group, choose the destination, press Promote selected. After a batch is fully promoted it is empty, and you can delete that empty batch row in Batches." />
       </Section>
 
       <Section id="settings" n={16} title="Settings, reports and troubleshooting">

@@ -1,26 +1,37 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { currentAcademicYear } from "@/lib/academic-year";
+import { ENQUIRY_CLASSES } from "@/lib/site";
 import ArchiveDownloader from "@/components/admin/ArchiveDownloader";
+import PromoteTool from "@/components/admin/PromoteTool";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Year-end", robots: { index: false, follow: false } };
 
+type Batch = { id: string; name: string; academic_year: string | null };
+
 const STEPS = [
-  "In Batches, create next year's batches first (set the new Academic year, e.g. 2027-2028) - one for each new class and stream, like '11 Regular A' and '11 Applied A'.",
-  "Go to Students. Filter Batch to the old batch (e.g. 10-A) and set Show to 100 so the whole batch is on one screen.",
-  "Tick the students staying with you for Regular. In the blue bar, choose 'Promote to class' (Class 11) and 'into batch' (11 Regular A), then press Promote.",
-  "Tick the students going to Applied, choose Class 11 and the 11 Applied batch, press Promote.",
-  "Tick the students who are leaving and press 'Mark inactive'. They keep all their history; they just drop off the active lists.",
-  "Repeat for each old batch (10-B, 10-C, 10-D, then the 12th batches that are graduating).",
+  "In Batches, create next year's batches first (set the new academic year), one per class and stream - like '11 Regular A' and '11 Applied A'.",
+  "Below, pick the old batch (e.g. 10-A). Its students appear in a list.",
+  "Choose where the ticked students go: the new class, and the new batch.",
+  "Tick the students for that destination and press 'Promote selected'. Repeat for the other stream.",
+  "Tick the students who are leaving and press 'Mark selected as left'. They keep all their history.",
+  "Pick the next old batch and repeat.",
 ];
 
 export default async function Page() {
   const supabase = await createClient();
   const current = currentAcademicYear();
-  const { data } = await supabase.from("batches").select("academic_year");
+
+  const { data: batchData } = await supabase
+    .from("batches")
+    .select("id, name, academic_year")
+    .order("academic_year", { ascending: false })
+    .order("name");
+  const batches = (batchData ?? []) as Batch[];
+
   const years = Array.from(
-    new Set([current, ...((data ?? []).map((b) => b.academic_year as string | null).filter(Boolean) as string[])]),
+    new Set([current, ...batches.map((b) => b.academic_year).filter(Boolean) as string[]]),
   ).sort((a, b) => b.localeCompare(a));
 
   return (
@@ -33,20 +44,25 @@ export default async function Page() {
       </p>
 
       <section className="mt-8">
-        <h2 className="font-heading text-lg font-bold text-ink">Promote students (one batch at a time)</h2>
-        <p className="mt-1 max-w-2xl text-sm text-ink-muted">
-          A batch usually splits - some go Regular, some Applied, some leave. So you tick each group and
-          promote it. The promotion itself happens on the{" "}
-          <Link href="/admin/students" className="font-medium text-primary-strong hover:underline">
-            Students
-          </Link>{" "}
-          page.
-        </p>
-        <ol className="mt-4 max-w-3xl list-decimal space-y-2 rounded-2xl border border-border bg-surface p-5 pl-9 text-sm leading-relaxed text-ink-muted">
+        <h2 className="font-heading text-lg font-bold text-ink">Promote students</h2>
+        <ol className="mt-3 max-w-3xl list-decimal space-y-1.5 pl-5 text-sm leading-relaxed text-ink-muted">
           {STEPS.map((s, i) => (
             <li key={i}>{s}</li>
           ))}
         </ol>
+        <div className="mt-4 max-w-3xl">
+          {batches.length === 0 ? (
+            <p className="rounded-2xl border border-border bg-surface p-4 text-sm text-ink-muted">
+              You have no batches yet. Create them in{" "}
+              <Link href="/admin/batches" className="font-medium text-primary-strong hover:underline">
+                Batches
+              </Link>{" "}
+              first.
+            </p>
+          ) : (
+            <PromoteTool batches={batches} classes={ENQUIRY_CLASSES} />
+          )}
+        </div>
       </section>
 
       <section className="mt-10">

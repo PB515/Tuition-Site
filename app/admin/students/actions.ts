@@ -73,6 +73,18 @@ export async function bulkSetActive(ids: string[], active: boolean) {
   revalidatePath("/admin/students");
 }
 
+// Load the students of one batch, for the Year-end promotion tool.
+export async function getBatchStudents(batchId: string) {
+  if (!batchId) return [];
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("students")
+    .select("id, name, admission_no, class, active")
+    .eq("batch_id", batchId)
+    .order("name");
+  return data ?? [];
+}
+
 // Year-end promotion: move the selected students to a new class + batch in one go.
 // Never deletes; only updates class/batch, so all history stays attached to the id.
 // Only changes what you actually pick: leaving the batch empty keeps the current one.

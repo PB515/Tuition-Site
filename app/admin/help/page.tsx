@@ -65,11 +65,11 @@ const GUIDES: { title: string; steps: string[] }[] = [
   {
     title: "Promote students at year-end",
     steps: [
-      "Sidebar → Year-end has the full steps in one place.",
       "First create next year's batches in Batches (set the new academic year).",
-      "Students → filter to the old batch → set Show to 100 → tick the group going Regular → 'Promote to class' + 'into batch' → Promote.",
-      "Tick the Applied group → promote into the Applied batch. Tick leavers → 'Mark inactive'.",
-      "Nothing is deleted: promotion only changes class and batch, so all history stays. Download a year's data as CSV from the Year-end page for your records.",
+      "Open the Year-end tab → pick the old batch → its students appear below.",
+      "Choose the new class and new batch → tick the group going there → 'Promote selected'. Repeat for the other stream.",
+      "Tick the students who are leaving → 'Mark selected as left'. Nothing is deleted, all history stays.",
+      "Download any year's data as CSV from the same page for your records.",
     ],
   },
   {

@@ -3,8 +3,7 @@
 import { useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ENQUIRY_CLASSES } from "@/lib/site";
-import { bulkAssignBatch, bulkSetActive, bulkPromote } from "@/app/admin/students/actions";
+import { bulkAssignBatch, bulkSetActive } from "@/app/admin/students/actions";
 
 type Row = {
   id: string;
@@ -30,8 +29,6 @@ export default function StudentsTable({ rows, batches }: { rows: Row[]; batches:
   const router = useRouter();
   const [sel, setSel] = useState<Set<string>>(new Set());
   const [assignBatch, setAssignBatch] = useState("");
-  const [promoteClass, setPromoteClass] = useState("");
-  const [promoteBatch, setPromoteBatch] = useState("");
   const [pending, start] = useTransition();
 
   const ids = Array.from(sel);
@@ -118,43 +115,6 @@ export default function StudentsTable({ rows, batches }: { rows: Row[]; batches:
           <button onClick={() => run(() => bulkAssignBatch(ids, assignBatch))} disabled={!assignBatch} className={cellBtn}>
             Apply
           </button>
-
-          <span className="mx-1 hidden h-5 w-px bg-border sm:inline-block" />
-
-          <select
-            value={promoteClass}
-            onChange={(e) => setPromoteClass(e.target.value)}
-            className="rounded-lg border border-border bg-bg px-2 py-1.5 text-sm"
-          >
-            <option value="">Promote to class...</option>
-            {ENQUIRY_CLASSES.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
-          <select
-            value={promoteBatch}
-            onChange={(e) => setPromoteBatch(e.target.value)}
-            className="rounded-lg border border-border bg-bg px-2 py-1.5 text-sm"
-          >
-            <option value="">into batch (optional)...</option>
-            {batches.map((b) => (
-              <option key={b.id} value={b.id}>
-                {b.name}
-              </option>
-            ))}
-          </select>
-          <button
-            onClick={() => run(() => bulkPromote(ids, promoteClass, promoteBatch))}
-            disabled={!promoteClass && !promoteBatch}
-            className="rounded-full bg-primary-strong px-3 py-1.5 text-sm font-semibold text-white hover:bg-primary-deep disabled:opacity-40"
-          >
-            Promote
-          </button>
-
-          <span className="mx-1 hidden h-5 w-px bg-border sm:inline-block" />
-
           <button onClick={() => run(() => bulkSetActive(ids, true))} className={cellBtn}>Mark active</button>
           <button onClick={() => run(() => bulkSetActive(ids, false))} className={cellBtn}>Mark inactive</button>
           <button onClick={exportSelected} className={cellBtn}>Export selected</button>
