@@ -1,21 +1,32 @@
-import { SITE, AREAS, SITE_URL } from "./site";
+import { SITE, AREAS, BRANCHES, SITE_URL } from "./site";
+
+function postalAddress(full: string) {
+  return {
+    "@type": "PostalAddress",
+    streetAddress: full.replace(/,?\s*Vadodara\s*$/i, ""),
+    addressLocality: "Vadodara",
+    addressRegion: "Gujarat",
+    addressCountry: "IN",
+  };
+}
 
 export function organizationLd() {
+  const main = BRANCHES.find((b) => b.main) ?? BRANCHES[0];
   return {
     "@context": "https://schema.org",
     "@type": ["EducationalOrganization", "LocalBusiness"],
     name: SITE.name,
     url: SITE_URL,
     telephone: SITE.tel,
+    email: SITE.email,
     description:
-      "Focused offline math coaching in Vadodara led by Snehal Sir, with 25+ years of teaching. Class 9 to 12, Applied Math, NCERT, JEE and GUJCET.",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "3, Nand Complex, near Umiyangagar, New Sama Road",
-      addressLocality: "Vadodara",
-      addressRegion: "Gujarat",
-      addressCountry: "IN",
-    },
+      "Focused offline math coaching in Vadodara led by Snehal Sir, with 25+ years of teaching. Two branches: Alkapuri and Sama. Class 9 to 12, Applied Math, NCERT, JEE and GUJCET.",
+    address: postalAddress(main.address),
+    location: BRANCHES.map((br) => ({
+      "@type": "Place",
+      name: `${SITE.name} - ${br.name}`,
+      address: postalAddress(br.address),
+    })),
     areaServed: AREAS.map((a) => `${a}, Vadodara`),
     founder: { "@type": "Person", name: SITE.teacher },
   };

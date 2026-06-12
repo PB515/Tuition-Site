@@ -10,9 +10,10 @@ export const SITE_URL =
 export const SITE = {
   name: "Inspire Academy of Mathematics",
   teacher: "Snehal Sir",
-  phoneDisplay: "+91 90166 79929",
-  tel: "+919016679929",
-  whatsapp: "919016679929",
+  phoneDisplay: "+91 98980 41402",
+  tel: "+919898041402",
+  whatsapp: "919898041402",
+  email: "sonideepsneh@gmail.com",
   address: "3, Nand Complex, near Umiyangagar, New Sama Road, Vadodara",
   yearsExperience: "25+",
   since: "2000",
@@ -29,6 +30,31 @@ export const WA_ENQUIRY = waLink(
 
 export const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.mapsQuery)}`;
 export const MAPS_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(SITE.mapsQuery)}&output=embed`;
+
+// Two branches in Vadodara. The main branch (Sama) carries the embedded map;
+// Alkapuri is link-only (its own Google share link, no embed).
+export const BRANCHES: {
+  name: string;
+  main: boolean;
+  address: string;
+  mapsLink: string;
+  mapsEmbed: string | null;
+}[] = [
+  {
+    name: "Sama (New Sama Road)",
+    main: true,
+    address: SITE.address,
+    mapsLink: MAPS_LINK,
+    mapsEmbed: MAPS_EMBED,
+  },
+  {
+    name: "Alkapuri",
+    main: false,
+    address: "202, Dwarkesh Complex, R.C. Dutt Road, Alkapuri, Vadodara",
+    mapsLink: "https://share.google/jHdIm6YLPuQKel2bb",
+    mapsEmbed: null,
+  },
+];
 
 export const ENQUIRY_CLASSES = [
   "Class 9",
@@ -62,11 +88,11 @@ export const AREAS = [
 
 // Course tiles. Launch SEO pages get their own route; staged ones point to /courses for now.
 export const COURSES = [
-  { label: "Class 9", note: "Build the base for the board year", href: "/class-9-maths-coaching-vadodara" },
-  { label: "Class 10", note: "Board-focused, concept and practice", href: "/class-10-maths-coaching-vadodara" },
-  { label: "Class 11 Regular-Math", note: "Higher math for boards and JEE", href: "/class-11-maths-coaching-vadodara" },
-  { label: "Class 11 Applied-Math", note: "Data and real-world math track", href: "/class-11-applied-maths-coaching-vadodara" },
-  { label: "Class 12 Regular-Math", note: "Boards plus competitive readiness", href: "/class-12-maths-coaching-vadodara" },
+  { label: "Class 9", note: "Build strong foundations before the board years begin", href: "/class-9-maths-coaching-vadodara" },
+  { label: "Class 10", note: "Concept-first board preparation with proven results", href: "/class-10-maths-coaching-vadodara" },
+  { label: "Class 11 Regular-Math", note: "The steepest jump in school math, made manageable", href: "/class-11-maths-coaching-vadodara" },
+  { label: "Class 11 Applied-Math", note: "The real-world, data-driven math track", href: "/class-11-applied-maths-coaching-vadodara" },
+  { label: "Class 12 Regular-Math", note: "Boards, JEE and GUJCET prepared together, in depth", href: "/class-12-maths-coaching-vadodara" },
   { label: "Class 12 Applied-Math", note: "Where Inspire scored 97 out of 100", href: "/class-12-applied-maths-coaching-vadodara" },
 ];
 
@@ -81,37 +107,41 @@ export const CLASS_CHIPS = [
 ];
 
 export const METHOD_STEPS = [
-  { title: "Concept clarity first", body: "Every topic starts from the idea, not the formula, so it actually sticks." },
-  { title: "NCERT foundation", body: "NCERT-based teaching that covers both CBSE and GSEB students." },
-  { title: "Step-by-step problem solving", body: "Worked the way an examiner expects, one clean step at a time." },
-  { title: "Exam-pattern practice", body: "Real board, GUJCET and JEE style questions, not just textbook sums." },
-  { title: "Weekly tests and mistake analysis", body: "A test every week, then a close look at what went wrong and why." },
-  { title: "Doubt-solving and revision", body: "Personal doubt-solving with Sir, plus planned revision before exams." },
+  { title: "Start with the real-world idea", body: "Every concept is introduced through what it means and where it is used, before a single formula appears." },
+  { title: "Build on NCERT, don't race past it", body: "NCERT is the spine of every class, giving CBSE and GSEB students one solid, shared foundation." },
+  { title: "Work through problems together", body: "Problems are solved step by step, out loud, so students learn to think on paper, not just memorise steps." },
+  { title: "Practise with real exam questions", body: "Real board, GUJCET and JEE style questions, with handcrafted material for specific needs." },
+  { title: "Test every week without exception", body: "Consistent testing is the real preparation. Each test is followed by a mistake-analysis session." },
+  { title: "Personal doubt-solving with Sir", body: "Small batches mean Sir knows every student's weak spots, so doubts are answered personally, never left for later." },
 ];
 
 export const FAQS = [
   {
-    q: "Which boards and exams do you cover?",
-    a: "Teaching is NCERT-based, which covers both CBSE and GSEB students, along with Applied Math, JEE and GUJCET preparation.",
+    q: "Who actually teaches the classes?",
+    a: "Snehal Sir teaches all classes from 9 to 12 personally. Parents often ask because they have been promised experienced faculty elsewhere and got someone else. That does not happen here.",
   },
   {
-    q: "What are the batch timings?",
-    a: "Batches run through the week. Tell us your class and school on WhatsApp and we will share the current timings that fit.",
-  },
-  {
-    q: "What is the fee?",
-    a: "Fees depend on the class and batch. We explain them directly when you enquire, so you get the right batch first.",
+    q: "What makes Applied Math coaching different here?",
+    a: "Applied Math is a relatively new subject, and most centres treat it as a lighter version of standard Math. It is not. Snehal Sir has built a dedicated approach and study material around what the subject actually tests, real-world mathematical thinking. The results speak for themselves.",
   },
   {
     q: "How many students are in one batch?",
-    a: "Batches are kept small, so every student gets personal attention from Snehal Sir.",
+    a: "A maximum of 20 students per batch. This is non-negotiable, it is what makes personal attention possible.",
+  },
+  {
+    q: "Which boards and exams do you cover?",
+    a: "All teaching is NCERT-based, which serves both CBSE and GSEB students. We prepare students for the boards, JEE and GUJCET, and other competitive exams within the same structured system.",
   },
   {
     q: "Do you take regular tests?",
-    a: "Yes. Weekly tests, followed by mistake analysis, are a fixed part of the schedule. Printed notes are provided too.",
+    a: "Every week, without exception. Students receive printed notes, sit a weekly test, and get direct feedback on their mistakes from Sir.",
   },
   {
-    q: "Will parents get progress updates?",
-    a: "Yes. Parents receive important test, class and progress updates from the academy team when required.",
+    q: "Will parents receive updates?",
+    a: "Yes. The parent app gives you real-time attendance, test scores, fee records and exam reminders, so you always know where your child stands.",
+  },
+  {
+    q: "My child really fears math. Can Inspire help?",
+    a: "This is the most common worry we hear, and the answer is yes. Most students who fear math are missing one earlier concept, not the whole subject. Sir starts by finding that gap and rebuilding from there, so confidence returns along with understanding.",
   },
 ];

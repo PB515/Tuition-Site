@@ -1,9 +1,9 @@
-import { MapPin, Phone, MessageCircle } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Mail } from "lucide-react";
 import PageHeader from "@/components/site/PageHeader";
 import SmartImage from "@/components/site/SmartImage";
 import CtaButton from "@/components/site/CtaButton";
 import EnquiryForm from "@/components/EnquiryForm";
-import { SITE, AREAS, WA_ENQUIRY, MAPS_EMBED, MAPS_LINK } from "@/lib/site";
+import { SITE, AREAS, WA_ENQUIRY, MAPS_EMBED, BRANCHES } from "@/lib/site";
 
 export const metadata = { title: "Contact" };
 
@@ -19,7 +19,7 @@ export default function Page() {
     <main>
       <PageHeader
         title="Contact Inspire Academy"
-        subtitle="Offline math coaching in New Sama Road, Vadodara. Reach Snehal Sir directly."
+        subtitle="Offline math coaching in Vadodara, at our Alkapuri and Sama branches. Reach Snehal Sir directly."
       />
 
       <section className="border-b border-border">
@@ -38,15 +38,34 @@ export default function Page() {
           </div>
 
           <div>
-            <a
-              href={MAPS_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-start gap-3 text-base text-ink-muted hover:text-primary-strong"
-            >
-              <MapPin size={22} strokeWidth={1.75} className="mt-0.5 shrink-0 text-primary" />
-              {SITE.address}
-            </a>
+            <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+              Two branches. One standard of teaching.
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+              Inspire Academy has two locations in Vadodara, Alkapuri and Sama (New Sama Road).
+              Whichever branch your child attends, the teaching, the batch size and the personal
+              attention stay exactly the same.
+            </p>
+            <div className="mt-5 space-y-4">
+              {BRANCHES.map((br) => (
+                <a
+                  key={br.name}
+                  href={br.mapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-base text-ink-muted hover:text-primary-strong"
+                >
+                  <MapPin size={22} strokeWidth={1.75} className="mt-0.5 shrink-0 text-primary" />
+                  <span>
+                    <span className="font-semibold text-ink">
+                      {br.name}
+                      {br.main ? " · main" : ""}
+                    </span>
+                    <span className="block text-sm">{br.address}</span>
+                  </span>
+                </a>
+              ))}
+            </div>
             <div className="mt-5 flex flex-wrap gap-3">
               <CtaButton href={WA_ENQUIRY} external>
                 <MessageCircle size={18} strokeWidth={2} /> WhatsApp Enquiry
@@ -55,6 +74,13 @@ export default function Page() {
                 <Phone size={18} strokeWidth={2} /> {SITE.phoneDisplay}
               </CtaButton>
             </div>
+            <a
+              href={`mailto:${SITE.email}`}
+              className="mt-4 flex items-center gap-2 text-sm text-ink-muted hover:text-primary-strong"
+            >
+              <Mail size={18} strokeWidth={1.75} className="shrink-0 text-primary" />
+              {SITE.email}
+            </a>
             <SmartImage
               src="/images/contact.jpg"
               alt="Inspire Academy of Mathematics"

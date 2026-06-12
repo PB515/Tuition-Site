@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | Inspire Academy of Mathematics",
   },
   description:
-    "Focused Math coaching in Vadodara led by Snehal Sir, with 25+ years of teaching. Class 9 to 12, Applied Math, NCERT, JEE and GUJCET. Concept clarity, regular tests, personal attention.",
+    "Mathematics coaching in Vadodara by Snehal Sir, 25+ years of experience, small batches at two branches: Alkapuri and Sama. Class 9 to 12, Math and Applied Math, JEE and GUJCET. Concept clarity, weekly tests, personal attention.",
   appleWebApp: { capable: true, title: "Inspire Academy", statusBarStyle: "default" },
 };
 

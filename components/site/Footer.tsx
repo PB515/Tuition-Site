@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MapPin, Phone, MessageCircle } from "lucide-react";
-import { SITE, NAV, AREAS, WA_ENQUIRY, MAPS_LINK } from "@/lib/site";
+import { MapPin, Phone, MessageCircle, Mail } from "lucide-react";
+import { SITE, NAV, AREAS, WA_ENQUIRY, BRANCHES } from "@/lib/site";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -55,14 +55,32 @@ export default function Footer() {
 
         <div>
           <p className="text-sm font-semibold text-ink">Visit us</p>
+          <div className="mt-4 space-y-3">
+            {BRANCHES.map((br) => (
+              <a
+                key={br.name}
+                href={br.mapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 text-sm text-ink-muted hover:text-primary-strong"
+              >
+                <MapPin size={18} strokeWidth={1.75} className="mt-0.5 shrink-0 text-primary" />
+                <span>
+                  <span className="font-medium text-ink">
+                    {br.name}
+                    {br.main ? " · main" : ""}
+                  </span>
+                  <span className="block">{br.address}</span>
+                </span>
+              </a>
+            ))}
+          </div>
           <a
-            href={MAPS_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 flex items-start gap-2 text-sm text-ink-muted hover:text-primary-strong"
+            href={`mailto:${SITE.email}`}
+            className="mt-4 flex items-center gap-2 text-sm text-ink-muted hover:text-primary-strong"
           >
-            <MapPin size={18} strokeWidth={1.75} className="mt-0.5 shrink-0 text-primary" />
-            {SITE.address}
+            <Mail size={18} strokeWidth={1.75} className="shrink-0 text-primary" />
+            {SITE.email}
           </a>
           <p className="mt-4 text-sm font-semibold text-ink">Areas we teach</p>
           <p className="mt-2 text-sm text-ink-muted">{AREAS.join(", ")}</p>
@@ -71,7 +89,7 @@ export default function Footer() {
 
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-5 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p>{SITE.name}, New Sama Road, Vadodara.</p>
+          <p>{SITE.name}, Alkapuri &amp; Sama, Vadodara.</p>
           <p>Offline Math coaching for Class 9 to 12, Regular and Applied.</p>
           <Link href="/admin/login" className="hover:text-primary-strong">
             Staff login

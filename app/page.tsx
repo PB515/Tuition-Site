@@ -22,7 +22,7 @@ import {
   SITE,
   WA_ENQUIRY,
   MAPS_EMBED,
-  MAPS_LINK,
+  BRANCHES,
   CLASS_CHIPS,
   COURSES,
   METHOD_STEPS,
@@ -30,18 +30,25 @@ import {
 
 const STATS = [
   { value: "25+", label: "years of teaching" },
-  { value: "2000", label: "teaching since" },
+  { value: "2", label: "branches in Vadodara" },
+  { value: "20", label: "students per batch (max)" },
   { value: "97/100", label: "highest in Navrachana Applied Math" },
-  { value: "1", label: "subject: Math, done deeply" },
 ];
 
 const WHY = [
-  { t: "Math, and only Math", b: "One subject taught deeply, not one of many on a crowded timetable." },
-  { t: "Taught by Sir himself", b: "Personal attention from Snehal Sir, not a rotating set of tutors." },
-  { t: "Concepts before formulas", b: "Students learn why a method works, so it holds under exam pressure." },
-  { t: "NCERT for CBSE and GSEB", b: "One strong NCERT foundation that serves both boards at once." },
-  { t: "Weekly tests, real feedback", b: "A test every week, printed notes, and honest mistake analysis." },
-  { t: "Boards and competitive together", b: "Applied, JEE and GUJCET prepared inside one focused system." },
+  { t: "Experience that reads the room", b: "25+ years in the classroom means Sir knows exactly where students get stuck, why, and how to bring them back." },
+  { t: "Snehal Sir teaches every class", b: "For Class 9 to 12, the founder himself is in every session. Not a substitute, not a junior tutor." },
+  { t: "Practical, hands-on learning", b: "Concepts are grounded in where they come from and how they are used, before exam technique." },
+  { t: "Small batches. Maximum 20.", b: "Every batch is capped at 20, so we know where each student is and how they progress week to week." },
+  { t: "Applied Math specialists", b: "A dedicated, experience-backed approach with handcrafted material, already producing top results." },
+  { t: "Weekly tests, real feedback", b: "A test every week, printed notes, and an honest conversation about what went wrong." },
+];
+
+const APPLIED_POINTS = [
+  "Taught by Snehal Sir personally",
+  "Purpose-built curriculum aligned to real exam patterns",
+  "Ideal for Commerce and Science students choosing Applied over standard Math",
+  "Batches filling fast, limited to 20 students",
 ];
 
 const UPDATES = [
@@ -73,20 +80,20 @@ export default async function Home() {
               className="animate-fade-up text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong"
               style={{ animationDelay: "0ms" }}
             >
-              Math-only academy in Vadodara
+              Mathematics coaching in Alkapuri and Sama, Vadodara
             </p>
             <h1
               className="animate-fade-up mt-4 font-heading text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl"
               style={{ animationDelay: "90ms" }}
             >
-              Strong math concepts, taught by Snehal Sir.
+              25 years of teaching. One goal: make students love mathematics.
             </h1>
             <p
               className="animate-fade-up mt-5 max-w-xl text-lg leading-relaxed text-ink-muted"
               style={{ animationDelay: "170ms" }}
             >
-              Focused Class 9 to 12, Applied, JEE and GUJCET coaching in New Sama Road, with{" "}
-              {SITE.yearsExperience} years of teaching.
+              Focused Class 9 to 12, Applied, JEE and GUJCET coaching across our Alkapuri and Sama
+              branches, with {SITE.yearsExperience} years of teaching by Snehal Sir.
             </p>
             <div
               className="animate-fade-up mt-8 flex flex-wrap gap-3"
@@ -229,6 +236,48 @@ export default async function Home() {
               <ArrowUpRight size={20} strokeWidth={1.75} className="shrink-0" />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* 6b. APPLIED MATH SPOTLIGHT */}
+      <section className="border-b border-border">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
+              Newly introduced: Applied Mathematics
+            </p>
+            <h2 className="mt-4 font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+              Applied Math is new. Snehal Sir isn&apos;t.
+            </h2>
+            <p className="mt-4 max-w-md text-base leading-relaxed text-ink-muted">
+              Applied Mathematics was introduced as an alternative to standard Math, and most schools
+              are still working out how to teach it well. Snehal Sir has spent years understanding its
+              real intent, connecting mathematics to practical, real-world thinking. The result:
+              Chirayu Jani scored 97 out of 100 at Navrachana, the highest in the school. If your child
+              has chosen Applied Math, this is where they need to be.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <CtaButton href="/class-12-applied-maths-coaching-vadodara">
+                Explore Applied Math <ArrowRight size={18} strokeWidth={2} />
+              </CtaButton>
+              <CtaButton href={WA_ENQUIRY} variant="secondary" external>
+                <MessageCircle size={18} strokeWidth={2} /> WhatsApp Enquiry
+              </CtaButton>
+            </div>
+          </div>
+          <ul className="grid gap-3">
+            {APPLIED_POINTS.map((p) => (
+              <li
+                key={p}
+                className="flex gap-3 rounded-2xl border border-border bg-surface p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:shadow-sm"
+              >
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
+                  <Check size={16} strokeWidth={2.5} />
+                </span>
+                <span className="text-sm leading-relaxed text-ink">{p}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -399,17 +448,32 @@ export default async function Home() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24">
           <div>
             <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              Visit the academy or message us
+              Two branches. One standard of teaching.
             </h2>
-            <a
-              href={MAPS_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 flex items-start gap-3 text-base text-ink-muted hover:text-primary-strong"
-            >
-              <MapPin size={22} strokeWidth={1.75} className="mt-0.5 shrink-0 text-primary" />
-              {SITE.address}
-            </a>
+            <p className="mt-3 max-w-md text-base leading-relaxed text-ink-muted">
+              Whichever branch your child attends, the teaching, the batch size and the personal
+              attention stay exactly the same.
+            </p>
+            <div className="mt-6 space-y-4">
+              {BRANCHES.map((br) => (
+                <a
+                  key={br.name}
+                  href={br.mapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-base text-ink-muted hover:text-primary-strong"
+                >
+                  <MapPin size={22} strokeWidth={1.75} className="mt-0.5 shrink-0 text-primary" />
+                  <span>
+                    <span className="font-semibold text-ink">
+                      {br.name}
+                      {br.main ? " · main" : ""}
+                    </span>
+                    <span className="block text-sm">{br.address}</span>
+                  </span>
+                </a>
+              ))}
+            </div>
             <div className="mt-8 flex flex-wrap gap-3">
               <CtaButton href={WA_ENQUIRY} external>
                 <MessageCircle size={18} strokeWidth={2} /> WhatsApp Enquiry

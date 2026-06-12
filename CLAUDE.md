@@ -48,8 +48,9 @@ Next.js (App Router) · Tailwind v4 (tokens in globals.css) · shadcn/ui (light)
 - Real proof only — never invent testimonials/results/faces. Permission granted for "Chirayu Jani / Navrachana 97/100".
 
 ## Key facts (verbatim — the site must use these)
-- Address: **3, Nand Complex, near Umiyangagar, New Sama Road, Vadodara**
-- Phone + WhatsApp: **9016679929** → `tel:+919016679929`, `wa.me/919016679929`
+- Two branches (in `lib/site.ts` `BRANCHES`): **Sama (main)** — 3, Nand Complex, near Umiyangagar, New Sama Road, Vadodara; **Alkapuri** — 202, Dwarkesh Complex, R.C. Dutt Road, Alkapuri, Vadodara. Main branch has the embedded map; Alkapuri is link-only (Google share link).
+- Phone + WhatsApp: **9898041402** → `tel:+919898041402`, `wa.me/919898041402` (same number both branches)
+- Email: **sonideepsneh@gmail.com**
 - Areas: New Sama Road · Sama · Karelibaug · Fatehgunj · Nizampura · Chhani · Harni · Alkapuri
 
 ## Open TBDs (non-blocking — site omits until filled)
