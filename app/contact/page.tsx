@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Check } from "lucide-react";
 import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import PageHeader from "@/components/site/PageHeader";
 import SmartImage from "@/components/site/SmartImage";
@@ -13,6 +13,13 @@ const STEPS = [
   "We ask your class, board and school, and what you need in math.",
   "We explain the right batch, timings and fees.",
   "You visit the academy and confirm admission.",
+];
+
+const GOOD_TO_KNOW = [
+  "Classes 9 to 12, Regular and Applied Math",
+  "Maximum 20 students per batch",
+  "Weekly tests with mistake analysis",
+  "NCERT-based, covering CBSE and GSEB",
 ];
 
 export default function Page() {
@@ -124,6 +131,16 @@ export default function Page() {
               Areas we teach
             </h2>
             <p className="mt-6 text-sm leading-relaxed text-ink-muted">{AREAS.join(", ")}.</p>
+
+            <h3 className="mt-8 font-heading text-lg font-bold text-ink">Good to know</h3>
+            <ul className="mt-4 space-y-2.5">
+              {GOOD_TO_KNOW.map((g) => (
+                <li key={g} className="flex gap-2.5 text-sm leading-relaxed text-ink-muted">
+                  <Check size={18} strokeWidth={2.5} className="mt-0.5 shrink-0 text-primary" />
+                  <span>{g}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
