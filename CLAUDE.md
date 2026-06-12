@@ -51,10 +51,11 @@ Next.js (App Router) · Tailwind v4 (tokens in globals.css) · shadcn/ui (light)
 - Two branches (in `lib/site.ts` `BRANCHES`): **Sama (main)** — 3, Nand Complex, near Umiyangagar, New Sama Road, Vadodara; **Alkapuri** — 202, Dwarkesh Complex, R.C. Dutt Road, Alkapuri, Vadodara. Main branch has the embedded map; Alkapuri is link-only (Google share link).
 - Phone + WhatsApp: **9898041402** → `tel:+919898041402`, `wa.me/919898041402` (same number both branches)
 - Email: **sonideepsneh@gmail.com**
-- Areas: New Sama Road · Sama · Karelibaug · Fatehgunj · Nizampura · Chhani · Harni · Alkapuri
+- Areas (on the live site): New Sama Road, Alkapuri (the longer list was trimmed to the two branch areas)
+- Snehal Sir: **BSc & MSc Mathematics, B.Ed**. Higher Secondary maths teacher at **Navrachana School, Sama (2006–2024)**, where he *served as* Head of the Mathematics Department (NOT HOD for the full span); also taught **Navrachana International, Bhayli**. Co-founded Inspire Academy with his **wife (unnamed on site), who manages admin**. Headline experience stays **25+ years since 2000** (covers the school years).
 
 ## Open TBDs (non-blocking — site omits until filled)
-Sir's qualification/degree · approx students taught / #90+ scorers · GBP opening hours · 2–3 more result creatives · brand fonts confirm.
+Approx students taught / #90+ scorers · GBP opening hours · 2–3 more result creatives · brand fonts confirm.
 
 ## Where things live
 Tokens → `app/globals.css` (source: `/docs/04`) · Schema → `/docs/06` · Flows `/docs/01` · PRD `/docs/02` · Site map `/docs/03b` · Roadmap `/docs/08` · Build log `/docs/09` · QA `/docs/10` · Analytics `/docs/11` · Portal `/docs/app-*.md` · Inputs → `/docs/business-brief.md`, `/docs/research-report.md`.

@@ -39,7 +39,8 @@ export function personLd() {
     name: SITE.teacher,
     jobTitle: "Mathematics Teacher",
     description:
-      "Mathematics teacher in Vadodara with 25+ years of experience, teaching since 2000.",
+      "Mathematics teacher in Vadodara with 25+ years of experience, teaching since 2000. Holds a BSc and MSc in Mathematics and a B.Ed. Taught Higher Secondary mathematics at Navrachana School, Sama (2006 to 2024), where he served as Head of the Mathematics Department, and at Navrachana International, Bhayli.",
+    knowsAbout: ["Mathematics", "Applied Mathematics", "JEE preparation", "GUJCET preparation"],
     worksFor: { "@type": "EducationalOrganization", name: SITE.name },
   };
 }

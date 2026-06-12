@@ -36,7 +36,7 @@ const STATS = [
 ];
 
 const WHY = [
-  { t: "Experience that reads the room", b: "25+ years in the classroom means Sir knows exactly where students get stuck, why, and how to bring them back." },
+  { t: "Experience that reads the room", b: "25+ years in the classroom, including years at Navrachana School, mean Sir knows exactly where students get stuck and how to bring them back." },
   { t: "Snehal Sir teaches every class", b: "For Class 9 to 12, the founder himself is in every session. Not a substitute, not a junior tutor." },
   { t: "Practical, hands-on learning", b: "Concepts are grounded in where they come from and how they are used, before exam technique." },
   { t: "Small batches. Maximum 20.", b: "Every batch is capped at 20, so we know where each student is and how they progress week to week." },
