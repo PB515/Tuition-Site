@@ -1,14 +1,14 @@
 import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 
 export const metadata = {
-  title: "Class 12 Maths Coaching in Vadodara",
+  title: "Class 12 Regular-Math Coaching in Vadodara",
   description:
     "Class 12 maths coaching in Vadodara by Snehal Soni Sir. Board syllabus plus JEE and GUJCET readiness, with calculus made clear and weekly tests.",
 };
 
 const content: SeoContent = {
   eyebrow: "Board and beyond",
-  title: "Class 12 Maths Coaching in Vadodara",
+  title: "Class 12 Regular-Math Coaching in Vadodara",
   intro:
     "Class 12 maths coaching by Snehal Soni Sir, covering the board syllabus and the readiness needed for JEE and GUJCET, with weekly tests and personal doubt-solving.",
   whoFor: [

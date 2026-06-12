@@ -63,26 +63,22 @@ export const AREAS = [
 
 // Course tiles. Launch SEO pages get their own route; staged ones point to /courses for now.
 export const COURSES = [
-  { label: "Class 9 Maths", note: "Build the base for the board year", href: "/class-9-maths-coaching-vadodara" },
-  { label: "Class 10 Maths", note: "Board-focused, concept and practice", href: "/class-10-maths-coaching-vadodara" },
-  { label: "Class 11 Maths", note: "The jump to higher maths, made clear", href: "/class-11-maths-coaching-vadodara" },
-  { label: "Class 11 Applied Maths", note: "Data and real-world maths track", href: "/class-11-applied-maths-coaching-vadodara" },
-  { label: "Class 12 Maths", note: "Boards plus competitive readiness", href: "/class-12-maths-coaching-vadodara" },
-  { label: "Class 12 Applied Maths", note: "Where Inspire scored 97 out of 100", href: "/class-12-applied-maths-coaching-vadodara" },
-  { label: "GUJCET Maths", note: "Timed, exam-pattern practice", href: "/gujcet-maths-coaching-vadodara" },
-  { label: "JEE Maths", note: "Deeper problem-solving for JEE", href: "/jee-maths-coaching-vadodara" },
+  { label: "Class 9", note: "Build the base for the board year", href: "/class-9-maths-coaching-vadodara" },
+  { label: "Class 10", note: "Board-focused, concept and practice", href: "/class-10-maths-coaching-vadodara" },
+  { label: "Class 11 Regular-Math", note: "Higher math for boards and JEE", href: "/class-11-maths-coaching-vadodara" },
+  { label: "Class 11 Applied-Math", note: "Data and real-world math track", href: "/class-11-applied-maths-coaching-vadodara" },
+  { label: "Class 12 Regular-Math", note: "Boards plus competitive readiness", href: "/class-12-maths-coaching-vadodara" },
+  { label: "Class 12 Applied-Math", note: "Where Inspire scored 97 out of 100", href: "/class-12-applied-maths-coaching-vadodara" },
 ];
 
 // Class chips for the segment router below the hero.
 export const CLASS_CHIPS = [
   { label: "Class 9", href: "/class-9-maths-coaching-vadodara" },
   { label: "Class 10", href: "/class-10-maths-coaching-vadodara" },
-  { label: "Class 11", href: "/class-11-maths-coaching-vadodara" },
-  { label: "Class 11 Applied", href: "/class-11-applied-maths-coaching-vadodara" },
-  { label: "Class 12", href: "/class-12-maths-coaching-vadodara" },
-  { label: "Class 12 Applied", href: "/class-12-applied-maths-coaching-vadodara" },
-  { label: "GUJCET", href: "/gujcet-maths-coaching-vadodara" },
-  { label: "JEE", href: "/jee-maths-coaching-vadodara" },
+  { label: "Class 11 Regular-Math", href: "/class-11-maths-coaching-vadodara" },
+  { label: "Class 11 Applied-Math", href: "/class-11-applied-maths-coaching-vadodara" },
+  { label: "Class 12 Regular-Math", href: "/class-12-maths-coaching-vadodara" },
+  { label: "Class 12 Applied-Math", href: "/class-12-applied-maths-coaching-vadodara" },
 ];
 
 export const METHOD_STEPS = [

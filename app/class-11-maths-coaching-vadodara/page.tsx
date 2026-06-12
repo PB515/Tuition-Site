@@ -1,14 +1,14 @@
 import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 
 export const metadata = {
-  title: "Class 11 Maths Coaching in Vadodara",
+  title: "Class 11 Regular-Math Coaching in Vadodara",
   description:
     "Class 11 maths coaching in Vadodara by Snehal Soni Sir. Concept-first higher maths for CBSE and GSEB, a strong base for Class 12 boards, JEE and GUJCET, with weekly tests.",
 };
 
 const content: SeoContent = {
   eyebrow: "Higher maths begins",
-  title: "Class 11 Maths Coaching in Vadodara",
+  title: "Class 11 Regular-Math Coaching in Vadodara",
   intro:
     "Class 11 maths coaching by Snehal Soni Sir that makes the jump to higher maths clear. A strong base for Class 12 boards and competitive exams like JEE and GUJCET.",
   whoFor: [

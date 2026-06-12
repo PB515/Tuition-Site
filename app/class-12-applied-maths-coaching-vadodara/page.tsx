@@ -1,14 +1,14 @@
 import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 
 export const metadata = {
-  title: "Class 12 Applied Maths Coaching in Vadodara",
+  title: "Class 12 Applied-Math Coaching in Vadodara",
   description:
     "Class 12 Applied Maths coaching in Vadodara by Snehal Soni Sir, where our student scored 97 out of 100, the highest in Navrachana Applied Maths. Weekly tests and doubt-solving.",
 };
 
 const content: SeoContent = {
-  eyebrow: "Applied Maths, Class 12",
-  title: "Class 12 Applied Maths Coaching in Vadodara",
+  eyebrow: "Applied-Math, Class 12",
+  title: "Class 12 Applied-Math Coaching in Vadodara",
   intro:
     "Class 12 Applied Maths coaching by Snehal Soni Sir, where our student Chirayu Jani scored 97 out of 100, the highest in Navrachana Applied Maths. Concept-first, with weekly tests and doubt-solving.",
   whoFor: [

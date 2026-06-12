@@ -1,14 +1,14 @@
 import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 
 export const metadata = {
-  title: "Class 9 Maths Coaching in Vadodara",
+  title: "Class 9 Coaching in Vadodara",
   description:
     "Class 9 maths coaching in Vadodara by Snehal Soni Sir. NCERT-based for CBSE and GSEB, building a strong base for the Class 10 board year, with weekly tests and doubt-solving.",
 };
 
 const content: SeoContent = {
   eyebrow: "Foundation year",
-  title: "Class 9 Maths Coaching in Vadodara",
+  title: "Class 9 Coaching in Vadodara",
   intro:
     "Class 9 maths coaching by Snehal Soni Sir that builds the base for the board year. NCERT-based, so it serves both CBSE and GSEB students, with weekly tests and personal doubt-solving.",
   whoFor: [

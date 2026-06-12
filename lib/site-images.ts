@@ -51,8 +51,6 @@ export const IMAGE_SLOTS: { slot: string; label: string; src: string; ratio: str
   { slot: "courses/class-12", label: "Course - Class 12", src: "/images/courses/class-12.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
   { slot: "courses/class-11-applied", label: "Course - Class 11 Applied", src: "/images/courses/class-11-applied.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
   { slot: "courses/class-12-applied", label: "Course - Class 12 Applied", src: "/images/courses/class-12-applied.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
-  { slot: "courses/gujcet", label: "Course - GUJCET", src: "/images/courses/gujcet.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
-  { slot: "courses/jee", label: "Course - JEE", src: "/images/courses/jee.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
   { slot: "courses/location", label: "New Sama Road page", src: "/images/courses/location.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
   { slot: "results/1", label: "Results - Poster 1", src: "/images/results/1.jpg", ratio: "3 / 4", size: "1080 x 1350 px" },
   { slot: "results/2", label: "Results - Poster 2", src: "/images/results/2.jpg", ratio: "3 / 4", size: "1080 x 1350 px" },

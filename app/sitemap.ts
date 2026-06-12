@@ -18,8 +18,6 @@ const ROUTES = [
   "/class-11-applied-maths-coaching-vadodara",
   "/class-12-maths-coaching-vadodara",
   "/class-12-applied-maths-coaching-vadodara",
-  "/gujcet-maths-coaching-vadodara",
-  "/jee-maths-coaching-vadodara",
   "/maths-tuition-new-sama-road",
 ];
 
