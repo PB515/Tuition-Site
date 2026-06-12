@@ -79,7 +79,7 @@ export async function submitEnquiry(
       await resend.emails.send({
         from,
         to,
-        subject: `New enquiry: ${name} (${studentClass || "maths"})`,
+        subject: `New enquiry: ${name} (${studentClass || "math"})`,
         text: [
           `Name: ${name}`,
           `Phone: ${phone}`,

@@ -27,7 +27,7 @@ export default function LeadControls({
   const [pending, start] = useTransition();
 
   const wa = `https://wa.me/91${phone}?text=${encodeURIComponent(
-    `Hello ${name}, this is Inspire Academy of Mathematics about your maths coaching enquiry.`,
+    `Hello ${name}, this is Inspire Academy of Mathematics about your math coaching enquiry.`,
   )}`;
 
   function onDelete() {

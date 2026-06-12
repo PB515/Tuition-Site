@@ -1,6 +1,6 @@
 // Concept-Gap Test config. This is a SELF-ASSESSMENT (student rates their own
 // confidence per chapter), not a graded test, so no answer key is published and
-// nothing here can be "wrong maths" on a public page.
+// nothing here can be "wrong math" on a public page.
 //
 // REVIEW WITH SIR: adjust the chapter list for each class as needed. This is the
 // single editable source for the killer feature (the domain-expert dependency).
@@ -66,7 +66,7 @@ export const GAP_CLASSES: GapClass[] = [
   },
   {
     id: "applied",
-    label: "Applied Maths",
+    label: "Applied Math",
     chapters: [
       "Numbers and Quantification",
       "Algebra and Matrices",

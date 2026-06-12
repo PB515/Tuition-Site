@@ -37,7 +37,7 @@ export default function ResultForm({
 
       <label className="block">
         <L>Title</L>
-        <input name="title" required defaultValue={r.title ?? ""} placeholder="e.g. 97/100 in Applied Maths" className={`mt-1 ${field}`} />
+        <input name="title" required defaultValue={r.title ?? ""} placeholder="e.g. 97/100 in Applied Math" className={`mt-1 ${field}`} />
       </label>
       <label className="block">
         <L>Description</L>

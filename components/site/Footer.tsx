@@ -14,7 +14,7 @@ export default function Footer() {
         <div>
           <p className="font-heading text-lg font-bold text-ink">{SITE.name}</p>
           <p className="mt-3 max-w-xs text-sm text-ink-muted">
-            Focused Maths coaching in Vadodara, led by {SITE.teacher} with {SITE.yearsExperience} years
+            Focused Math coaching in Vadodara, led by {SITE.teacher} with {SITE.yearsExperience} years
             of teaching since {SITE.since}.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
@@ -72,7 +72,7 @@ export default function Footer() {
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-5 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p>{SITE.name}, New Sama Road, Vadodara.</p>
-          <p>Offline Maths coaching for Class 9 to 12, Applied, JEE and GUJCET.</p>
+          <p>Offline Math coaching for Class 9 to 12, Applied, JEE and GUJCET.</p>
           <Link href="/admin/login" className="hover:text-primary-strong">
             Staff login
           </Link>

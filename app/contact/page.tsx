@@ -9,7 +9,7 @@ export const metadata = { title: "Contact" };
 
 const STEPS = [
   "Call or message us on WhatsApp, or send the form.",
-  "We ask your class, board and school, and what you need in maths.",
+  "We ask your class, board and school, and what you need in math.",
   "We explain the right batch, timings and fees.",
   "You visit the academy and confirm admission.",
 ];
@@ -19,7 +19,7 @@ export default function Page() {
     <main>
       <PageHeader
         title="Contact Inspire Academy"
-        subtitle="Offline maths coaching in New Sama Road, Vadodara. Reach Snehal Soni Sir directly."
+        subtitle="Offline math coaching in New Sama Road, Vadodara. Reach Snehal Sir directly."
       />
 
       <section className="border-b border-border">

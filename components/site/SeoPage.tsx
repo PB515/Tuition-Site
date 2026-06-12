@@ -65,7 +65,7 @@ export default function SeoPage({ content, imageSlug }: { content: SeoContent; i
       <section className="border-b border-border bg-surface">
         <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-20">
           <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
-            How Snehal Soni Sir teaches it
+            How Snehal Sir teaches it
           </h2>
           <p className="mt-5 text-base leading-relaxed text-ink-muted">{content.teaching}</p>
         </div>

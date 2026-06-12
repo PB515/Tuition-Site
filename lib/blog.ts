@@ -15,17 +15,17 @@ export type BlogPost = {
 
 export const POSTS: BlogPost[] = [
   {
-    slug: "score-90-plus-class-10-maths",
-    title: "How to Score 90+ in Class 10 Maths Boards",
+    slug: "score-90-plus-class-10-math",
+    title: "How to Score 90+ in Class 10 Math Boards",
     date: "2 June 2026",
     dateISO: "2026-06-02",
     readingMin: 4,
     excerpt:
-      "Scoring 90+ in board maths is less about talent and more about a few steady habits. Here is what actually moves the marks.",
+      "Scoring 90+ in board math is less about talent and more about a few steady habits. Here is what actually moves the marks.",
     body: [
       {
         paragraphs: [
-          "Most students who score 90+ in Class 10 maths are not the ones who study the most hours. They are the ones who study the right things, in the right order, and fix their mistakes early. Here is a simple plan that works.",
+          "Most students who score 90+ in Class 10 math are not the ones who study the most hours. They are the ones who study the right things, in the right order, and fix their mistakes early. Here is a simple plan that works.",
         ],
       },
       {
@@ -54,19 +54,19 @@ export const POSTS: BlogPost[] = [
       },
       {
         paragraphs: [
-          "At Inspire Academy, this is exactly how we teach Class 10: concept first, full-pattern practice, a weekly test, and honest mistake analysis. If your child needs this kind of structure, message Snehal Soni Sir.",
+          "At Inspire Academy, this is exactly how we teach Class 10: concept first, full-pattern practice, a weekly test, and honest mistake analysis. If your child needs this kind of structure, message Snehal Sir.",
         ],
       },
     ],
   },
   {
     slug: "applied-maths-vs-core-maths-class-11",
-    title: "Applied Maths or Core Maths: How to Choose in Class 11",
+    title: "Applied Math or Core Math: How to Choose in Class 11",
     date: "26 May 2026",
     dateISO: "2026-05-26",
     readingMin: 3,
     excerpt:
-      "Both are real maths, but they point in different directions. Here is a simple way to decide which one fits your plan.",
+      "Both are real math, but they point in different directions. Here is a simple way to decide which one fits your plan.",
     body: [
       {
         paragraphs: [
@@ -74,43 +74,43 @@ export const POSTS: BlogPost[] = [
         ],
       },
       {
-        heading: "What core maths is for",
+        heading: "What core math is for",
         paragraphs: [
-          "Core maths is more theoretical and is the usual choice for students heading towards engineering and exams like JEE. If you enjoy proofs, calculus and abstract problem solving, and your future plans need it, core maths is the path.",
+          "Core math is more theoretical and is the usual choice for students heading towards engineering and exams like JEE. If you enjoy proofs, calculus and abstract problem solving, and your future plans need it, core math is the path.",
         ],
       },
       {
-        heading: "What Applied Maths is for",
+        heading: "What Applied Math is for",
         paragraphs: [
-          "Applied Maths leans towards data, statistics, finance and real-world quantitative skills. It is a strong choice for students heading towards commerce, economics, data and management fields, and it is often more scoring for students who prefer practical maths.",
+          "Applied Math leans towards data, statistics, finance and real-world quantitative skills. It is a strong choice for students heading towards commerce, economics, data and management fields, and it is often more scoring for students who prefer practical math.",
         ],
       },
       {
         heading: "How to choose",
         paragraphs: [
-          "Start from where you want to go after Class 12, then pick the subject that path needs. If you are unsure, talk to a teacher who has taught both. Inspire Academy teaches core and Applied Maths, and our highest Applied Maths score is 97 out of 100, so we can help you decide and then do well in whichever you choose.",
+          "Start from where you want to go after Class 12, then pick the subject that path needs. If you are unsure, talk to a teacher who has taught both. Inspire Academy teaches core and Applied Math, and our highest Applied Math score is 97 out of 100, so we can help you decide and then do well in whichever you choose.",
         ],
       },
     ],
   },
   {
     slug: "gujcet-maths-preparation-plan",
-    title: "A Simple GUJCET Maths Preparation Plan",
+    title: "A Simple GUJCET Math Preparation Plan",
     date: "19 May 2026",
     dateISO: "2026-05-19",
     readingMin: 3,
     excerpt:
-      "GUJCET maths rewards speed and accuracy on objective questions. A short, steady plan beats last-minute cramming.",
+      "GUJCET math rewards speed and accuracy on objective questions. A short, steady plan beats last-minute cramming.",
     body: [
       {
         paragraphs: [
-          "GUJCET tests how quickly and accurately you can handle objective maths questions drawn from the Class 12 syllabus. The students who do well are usually the ones who practised under time, not the ones who only revised theory. Here is a simple plan.",
+          "GUJCET tests how quickly and accurately you can handle objective math questions drawn from the Class 12 syllabus. The students who do well are usually the ones who practised under time, not the ones who only revised theory. Here is a simple plan.",
         ],
       },
       {
         heading: "Know the pattern",
         paragraphs: [
-          "GUJCET maths is objective and time-bound. Learn the kinds of questions that appear and how many minutes you can spend on each. Knowing the pattern removes a lot of exam-day stress.",
+          "GUJCET math is objective and time-bound. Learn the kinds of questions that appear and how many minutes you can spend on each. Knowing the pattern removes a lot of exam-day stress.",
         ],
       },
       {

@@ -31,13 +31,13 @@ import {
 const STATS = [
   { value: "25+", label: "years of teaching" },
   { value: "2000", label: "teaching since" },
-  { value: "97/100", label: "highest in Navrachana Applied Maths" },
-  { value: "1", label: "subject: Maths, done deeply" },
+  { value: "97/100", label: "highest in Navrachana Applied Math" },
+  { value: "1", label: "subject: Math, done deeply" },
 ];
 
 const WHY = [
-  { t: "Maths, and only Maths", b: "One subject taught deeply, not one of many on a crowded timetable." },
-  { t: "Taught by Sir himself", b: "Personal attention from Snehal Soni Sir, not a rotating set of tutors." },
+  { t: "Math, and only Math", b: "One subject taught deeply, not one of many on a crowded timetable." },
+  { t: "Taught by Sir himself", b: "Personal attention from Snehal Sir, not a rotating set of tutors." },
   { t: "Concepts before formulas", b: "Students learn why a method works, so it holds under exam pressure." },
   { t: "NCERT for CBSE and GSEB", b: "One strong NCERT foundation that serves both boards at once." },
   { t: "Weekly tests, real feedback", b: "A test every week, printed notes, and honest mistake analysis." },
@@ -45,9 +45,9 @@ const WHY = [
 ];
 
 const UPDATES = [
-  "Absent today: Rahul was not present in the Class 10 Maths class. Please let us know if it was planned.",
+  "Absent today: Rahul was not present in the Class 10 Math class. Please let us know if it was planned.",
   "Test result: Diya scored 38 out of 50 in Trigonometry. Focus area for revision: identities.",
-  "Exam reminder: Class 12 Maths test on Sunday. Syllabus: Matrices and Determinants.",
+  "Exam reminder: Class 12 Math test on Sunday. Syllabus: Matrices and Determinants.",
 ];
 
 const HERO_SLOTS = [
@@ -73,13 +73,13 @@ export default async function Home() {
               className="animate-fade-up text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong"
               style={{ animationDelay: "0ms" }}
             >
-              Maths-only academy in Vadodara
+              Math-only academy in Vadodara
             </p>
             <h1
               className="animate-fade-up mt-4 font-heading text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl"
               style={{ animationDelay: "90ms" }}
             >
-              Strong maths concepts, taught by Snehal Soni Sir.
+              Strong math concepts, taught by Snehal Sir.
             </h1>
             <p
               className="animate-fade-up mt-5 max-w-xl text-lg leading-relaxed text-ink-muted"
@@ -145,10 +145,10 @@ export default async function Home() {
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-12 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:py-14">
           <div className="max-w-2xl">
             <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl">
-              Not sure where your child is stuck in maths?
+              Not sure where your child is stuck in math?
             </h2>
             <p className="mt-3 text-base leading-relaxed text-white/85">
-              Take the free Maths Concept-Gap Test. Answer a few questions and get a clear read on
+              Take the free Math Concept-Gap Test. Answer a few questions and get a clear read on
               the weak chapters, then message Sir to work on exactly those.
             </p>
           </div>
@@ -169,7 +169,7 @@ export default async function Home() {
               Why students stay with Inspire
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-ink-muted">
-              Parents come for Snehal Soni Sir, and stay because maths finally makes sense. Here is
+              Parents come for Snehal Sir, and stay because math finally makes sense. Here is
               what that focus looks like in practice.
             </p>
             <div className="mt-7">
@@ -236,7 +236,7 @@ export default async function Home() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong">
-            The Inspire Maths Learning System
+            The Inspire Math Learning System
           </p>
           <h2 className="mt-4 max-w-2xl font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             How a topic goes from confusing to clear
@@ -274,8 +274,8 @@ export default async function Home() {
               <Award size={28} strokeWidth={1.5} className="text-accent" />
             </div>
             <p className="mt-3 max-w-md text-base leading-relaxed text-ink-muted">
-              The highest score in Navrachana Applied Maths, by our student Chirayu Jani. More board
-              and Applied Maths results are added each year, with student permission.
+              The highest score in Navrachana Applied Math, by our student Chirayu Jani. More board
+              and Applied Math results are added each year, with student permission.
             </p>
             <div className="mt-7">
               <CtaButton href="/results" variant="secondary">
@@ -285,7 +285,7 @@ export default async function Home() {
           </div>
           {/* Result creative slots: drop the real result images here (see docs/image-prompts.md). */}
           <div className="grid grid-cols-2 gap-4">
-            {["Applied Maths 2026 result", "Board results creative"].map((label) => (
+            {["Applied Math 2026 result", "Board results creative"].map((label) => (
               <div
                 key={label}
                 className="flex aspect-[3/4] flex-col items-center justify-center gap-2 rounded-2xl border border-border bg-bg p-5 text-center"

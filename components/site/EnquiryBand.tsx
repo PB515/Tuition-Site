@@ -13,7 +13,7 @@ export default function EnquiryBand({
     <section className="border-t border-border bg-surface">
       <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 lg:py-20">
         <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-          {heading ?? "Talk to Snehal Soni Sir about your child's maths"}
+          {heading ?? "Talk to Snehal Sir about your child's math"}
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink-muted">
           {sub ??

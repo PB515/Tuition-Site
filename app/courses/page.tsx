@@ -20,15 +20,15 @@ export default function Page() {
   return (
     <main>
       <PageHeader
-        title="Maths coaching from Class 9 to competitive exams"
-        subtitle="One maths-focused system, taught by Snehal Soni Sir, for boards and competitive preparation alike."
+        title="Math coaching from Class 9 to competitive exams"
+        subtitle="One maths-focused system, taught by Snehal Sir, for boards and competitive preparation alike."
       />
 
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6">
           <SmartImage
             src="/images/courses/main.jpg"
-            alt="Maths coaching at Inspire Academy"
+            alt="Math coaching at Inspire Academy"
             label="Courses header: classroom / Sir teaching"
             className="aspect-[16/9] w-full rounded-2xl border border-border lg:aspect-[21/9]"
             sizes="(max-width: 1024px) 100vw, 1152px"

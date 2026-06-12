@@ -6,10 +6,10 @@ import JsonLd from "@/components/JsonLd";
 import { personLd } from "@/lib/structured-data";
 import { SITE } from "@/lib/site";
 
-export const metadata = { title: "About Snehal Soni Sir" };
+export const metadata = { title: "About Snehal Sir" };
 
 const POINTS = [
-  "Maths, and only maths, so the focus never gets divided across subjects.",
+  "Math, and only math, so the focus never gets divided across subjects.",
   "Every batch is taught by Sir himself, not a rotating set of tutors.",
   "Concepts come before formulas, so the method holds under exam pressure.",
   "NCERT-based teaching that serves both CBSE and GSEB students.",
@@ -22,7 +22,7 @@ export default function Page() {
       <JsonLd data={personLd()} />
       <PageHeader
         eyebrow="The teacher"
-        title="Learn maths from Snehal Soni Sir"
+        title="Learn math from Snehal Sir"
         subtitle={`${SITE.yearsExperience} years of teaching mathematics in Vadodara, since ${SITE.since}.`}
       />
 
@@ -30,9 +30,9 @@ export default function Page() {
         <div className="mx-auto grid max-w-7xl items-start gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
           <div className="space-y-5 text-base leading-relaxed text-ink-muted">
             <p>
-              Snehal Soni Sir has taught mathematics in Vadodara since {SITE.since}. Over{" "}
+              Snehal Sir has taught mathematics in Vadodara since {SITE.since}. Over{" "}
               {SITE.yearsExperience} years, he has helped students move from fear and confusion in
-              maths to clarity, confidence and real exam performance.
+              math to clarity, confidence and real exam performance.
             </p>
             <p>
               Inspire Academy is built around one idea: do one subject, and do it deeply. There is no
@@ -40,7 +40,7 @@ export default function Page() {
               get steady, personal attention from someone who knows exactly where they get stuck.
             </p>
             <p>
-              That focus shows in results like 97 out of 100, the highest in Navrachana Applied Maths,
+              That focus shows in results like 97 out of 100, the highest in Navrachana Applied Math,
               scored by our student Chirayu Jani.
             </p>
           </div>
@@ -74,7 +74,7 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
           <SmartImage
             src="/images/about/teaching.jpg"
-            alt="Snehal Soni Sir teaching students"
+            alt="Snehal Sir teaching students"
             label="Sir teaching / with students"
             className="aspect-[16/9] w-full rounded-2xl border border-border"
             sizes="(max-width: 1024px) 100vw, 1152px"
@@ -82,7 +82,7 @@ export default function Page() {
         </div>
       </section>
 
-      <EnquiryBand heading="Want your child taught by Snehal Soni Sir?" />
+      <EnquiryBand heading="Want your child taught by Snehal Sir?" />
     </main>
   );
 }

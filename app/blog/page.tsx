@@ -8,7 +8,7 @@ import { storagePublicUrl } from "@/lib/site-images";
 export const metadata = {
   title: "Blog",
   description:
-    "Maths study tips and exam advice from Inspire Academy of Mathematics, Vadodara, led by Snehal Soni Sir.",
+    "Math study tips and exam advice from Inspire Academy of Mathematics, Vadodara, led by Snehal Sir.",
 };
 
 function fmt(d: string | null) {
@@ -21,8 +21,8 @@ export default async function Page() {
   return (
     <main>
       <PageHeader
-        title="Maths study tips and exam advice"
-        subtitle="Short, practical notes from Snehal Soni Sir on doing better in maths."
+        title="Math study tips and exam advice"
+        subtitle="Short, practical notes from Snehal Sir on doing better in math."
       />
 
       <section className="border-b border-border">

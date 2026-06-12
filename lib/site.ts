@@ -9,7 +9,7 @@ export const SITE_URL =
 
 export const SITE = {
   name: "Inspire Academy of Mathematics",
-  teacher: "Snehal Soni Sir",
+  teacher: "Snehal Sir",
   phoneDisplay: "+91 90166 79929",
   tel: "+919016679929",
   whatsapp: "919016679929",
@@ -24,7 +24,7 @@ export function waLink(message: string) {
 }
 
 export const WA_ENQUIRY = waLink(
-  "Hi Inspire Academy, I want admission details for Maths coaching.",
+  "Hi Inspire Academy, I want admission details for Math coaching.",
 );
 
 export const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.mapsQuery)}`;
@@ -35,7 +35,7 @@ export const ENQUIRY_CLASSES = [
   "Class 10",
   "Class 11",
   "Class 12",
-  "Applied Maths",
+  "Applied Math",
   "JEE",
   "GUJCET",
   "Other",
@@ -93,7 +93,7 @@ export const METHOD_STEPS = [
 export const FAQS = [
   {
     q: "Which boards and exams do you cover?",
-    a: "Teaching is NCERT-based, which covers both CBSE and GSEB students, along with Applied Maths, JEE and GUJCET preparation.",
+    a: "Teaching is NCERT-based, which covers both CBSE and GSEB students, along with Applied Math, JEE and GUJCET preparation.",
   },
   {
     q: "What are the batch timings?",
@@ -105,7 +105,7 @@ export const FAQS = [
   },
   {
     q: "How many students are in one batch?",
-    a: "Batches are kept small, so every student gets personal attention from Snehal Soni Sir.",
+    a: "Batches are kept small, so every student gets personal attention from Snehal Sir.",
   },
   {
     q: "Do you take regular tests?",

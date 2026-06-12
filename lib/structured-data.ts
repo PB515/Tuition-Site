@@ -8,7 +8,7 @@ export function organizationLd() {
     url: SITE_URL,
     telephone: SITE.tel,
     description:
-      "Focused offline maths coaching in Vadodara led by Snehal Soni Sir, with 25+ years of teaching. Class 9 to 12, Applied Maths, NCERT, JEE and GUJCET.",
+      "Focused offline math coaching in Vadodara led by Snehal Sir, with 25+ years of teaching. Class 9 to 12, Applied Math, NCERT, JEE and GUJCET.",
     address: {
       "@type": "PostalAddress",
       streetAddress: "3, Nand Complex, near Umiyangagar, New Sama Road",

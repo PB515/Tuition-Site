@@ -31,7 +31,7 @@ export default function Page() {
 
           <Section title="1. Who we are">
             <p>
-              {SITE.name} is a maths coaching academy at {SITE.address}, led by {SITE.teacher}. You
+              {SITE.name} is a math coaching academy at {SITE.address}, led by {SITE.teacher}. You
               can reach us on {SITE.phoneDisplay}.
             </p>
             <p className="text-ink-muted">

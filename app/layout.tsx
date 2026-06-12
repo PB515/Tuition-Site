@@ -28,11 +28,11 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Inspire Academy of Mathematics, Maths Coaching in Vadodara",
+    default: "Inspire Academy of Mathematics, Math Coaching in Vadodara",
     template: "%s | Inspire Academy of Mathematics",
   },
   description:
-    "Focused Maths coaching in Vadodara led by Snehal Soni Sir, with 25+ years of teaching. Class 9 to 12, Applied Maths, NCERT, JEE and GUJCET. Concept clarity, regular tests, personal attention.",
+    "Focused Math coaching in Vadodara led by Snehal Sir, with 25+ years of teaching. Class 9 to 12, Applied Math, NCERT, JEE and GUJCET. Concept clarity, regular tests, personal attention.",
   appleWebApp: { capable: true, title: "Inspire Academy", statusBarStyle: "default" },
 };
 

@@ -4,9 +4,9 @@ import GapTest from "@/components/gap-test/GapTest";
 import { WA_ENQUIRY } from "@/lib/site";
 
 export const metadata = {
-  title: "Free Maths Concept-Gap Test",
+  title: "Free Math Concept-Gap Test",
   description:
-    "A free self-check from Inspire Academy. Rate your confidence chapter by chapter and see exactly where your maths needs work, then message Snehal Soni Sir.",
+    "A free self-check from Inspire Academy. Rate your confidence chapter by chapter and see exactly where your math needs work, then message Snehal Sir.",
 };
 
 export default function Page() {
@@ -14,7 +14,7 @@ export default function Page() {
     <main>
       <PageHeader
         eyebrow="Free tool"
-        title="Find your weak maths chapters in two minutes"
+        title="Find your weak math chapters in two minutes"
         subtitle="Choose your class, rate how confident you feel on each chapter, and get a clear list of what to work on. No sign-up, nothing to pay."
       />
 
@@ -34,7 +34,7 @@ export default function Page() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 font-semibold text-primary-strong hover:text-primary-deep"
             >
-              <MessageCircle size={15} strokeWidth={2} /> Message Snehal Soni Sir
+              <MessageCircle size={15} strokeWidth={2} /> Message Snehal Sir
             </a>
           </p>
         </div>

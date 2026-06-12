@@ -3,16 +3,16 @@ import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 export const metadata = {
   title: "Class 12 Regular-Math Coaching in Vadodara",
   description:
-    "Class 12 maths coaching in Vadodara by Snehal Soni Sir. Board syllabus plus JEE and GUJCET readiness, with calculus made clear and weekly tests.",
+    "Class 12 math coaching in Vadodara by Snehal Sir. Board syllabus plus JEE and GUJCET readiness, with calculus made clear and weekly tests.",
 };
 
 const content: SeoContent = {
   eyebrow: "Board and beyond",
   title: "Class 12 Regular-Math Coaching in Vadodara",
   intro:
-    "Class 12 maths coaching by Snehal Soni Sir, covering the board syllabus and the readiness needed for JEE and GUJCET, with weekly tests and personal doubt-solving.",
+    "Class 12 math coaching by Snehal Sir, covering the board syllabus and the readiness needed for JEE and GUJCET, with weekly tests and personal doubt-solving.",
   whoFor: [
-    "Class 12 students who want strong board marks in maths",
+    "Class 12 students who want strong board marks in math",
     "Students preparing for GUJCET or JEE alongside boards",
     "Students who want calculus and algebra made clear, not just memorised",
     "Both CBSE and GSEB students",
@@ -26,7 +26,7 @@ const content: SeoContent = {
     "Board-pattern revision plus competitive-level practice",
   ],
   teaching:
-    "Class 12 maths rewards understanding, not memory. Calculus is built step by step from the idea, then practised at board level and pushed to competitive-exam difficulty for students who need it. Weekly tests keep the large syllabus under control.",
+    "Class 12 math rewards understanding, not memory. Calculus is built step by step from the idea, then practised at board level and pushed to competitive-exam difficulty for students who need it. Weekly tests keep the large syllabus under control.",
   faqs: [
     {
       q: "Do you prepare for boards and JEE or GUJCET together?",

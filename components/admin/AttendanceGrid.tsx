@@ -122,8 +122,8 @@ export default function AttendanceGrid({
     });
     const msg =
       statuses[s.id] === "absent"
-        ? `Hello, ${s.name} was absent from today's Maths class at Inspire Academy of Mathematics (${d}). Please contact us if this was planned.`
-        : `Hello, ${s.name} arrived late to today's Maths class at Inspire Academy of Mathematics (${d}).`;
+        ? `Hello, ${s.name} was absent from today's Math class at Inspire Academy of Mathematics (${d}). Please contact us if this was planned.`
+        : `Hello, ${s.name} arrived late to today's Math class at Inspire Academy of Mathematics (${d}).`;
     return `https://wa.me/91${s.parent_whatsapp}?text=${encodeURIComponent(msg)}`;
   }
 

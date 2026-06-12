@@ -97,7 +97,7 @@ export default function EnquiryForm() {
           className="mt-1 h-4 w-4 shrink-0 rounded border-border text-primary focus:ring-primary"
         />
         <span>
-          I agree that Inspire Academy may contact me about maths coaching using the details above.
+          I agree that Inspire Academy may contact me about math coaching using the details above.
         </span>
       </label>
       {fe.consent && <p className="text-sm text-error">{fe.consent}</p>}

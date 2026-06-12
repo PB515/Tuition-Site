@@ -22,7 +22,7 @@ export default function PagePlaceholder({
       <h1 className="font-heading text-3xl font-bold text-ink sm:text-4xl">{title}</h1>
       <p className="max-w-xl text-base leading-relaxed text-ink-muted">
         {note ??
-          "This page is on the way. For details right now, message Snehal Soni Sir on WhatsApp or call the academy."}
+          "This page is on the way. For details right now, message Snehal Sir on WhatsApp or call the academy."}
       </p>
       <div className="flex flex-wrap gap-3 pt-2">
         <a

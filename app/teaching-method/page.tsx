@@ -9,9 +9,9 @@ export default function Page() {
   return (
     <main>
       <PageHeader
-        eyebrow="The Inspire Maths Learning System"
+        eyebrow="The Inspire Math Learning System"
         title="How a topic goes from confusing to clear"
-        subtitle="A steady, repeatable way of teaching maths, used in every batch."
+        subtitle="A steady, repeatable way of teaching math, used in every batch."
       />
 
       <section className="border-b border-border">
@@ -39,7 +39,7 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-4 pb-12 sm:px-6">
           <SmartImage
             src="/images/method.jpg"
-            alt="Snehal Soni Sir explaining a maths method on the board"
+            alt="Snehal Sir explaining a math method on the board"
             label="Sir explaining on the board"
             className="aspect-[16/9] w-full rounded-2xl border border-border"
             sizes="(max-width: 1024px) 100vw, 1152px"
@@ -53,7 +53,7 @@ export default function Page() {
             Why this works
           </h2>
           <p className="mt-5 text-base leading-relaxed text-ink-muted">
-            Most students do not fail maths because they cannot do it. They fall behind when one weak
+            Most students do not fail math because they cannot do it. They fall behind when one weak
             chapter is never fixed, and it quietly breaks the next one. The system above keeps finding
             and closing those gaps, week after week, so the foundation stays strong all the way to the
             board and competitive exams.

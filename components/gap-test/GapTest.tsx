@@ -46,7 +46,7 @@ export default function GapTest() {
   // STEP 3: result
   if (showResult) {
     const weakList = weak.length ? weak.join(", ") : "general revision";
-    const msg = `Hi Inspire Academy, I took the Maths Concept-Gap Test for ${current.label}. Chapters I want to work on: ${weakList}. Please guide me on the right batch.`;
+    const msg = `Hi Inspire Academy, I took the Math Concept-Gap Test for ${current.label}. Chapters I want to work on: ${weakList}. Please guide me on the right batch.`;
     return (
       <div>
         <p className="text-sm font-semibold text-primary-strong">{current.label} result</p>
@@ -89,7 +89,7 @@ export default function GapTest() {
         )}
 
         <p className="mt-7 max-w-xl text-sm leading-relaxed text-ink-muted">
-          Send this to Snehal Soni Sir and he will plan a batch that targets exactly these chapters.
+          Send this to Snehal Sir and he will plan a batch that targets exactly these chapters.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           <a
