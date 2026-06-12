@@ -89,20 +89,22 @@ update public.students s
 
 ## 3. Surface admission_no in the students list view
 
-The list reads from `student_overview`. Re-create it with `admission_no` added (every
-other column is unchanged from `phase-4-students-sql.md`).
+The list reads from `student_overview`. Re-create it with `admission_no` **appended at
+the end** (every other column is unchanged from `phase-4-students-sql.md`). It must go
+last: `create or replace view` cannot insert a column in the middle of an existing view.
 
 ```sql
 create or replace view public.student_overview with (security_invoker = true) as
 select
-  s.id, s.name, s.admission_no, s.roll_number, s.class, s.board, s.school,
+  s.id, s.name, s.roll_number, s.class, s.board, s.school,
   s.parent_name, s.parent_whatsapp, s.alternate_number,
   s.batch_id, s.active, s.admission_date, s.default_monthly_fee, s.remarks,
   b.name as batch_name,
   coalesce(att.total, 0)   as att_total,
   coalesce(att.present, 0) as att_present,
   coalesce(fee.pending, 0) as fee_pending,
-  lm.last_test_name, lm.last_test_marks, lm.last_test_total
+  lm.last_test_name, lm.last_test_marks, lm.last_test_total,
+  s.admission_no
 from public.students s
 left join public.batches b on b.id = s.batch_id
 left join lateral (
