@@ -59,7 +59,7 @@ export default async function RootLayout({
         <JsonLd data={organizationLd()} />
         <Nav logoUrl={logoUrl} />
         <div className="flex-1">{children}</div>
-        <Footer />
+        <Footer logoUrl={logoUrl} />
         <ScrollReveal />
         <ServiceWorkerRegister />
         <Analytics />

@@ -6,14 +6,21 @@ import { MapPin, Phone, Mail } from "lucide-react";
 import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import { SITE, NAV, AREAS, WA_ENQUIRY, BRANCHES } from "@/lib/site";
 
-export default function Footer() {
+export default function Footer({ logoUrl = null }: { logoUrl?: string | null }) {
   const pathname = usePathname();
   if (pathname?.startsWith("/admin") || pathname?.startsWith("/parent")) return null;
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
-          <p className="font-heading text-lg font-bold text-ink">{SITE.name}</p>
+          {logoUrl ? (
+            <Link href="/" aria-label={SITE.name}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={logoUrl} alt={SITE.name} className="h-12 w-auto sm:h-14" />
+            </Link>
+          ) : (
+            <p className="font-heading text-lg font-bold text-ink">{SITE.name}</p>
+          )}
           <p className="mt-3 max-w-xs text-sm text-ink-muted">
             Focused Math coaching in Vadodara, led by {SITE.teacher} with {SITE.yearsExperience} years
             of teaching since {SITE.since}.
