@@ -2,70 +2,65 @@
 
 import { useEffect, useRef } from "react";
 
-// Decorative floating math glyphs behind the hero. Three things going on:
-//  - ambient slow drift (CSS .animate-float-soft on the middle wrapper)
-//  - cursor parallax for the whole field (this component reads the global mouse
-//    and the outer wrapper translates by a per-symbol "depth"; no pointer events
-//    on symbols, so it can never block content)
-//  - hover glow + warm colour swap on the gutter symbols only (.glyph-i)
-// Desktop only, aria-hidden, and parallax is skipped under reduced-motion.
+// Decorative floating math glyphs. Ambient slow drift + cursor parallax + hover
+// glow (teal <-> terracotta). Desktop only, aria-hidden, reduced-motion safe.
+// Three presets: hero (rich focal set), band (content sections), header (short
+// inner-page top band).
 
-type Sym = {
-  ch: string;
-  pos: string;
-  size: string;
-  color: string;
-  depth: number;
-  dur: string;
-  delay: string;
-};
+type Sym = { ch: string; pos: string; size: string; color: string; depth: number; dur: string; delay: string };
 
 const SHIFT = 14; // max px the field leans with the cursor
 
-// 3 per gutter (asymmetric rhythm between sides) + 3 in the inner empty bands.
-// All hover-interactive. Keep every glyph in clear space (gutters + top/bottom
-// bands) so a hover target never sits over text, buttons or the image.
+// ---- HERO: the rich focal set on the homepage hero ----
 const HERO_SYMBOLS: Sym[] = [
-  // Left gutter
   { ch: "+", pos: "left-[3%] top-[20%]", size: "text-7xl", color: "text-primary/[0.13]", depth: 1.3, dur: "13s", delay: "0s" },
   { ch: "√", pos: "left-[9%] top-[52%]", size: "text-6xl", color: "text-accent/[0.12]", depth: 1.1, dur: "16s", delay: "0.3s" },
   { ch: "π", pos: "left-[4%] top-[83%]", size: "text-8xl", color: "text-primary/[0.13]", depth: 1.6, dur: "15s", delay: "1.4s" },
-  // Right gutter (different vertical rhythm)
   { ch: "×", pos: "right-[7%] top-[12%]", size: "text-7xl", color: "text-accent/[0.13]", depth: 1.3, dur: "11s", delay: "0.7s" },
   { ch: "∑", pos: "right-[3%] top-[46%]", size: "text-8xl", color: "text-primary/[0.12]", depth: 1.6, dur: "14s", delay: "1.1s" },
   { ch: "∞", pos: "right-[10%] bottom-[8%]", size: "text-7xl", color: "text-accent/[0.12]", depth: 1.3, dur: "15s", delay: "0.2s" },
-  // Inner empty bands
   { ch: "÷", pos: "left-[24%] top-[8%]", size: "text-5xl", color: "text-primary/[0.12]", depth: 0.7, dur: "14s", delay: "1.2s" },
-  { ch: "−", pos: "left-[44%] top-[16%]", size: "text-6xl", color: "text-accent/[0.12]", depth: 0.7, dur: "13s", delay: "0.6s" },
+  { ch: "∫", pos: "left-[44%] top-[16%]", size: "text-6xl", color: "text-accent/[0.12]", depth: 0.7, dur: "13s", delay: "0.6s" },
   { ch: "Δ", pos: "left-[40%] top-[84%]", size: "text-5xl", color: "text-accent/[0.12]", depth: 0.7, dur: "15s", delay: "1.9s" },
 ];
 
-// Outer-gutter pool for content sections (alternating left/right, layout-agnostic
-// because everything else is centred in max-w-7xl). A section renders 4 starting
-// at its offset, so consecutive sections show different glyphs.
-const BAND_POOL: Sym[] = [
-  { ch: "+", pos: "left-[3%] top-[18%]", size: "text-7xl", color: "text-primary/[0.11]", depth: 1.3, dur: "13s", delay: "0s" },
-  { ch: "∑", pos: "right-[3%] top-[26%]", size: "text-8xl", color: "text-primary/[0.11]", depth: 1.5, dur: "14s", delay: "0.6s" },
-  { ch: "√", pos: "left-[2%] top-[62%]", size: "text-6xl", color: "text-accent/[0.11]", depth: 1.1, dur: "16s", delay: "1.2s" },
-  { ch: "×", pos: "right-[2%] top-[70%]", size: "text-7xl", color: "text-accent/[0.11]", depth: 1.3, dur: "11s", delay: "0.3s" },
-  { ch: "π", pos: "left-[3%] top-[40%]", size: "text-8xl", color: "text-primary/[0.12]", depth: 1.6, dur: "15s", delay: "0.9s" },
-  { ch: "÷", pos: "right-[3%] top-[48%]", size: "text-6xl", color: "text-primary/[0.11]", depth: 1.0, dur: "13s", delay: "1.6s" },
-  { ch: "θ", pos: "left-[2%] top-[84%]", size: "text-6xl", color: "text-accent/[0.11]", depth: 1.1, dur: "14s", delay: "2.1s" },
-  { ch: "∞", pos: "right-[2%] top-[86%]", size: "text-7xl", color: "text-accent/[0.11]", depth: 1.3, dur: "15s", delay: "0.2s" },
+// ---- HEADER: short top band on inner pages (gutters, not clipped) ----
+const HEADER_SYMBOLS: Sym[] = [
+  { ch: "∑", pos: "left-[4%] top-[24%]", size: "text-6xl", color: "text-primary/[0.12]", depth: 1.2, dur: "13s", delay: "0s" },
+  { ch: "π", pos: "left-[9%] top-[62%]", size: "text-5xl", color: "text-accent/[0.11]", depth: 1.1, dur: "15s", delay: "1.2s" },
+  { ch: "∫", pos: "right-[5%] top-[20%]", size: "text-6xl", color: "text-primary/[0.11]", depth: 1.3, dur: "14s", delay: "0.6s" },
+  { ch: "√", pos: "right-[9%] top-[62%]", size: "text-5xl", color: "text-accent/[0.12]", depth: 1.1, dur: "11s", delay: "0.3s" },
+];
+
+// ---- BAND: content sections. A big pool rotated per-section so nothing repeats
+// within a section or in adjacent ones. Glyphs sit in the gutters (off the
+// clipping edges) plus two small ones in the top/bottom padding strips. ----
+const BAND_GLYPHS = ["+", "−", "×", "÷", "=", "π", "√", "∑", "∫", "∞", "θ", "Δ", "λ", "φ", "%", "≈", "±", "∂", "∇", "∠"];
+
+type Slot = { pos: string; size: string; depth: number; dur: string; delay: string; warm?: boolean };
+const BAND_SLOTS: Slot[] = [
+  { pos: "left-[4%] top-[14%]", size: "text-7xl", depth: 1.3, dur: "13s", delay: "0s" },
+  { pos: "left-[9%] top-[47%]", size: "text-6xl", depth: 1.1, dur: "16s", delay: "1.2s", warm: true },
+  { pos: "left-[3%] top-[80%]", size: "text-8xl", depth: 1.6, dur: "15s", delay: "0.6s" },
+  { pos: "right-[4%] top-[22%]", size: "text-7xl", depth: 1.3, dur: "11s", delay: "0.3s", warm: true },
+  { pos: "right-[9%] top-[56%]", size: "text-8xl", depth: 1.5, dur: "14s", delay: "1.6s" },
+  { pos: "right-[3%] top-[88%]", size: "text-6xl", depth: 1.1, dur: "13s", delay: "2.1s", warm: true },
+  { pos: "left-[33%] top-[4%]", size: "text-4xl", depth: 0.6, dur: "12s", delay: "0.9s", warm: true },
+  { pos: "right-[28%] bottom-[4%]", size: "text-4xl", depth: 0.6, dur: "15s", delay: "1.4s" },
 ];
 
 function pickBand(offset: number): Sym[] {
-  const n = BAND_POOL.length;
-  return [0, 1, 2, 3].map((k) => BAND_POOL[(offset * 2 + k) % n]);
+  const g = BAND_GLYPHS.length;
+  return BAND_SLOTS.map((slot, k) => ({
+    ch: BAND_GLYPHS[(offset * 3 + k) % g],
+    pos: slot.pos,
+    size: slot.size,
+    color: slot.warm ? "text-accent/[0.11]" : "text-primary/[0.11]",
+    depth: slot.depth,
+    dur: slot.dur,
+    delay: slot.delay,
+  }));
 }
-
-// Compact set for the short page-header band on inner pages.
-const HEADER_SYMBOLS: Sym[] = [
-  { ch: "+", pos: "left-[3%] top-[26%]", size: "text-5xl", color: "text-primary/[0.12]", depth: 1.1, dur: "13s", delay: "0s" },
-  { ch: "∑", pos: "right-[4%] top-[20%]", size: "text-6xl", color: "text-primary/[0.11]", depth: 1.3, dur: "14s", delay: "0.6s" },
-  { ch: "π", pos: "left-[6%] top-[60%]", size: "text-6xl", color: "text-accent/[0.11]", depth: 1.2, dur: "15s", delay: "1.2s" },
-  { ch: "×", pos: "right-[3%] top-[58%]", size: "text-5xl", color: "text-accent/[0.12]", depth: 1.1, dur: "11s", delay: "0.3s" },
-];
 
 export default function FloatingMath({
   preset = "hero",

@@ -409,8 +409,9 @@ export default async function Home() {
 
       {/* 9b. RESULTS + TESTIMONIALS (from the admin collections) */}
       {(featuredResults.length > 0 || featuredTestimonials.length > 0) && (
-        <section className="border-b border-border">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+        <section className="relative overflow-hidden border-b border-border">
+          <FloatingMath preset="band" offset={8} />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             {featuredResults.length > 0 && (
               <div>
                 <div className="flex items-center justify-between">

@@ -129,8 +129,9 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={3} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6">
           <SmartImage
             src="/images/about/teaching.jpg"
             alt="Snehal Sir teaching students"
