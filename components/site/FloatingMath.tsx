@@ -59,11 +59,19 @@ function pickBand(offset: number): Sym[] {
   return [0, 1, 2, 3].map((k) => BAND_POOL[(offset * 2 + k) % n]);
 }
 
+// Compact set for the short page-header band on inner pages.
+const HEADER_SYMBOLS: Sym[] = [
+  { ch: "+", pos: "left-[3%] top-[26%]", size: "text-5xl", color: "text-primary/[0.12]", depth: 1.1, dur: "13s", delay: "0s" },
+  { ch: "∑", pos: "right-[4%] top-[20%]", size: "text-6xl", color: "text-primary/[0.11]", depth: 1.3, dur: "14s", delay: "0.6s" },
+  { ch: "π", pos: "left-[6%] top-[60%]", size: "text-6xl", color: "text-accent/[0.11]", depth: 1.2, dur: "15s", delay: "1.2s" },
+  { ch: "×", pos: "right-[3%] top-[58%]", size: "text-5xl", color: "text-accent/[0.12]", depth: 1.1, dur: "11s", delay: "0.3s" },
+];
+
 export default function FloatingMath({
   preset = "hero",
   offset = 0,
 }: {
-  preset?: "hero" | "band";
+  preset?: "hero" | "band" | "header";
   offset?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -97,8 +105,9 @@ export default function FloatingMath({
     };
   }, []);
 
-  const symbols = preset === "band" ? pickBand(offset) : HERO_SYMBOLS;
-  const showAt = preset === "band" ? "xl:block" : "lg:block";
+  const symbols =
+    preset === "band" ? pickBand(offset) : preset === "header" ? HEADER_SYMBOLS : HERO_SYMBOLS;
+  const showAt = preset === "hero" ? "lg:block" : "xl:block";
 
   return (
     <div ref={ref} aria-hidden className={`pointer-events-none absolute inset-0 z-20 hidden overflow-hidden ${showAt}`}>

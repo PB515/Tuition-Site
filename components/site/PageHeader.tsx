@@ -1,3 +1,5 @@
+import FloatingMath from "./FloatingMath";
+
 export default function PageHeader({
   eyebrow,
   title,
@@ -8,8 +10,9 @@ export default function PageHeader({
   subtitle?: string;
 }) {
   return (
-    <section className="border-b border-border bg-surface">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:py-20">
+    <section className="relative overflow-hidden border-b border-border bg-surface">
+      <FloatingMath preset="header" />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:py-20">
         {eyebrow && (
           <p
             className="animate-fade-up text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong"

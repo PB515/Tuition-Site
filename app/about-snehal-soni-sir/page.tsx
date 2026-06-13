@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import PageHeader from "@/components/site/PageHeader";
 import SmartImage from "@/components/site/SmartImage";
+import FloatingMath from "@/components/site/FloatingMath";
 import EnquiryBand from "@/components/site/EnquiryBand";
 import JsonLd from "@/components/JsonLd";
 import { personLd } from "@/lib/structured-data";
@@ -42,8 +43,9 @@ export default function Page() {
         subtitle={`${SITE.yearsExperience} years of teaching mathematics in Vadodara since ${SITE.since}, including years at Navrachana School.`}
       />
 
-      <section className="border-b border-border">
-        <div className="mx-auto grid max-w-7xl items-start gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={0} />
+        <div className="relative z-10 mx-auto grid max-w-7xl items-start gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
           <div className="space-y-5 text-base leading-relaxed text-ink-muted">
             <p>
               Snehal Sir has taught mathematics in Vadodara since {SITE.since}. Over{" "}
@@ -76,8 +78,9 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={1} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
           <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Background and qualifications
           </h2>
@@ -104,8 +107,9 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border bg-surface">
+        <FloatingMath preset="band" offset={2} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
           <h2 className="max-w-2xl font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             What makes his teaching different
           </h2>
