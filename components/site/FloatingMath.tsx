@@ -18,28 +18,26 @@ type Sym = {
   depth: number;
   dur: string;
   delay: string;
-  interactive?: boolean;
 };
 
 const SHIFT = 14; // max px the field leans with the cursor
 
+// 3 per gutter (asymmetric rhythm between sides) + 3 in the inner empty bands.
+// All hover-interactive. Keep every glyph in clear space (gutters + top/bottom
+// bands) so a hover target never sits over text, buttons or the image.
 const SYMBOLS: Sym[] = [
-  // Left gutter (hover-interactive)
-  { ch: "=", pos: "left-[8%] top-[8%]", size: "text-5xl", color: "text-primary/[0.12]", depth: 0.9, dur: "12s", delay: "2.4s", interactive: true },
-  { ch: "+", pos: "left-[2%] top-[28%]", size: "text-7xl", color: "text-primary/[0.13]", depth: 1.3, dur: "13s", delay: "0s", interactive: true },
-  { ch: "√", pos: "left-[8%] top-[48%]", size: "text-6xl", color: "text-accent/[0.12]", depth: 1.1, dur: "16s", delay: "0.3s", interactive: true },
-  { ch: "π", pos: "left-[8%] top-[70%]", size: "text-8xl", color: "text-primary/[0.13]", depth: 1.6, dur: "15s", delay: "1.4s", interactive: true },
-  { ch: "θ", pos: "left-[2%] top-[88%]", size: "text-6xl", color: "text-accent/[0.12]", depth: 1.1, dur: "13s", delay: "2.1s", interactive: true },
-  // Right gutter (hover-interactive)
-  { ch: "×", pos: "right-[8%] top-[10%]", size: "text-7xl", color: "text-accent/[0.13]", depth: 1.3, dur: "11s", delay: "0.7s", interactive: true },
-  { ch: "∫", pos: "right-[2%] top-[30%]", size: "text-7xl", color: "text-primary/[0.13]", depth: 1.3, dur: "16s", delay: "0.9s", interactive: true },
-  { ch: "∑", pos: "right-[8%] top-[50%]", size: "text-8xl", color: "text-primary/[0.12]", depth: 1.6, dur: "14s", delay: "1.1s", interactive: true },
-  { ch: "%", pos: "right-[3%] top-[70%]", size: "text-5xl", color: "text-primary/[0.12]", depth: 0.9, dur: "12s", delay: "0.5s", interactive: true },
-  { ch: "∞", pos: "right-[9%] bottom-[4%]", size: "text-7xl", color: "text-accent/[0.12]", depth: 1.3, dur: "15s", delay: "0.2s", interactive: true },
-  // Inner bands (parallax only, no hover)
-  { ch: "÷", pos: "left-[22%] top-[9%]", size: "text-5xl", color: "text-primary/[0.11]", depth: 0.7, dur: "14s", delay: "1.2s" },
-  { ch: "−", pos: "left-[43%] top-[15%]", size: "text-5xl", color: "text-accent/[0.11]", depth: 0.7, dur: "13s", delay: "0.6s" },
-  { ch: "Δ", pos: "left-[39%] top-[83%]", size: "text-5xl", color: "text-accent/[0.11]", depth: 0.7, dur: "15s", delay: "1.9s" },
+  // Left gutter
+  { ch: "+", pos: "left-[3%] top-[20%]", size: "text-7xl", color: "text-primary/[0.13]", depth: 1.3, dur: "13s", delay: "0s" },
+  { ch: "√", pos: "left-[9%] top-[52%]", size: "text-6xl", color: "text-accent/[0.12]", depth: 1.1, dur: "16s", delay: "0.3s" },
+  { ch: "π", pos: "left-[4%] top-[83%]", size: "text-8xl", color: "text-primary/[0.13]", depth: 1.6, dur: "15s", delay: "1.4s" },
+  // Right gutter (different vertical rhythm)
+  { ch: "×", pos: "right-[7%] top-[12%]", size: "text-7xl", color: "text-accent/[0.13]", depth: 1.3, dur: "11s", delay: "0.7s" },
+  { ch: "∑", pos: "right-[3%] top-[46%]", size: "text-8xl", color: "text-primary/[0.12]", depth: 1.6, dur: "14s", delay: "1.1s" },
+  { ch: "∞", pos: "right-[10%] bottom-[8%]", size: "text-7xl", color: "text-accent/[0.12]", depth: 1.3, dur: "15s", delay: "0.2s" },
+  // Inner empty bands
+  { ch: "÷", pos: "left-[24%] top-[8%]", size: "text-5xl", color: "text-primary/[0.12]", depth: 0.7, dur: "14s", delay: "1.2s" },
+  { ch: "−", pos: "left-[44%] top-[16%]", size: "text-6xl", color: "text-accent/[0.12]", depth: 0.7, dur: "13s", delay: "0.6s" },
+  { ch: "Δ", pos: "left-[40%] top-[84%]", size: "text-5xl", color: "text-accent/[0.12]", depth: 0.7, dur: "15s", delay: "1.9s" },
 ];
 
 export default function FloatingMath() {
@@ -75,7 +73,7 @@ export default function FloatingMath() {
   }, []);
 
   return (
-    <div ref={ref} aria-hidden className="pointer-events-none absolute inset-0 hidden overflow-hidden lg:block">
+    <div ref={ref} aria-hidden className="pointer-events-none absolute inset-0 z-20 hidden overflow-hidden lg:block">
       {SYMBOLS.map((s, i) => (
         <span
           key={i}
