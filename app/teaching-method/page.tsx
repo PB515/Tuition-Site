@@ -1,6 +1,7 @@
 import PageHeader from "@/components/site/PageHeader";
 import SmartImage from "@/components/site/SmartImage";
 import EnquiryBand from "@/components/site/EnquiryBand";
+import FloatingMath from "@/components/site/FloatingMath";
 import { METHOD_STEPS } from "@/lib/site";
 
 export const metadata = { title: "Teaching Method" };
@@ -14,8 +15,9 @@ export default function Page() {
         subtitle="A steady, repeatable way of teaching math, used in every batch."
       />
 
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={0} count={4} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
           <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {METHOD_STEPS.map((step, i) => (
               <li
@@ -35,8 +37,9 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 pb-12 sm:px-6">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={1} count={2} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 pb-12 sm:px-6">
           <SmartImage
             src="/images/method.jpg"
             alt="Snehal Sir explaining a math method on the board"
@@ -47,8 +50,9 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border bg-surface">
+        <FloatingMath preset="band" offset={2} count={4} />
+        <div className="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-20">
           <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             Why this works
           </h2>

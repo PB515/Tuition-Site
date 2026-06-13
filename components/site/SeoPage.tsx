@@ -2,6 +2,7 @@ import { Check } from "lucide-react";
 import PageHeader from "./PageHeader";
 import SmartImage from "./SmartImage";
 import EnquiryBand from "./EnquiryBand";
+import FloatingMath from "./FloatingMath";
 
 export type SeoContent = {
   eyebrow: string;
@@ -19,8 +20,9 @@ export default function SeoPage({ content, imageSlug }: { content: SeoContent; i
       <PageHeader eyebrow={content.eyebrow} title={content.title} subtitle={content.intro} />
 
       {imageSlug && (
-        <section className="border-b border-border">
-          <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6">
+        <section className="relative overflow-hidden border-b border-border">
+          <FloatingMath preset="band" offset={3} count={2} />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 pt-12 sm:px-6">
             <SmartImage
               src={`/images/courses/${imageSlug}.jpg`}
               alt={content.title}
@@ -31,8 +33,9 @@ export default function SeoPage({ content, imageSlug }: { content: SeoContent; i
         </section>
       )}
 
-      <section className="border-b border-border">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={0} count={3} />
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
           <div>
             <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
               Who it is for
@@ -72,8 +75,9 @@ export default function SeoPage({ content, imageSlug }: { content: SeoContent; i
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border bg-surface">
+        <FloatingMath preset="band" offset={1} count={3} />
+        <div className="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-20">
           <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             How Snehal Sir teaches it
           </h2>
@@ -81,8 +85,9 @@ export default function SeoPage({ content, imageSlug }: { content: SeoContent; i
         </div>
       </section>
 
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={2} count={4} />
+        <div className="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-20">
           <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             Common questions
           </h2>

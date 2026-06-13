@@ -4,6 +4,7 @@ import PageHeader from "@/components/site/PageHeader";
 import SmartImage from "@/components/site/SmartImage";
 import CtaButton from "@/components/site/CtaButton";
 import EnquiryForm from "@/components/EnquiryForm";
+import FloatingMath from "@/components/site/FloatingMath";
 import { SITE, AREAS, WA_ENQUIRY, MAPS_EMBED, BRANCHES } from "@/lib/site";
 
 export const metadata = { title: "Contact" };
@@ -30,8 +31,9 @@ export default function Page() {
         subtitle="Offline math coaching in Vadodara, at our Alkapuri and Sama branches. Reach Snehal Sir directly."
       />
 
-      <section className="border-b border-border">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={0} count={3} />
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
           <div>
             <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
               Send an enquiry
@@ -113,8 +115,9 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border bg-surface">
+        <FloatingMath preset="band" offset={1} count={3} />
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
           <div>
             <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
               How admission works

@@ -3,6 +3,7 @@ import { ArrowRight, Check } from "lucide-react";
 import PageHeader from "@/components/site/PageHeader";
 import SmartImage from "@/components/site/SmartImage";
 import EnquiryBand from "@/components/site/EnquiryBand";
+import FloatingMath from "@/components/site/FloatingMath";
 import { COURSES } from "@/lib/site";
 
 export const metadata = { title: "Courses" };
@@ -24,8 +25,9 @@ export default function Page() {
         subtitle="One maths-focused system, taught by Snehal Sir, for boards and competitive preparation alike."
       />
 
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={2} count={2} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 pt-12 sm:px-6">
           <SmartImage
             src="/images/courses/main.jpg"
             alt="Math coaching at Inspire Academy"
@@ -36,8 +38,9 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={0} count={3} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {COURSES.map((c) => (
               <Link
@@ -60,8 +63,9 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border bg-surface">
+        <FloatingMath preset="band" offset={1} count={3} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
           <h2 className="max-w-2xl font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Every batch includes
           </h2>

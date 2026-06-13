@@ -27,8 +27,6 @@ const HERO_SYMBOLS: Sym[] = [
 // ---- HEADER: short top band on inner pages (gutters, not clipped) ----
 const HEADER_SYMBOLS: Sym[] = [
   { ch: "∑", pos: "left-[4%] top-[24%]", size: "text-6xl", color: "text-primary/[0.12]", depth: 1.2, dur: "13s", delay: "0s" },
-  { ch: "π", pos: "left-[9%] top-[62%]", size: "text-5xl", color: "text-accent/[0.11]", depth: 1.1, dur: "15s", delay: "1.2s" },
-  { ch: "∫", pos: "right-[5%] top-[20%]", size: "text-6xl", color: "text-primary/[0.11]", depth: 1.3, dur: "14s", delay: "0.6s" },
   { ch: "√", pos: "right-[9%] top-[62%]", size: "text-5xl", color: "text-accent/[0.12]", depth: 1.1, dur: "11s", delay: "0.3s" },
 ];
 

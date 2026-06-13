@@ -3,6 +3,7 @@ import EnquiryBand from "@/components/site/EnquiryBand";
 import ResultCard from "@/components/site/ResultCard";
 import TestimonialCard from "@/components/site/TestimonialCard";
 import HeroCarousel from "@/components/site/HeroCarousel";
+import FloatingMath from "@/components/site/FloatingMath";
 import { getResults, getTestimonials } from "@/lib/content";
 import { resolveImage } from "@/lib/site-images";
 
@@ -24,14 +25,16 @@ export default async function Page() {
         subtitle="Real scores from real students, shared with permission."
       />
 
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={0} count={2} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 pt-10 sm:px-6">
           <HeroCarousel slides={bannerSlides} aspectClass="aspect-[16/9] sm:aspect-[21/8]" />
         </div>
       </section>
 
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={1} count={3} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
           {results.length === 0 ? (
             <p className="rounded-2xl border border-border bg-surface p-6 text-sm text-ink-muted">
               Results are published here through the year, with student permission.
@@ -46,8 +49,9 @@ export default async function Page() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border bg-surface">
+        <FloatingMath preset="band" offset={2} count={3} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
           <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             Student and parent feedback
           </h2>
