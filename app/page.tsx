@@ -176,8 +176,9 @@ export default async function Home() {
       </section>
 
       {/* 5. WHY INSPIRE (asymmetric content split) */}
-      <section className="border-b border-border">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-24">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={0} />
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-24">
           <div className="lg:col-span-5">
             <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               Why students stay with Inspire
@@ -212,8 +213,9 @@ export default async function Home() {
       </section>
 
       {/* 6. COURSES (tile grid) */}
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+      <section className="relative overflow-hidden border-b border-border bg-surface">
+        <FloatingMath preset="band" offset={1} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
           <h2 className="max-w-2xl font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Coaching for every stage, from Class 9 to competitive exams
           </h2>
@@ -247,8 +249,9 @@ export default async function Home() {
       </section>
 
       {/* 6b. APPLIED MATH SPOTLIGHT */}
-      <section className="border-b border-border">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={2} />
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
               Newly introduced: Applied Mathematics
@@ -289,8 +292,9 @@ export default async function Home() {
       </section>
 
       {/* 7. TEACHING METHOD (numbered steps) */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={3} />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong">
             The Inspire Math Learning System
           </p>
