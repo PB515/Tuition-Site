@@ -44,7 +44,7 @@ export default function Page() {
       />
 
       <section className="relative overflow-hidden border-b border-border">
-        <FloatingMath preset="band" offset={0} />
+        <FloatingMath preset="band" offset={0} count={2} />
         <div className="relative z-10 mx-auto grid max-w-7xl items-start gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
           <div className="space-y-5 text-base leading-relaxed text-ink-muted">
             <p>
@@ -79,7 +79,7 @@ export default function Page() {
       </section>
 
       <section className="relative overflow-hidden border-b border-border">
-        <FloatingMath preset="band" offset={1} />
+        <FloatingMath preset="band" offset={1} count={3} />
         <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
           <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Background and qualifications
@@ -108,7 +108,7 @@ export default function Page() {
       </section>
 
       <section className="relative overflow-hidden border-b border-border bg-surface">
-        <FloatingMath preset="band" offset={2} />
+        <FloatingMath preset="band" offset={2} count={4} />
         <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
           <h2 className="max-w-2xl font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             What makes his teaching different
@@ -130,7 +130,7 @@ export default function Page() {
       </section>
 
       <section className="relative overflow-hidden border-b border-border">
-        <FloatingMath preset="band" offset={3} />
+        <FloatingMath preset="band" offset={3} count={4} />
         <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6">
           <SmartImage
             src="/images/about/teaching.jpg"

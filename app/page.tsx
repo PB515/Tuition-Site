@@ -177,7 +177,7 @@ export default async function Home() {
 
       {/* 5. WHY INSPIRE (asymmetric content split) */}
       <section className="relative overflow-hidden border-b border-border">
-        <FloatingMath preset="band" offset={0} />
+        <FloatingMath preset="band" offset={0} count={4} />
         <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-24">
           <div className="lg:col-span-5">
             <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -214,7 +214,7 @@ export default async function Home() {
 
       {/* 6. COURSES (tile grid) */}
       <section className="relative overflow-hidden border-b border-border bg-surface">
-        <FloatingMath preset="band" offset={1} />
+        <FloatingMath preset="band" offset={1} count={3} />
         <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
           <h2 className="max-w-2xl font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Coaching for every stage, from Class 9 to competitive exams
@@ -250,7 +250,7 @@ export default async function Home() {
 
       {/* 6b. APPLIED MATH SPOTLIGHT */}
       <section className="relative overflow-hidden border-b border-border">
-        <FloatingMath preset="band" offset={2} />
+        <FloatingMath preset="band" offset={2} count={4} />
         <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
@@ -293,7 +293,7 @@ export default async function Home() {
 
       {/* 7. TEACHING METHOD (numbered steps) */}
       <section className="relative overflow-hidden border-b border-border">
-        <FloatingMath preset="band" offset={3} />
+        <FloatingMath preset="band" offset={3} count={3} />
         <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong">
             The Inspire Math Learning System
@@ -322,7 +322,7 @@ export default async function Home() {
 
       {/* 8. RESULTS (highlight + creative slots) */}
       <section className="relative overflow-hidden border-b border-border bg-surface">
-        <FloatingMath preset="band" offset={4} />
+        <FloatingMath preset="band" offset={4} count={2} />
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24">
           <div>
             <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -361,7 +361,7 @@ export default async function Home() {
 
       {/* 9. PARENT UPDATES (calm band) */}
       <section className="relative overflow-hidden border-b border-border">
-        <FloatingMath preset="band" offset={5} />
+        <FloatingMath preset="band" offset={5} count={3} />
         <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong">
@@ -410,7 +410,7 @@ export default async function Home() {
       {/* 9b. RESULTS + TESTIMONIALS (from the admin collections) */}
       {(featuredResults.length > 0 || featuredTestimonials.length > 0) && (
         <section className="relative overflow-hidden border-b border-border">
-          <FloatingMath preset="band" offset={8} />
+          <FloatingMath preset="band" offset={8} count={4} />
           <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             {featuredResults.length > 0 && (
               <div>
@@ -447,7 +447,7 @@ export default async function Home() {
 
       {/* 10. FAQ */}
       <section className="relative overflow-hidden border-b border-border bg-surface">
-        <FloatingMath preset="band" offset={6} />
+        <FloatingMath preset="band" offset={6} count={5} />
         <div className="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
           <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Questions parents ask
@@ -460,7 +460,7 @@ export default async function Home() {
 
       {/* 11. CONTACT BAND */}
       <section className="relative overflow-hidden">
-        <FloatingMath preset="band" offset={7} />
+        <FloatingMath preset="band" offset={7} count={3} />
         <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24">
           <div>
             <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">

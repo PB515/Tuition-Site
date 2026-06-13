@@ -37,21 +37,25 @@ const HEADER_SYMBOLS: Sym[] = [
 // clipping edges) plus two small ones in the top/bottom padding strips. ----
 const BAND_GLYPHS = ["+", "−", "×", "÷", "=", "π", "√", "∑", "∫", "∞", "θ", "Δ", "λ", "φ", "%", "≈", "±", "∂", "∇", "∠"];
 
+// Ordered so taking the first N gives a balanced spread: N=2 → opposite corners,
+// N=3 → +another gutter, N=4 → four corners, 5-6 → mids, 7-8 → inner padding.
+// Each section passes the `count` that suits its own empty space.
 type Slot = { pos: string; size: string; depth: number; dur: string; delay: string; warm?: boolean };
 const BAND_SLOTS: Slot[] = [
-  { pos: "left-[4%] top-[14%]", size: "text-7xl", depth: 1.3, dur: "13s", delay: "0s" },
-  { pos: "left-[9%] top-[47%]", size: "text-6xl", depth: 1.1, dur: "16s", delay: "1.2s", warm: true },
-  { pos: "left-[3%] top-[80%]", size: "text-8xl", depth: 1.6, dur: "15s", delay: "0.6s" },
-  { pos: "right-[4%] top-[22%]", size: "text-7xl", depth: 1.3, dur: "11s", delay: "0.3s", warm: true },
-  { pos: "right-[9%] top-[56%]", size: "text-8xl", depth: 1.5, dur: "14s", delay: "1.6s" },
-  { pos: "right-[3%] top-[88%]", size: "text-6xl", depth: 1.1, dur: "13s", delay: "2.1s", warm: true },
+  { pos: "left-[4%] top-[16%]", size: "text-7xl", depth: 1.3, dur: "13s", delay: "0s" },
+  { pos: "right-[4%] top-[72%]", size: "text-7xl", depth: 1.3, dur: "11s", delay: "0.3s", warm: true },
+  { pos: "right-[8%] top-[22%]", size: "text-6xl", depth: 1.2, dur: "14s", delay: "1.6s" },
+  { pos: "left-[8%] top-[78%]", size: "text-8xl", depth: 1.6, dur: "15s", delay: "0.6s", warm: true },
+  { pos: "left-[3%] top-[46%]", size: "text-6xl", depth: 1.1, dur: "16s", delay: "1.2s" },
+  { pos: "right-[3%] top-[50%]", size: "text-8xl", depth: 1.5, dur: "14s", delay: "2.1s", warm: true },
   { pos: "left-[33%] top-[4%]", size: "text-4xl", depth: 0.6, dur: "12s", delay: "0.9s", warm: true },
   { pos: "right-[28%] bottom-[4%]", size: "text-4xl", depth: 0.6, dur: "15s", delay: "1.4s" },
 ];
 
-function pickBand(offset: number): Sym[] {
+function pickBand(offset: number, count: number): Sym[] {
   const g = BAND_GLYPHS.length;
-  return BAND_SLOTS.map((slot, k) => ({
+  const n = Math.max(0, Math.min(count, BAND_SLOTS.length));
+  return BAND_SLOTS.slice(0, n).map((slot, k) => ({
     ch: BAND_GLYPHS[(offset * 3 + k) % g],
     pos: slot.pos,
     size: slot.size,
@@ -65,9 +69,11 @@ function pickBand(offset: number): Sym[] {
 export default function FloatingMath({
   preset = "hero",
   offset = 0,
+  count = 4,
 }: {
   preset?: "hero" | "band" | "header";
   offset?: number;
+  count?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -101,7 +107,7 @@ export default function FloatingMath({
   }, []);
 
   const symbols =
-    preset === "band" ? pickBand(offset) : preset === "header" ? HEADER_SYMBOLS : HERO_SYMBOLS;
+    preset === "band" ? pickBand(offset, count) : preset === "header" ? HEADER_SYMBOLS : HERO_SYMBOLS;
   const showAt = preset === "hero" ? "lg:block" : "xl:block";
 
   return (
