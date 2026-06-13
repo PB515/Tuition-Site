@@ -321,8 +321,9 @@ export default async function Home() {
       </section>
 
       {/* 8. RESULTS (highlight + creative slots) */}
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24">
+      <section className="relative overflow-hidden border-b border-border bg-surface">
+        <FloatingMath preset="band" offset={4} />
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24">
           <div>
             <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               Results that speak for the teaching
@@ -359,8 +360,9 @@ export default async function Home() {
       </section>
 
       {/* 9. PARENT UPDATES (calm band) */}
-      <section className="border-b border-border">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath preset="band" offset={5} />
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong">
               The parent app
@@ -443,8 +445,9 @@ export default async function Home() {
       )}
 
       {/* 10. FAQ */}
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
+      <section className="relative overflow-hidden border-b border-border bg-surface">
+        <FloatingMath preset="band" offset={6} />
+        <div className="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
           <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Questions parents ask
           </h2>
@@ -455,8 +458,9 @@ export default async function Home() {
       </section>
 
       {/* 11. CONTACT BAND */}
-      <section>
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24">
+      <section className="relative overflow-hidden">
+        <FloatingMath preset="band" offset={7} />
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24">
           <div>
             <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               Two branches. One standard of teaching.
