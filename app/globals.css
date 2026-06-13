@@ -86,6 +86,22 @@ body {
   will-change: transform;
 }
 
+/* Interactive decorative glyphs (gutter only): glow + warm colour swap + grow
+   on hover. The scale lives on this inner element so it never fights the float
+   transform on the wrapper. */
+.glyph-i {
+  cursor: default;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+.glyph-i:hover {
+  color: var(--accent);
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--accent) 55%, transparent));
+}
+
 /* Scroll reveal: every section past the first fades + rises in as it enters.
    Gated on .js (added before paint) so no-JS users see everything; the first
    section is never hidden so above-the-fold is always instant. */
