@@ -69,6 +69,23 @@ body {
   animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Decorative floating math glyphs (background only, aria-hidden, desktop). */
+@keyframes float-soft {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) rotate(6deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+.animate-float-soft {
+  animation: float-soft 13s ease-in-out infinite;
+  will-change: transform;
+}
+
 /* Scroll reveal: every section past the first fades + rises in as it enters.
    Gated on .js (added before paint) so no-JS users see everything; the first
    section is never hidden so above-the-fold is always instant. */

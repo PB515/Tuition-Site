@@ -13,6 +13,7 @@ import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import CtaButton from "@/components/site/CtaButton";
 import InstallButton from "@/components/InstallButton";
 import HeroCarousel from "@/components/site/HeroCarousel";
+import FloatingMath from "@/components/site/FloatingMath";
 import Faq from "@/components/home/Faq";
 import { resolveImage } from "@/lib/site-images";
 import ResultCard from "@/components/site/ResultCard";
@@ -73,8 +74,9 @@ export default async function Home() {
   return (
     <main>
       {/* 1. HERO (asymmetric split) */}
-      <section className="border-b border-border">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 pt-12 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:pb-24 lg:pt-20">
+      <section className="relative overflow-hidden border-b border-border">
+        <FloatingMath />
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 pt-12 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:pb-24 lg:pt-20">
           <div>
             <p
               className="animate-fade-up text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong"
