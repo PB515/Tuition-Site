@@ -87,8 +87,8 @@ export default function FloatingMath() {
             style={{ animationDuration: s.dur, animationDelay: s.delay }}
           >
             <span
-              className={`block select-none font-heading font-bold ${s.size} ${s.color} ${
-                s.interactive ? "glyph-i pointer-events-auto" : ""
+              className={`glyph-i pointer-events-auto block select-none font-heading font-bold ${s.size} ${s.color} ${
+                s.color.includes("accent") ? "glyph-warm" : "glyph-teal"
               }`}
             >
               {s.ch}
