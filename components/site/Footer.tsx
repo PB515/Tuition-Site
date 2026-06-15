@@ -14,11 +14,7 @@ export default function Footer({ logoUrl = null }: { logoUrl?: string | null }) 
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
           {logoUrl ? (
-            <Link
-              href="/"
-              aria-label={SITE.name}
-              className="inline-flex w-fit items-center rounded-xl dark:bg-[#f4f1ea] dark:px-3 dark:py-2"
-            >
+            <Link href="/" aria-label={SITE.name}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={logoUrl} alt={SITE.name} className="h-16 w-auto sm:h-20" />
             </Link>

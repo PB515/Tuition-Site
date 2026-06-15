@@ -35,10 +35,8 @@ export default function Nav({ logoUrl = null }: { logoUrl?: string | null }) {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
           {logoUrl ? (
-            <span className="inline-flex items-center rounded-lg dark:bg-[#f4f1ea] dark:px-2.5 dark:py-1.5">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={logoUrl} alt={SITE.name} className="h-10 w-auto sm:h-12" />
-            </span>
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={logoUrl} alt={SITE.name} className="h-10 w-auto sm:h-12" />
           ) : (
             <Wordmark />
           )}
