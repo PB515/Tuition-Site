@@ -25,6 +25,7 @@ import {
   Search,
 } from "lucide-react";
 import { signOut } from "@/app/admin/actions";
+import ThemeToggle from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -137,6 +138,7 @@ export default function AdminShell({
               />
             </div>
           </form>
+          <ThemeToggle className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-sm font-medium text-ink-muted transition-colors hover:text-ink" />
           <span className="hidden text-xs text-ink-muted sm:inline">{email}</span>
           <form action={signOut}>
             <button

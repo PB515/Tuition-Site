@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { parentSignOut } from "./actions";
 import WebsiteLink from "@/components/parent/WebsiteLink";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export const dynamic = "force-dynamic";
 
@@ -35,6 +36,7 @@ export default async function ParentLayout({
             Inspire Academy · Parent
           </Link>
           <div className="flex items-center gap-2">
+            <ThemeToggle className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-sm font-medium text-ink-muted transition-colors hover:text-ink" />
             <WebsiteLink
               label="Website"
               className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-sm font-medium text-ink-muted transition-colors hover:text-ink"
