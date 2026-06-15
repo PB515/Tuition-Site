@@ -36,7 +36,7 @@ export default function Nav({ logoUrl = null }: { logoUrl?: string | null }) {
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
           {logoUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={logoUrl} alt={SITE.name} className="h-10 w-auto sm:h-12" />
+            <img src={logoUrl} alt={SITE.name} className="h-8 w-auto sm:h-10" />
           ) : (
             <Wordmark />
           )}
