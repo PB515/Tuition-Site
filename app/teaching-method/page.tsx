@@ -4,7 +4,11 @@ import EnquiryBand from "@/components/site/EnquiryBand";
 import FloatingMath from "@/components/site/FloatingMath";
 import { METHOD_STEPS } from "@/lib/site";
 
-export const metadata = { title: "Teaching Method" };
+export const metadata = {
+  title: "Teaching Method",
+  description:
+    "How Snehal Sir teaches math at Inspire Academy, Vadodara: concept-first, NCERT-based, weekly tests and personal doubt-solving, for Class 9 to 12, boards and competitive exams.",
+};
 
 export default function Page() {
   return (

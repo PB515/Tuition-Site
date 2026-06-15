@@ -7,7 +7,11 @@ import FloatingMath from "@/components/site/FloatingMath";
 import { getResults, getTestimonials } from "@/lib/content";
 import { resolveImage } from "@/lib/site-images";
 
-export const metadata = { title: "Results" };
+export const metadata = {
+  title: "Results",
+  description:
+    "Real student results from Inspire Academy of Mathematics, Vadodara, including 97/100 in Navrachana Applied Math. Board, JEE and GUJCET results shared with permission.",
+};
 
 export default async function Page() {
   const [results, testimonials] = await Promise.all([getResults(), getTestimonials()]);

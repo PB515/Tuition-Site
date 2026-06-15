@@ -15,6 +15,8 @@ import InstallButton from "@/components/InstallButton";
 import HeroCarousel from "@/components/site/HeroCarousel";
 import FloatingMath from "@/components/site/FloatingMath";
 import Faq from "@/components/home/Faq";
+import JsonLd from "@/components/JsonLd";
+import { faqPageLd } from "@/lib/structured-data";
 import { resolveImage } from "@/lib/site-images";
 import ResultCard from "@/components/site/ResultCard";
 import TestimonialCard from "@/components/site/TestimonialCard";
@@ -27,6 +29,7 @@ import {
   CLASS_CHIPS,
   COURSES,
   METHOD_STEPS,
+  FAQS,
 } from "@/lib/site";
 
 const STATS = [
@@ -455,6 +458,7 @@ export default async function Home() {
           <div className="mt-10">
             <Faq />
           </div>
+          <JsonLd data={faqPageLd(FAQS)} />
         </div>
       </section>
 

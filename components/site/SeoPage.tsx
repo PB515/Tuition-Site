@@ -4,6 +4,8 @@ import SmartImage from "./SmartImage";
 import EnquiryBand from "./EnquiryBand";
 import FloatingMath from "./FloatingMath";
 import Faq from "@/components/home/Faq";
+import JsonLd from "@/components/JsonLd";
+import { faqPageLd, breadcrumbLd } from "@/lib/structured-data";
 
 export type SeoContent = {
   eyebrow: string;
@@ -26,9 +28,27 @@ const INCLUDES = [
   "Progress updates for parents when needed",
 ];
 
-export default function SeoPage({ content, imageSlug }: { content: SeoContent; imageSlug?: string }) {
+export default function SeoPage({
+  content,
+  imageSlug,
+  path,
+}: {
+  content: SeoContent;
+  imageSlug?: string;
+  path?: string;
+}) {
   return (
     <main>
+      <JsonLd data={faqPageLd(content.faqs)} />
+      {path && (
+        <JsonLd
+          data={breadcrumbLd([
+            { name: "Home", path: "/" },
+            { name: "Batches", path: "/batches" },
+            { name: content.title, path },
+          ])}
+        />
+      )}
       <PageHeader eyebrow={content.eyebrow} title={content.title} subtitle={content.intro} />
 
       {imageSlug && (

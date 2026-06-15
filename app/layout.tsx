@@ -33,6 +33,18 @@ export const metadata: Metadata = {
   },
   description:
     "Mathematics coaching in Vadodara by Snehal Sir, 25+ years of experience, small batches at two branches: Alkapuri and Sama. Class 9 to 12, Math and Applied Math, JEE and GUJCET. Concept clarity, weekly tests, personal attention.",
+  openGraph: {
+    type: "website",
+    siteName: "Inspire Academy of Mathematics",
+    locale: "en_IN",
+    title: "Inspire Academy of Mathematics, Math Coaching in Vadodara",
+    description:
+      "Math coaching in Vadodara by Snehal Sir. Class 9 to 12, Applied Math, JEE and GUJCET. Two branches, small batches, weekly tests.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Inspire Academy of Mathematics, Math Coaching in Vadodara",
+  },
   appleWebApp: { capable: true, title: "Inspire Academy", statusBarStyle: "default" },
 };
 

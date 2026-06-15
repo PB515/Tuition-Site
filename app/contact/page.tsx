@@ -7,7 +7,11 @@ import EnquiryForm from "@/components/EnquiryForm";
 import FloatingMath from "@/components/site/FloatingMath";
 import { SITE, AREAS, WA_ENQUIRY, MAPS_EMBED, BRANCHES } from "@/lib/site";
 
-export const metadata = { title: "Contact" };
+export const metadata = {
+  title: "Contact",
+  description:
+    "Contact Inspire Academy of Mathematics, Vadodara. Two branches in Alkapuri and Sama. WhatsApp or call Snehal Sir for batch details, timings and fees.",
+};
 
 const STEPS = [
   "Call or message us on WhatsApp, or send the form.",

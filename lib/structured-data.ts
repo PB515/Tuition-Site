@@ -32,6 +32,34 @@ export function organizationLd() {
   };
 }
 
+// FAQPage schema -> eligible for FAQ rich results in Google. Pass the same
+// Q&A pairs shown on the page (homepage FAQ or a batch page's FAQs).
+export function faqPageLd(faqs: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
+
+// BreadcrumbList -> breadcrumb trail in search results. items are in order.
+export function breadcrumbLd(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      item: `${SITE_URL}${it.path}`,
+    })),
+  };
+}
+
 export function personLd() {
   return {
     "@context": "https://schema.org",

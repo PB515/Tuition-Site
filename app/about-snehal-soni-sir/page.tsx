@@ -6,7 +6,11 @@ import JsonLd from "@/components/JsonLd";
 import { personLd } from "@/lib/structured-data";
 import { SITE } from "@/lib/site";
 
-export const metadata = { title: "About Snehal Sir" };
+export const metadata = {
+  title: "About Snehal Sir",
+  description:
+    "About Snehal Sir, founder of Inspire Academy of Mathematics, Vadodara. 25+ years teaching math; former Head of the Mathematics Department at Navrachana School. BSc, MSc Mathematics, B.Ed.",
+};
 
 const POINTS = [
   "Math, and only math, so the focus never gets divided across subjects.",
