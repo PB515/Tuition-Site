@@ -13,36 +13,19 @@ export default function ThemeToggle({ className }: { className?: string }) {
     setDark(document.documentElement.classList.contains("dark"));
   }, []);
 
-  function apply(next: boolean) {
-    document.documentElement.classList.toggle("dark", next);
+  function toggle() {
+    const next = !dark;
+    const root = document.documentElement;
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // Brief colour cross-fade, then clean up so normal transitions resume.
+      root.classList.add("theme-transition");
+      window.setTimeout(() => root.classList.remove("theme-transition"), 360);
+    }
+    root.classList.toggle("dark", next);
     try {
       localStorage.setItem("theme", next ? "dark" : "light");
     } catch {}
     setDark(next);
-  }
-
-  function toggle() {
-    const next = !dark;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      apply(next);
-      return;
-    }
-    // A panel of the incoming background sweeps across the screen; the theme
-    // flips while it's covered, then the panel sweeps off, revealing the result.
-    const ov = document.createElement("div");
-    ov.style.cssText =
-      "position:fixed;inset:0;z-index:9999;pointer-events:none;will-change:transform;background:" +
-      (next ? "#0f1a17" : "#ffffff") +
-      ";transform:translateX(-100%);transition:transform .38s cubic-bezier(0.16,1,0.3,1)";
-    document.body.appendChild(ov);
-    requestAnimationFrame(() => {
-      ov.style.transform = "translateX(0)";
-    });
-    window.setTimeout(() => {
-      apply(next);
-      ov.style.transform = "translateX(100%)";
-      window.setTimeout(() => ov.remove(), 420);
-    }, 390);
   }
 
   return (

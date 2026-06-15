@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Class-based dark mode: dark:* utilities apply under .dark (not media query). */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ───────────────────────────────────────────────────────────
    Design tokens — Inspire Academy of Mathematics (doc 04)
    White surface + teal primary. Hex lives ONLY here. No hardcoded
@@ -42,6 +45,19 @@
   --success: #3ad06a;
   --warning: #e2894d;
   --error: #f1707a;
+}
+
+/* Smooth cross-fade only while toggling theme (class added/removed by the toggle).
+   Limited to colour properties so transforms/animations are untouched. */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    fill 0.3s ease !important;
 }
 
 @theme inline {
