@@ -6,11 +6,11 @@ import EnquiryBand from "@/components/site/EnquiryBand";
 import FloatingMath from "@/components/site/FloatingMath";
 import { COURSES } from "@/lib/site";
 
-export const metadata = { title: "Courses" };
+export const metadata = { title: "Batches" };
 
 const INCLUDED = [
   "Weekly tests with mistake analysis",
-  "Printed notes for every topic",
+  "Custom, curated notes and material by Sir for every topic",
   "Personal doubt-solving with Sir",
   "NCERT base that covers CBSE and GSEB",
   "Exam-pattern practice for boards, JEE and GUJCET",

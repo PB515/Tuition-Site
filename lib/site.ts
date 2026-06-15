@@ -68,7 +68,7 @@ export const ENQUIRY_CLASSES = [
 
 export const NAV = [
   { label: "About Sir", href: "/about-snehal-soni-sir" },
-  { label: "Courses", href: "/courses" },
+  { label: "Batches", href: "/courses" },
   { label: "Results", href: "/results" },
   { label: "Method", href: "/teaching-method" },
   { label: "Blog", href: "/blog" },

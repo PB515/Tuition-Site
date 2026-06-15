@@ -41,7 +41,7 @@ const WHY = [
   { t: "Snehal Sir teaches every class", b: "For Class 9 to 12, the founder himself is in every session. Not a substitute, not a junior tutor." },
   { t: "Practical, hands-on learning", b: "Concepts are grounded in where they come from and how they are used, before exam technique." },
   { t: "Small batches. Maximum 20.", b: "Every batch is capped at 20, so we know where each student is and how they progress week to week." },
-  { t: "Applied Math specialists", b: "A dedicated, experience-backed approach with handcrafted material, already producing top results." },
+  { t: "His own study material", b: "Snehal Sir provides custom, curated notes and practice material, made for each class and exam, not generic handouts." },
   { t: "Weekly tests, real feedback", b: "A test every week, printed notes, and an honest conversation about what went wrong." },
 ];
 
@@ -241,7 +241,7 @@ export default async function Home() {
               href="/courses"
               className="flex items-center justify-between gap-4 rounded-2xl border border-dashed border-primary bg-primary-tint/50 p-5 text-primary-strong transition-all duration-200 hover:-translate-y-1 hover:bg-primary-tint hover:shadow-md"
             >
-              <p className="font-heading text-lg font-semibold">See all courses</p>
+              <p className="font-heading text-lg font-semibold">See all batches</p>
               <ArrowUpRight size={20} strokeWidth={1.75} className="shrink-0" />
             </Link>
           </div>
