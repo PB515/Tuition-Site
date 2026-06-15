@@ -20,17 +20,19 @@ export default async function Page() {
 
   return (
     <main>
+      {/* Full-bleed results banner, first thing visitors see */}
+      <section className="border-b border-border">
+        <HeroCarousel
+          slides={bannerSlides}
+          aspectClass="aspect-[16/9] sm:aspect-[21/9] lg:aspect-[3/1]"
+          frameClass=""
+        />
+      </section>
+
       <PageHeader
         title="Results that speak for the teaching"
         subtitle="Real scores from real students, shared with permission."
       />
-
-      <section className="relative overflow-hidden border-b border-border">
-        <FloatingMath preset="band" offset={0} count={2} />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 pt-10 sm:px-6">
-          <HeroCarousel slides={bannerSlides} aspectClass="aspect-[16/9] sm:aspect-[21/8]" />
-        </div>
-      </section>
 
       <section className="relative overflow-hidden border-b border-border">
         <FloatingMath preset="band" offset={1} count={3} />

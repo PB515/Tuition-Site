@@ -8,9 +8,11 @@ type Slide = { url: string | null; label: string; src: string };
 export default function HeroCarousel({
   slides,
   aspectClass = "aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5]",
+  frameClass = "rounded-2xl border border-border",
 }: {
   slides: Slide[];
   aspectClass?: string;
+  frameClass?: string;
 }) {
   const [i, setI] = useState(0);
   const n = slides.length;
@@ -22,7 +24,7 @@ export default function HeroCarousel({
   }, [n]);
 
   return (
-    <div className={`relative w-full overflow-hidden rounded-2xl border border-border bg-primary-tint/40 ${aspectClass}`}>
+    <div className={`relative w-full overflow-hidden bg-primary-tint/40 ${frameClass} ${aspectClass}`}>
       {slides.map((s, idx) => (
         <div
           key={idx}
