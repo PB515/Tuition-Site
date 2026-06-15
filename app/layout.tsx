@@ -53,7 +53,8 @@ export default async function RootLayout({
       <body className="flex min-h-full flex-col bg-bg font-sans text-ink">
         <script
           dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js')",
+            __html:
+              "document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}",
           }}
         />
         <JsonLd data={organizationLd()} />

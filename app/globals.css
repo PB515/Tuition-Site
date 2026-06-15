@@ -25,6 +25,25 @@
   --radius-lg: 16px;
 }
 
+/* Dark theme = "blackboard". Overriding the base vars is enough: every token
+   utility (bg-bg, text-ink, ...) resolves through these, so the whole site
+   re-themes from this one block. Chalk-white text on slate-green board. */
+.dark {
+  --bg: #0f1a17;
+  --surface: #17241f;
+  --border: #2c3a34;
+  --ink: #eaf0ea;
+  --ink-muted: #a2b2ab;
+  --primary: #20b9b3;
+  --primary-strong: #1aa7a1;
+  --primary-deep: #2fcbc4;
+  --primary-tint: #143832;
+  --accent: #e2894d;
+  --success: #3ad06a;
+  --warning: #e2894d;
+  --error: #f1707a;
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);

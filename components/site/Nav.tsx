@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, FunctionSquare } from "lucide-react";
 import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import InstallButton from "@/components/InstallButton";
+import ThemeToggle from "@/components/ThemeToggle";
 import { NAV, WA_ENQUIRY, SITE } from "@/lib/site";
 
 function Wordmark() {
@@ -57,6 +58,7 @@ export default function Nav({ logoUrl = null }: { logoUrl?: string | null }) {
           >
             Parent login
           </Link>
+          <ThemeToggle />
           <InstallButton />
           <a
             href={WA_ENQUIRY}
@@ -100,6 +102,7 @@ export default function Nav({ logoUrl = null }: { logoUrl?: string | null }) {
             >
               Parent login
             </Link>
+            <ThemeToggle className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold text-ink-muted" />
             <InstallButton
               label="Install app"
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-primary px-5 py-3 text-sm font-semibold text-primary-strong"
