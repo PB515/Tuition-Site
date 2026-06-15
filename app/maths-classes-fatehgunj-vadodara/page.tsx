@@ -1,16 +1,16 @@
 import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 
 export const metadata = {
-  title: "Maths Classes in Fatehgunj, Vadodara",
+  title: "Maths Classes near Fatehgunj, Vadodara",
   description:
-    "Maths classes and tuition for students in Fatehgunj, Vadodara by Snehal Sir. Class 9 to 12, Regular and Applied Maths, small batches and weekly tests, close to our Alkapuri and Sama branches.",
+    "Maths classes near Fatehgunj, Vadodara by Snehal Sir. Students from Fatehgunj join our Alkapuri or New Sama Road branches for Class 9 to 12, Regular and Applied Maths, JEE and GUJCET, with small batches and weekly tests.",
 };
 
 const content: SeoContent = {
-  eyebrow: "Serving Fatehgunj",
-  title: "Maths Classes for Fatehgunj, Vadodara",
+  eyebrow: "Near Fatehgunj",
+  title: "Maths Classes near Fatehgunj, Vadodara",
   intro:
-    "Students from Fatehgunj study maths with Snehal Sir at Inspire Academy of Mathematics. With branches in Alkapuri (R.C. Dutt Road) and Sama, both close to Fatehgunj, you get small-batch, concept-first coaching for Class 9 to 12, Regular and Applied Maths.",
+    "Looking for maths tuition near Fatehgunj? Inspire Academy of Mathematics teaches Class 9 to 12 Maths, Applied Maths, JEE Maths and GUJCET Maths at our Alkapuri and New Sama Road branches. Students from Fatehgunj and nearby central Vadodara can easily join whichever batch location is most convenient.",
   whoFor: [
     "Students and parents in Fatehgunj, Sayajigunj and central Vadodara",
     "Class 9 to 12 students who want personal attention, not a crowded class",
@@ -18,11 +18,15 @@ const content: SeoContent = {
     "Students choosing Applied Maths or preparing for JEE and GUJCET",
   ],
   teaching:
-    "For Fatehgunj students, the Alkapuri branch on R.C. Dutt Road is usually the closest. Sir teaches every batch himself, starting from the concept, building on NCERT, and running a weekly test so nothing slips before the boards.",
+    "Fatehgunj students get the same teaching everyone does: Sir takes every batch himself, starting from the concept, building on NCERT, and running a weekly test so nothing slips before the boards. The Alkapuri branch on R.C. Dutt Road is usually the shorter trip from Fatehgunj.",
+  nearby: {
+    title: "Nearest branch for students from Fatehgunj",
+    body: "Students from Fatehgunj usually prefer our Alkapuri branch on R.C. Dutt Road, with New Sama Road as the other option, depending on school route, class timing and batch availability. Message us and we will point you to the easier one.",
+  },
   faqs: [
     {
-      q: "Which branch is nearest to Fatehgunj?",
-      a: "The Alkapuri branch (R.C. Dutt Road) is closest for most of Fatehgunj. We also have a Sama branch on New Sama Road. Message us and we will point you to the easier one.",
+      q: "Do you have a branch in Fatehgunj?",
+      a: "We teach students from Fatehgunj at our two branches, Alkapuri (R.C. Dutt Road) and New Sama Road. Alkapuri is usually the closer one. Message us and we will guide you.",
     },
     {
       q: "Which classes and boards do you cover?",

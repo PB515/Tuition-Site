@@ -16,6 +16,9 @@ export type SeoContent = {
   whoFor: string[];
   covered?: string[];
   teaching: string;
+  // Optional honest "nearest branch" note for catchment (near) area pages,
+  // where we draw students from the area but have no branch in it.
+  nearby?: { title: string; body: string };
   faqs: { q: string; a: string }[];
 };
 
@@ -142,6 +145,21 @@ export default function SeoPage({
           <p className="mt-5 text-base leading-relaxed text-ink-muted">{content.teaching}</p>
         </div>
       </section>
+
+      {content.nearby && (
+        <section className="relative overflow-hidden border-b border-border">
+          <div className="relative z-10 mx-auto max-w-3xl px-4 py-12 sm:px-6">
+            <div className="rounded-2xl border border-border bg-primary-tint p-6 sm:p-7">
+              <h2 className="font-heading text-lg font-bold text-ink sm:text-xl">
+                {content.nearby.title}
+              </h2>
+              <p className="mt-2.5 text-base leading-relaxed text-ink-muted">
+                {content.nearby.body}
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="relative overflow-hidden border-b border-border">
         <FloatingMath preset="band" offset={4} count={3} />

@@ -1,16 +1,16 @@
 import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 
 export const metadata = {
-  title: "Maths Classes in Karelibaug, Vadodara",
+  title: "Maths Classes near Karelibaug, Vadodara",
   description:
-    "Maths classes and tuition for students in Karelibaug, Vadodara by Snehal Sir. Class 9 to 12, Regular and Applied Maths, small batches and weekly tests, a short ride from our Sama and Alkapuri branches.",
+    "Maths classes near Karelibaug, Vadodara by Snehal Sir. Students from Karelibaug join our New Sama Road or Alkapuri branches for Class 9 to 12, Regular and Applied Maths, JEE and GUJCET, with small batches and weekly tests.",
 };
 
 const content: SeoContent = {
-  eyebrow: "Serving Karelibaug",
-  title: "Maths Classes for Karelibaug, Vadodara",
+  eyebrow: "Near Karelibaug",
+  title: "Maths Classes near Karelibaug, Vadodara",
   intro:
-    "Many of our students come from Karelibaug to learn maths with Snehal Sir. With branches in Sama (New Sama Road) and Alkapuri, both an easy ride from Karelibaug, you get focused, small-batch coaching for Class 9 to 12, Regular and Applied Maths.",
+    "Looking for maths tuition near Karelibaug? Inspire Academy of Mathematics teaches Class 9 to 12 Maths, Applied Maths, JEE Maths and GUJCET Maths at our New Sama Road and Alkapuri branches. Students from Karelibaug and nearby areas can easily join whichever batch location is most convenient.",
   whoFor: [
     "Students and parents in Karelibaug and nearby areas of east Vadodara",
     "Class 9 to 12 students who want concept-first, NCERT-based teaching",
@@ -18,11 +18,15 @@ const content: SeoContent = {
     "Students choosing Applied Maths or preparing for JEE and GUJCET",
   ],
   teaching:
-    "Karelibaug students choose us for the same reason others do: Sir teaches every class himself, in small batches, starting from the concept and testing weekly. The Sama branch on New Sama Road is the closest for most of Karelibaug.",
+    "Karelibaug students choose us for the same reason others do: Sir teaches every class himself, in small batches, starting from the concept and testing weekly. Both branches are an easy ride from Karelibaug, so the travel stays short while the teaching stays personal.",
+  nearby: {
+    title: "Nearest branch for students from Karelibaug",
+    body: "Students from Karelibaug usually choose our New Sama Road or Alkapuri branch, depending on school route, class timing and batch availability. Tell us where you are on WhatsApp and we will suggest the most convenient one.",
+  },
   faqs: [
     {
-      q: "Which branch is nearest to Karelibaug?",
-      a: "Our Sama branch on New Sama Road is the closest for most of Karelibaug. We also have an Alkapuri branch. Message us and we will suggest the easier one for you.",
+      q: "Do you have a branch in Karelibaug?",
+      a: "We teach students from Karelibaug at our two branches, New Sama Road and Alkapuri, both a short ride away. Message us and we will suggest the easier one for you.",
     },
     {
       q: "Do you teach both CBSE and GSEB?",
