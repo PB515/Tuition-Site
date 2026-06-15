@@ -33,13 +33,13 @@
    re-themes from this one block. Chalk-white text on slate-green board. */
 .dark {
   --bg: #0f1a17;
-  --surface: #17241f;
-  --border: #2c3a34;
+  --surface: #1a2c25; /* a touch lighter, so panels/cards separate from the board */
+  --border: #324640; /* lighter, so table dividers + card borders are visible */
   --ink: #eaf0ea;
-  --ink-muted: #a2b2ab;
+  --ink-muted: #adbcb4; /* lighter muted text (lots of admin labels use it) */
   --primary: #20b9b3;
   --primary-strong: #1aa7a1;
-  --primary-deep: #2fcbc4;
+  --primary-deep: #0e8f88; /* hover DARKENS (was brighter, which dropped white-text contrast) */
   --primary-tint: #143832;
   --accent: #e2894d;
   --success: #3ad06a;
