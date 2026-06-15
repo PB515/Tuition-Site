@@ -12,7 +12,7 @@ export type SeoContent = {
   title: string;
   intro: string;
   whoFor: string[];
-  covered: string[];
+  covered?: string[];
   teaching: string;
   faqs: { q: string; a: string }[];
 };

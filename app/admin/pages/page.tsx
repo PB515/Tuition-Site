@@ -30,6 +30,21 @@ const GROUPS: { title: string; items: { path: string; label: string; target: str
       { path: "/maths-tuition-new-sama-road", label: "New Sama Road", target: "maths tuition New Sama Road" },
     ],
   },
+  {
+    title: "Area & topic pages",
+    items: [
+      { path: "/maths-classes-alkapuri-vadodara", label: "Alkapuri", target: "maths classes in Alkapuri" },
+      { path: "/maths-classes-sama-vadodara", label: "Sama", target: "maths classes in Sama" },
+      { path: "/maths-classes-karelibaug-vadodara", label: "Karelibaug", target: "maths classes Karelibaug" },
+      { path: "/maths-classes-fatehgunj-vadodara", label: "Fatehgunj", target: "maths classes Fatehgunj" },
+      { path: "/best-maths-teacher-in-vadodara", label: "Best Maths Teacher", target: "best maths teacher in Vadodara" },
+      { path: "/jee-maths-coaching-vadodara", label: "JEE Maths", target: "JEE maths coaching Vadodara" },
+      { path: "/gujcet-maths-coaching-vadodara", label: "GUJCET Maths", target: "GUJCET maths coaching Vadodara" },
+      { path: "/cbse-maths-tuition-vadodara", label: "CBSE Maths", target: "CBSE maths tuition Vadodara" },
+      { path: "/gseb-maths-coaching-vadodara", label: "GSEB Maths", target: "GSEB maths coaching Vadodara" },
+      { path: "/maths-tuition-fees-vadodara", label: "Fees", target: "maths tuition fees Vadodara" },
+    ],
+  },
 ];
 
 export default function Page() {

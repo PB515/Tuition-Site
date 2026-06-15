@@ -19,6 +19,16 @@ const ROUTES = [
   "/class-12-maths-coaching-vadodara",
   "/class-12-applied-maths-coaching-vadodara",
   "/maths-tuition-new-sama-road",
+  "/maths-classes-alkapuri-vadodara",
+  "/maths-classes-sama-vadodara",
+  "/maths-classes-karelibaug-vadodara",
+  "/maths-classes-fatehgunj-vadodara",
+  "/best-maths-teacher-in-vadodara",
+  "/jee-maths-coaching-vadodara",
+  "/gujcet-maths-coaching-vadodara",
+  "/cbse-maths-tuition-vadodara",
+  "/gseb-maths-coaching-vadodara",
+  "/maths-tuition-fees-vadodara",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
