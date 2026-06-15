@@ -29,6 +29,7 @@ const ROUTES = [
   "/cbse-maths-tuition-vadodara",
   "/gseb-maths-coaching-vadodara",
   "/maths-tuition-fees-vadodara",
+  "/site-map",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

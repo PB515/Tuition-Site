@@ -16,6 +16,7 @@ const GROUPS: { title: string; items: { path: string; label: string; target: str
       { path: "/contact", label: "Contact", target: "contact / enquiry" },
       { path: "/maths-concept-gap-test", label: "Concept-Gap Test", target: "free tool, lead capture" },
       { path: "/privacy", label: "Privacy", target: "policy" },
+      { path: "/site-map", label: "Site map", target: "HTML page index (crawlable)" },
     ],
   },
   {
