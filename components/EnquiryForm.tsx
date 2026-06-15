@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { MessageCircle, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2 } from "lucide-react";
 import { submitEnquiry, type EnquiryState } from "@/app/actions/enquiry";
 import { WA_ENQUIRY, ENQUIRY_CLASSES, SITE } from "@/lib/site";
 
@@ -125,7 +125,7 @@ export default function EnquiryForm() {
           disabled={pending}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-strong px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-deep disabled:cursor-not-allowed disabled:opacity-60"
         >
-          <MessageCircle size={18} strokeWidth={2} />
+          <Send size={16} strokeWidth={2} />
           {pending ? "Sending..." : "Send enquiry"}
         </button>
       )}
