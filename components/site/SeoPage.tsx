@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { Check } from "lucide-react";
+import { SEO_LINKS } from "@/lib/site";
 import PageHeader from "./PageHeader";
 import SmartImage from "./SmartImage";
 import EnquiryBand from "./EnquiryBand";
@@ -169,6 +171,27 @@ export default function SeoPage({
           </h2>
           <div className="mt-8">
             <Faq items={faqs} />
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden border-b border-border bg-surface">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6">
+          <h2 className="font-heading text-xl font-bold tracking-tight text-ink">
+            Explore related pages
+          </h2>
+          <div className="mt-5 flex flex-wrap gap-2.5">
+            {SEO_LINKS.flatMap((g) => g.links)
+              .filter((l) => l.href !== path)
+              .map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="rounded-full border border-border bg-bg px-4 py-2 text-sm text-ink-muted transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary-strong"
+                >
+                  {l.label}
+                </Link>
+              ))}
           </div>
         </div>
       </section>

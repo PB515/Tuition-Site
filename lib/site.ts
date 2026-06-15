@@ -77,6 +77,45 @@ export const NAV = [
 
 export const AREAS = ["New Sama Road", "Alkapuri"];
 
+// SEO landing pages, grouped. Used by the footer link hub and the "Related
+// pages" block on each SEO page. Internal links help Google crawl every page
+// and pass link equity to the pages we most want to rank. (These are internal
+// links, not backlinks — backlinks come from other domains.)
+export const SEO_LINKS: { title: string; links: { href: string; label: string }[] }[] = [
+  {
+    title: "By class",
+    links: [
+      { href: "/class-9-maths-coaching-vadodara", label: "Class 9 Maths" },
+      { href: "/class-10-maths-coaching-vadodara", label: "Class 10 Maths" },
+      { href: "/class-11-maths-coaching-vadodara", label: "Class 11 Regular Maths" },
+      { href: "/class-11-applied-maths-coaching-vadodara", label: "Class 11 Applied Maths" },
+      { href: "/class-12-maths-coaching-vadodara", label: "Class 12 Regular Maths" },
+      { href: "/class-12-applied-maths-coaching-vadodara", label: "Class 12 Applied Maths" },
+    ],
+  },
+  {
+    title: "By area",
+    links: [
+      { href: "/maths-tuition-new-sama-road", label: "New Sama Road" },
+      { href: "/maths-classes-alkapuri-vadodara", label: "Alkapuri" },
+      { href: "/maths-classes-sama-vadodara", label: "Sama" },
+      { href: "/maths-classes-karelibaug-vadodara", label: "Karelibaug" },
+      { href: "/maths-classes-fatehgunj-vadodara", label: "Fatehgunj" },
+    ],
+  },
+  {
+    title: "Exams & boards",
+    links: [
+      { href: "/best-maths-teacher-in-vadodara", label: "Best Maths Teacher in Vadodara" },
+      { href: "/jee-maths-coaching-vadodara", label: "JEE Maths Coaching" },
+      { href: "/gujcet-maths-coaching-vadodara", label: "GUJCET Maths Coaching" },
+      { href: "/cbse-maths-tuition-vadodara", label: "CBSE Maths Tuition" },
+      { href: "/gseb-maths-coaching-vadodara", label: "GSEB Maths Coaching" },
+      { href: "/maths-tuition-fees-vadodara", label: "Maths Tuition Fees" },
+    ],
+  },
+];
+
 // Course tiles. Launch SEO pages get their own route; staged ones point to /courses for now.
 export const COURSES = [
   { label: "Class 9", note: "Build strong foundations before the board years begin", href: "/class-9-maths-coaching-vadodara" },

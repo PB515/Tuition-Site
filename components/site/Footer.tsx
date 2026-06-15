@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MapPin, Phone, Mail } from "lucide-react";
 import WhatsappIcon from "@/components/icons/WhatsappIcon";
-import { SITE, NAV, AREAS, WA_ENQUIRY, BRANCHES } from "@/lib/site";
+import { SITE, NAV, AREAS, WA_ENQUIRY, BRANCHES, SEO_LINKS } from "@/lib/site";
 
 export default function Footer({ logoUrl = null }: { logoUrl?: string | null }) {
   const pathname = usePathname();
@@ -92,6 +92,28 @@ export default function Footer({ logoUrl = null }: { logoUrl?: string | null }) 
           </a>
           <p className="mt-4 text-sm font-semibold text-ink">Areas we teach</p>
           <p className="mt-2 text-sm text-ink-muted">{AREAS.join(", ")}</p>
+        </div>
+      </div>
+
+      <div className="border-t border-border">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-3 sm:px-6">
+          {SEO_LINKS.map((g) => (
+            <div key={g.title}>
+              <p className="text-sm font-semibold text-ink">{g.title}</p>
+              <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-1">
+                {g.links.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="text-sm text-ink-muted hover:text-primary-strong"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
 
