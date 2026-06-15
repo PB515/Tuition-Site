@@ -4,12 +4,14 @@ import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { FAQS } from "@/lib/site";
 
-export default function Faq() {
+type Item = { q: string; a: string };
+
+export default function Faq({ items = FAQS }: { items?: Item[] }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
     <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-bg">
-      {FAQS.map((item, i) => {
+      {items.map((item, i) => {
         const isOpen = open === i;
         return (
           <div key={item.q}>

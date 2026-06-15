@@ -3,6 +3,7 @@ import PageHeader from "./PageHeader";
 import SmartImage from "./SmartImage";
 import EnquiryBand from "./EnquiryBand";
 import FloatingMath from "./FloatingMath";
+import Faq from "@/components/home/Faq";
 
 export type SeoContent = {
   eyebrow: string;
@@ -13,6 +14,17 @@ export type SeoContent = {
   teaching: string;
   faqs: { q: string; a: string }[];
 };
+
+// Evergreen inclusions, shown on every batch page. Deliberately process-based,
+// not syllabus, so nothing here needs updating when schools or terms change.
+const INCLUDES = [
+  "Personal teaching by Snehal Sir, every class",
+  "Small batches, capped at 20 students",
+  "Weekly tests with mistake analysis",
+  "Custom, curated notes and material by Sir",
+  "Personal doubt-solving with Sir",
+  "Progress updates for parents when needed",
+];
 
 export default function SeoPage({ content, imageSlug }: { content: SeoContent; imageSlug?: string }) {
   return (
@@ -56,10 +68,10 @@ export default function SeoPage({ content, imageSlug }: { content: SeoContent; i
           </div>
           <div>
             <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
-              What we cover
+              What every batch includes
             </h2>
             <ul className="mt-6 space-y-3">
-              {content.covered.map((c) => (
+              {INCLUDES.map((c) => (
                 <li
                   key={c}
                   className="group flex gap-3 rounded-2xl border border-border bg-surface p-4 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md"
@@ -91,17 +103,9 @@ export default function SeoPage({ content, imageSlug }: { content: SeoContent; i
           <h2 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             Common questions
           </h2>
-          <dl className="mt-8 space-y-3">
-            {content.faqs.map((f) => (
-              <div
-                key={f.q}
-                className="rounded-2xl border border-border bg-surface p-5 transition-colors duration-200 hover:border-primary"
-              >
-                <dt className="font-semibold text-ink">{f.q}</dt>
-                <dd className="mt-2 text-sm leading-relaxed text-ink-muted">{f.a}</dd>
-              </div>
-            ))}
-          </dl>
+          <div className="mt-8">
+            <Faq items={content.faqs} />
+          </div>
         </div>
       </section>
 
