@@ -1,5 +1,4 @@
 import { Check } from "lucide-react";
-import PageHeader from "@/components/site/PageHeader";
 import SmartImage from "@/components/site/SmartImage";
 import FloatingMath from "@/components/site/FloatingMath";
 import EnquiryBand from "@/components/site/EnquiryBand";
@@ -37,36 +36,53 @@ export default function Page() {
   return (
     <main>
       <JsonLd data={personLd()} />
-      <PageHeader
-        eyebrow="The teacher"
-        title="Learn math from Snehal Sir"
-        subtitle={`${SITE.yearsExperience} years of teaching mathematics in Vadodara since ${SITE.since}, including years at Navrachana School.`}
-      />
 
       <section className="relative overflow-hidden border-b border-border">
         <FloatingMath preset="band" offset={0} count={4} />
         <div className="relative z-10 mx-auto grid max-w-7xl items-start gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
-          <div className="space-y-5 text-base leading-relaxed text-ink-muted">
-            <p>
-              Snehal Sir has taught mathematics in Vadodara since {SITE.since}. Over{" "}
-              {SITE.yearsExperience} years, he has helped students move from fear and confusion in
-              math to clarity, confidence and real exam performance.
+          <div>
+            <p
+              className="animate-fade-up text-xs font-semibold uppercase tracking-[0.16em] text-primary-strong"
+              style={{ animationDelay: "0ms" }}
+            >
+              The teacher
             </p>
-            <p>
-              From 2006 to 2024 he taught Higher Secondary mathematics at Navrachana School, Sama,
-              where he also served as Head of the Mathematics Department, and he taught at Navrachana
-              International, Bhayli. While teaching there, he co-founded Inspire Academy of Mathematics with his wife,
-              who runs the academy&apos;s administration.
+            <h1
+              className="animate-fade-up mt-3 font-heading text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl"
+              style={{ animationDelay: "80ms" }}
+            >
+              Learn math from Snehal Sir
+            </h1>
+            <p
+              className="animate-fade-up mt-4 text-lg leading-relaxed text-ink-muted"
+              style={{ animationDelay: "160ms" }}
+            >
+              {SITE.yearsExperience} years of teaching mathematics in Vadodara since {SITE.since},
+              including years at Navrachana School.
             </p>
-            <p>
-              Inspire Academy of Mathematics is built around one idea: do one subject, and do it deeply. There is no
-              spreading thin across many subjects. Every batch is taught by Sir himself, so students
-              get steady, personal attention from someone who knows exactly where they get stuck.
-            </p>
-            <p>
-              That focus shows in results like 97 out of 100, the highest in Navrachana Applied Math,
-              scored by our student Chirayu Jani.
-            </p>
+            <div className="mt-7 space-y-5 text-base leading-relaxed text-ink-muted">
+              <p>
+                Snehal Sir has taught mathematics in Vadodara since {SITE.since}. Over{" "}
+                {SITE.yearsExperience} years, he has helped students move from fear and confusion in
+                math to clarity, confidence and real exam performance.
+              </p>
+              <p>
+                From 2006 to 2024 he taught Higher Secondary mathematics at Navrachana School, Sama,
+                where he also served as Head of the Mathematics Department, and he taught at Navrachana
+                International, Bhayli. While teaching there, he co-founded Inspire Academy of Mathematics
+                with his wife, who runs the academy&apos;s administration.
+              </p>
+              <p>
+                Inspire Academy of Mathematics is built around one idea: do one subject, and do it
+                deeply. There is no spreading thin across many subjects. Every batch is taught by Sir
+                himself, so students get steady, personal attention from someone who knows exactly
+                where they get stuck.
+              </p>
+              <p>
+                That focus shows in results like 97 out of 100, the highest in Navrachana Applied Math,
+                scored by our student Chirayu Jani.
+              </p>
+            </div>
           </div>
 
           <SmartImage
