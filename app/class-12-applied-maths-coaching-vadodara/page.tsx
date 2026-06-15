@@ -3,7 +3,7 @@ import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 export const metadata = {
   title: "Class 12 Applied-Math Coaching & Batches in Vadodara",
   description:
-    "Class 12 Applied Math coaching in Vadodara by Snehal Sir, where our student scored 97 out of 100, the highest in Navrachana Applied Math. Weekly tests and doubt-solving.",
+    "Class 12 Applied Math coaching and small batches in Vadodara by Snehal Sir, where our student scored 97 out of 100, the highest in Navrachana Applied Math. Weekly tests and doubt-solving.",
 };
 
 const content: SeoContent = {
@@ -24,6 +24,7 @@ const content: SeoContent = {
     "Probability distributions and inferential statistics",
     "Index numbers and time-based data",
     "Financial mathematics and linear programming",
+    "Custom, curated study material from Sir, not generic handouts",
   ],
   teaching:
     "Applied Math is highly scoring when the concepts and the exam pattern are both practised well. Every chapter starts from the concept, then moves to application and board-pattern questions, with a weekly test and mistake analysis. This is exactly how our student reached 97 out of 100.",
@@ -39,6 +40,10 @@ const content: SeoContent = {
     {
       q: "What are the timings and fees?",
       a: "They depend on the batch. Message us on WhatsApp with your school and we will share current timings and fees.",
+    },
+    {
+      q: "Do you provide study material?",
+      a: "Yes. Snehal Sir provides his own custom, curated notes and practice material for each topic, not generic photocopies.",
     },
   ],
 };

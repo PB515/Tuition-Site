@@ -3,7 +3,7 @@ import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 export const metadata = {
   title: "Class 9 Math Coaching & Batches in Vadodara",
   description:
-    "Class 9 math coaching in Vadodara by Snehal Sir. NCERT-based for CBSE and GSEB, building a strong base for the Class 10 board year, with weekly tests and doubt-solving.",
+    "Class 9 math coaching and small batches in Vadodara by Snehal Sir. NCERT-based for CBSE and GSEB, building a strong base for the Class 10 board year, with weekly tests and doubt-solving.",
 };
 
 const content: SeoContent = {
@@ -24,6 +24,7 @@ const content: SeoContent = {
     "Circles, and areas of parallelograms and triangles",
     "Surface areas and volumes",
     "Statistics, probability and Euclid's geometry",
+    "Custom, curated study material from Sir, not generic handouts",
   ],
   teaching:
     "Class 9 is where the base for Class 10 is built. Each chapter starts from the concept, moves to NCERT questions, and is checked with a weekly test, so weak spots are caught and fixed early, well before the board year.",
@@ -39,6 +40,10 @@ const content: SeoContent = {
     {
       q: "What are the timings and fees?",
       a: "They depend on the batch. Message us on WhatsApp with your school and we will share current timings and fees.",
+    },
+    {
+      q: "Do you provide study material?",
+      a: "Yes. Snehal Sir provides his own custom, curated notes and practice material for each topic, not generic photocopies.",
     },
   ],
 };

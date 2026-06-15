@@ -3,7 +3,7 @@ import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 export const metadata = {
   title: "Class 10 Math Coaching & Batches in Vadodara",
   description:
-    "Class 10 math coaching in Vadodara by Snehal Sir. NCERT-based for CBSE and GSEB, with weekly tests and personal doubt-solving for the board year.",
+    "Class 10 math coaching and small batches in Vadodara by Snehal Sir. NCERT-based for CBSE and GSEB, with weekly tests and personal doubt-solving for the board year.",
 };
 
 const content: SeoContent = {
@@ -24,6 +24,7 @@ const content: SeoContent = {
     "Trigonometry and its applications",
     "Surface areas, volumes, statistics and probability",
     "Full board-pattern revision and test practice",
+    "Custom, curated study material from Sir, not generic handouts",
   ],
   teaching:
     "Every chapter starts from the concept, then moves to NCERT and board-pattern questions, with a weekly test to catch weak spots early. Word problems and trigonometry, where Class 10 students lose the most marks, get extra attention and doubt-solving with Sir.",
@@ -39,6 +40,10 @@ const content: SeoContent = {
     {
       q: "What are the timings and fees?",
       a: "They depend on the batch. Message us on WhatsApp with your school and we will share current timings and fees.",
+    },
+    {
+      q: "Do you provide study material?",
+      a: "Yes. Snehal Sir provides his own custom, curated notes and practice material for each topic, not generic photocopies.",
     },
   ],
 };

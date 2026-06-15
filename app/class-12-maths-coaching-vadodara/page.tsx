@@ -3,7 +3,7 @@ import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 export const metadata = {
   title: "Class 12 Regular-Math Coaching & Batches in Vadodara",
   description:
-    "Class 12 math coaching in Vadodara by Snehal Sir. Board syllabus plus JEE and GUJCET readiness, with calculus made clear and weekly tests.",
+    "Class 12 math coaching and small batches in Vadodara by Snehal Sir. Board syllabus plus JEE and GUJCET readiness, with calculus made clear and weekly tests.",
 };
 
 const content: SeoContent = {
@@ -24,6 +24,7 @@ const content: SeoContent = {
     "Differential equations and vectors",
     "Three-dimensional geometry, linear programming and probability",
     "Board-pattern revision plus competitive-level practice",
+    "Custom, curated study material from Sir, not generic handouts",
   ],
   teaching:
     "Class 12 math rewards understanding, not memory. Calculus is built step by step from the idea, then practised at board level and pushed to competitive-exam difficulty for students who need it. Weekly tests keep the large syllabus under control.",
@@ -39,6 +40,10 @@ const content: SeoContent = {
     {
       q: "What are the timings and fees?",
       a: "They depend on the batch. Message us on WhatsApp and we will share current timings and fees.",
+    },
+    {
+      q: "Do you provide study material?",
+      a: "Yes. Snehal Sir provides his own custom, curated notes and practice material for each topic, not generic photocopies.",
     },
   ],
 };

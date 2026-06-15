@@ -3,7 +3,7 @@ import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 export const metadata = {
   title: "Class 11 Regular-Math Coaching & Batches in Vadodara",
   description:
-    "Class 11 math coaching in Vadodara by Snehal Sir. Concept-first higher math for CBSE and GSEB, a strong base for Class 12 boards, JEE and GUJCET, with weekly tests.",
+    "Class 11 math coaching and small batches in Vadodara by Snehal Sir. Concept-first higher math for CBSE and GSEB, a strong base for Class 12 boards, JEE and GUJCET, with weekly tests.",
 };
 
 const content: SeoContent = {
@@ -24,6 +24,7 @@ const content: SeoContent = {
     "Permutations, combinations and the binomial theorem",
     "Sequences and series, straight lines and conic sections",
     "Limits and derivatives, statistics and probability",
+    "Custom, curated study material from Sir, not generic handouts",
   ],
   teaching:
     "Class 11 is a big jump in difficulty, so each topic is built from the concept up before moving to exam-pattern problems. A weekly test keeps the pace steady and catches gaps early, so the Class 12 and competitive years stand on a solid base.",
@@ -39,6 +40,10 @@ const content: SeoContent = {
     {
       q: "What are the timings and fees?",
       a: "They depend on the batch. Message us on WhatsApp with your school and we will share current timings and fees.",
+    },
+    {
+      q: "Do you provide study material?",
+      a: "Yes. Snehal Sir provides his own custom, curated notes and practice material for each topic, not generic photocopies.",
     },
   ],
 };

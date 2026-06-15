@@ -3,7 +3,7 @@ import SeoPage, { type SeoContent } from "@/components/site/SeoPage";
 export const metadata = {
   title: "Class 11 Applied-Math Coaching & Batches in Vadodara",
   description:
-    "Class 11 Applied Math coaching in Vadodara by Snehal Sir. Concept-first teaching of data, statistics and real-world math, with weekly tests and doubt-solving.",
+    "Class 11 Applied Math coaching and small batches in Vadodara by Snehal Sir. Concept-first teaching of data, statistics and real-world math, with weekly tests and doubt-solving.",
 };
 
 const content: SeoContent = {
@@ -24,6 +24,7 @@ const content: SeoContent = {
     "Descriptive statistics",
     "Basics of financial mathematics",
     "Coordinate geometry and probability",
+    "Custom, curated study material from Sir, not generic handouts",
   ],
   teaching:
     "Applied Math rewards clear thinking with numbers and data, so each topic is built from the concept and then practised with application-based and exam-pattern questions. A weekly test and honest mistake analysis keep the base strong for the Class 12 Applied year.",
@@ -39,6 +40,10 @@ const content: SeoContent = {
     {
       q: "What are the timings and fees?",
       a: "They depend on the batch. Message us on WhatsApp with your school and we will share current timings and fees.",
+    },
+    {
+      q: "Do you provide study material?",
+      a: "Yes. Snehal Sir provides his own custom, curated notes and practice material for each topic, not generic photocopies.",
     },
   ],
 };
