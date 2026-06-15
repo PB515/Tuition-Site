@@ -5,7 +5,7 @@ import { getPublishedPosts } from "@/lib/posts";
 const ROUTES = [
   "",
   "/about-snehal-soni-sir",
-  "/courses",
+  "/batches",
   "/results",
   "/teaching-method",
   "/blog",

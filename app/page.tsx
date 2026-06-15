@@ -238,7 +238,7 @@ export default async function Home() {
               </Link>
             ))}
             <Link
-              href="/courses"
+              href="/batches"
               className="flex items-center justify-between gap-4 rounded-2xl border border-dashed border-primary bg-primary-tint/50 p-5 text-primary-strong transition-all duration-200 hover:-translate-y-1 hover:bg-primary-tint hover:shadow-md"
             >
               <p className="font-heading text-lg font-semibold">See all batches</p>

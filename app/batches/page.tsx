@@ -6,7 +6,11 @@ import EnquiryBand from "@/components/site/EnquiryBand";
 import FloatingMath from "@/components/site/FloatingMath";
 import { COURSES } from "@/lib/site";
 
-export const metadata = { title: "Batches" };
+export const metadata = {
+  title: "Math Coaching & Batches in Vadodara, Class 9 to 12",
+  description:
+    "Math coaching and batches in Vadodara by Snehal Sir, Class 9 to 12, Regular and Applied. Small batches, weekly tests, custom material, NCERT for CBSE and GSEB.",
+};
 
 const INCLUDED = [
   "Weekly tests with mistake analysis",
@@ -21,8 +25,8 @@ export default function Page() {
   return (
     <main>
       <PageHeader
-        title="Math coaching from Class 9 to competitive exams"
-        subtitle="One maths-focused system, taught by Snehal Sir, for boards and competitive preparation alike."
+        title="Math batches in Vadodara, Class 9 to competitive exams"
+        subtitle="Small, focused batches taught by Snehal Sir, for boards and competitive preparation alike."
       />
 
       <section className="relative overflow-hidden border-b border-border">
