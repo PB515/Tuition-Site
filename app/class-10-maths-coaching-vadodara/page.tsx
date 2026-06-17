@@ -11,6 +11,11 @@ const content: SeoContent = {
   title: "Class 10 Math Coaching & Batches in Vadodara",
   intro:
     "Focused Class 10 math coaching by Snehal Sir for the board year. NCERT-based, so it works for both CBSE and GSEB students, with weekly tests and personal doubt-solving.",
+  body: [
+    "Class 10 is the first year that really counts. The board exam puts a number on years of work, and for many students it is also the first time maths feels like it could make or break a result. That pressure is exactly why how a student is taught in Class 10 matters so much.",
+    "At Inspire, Snehal Sir teaches every Class 10 batch himself. The method is simple and proven: start from the concept until it genuinely makes sense, then practise it the way the board actually asks. Because the teaching is built on NCERT, it fits CBSE and GSEB students alike, and nothing important gets skipped. A weekly test keeps every chapter fresh, and the mistake-analysis session afterwards is where the real progress happens, as students stop repeating the small errors that quietly cost marks.",
+    "Batches stay capped at 20, so Sir knows each student's weak spots and clears doubts personally instead of leaving them for later. What parents notice by the end is not only better marks, but a child who walks into the board exam calm, because the subject finally feels under control.",
+  ],
   whoFor: [
     "Class 10 students who find math hard and want it explained slowly and clearly",
     "Students aiming to lift their board marks with steady practice",
@@ -49,5 +54,5 @@ const content: SeoContent = {
 };
 
 export default function Page() {
-  return <SeoPage content={content} imageSlug="class-10" path="/class-10-maths-coaching-vadodara" />;
+  return <SeoPage content={content} path="/class-10-maths-coaching-vadodara" />;
 }

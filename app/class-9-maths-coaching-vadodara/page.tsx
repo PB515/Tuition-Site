@@ -49,5 +49,5 @@ const content: SeoContent = {
 };
 
 export default function Page() {
-  return <SeoPage content={content} imageSlug="class-9" path="/class-9-maths-coaching-vadodara" />;
+  return <SeoPage content={content} path="/class-9-maths-coaching-vadodara" />;
 }

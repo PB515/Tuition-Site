@@ -14,6 +14,9 @@ export type SeoContent = {
   eyebrow: string;
   title: string;
   intro: string;
+  // 2-3 short paragraphs of custom copy written per page (optional). Sits under
+  // the header image; everything else on the page is shared/automatic.
+  body?: string[];
   whoFor: string[];
   covered?: string[];
   teaching: string;
@@ -100,6 +103,19 @@ export default async function SeoPage({
               label={`${content.title} header`}
               className="aspect-[16/9] w-full rounded-2xl border border-border lg:aspect-[21/9]"
             />
+          </div>
+        </section>
+      )}
+
+      {content.body && content.body.length > 0 && (
+        <section className="relative overflow-hidden border-b border-border">
+          <FloatingMath preset="band" offset={5} count={2} />
+          <div className="relative z-10 mx-auto max-w-3xl space-y-5 px-4 py-16 sm:px-6 lg:py-20">
+            {content.body.map((p, i) => (
+              <p key={i} className="text-base leading-relaxed text-ink-muted">
+                {p}
+              </p>
+            ))}
           </div>
         </section>
       )}
