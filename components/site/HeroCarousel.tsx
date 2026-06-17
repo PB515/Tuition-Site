@@ -38,7 +38,7 @@ export default function HeroCarousel({
   }
 
   const arrowClass =
-    "absolute top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-bg/85 text-ink shadow-md ring-1 ring-border backdrop-blur transition-all hover:bg-bg hover:scale-110";
+    "absolute bottom-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-bg/85 text-ink shadow-md ring-1 ring-border backdrop-blur transition-all hover:bg-bg hover:scale-110";
 
   return (
     <div
@@ -72,7 +72,7 @@ export default function HeroCarousel({
             type="button"
             onClick={() => go(-1)}
             aria-label="Previous slide"
-            className={`${arrowClass} left-2`}
+            className={`${arrowClass} left-3`}
           >
             <ChevronLeft size={18} strokeWidth={2} />
           </button>
@@ -80,7 +80,7 @@ export default function HeroCarousel({
             type="button"
             onClick={() => go(1)}
             aria-label="Next slide"
-            className={`${arrowClass} right-2`}
+            className={`${arrowClass} right-3`}
           >
             <ChevronRight size={18} strokeWidth={2} />
           </button>
