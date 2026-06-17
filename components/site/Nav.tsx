@@ -38,7 +38,7 @@ export default function Nav({
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6">
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
           {logoUrl ? (
             <>
@@ -46,14 +46,14 @@ export default function Nav({
               <img
                 src={logoUrl}
                 alt={SITE.name}
-                className={`h-8 w-auto sm:h-10 ${logoDarkUrl ? "dark:hidden" : ""}`}
+                className={`h-11 w-auto sm:h-14 ${logoDarkUrl ? "dark:hidden" : ""}`}
               />
               {logoDarkUrl && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={logoDarkUrl}
                   alt={SITE.name}
-                  className="hidden h-8 w-auto dark:block sm:h-10"
+                  className="hidden h-11 w-auto dark:block sm:h-14"
                 />
               )}
             </>
