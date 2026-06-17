@@ -14,9 +14,11 @@ export type SeoContent = {
   eyebrow: string;
   title: string;
   intro: string;
-  // 2-3 short paragraphs of custom copy written per page (optional). Sits under
-  // the header image; everything else on the page is shared/automatic.
+  // 2-3 short paragraphs of custom copy written per page (optional). When an
+  // image is uploaded, these sit beside it in a two-column band; the image side
+  // alternates per page (auto by path, or set bodyImageSide) so pages vary.
   body?: string[];
+  bodyImageSide?: "left" | "right";
   whoFor: string[];
   covered?: string[];
   teaching: string;
@@ -79,6 +81,10 @@ export default async function SeoPage({
       ? `/images/seo${path}.jpg`
       : null;
   const imgUrl = imgSrc ? await resolveImage(imgSrc) : null;
+  // Which side the body image sits on. Defaults to alternating by path length
+  // so consecutive pages don't all look the same; override with bodyImageSide.
+  const bodyImageSide = content.bodyImageSide ?? ((path?.length ?? 0) % 2 === 0 ? "left" : "right");
+  const hasBody = !!content.body && content.body.length > 0;
   return (
     <main>
       <JsonLd data={faqPageLd(faqs)} />
@@ -93,7 +99,8 @@ export default async function SeoPage({
       )}
       <PageHeader eyebrow={content.eyebrow} title={content.title} subtitle={content.intro} />
 
-      {imgUrl && imgSrc && (
+      {/* Body-less pages: full-width header image (when uploaded). */}
+      {!hasBody && imgUrl && imgSrc && (
         <section className="relative overflow-hidden border-b border-border">
           <FloatingMath preset="band" offset={3} count={2} />
           <div className="relative z-10 mx-auto max-w-7xl px-4 pt-12 sm:px-6">
@@ -107,16 +114,37 @@ export default async function SeoPage({
         </section>
       )}
 
-      {content.body && content.body.length > 0 && (
+      {/* Pages with custom copy: paragraphs beside the image (side alternates). */}
+      {hasBody && (
         <section className="relative overflow-hidden border-b border-border">
           <FloatingMath preset="band" offset={5} count={2} />
-          <div className="relative z-10 mx-auto max-w-3xl space-y-5 px-4 py-16 sm:px-6 lg:py-20">
-            {content.body.map((p, i) => (
-              <p key={i} className="text-base leading-relaxed text-ink-muted">
-                {p}
-              </p>
-            ))}
-          </div>
+          {imgUrl && imgSrc ? (
+            <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
+              <div className={bodyImageSide === "right" ? "lg:order-2" : ""}>
+                <SmartImage
+                  src={imgSrc}
+                  alt={content.title}
+                  label={`${content.title} photo`}
+                  className="aspect-[4/3] w-full rounded-2xl border border-border"
+                />
+              </div>
+              <div className="space-y-5">
+                {content.body!.map((p, i) => (
+                  <p key={i} className="text-base leading-relaxed text-ink-muted">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="relative z-10 mx-auto max-w-3xl space-y-5 px-4 py-16 sm:px-6 lg:py-20">
+              {content.body!.map((p, i) => (
+                <p key={i} className="text-base leading-relaxed text-ink-muted">
+                  {p}
+                </p>
+              ))}
+            </div>
+          )}
         </section>
       )}
 
