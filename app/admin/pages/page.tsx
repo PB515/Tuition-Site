@@ -1,9 +1,11 @@
 import { ExternalLink } from "lucide-react";
+import { getSiteImages, storagePublicUrl } from "@/lib/site-images";
+import PageImageUploader from "@/components/admin/PageImageUploader";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Website pages", robots: { index: false, follow: false } };
 
-const GROUPS: { title: string; items: { path: string; label: string; target: string }[] }[] = [
+const GROUPS: { title: string; seo?: boolean; items: { path: string; label: string; target: string }[] }[] = [
   {
     title: "Main pages",
     items: [
@@ -21,6 +23,7 @@ const GROUPS: { title: string; items: { path: string; label: string; target: str
   },
   {
     title: "Batch (SEO) pages",
+    seo: true,
     items: [
       { path: "/class-9-maths-coaching-vadodara", label: "Class 9", target: "class 9 maths coaching Vadodara" },
       { path: "/class-10-maths-coaching-vadodara", label: "Class 10", target: "class 10 maths coaching Vadodara" },
@@ -33,6 +36,7 @@ const GROUPS: { title: string; items: { path: string; label: string; target: str
   },
   {
     title: "Area & topic pages",
+    seo: true,
     items: [
       { path: "/maths-classes-alkapuri-vadodara", label: "Alkapuri", target: "maths classes in Alkapuri" },
       { path: "/maths-classes-sama-vadodara", label: "Sama", target: "maths classes in Sama" },
@@ -48,12 +52,20 @@ const GROUPS: { title: string; items: { path: string; label: string; target: str
   },
 ];
 
-export default function Page() {
+export default async function Page() {
+  const images = await getSiteImages();
+  const urlFor = (slot: string) => {
+    const p = images.get(slot);
+    return p ? storagePublicUrl(p) : null;
+  };
+
   return (
     <div className="px-4 py-8 sm:px-6 lg:px-8">
       <h1 className="font-heading text-2xl font-bold text-ink">Website pages</h1>
       <p className="mt-1 max-w-2xl text-sm text-ink-muted">
-        Every public page, with the search term it targets. Click any to open it in a new tab and review.
+        Every public page, with the search term it targets. Click any to open it in a new tab. On
+        the SEO pages you can also upload that page&apos;s image right here — any JPG or PNG works,
+        it is optimized to WebP automatically.
       </p>
 
       <div className="mt-6 space-y-8">
@@ -62,27 +74,37 @@ export default function Page() {
             <h2 className="font-heading text-lg font-bold text-ink">{g.title}</h2>
             <div className="mt-3 overflow-hidden rounded-2xl border border-border">
               <ul className="divide-y divide-border">
-                {g.items.map((it) => (
-                  <li key={it.path}>
-                    <a
-                      href={it.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between gap-4 px-4 py-3 transition-colors hover:bg-surface"
-                    >
-                      <span className="min-w-0">
-                        <span className="font-medium text-ink">{it.label}</span>
-                        <span className="block truncate text-xs text-ink-muted">{it.path}</span>
-                      </span>
-                      <span className="flex shrink-0 items-center gap-3">
-                        <span className="hidden max-w-[16rem] truncate text-xs text-ink-muted sm:inline">
-                          {it.target}
+                {g.items.map((it) =>
+                  g.seo ? (
+                    <PageImageUploader
+                      key={it.path}
+                      slot={`seo${it.path}`}
+                      label={it.label}
+                      path={it.path}
+                      currentUrl={urlFor(`seo${it.path}`)}
+                    />
+                  ) : (
+                    <li key={it.path}>
+                      <a
+                        href={it.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between gap-4 px-4 py-3 transition-colors hover:bg-surface"
+                      >
+                        <span className="min-w-0">
+                          <span className="font-medium text-ink">{it.label}</span>
+                          <span className="block truncate text-xs text-ink-muted">{it.path}</span>
                         </span>
-                        <ExternalLink size={15} strokeWidth={1.75} className="text-primary" />
-                      </span>
-                    </a>
-                  </li>
-                ))}
+                        <span className="flex shrink-0 items-center gap-3">
+                          <span className="hidden max-w-[16rem] truncate text-xs text-ink-muted sm:inline">
+                            {it.target}
+                          </span>
+                          <ExternalLink size={15} strokeWidth={1.75} className="text-primary" />
+                        </span>
+                      </a>
+                    </li>
+                  ),
+                )}
               </ul>
             </div>
           </section>

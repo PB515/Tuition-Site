@@ -51,7 +51,6 @@ export const IMAGE_SLOTS: { slot: string; label: string; src: string; ratio: str
   { slot: "courses/class-12", label: "Course - Class 12", src: "/images/courses/class-12.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
   { slot: "courses/class-11-applied", label: "Course - Class 11 Applied", src: "/images/courses/class-11-applied.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
   { slot: "courses/class-12-applied", label: "Course - Class 12 Applied", src: "/images/courses/class-12-applied.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
-  { slot: "courses/location", label: "New Sama Road page", src: "/images/courses/location.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
   { slot: "results/banner-1", label: "Results banner 1 (group photo)", src: "/images/results/banner-1.jpg", ratio: "3 / 1", size: "full-width banner ~2400 x 800 px" },
   { slot: "results/banner-2", label: "Results banner 2 (group photo)", src: "/images/results/banner-2.jpg", ratio: "3 / 1", size: "full-width banner ~2400 x 800 px" },
   { slot: "results/banner-3", label: "Results banner 3 (group photo)", src: "/images/results/banner-3.jpg", ratio: "3 / 1", size: "full-width banner ~2400 x 800 px" },

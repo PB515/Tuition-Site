@@ -8,6 +8,7 @@ import FloatingMath from "./FloatingMath";
 import Faq from "@/components/home/Faq";
 import JsonLd from "@/components/JsonLd";
 import { faqPageLd, breadcrumbLd } from "@/lib/structured-data";
+import { resolveImage } from "@/lib/site-images";
 
 export type SeoContent = {
   eyebrow: string;
@@ -56,7 +57,7 @@ const COMMON_FAQS = [
   },
 ];
 
-export default function SeoPage({
+export default async function SeoPage({
   content,
   imageSlug,
   path,
@@ -66,6 +67,15 @@ export default function SeoPage({
   path?: string;
 }) {
   const faqs = [...content.faqs, ...COMMON_FAQS];
+  // Per-page image: legacy imageSlug, otherwise a slot derived from the path
+  // (uploaded in admin -> Website). Render only once an image actually exists,
+  // so live pages never show an admin placeholder box.
+  const imgSrc = imageSlug
+    ? `/images/courses/${imageSlug}.jpg`
+    : path
+      ? `/images/seo${path}.jpg`
+      : null;
+  const imgUrl = imgSrc ? await resolveImage(imgSrc) : null;
   return (
     <main>
       <JsonLd data={faqPageLd(faqs)} />
@@ -80,12 +90,12 @@ export default function SeoPage({
       )}
       <PageHeader eyebrow={content.eyebrow} title={content.title} subtitle={content.intro} />
 
-      {imageSlug && (
+      {imgUrl && imgSrc && (
         <section className="relative overflow-hidden border-b border-border">
           <FloatingMath preset="band" offset={3} count={2} />
           <div className="relative z-10 mx-auto max-w-7xl px-4 pt-12 sm:px-6">
             <SmartImage
-              src={`/images/courses/${imageSlug}.jpg`}
+              src={imgSrc}
               alt={content.title}
               label={`${content.title} header`}
               className="aspect-[16/9] w-full rounded-2xl border border-border lg:aspect-[21/9]"

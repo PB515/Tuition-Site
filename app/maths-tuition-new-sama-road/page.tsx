@@ -44,5 +44,5 @@ const content: SeoContent = {
 };
 
 export default function Page() {
-  return <SeoPage content={content} imageSlug="location" />;
+  return <SeoPage content={content} path="/maths-tuition-new-sama-road" />;
 }
