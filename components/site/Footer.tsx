@@ -63,7 +63,7 @@ export default function Footer({
               href={`tel:${SITE.tel}`}
               className="inline-flex items-center gap-2 rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary-strong transition-all hover:-translate-y-0.5 hover:bg-primary-tint"
             >
-              <Phone size={16} strokeWidth={2} /> Call
+              <Phone size={16} strokeWidth={2} /> Call us
             </a>
           </div>
           <div className="mt-5">

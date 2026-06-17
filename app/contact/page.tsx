@@ -89,7 +89,7 @@ export default function Page() {
                 <WhatsappIcon size={18} strokeWidth={2} /> WhatsApp Enquiry
               </CtaButton>
               <CtaButton href={`tel:${SITE.tel}`} variant="secondary" external>
-                <Phone size={18} strokeWidth={2} /> {SITE.phoneDisplay}
+                <Phone size={18} strokeWidth={2} /> Call us
               </CtaButton>
             </div>
             <a
