@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Inspire Academy — SEO Copywriting Brief</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 16mm; }
+  * { box-sizing: border-box; }
+  :root {
+    --teal:#0e8f88; --teal-deep:#0b6d68; --terra:#dd7f3f; --terra-deep:#c96a2c;
+    --sand:#f7f3ec; --ink:#1f2e2b; --muted:#5f6d68; --line:#e7ded1;
+    --teal-tint:#e6f3f1; --terra-tint:#faecdd;
+    --green:#2f9e5f; --green-tint:#e8f5ec; --red:#cf5b53; --red-tint:#fbecea;
+  }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    color: var(--ink); margin: 0; font-size: 10.5px; line-height: 1.5;
+  }
+  h1,h2,h3 { font-weight: 800; line-height: 1.15; margin: 0; }
+  p { margin: 0 0 6px; }
+  .muted { color: var(--muted); }
+  .section { margin-top: 16px; break-inside: avoid; }
+  .section > h2 {
+    font-size: 14px; color: var(--teal-deep); display:flex; align-items:center; gap:8px;
+    padding-bottom: 5px; border-bottom: 2px solid var(--teal-tint); margin-bottom: 9px;
+  }
+  .num { display:inline-flex; align-items:center; justify-content:center;
+    width:18px; height:18px; border-radius:50%; background:var(--teal); color:#fff; font-size:10px; }
+
+  /* Cover */
+  .cover { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-deep) 100%);
+    color:#fff; border-radius:14px; padding:22px 24px; position:relative; overflow:hidden; }
+  .cover .glyphs { position:absolute; right:14px; top:-6px; font-size:80px; opacity:.13; font-weight:800; letter-spacing:6px; }
+  .cover .eyebrow { font-size:10px; letter-spacing:2px; text-transform:uppercase; opacity:.85; }
+  .cover h1 { font-size:25px; margin:5px 0 6px; }
+  .cover p { opacity:.92; max-width:78%; margin:0; }
+
+  .callout { border-radius:12px; padding:12px 14px; }
+  .callout.big { background:var(--terra-tint); border:1px solid #f0d3b3; }
+  .callout.big strong { color:var(--terra-deep); }
+  .lead { font-size:12.5px; }
+
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+  .card { border:1px solid var(--line); border-radius:11px; padding:11px 12px; background:#fff; }
+  .card h3 { font-size:11.5px; margin-bottom:4px; }
+  .card.warn { background:var(--red-tint); border-color:#f1cdc9; }
+  .card.warn h3 { color:var(--red); }
+
+  /* page anatomy wireframe */
+  .wire { border:1px solid var(--line); border-radius:12px; padding:10px; background:var(--sand); }
+  .band { border-radius:8px; padding:7px 10px; margin:6px 0; font-size:10px; display:flex; justify-content:space-between; align-items:center; border:1px solid var(--line); background:#fff; }
+  .band .tag { font-size:8.5px; letter-spacing:.5px; text-transform:uppercase; color:var(--muted); border:1px solid var(--line); border-radius:20px; padding:1px 7px; }
+  .band.you { background:var(--terra-tint); border-color:#eec59c; }
+  .band.you .tag { background:var(--terra); color:#fff; border-color:var(--terra); }
+  .band.you .lbl { font-weight:700; color:var(--terra-deep); }
+
+  .cols { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pill { border-radius:10px; padding:10px 12px; }
+  .pill.yes { background:var(--green-tint); border:1px solid #c8e6d2; }
+  .pill.no { background:var(--red-tint); border:1px solid #f1cdc9; }
+  .pill h3 { font-size:11px; margin-bottom:5px; }
+  .pill.yes h3 { color:var(--green); }
+  .pill.no h3 { color:var(--red); }
+  ul { margin:4px 0 0; padding-left:16px; }
+  li { margin:2px 0; }
+
+  table { width:100%; border-collapse:collapse; font-size:9.3px; }
+  th,td { text-align:left; padding:5px 7px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { background:var(--teal); color:#fff; font-weight:700; }
+  tr.g-class td:first-child { border-left:3px solid var(--teal); }
+  tr.g-area td:first-child { border-left:3px solid var(--terra); }
+  tr.g-topic td:first-child { border-left:3px solid #6b8f8a; }
+  .kw { color:var(--muted); }
+
+  .tmpl { background:#1f2e2b; color:#eaf0ee; border-radius:11px; padding:13px 15px; font-family:"Consolas",monospace; font-size:9.5px; line-height:1.6; white-space:pre-wrap; }
+  .tmpl .h { color:#7fd8d1; }
+  .imgspec { display:flex; gap:12px; align-items:center; }
+  .imgbox { width:120px; height:90px; border:2px dashed var(--terra); border-radius:8px; background:var(--terra-tint);
+    display:flex; align-items:center; justify-content:center; color:var(--terra-deep); font-weight:700; font-size:10px; flex:none; text-align:center; }
+  .foot { margin-top:18px; padding-top:8px; border-top:1px solid var(--line); font-size:9px; color:var(--muted); display:flex; justify-content:space-between; }
+</style>
+</head>
+<body>
+
+  <div class="cover">
+    <div class="glyphs">π√∑</div>
+    <div class="eyebrow">Inspire Academy of Mathematics · Vadodara</div>
+    <h1>SEO Page Copywriting Brief</h1>
+    <p>How to write the custom copy for our 17 search pages so they rank well and sound like us. You don't touch any code — you write words into a simple template, we put them live.</p>
+  </div>
+
+  <div class="section">
+    <div class="callout big">
+      <p class="lead"><strong>Your job, in one line:</strong> for each page, write <strong>2–3 short paragraphs</strong> and pick <strong>one image</strong>. That's it.</p>
+      <p class="muted" style="margin:4px 0 0;">Everything else on the page already exists. The FAQs rarely change — only add one if it's genuinely useful.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">1</span> How a page is built — and what's yours</h2>
+    <div class="grid2" style="grid-template-columns:1.15fr .85fr; align-items:start;">
+      <div class="wire">
+        <div class="band"><span class="lbl">Title &amp; intro line</span><span class="tag">Already done</span></div>
+        <div class="band you"><span class="lbl">Your 2–3 paragraphs + 1 image</span><span class="tag">You write</span></div>
+        <div class="band"><span class="lbl">Who it is for</span><span class="tag">Already done</span></div>
+        <div class="band"><span class="lbl">What every batch includes</span><span class="tag">Already done</span></div>
+        <div class="band"><span class="lbl">How Snehal Sir teaches it</span><span class="tag">Already done</span></div>
+        <div class="band"><span class="lbl">Why students choose Inspire</span><span class="tag">Already done</span></div>
+        <div class="band you"><span class="lbl">Common questions (FAQs)</span><span class="tag">You — rarely</span></div>
+        <div class="band"><span class="lbl">Related pages</span><span class="tag">Already done</span></div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:8px;">
+          <h3>What you provide</h3>
+          <p class="muted" style="margin:0;">2–3 paragraphs of fresh copy, plus one photo (1200×900). The paragraphs sit beside the image, and the image side flips from page to page automatically, so no two pages look alike.</p>
+        </div>
+        <div class="card">
+          <h3>How long?</h3>
+          <p class="muted" style="margin:0;">About <strong>2 short paragraphs</strong> per page. Don't pad — short and clear beats long and padded. Google now rewards genuinely useful writing, not word count.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">2</span> Voice &amp; tone</h2>
+    <div class="cols">
+      <div class="pill yes">
+        <h3>Sound like this</h3>
+        <ul>
+          <li>Warm, plain, calm — an experienced teacher reassuring a worried parent.</li>
+          <li>Call him <strong>Snehal Sir</strong> or <strong>Sir</strong>.</li>
+          <li>Short sentences. Answer the real worry: <em>“will my child get attention, will marks improve?”</em></li>
+          <li>Use “maths”, Indian/British spelling.</li>
+        </ul>
+      </div>
+      <div class="pill no">
+        <h3>Avoid this</h3>
+        <ul>
+          <li>Hype words: “best-in-class”, “world-class”, “guaranteed”.</li>
+          <li>“The faculty / our team” — it is Sir himself.</li>
+          <li>Salesy, pushy or exam-coaching-factory tone.</li>
+          <li>Repeating the keyword over and over.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">3</span> Three hard rules (please never break these)</h2>
+    <div class="grid3">
+      <div class="card warn">
+        <h3>① Only two branches</h3>
+        <p class="muted" style="margin:0;">New Sama Road (main) &amp; Alkapuri. For Karelibaug, Fatehgunj, etc. write <strong>“near / for students from”</strong>, never “in”. Never imply a branch that doesn't exist.</p>
+      </div>
+      <div class="card warn">
+        <h3>② One hard number</h3>
+        <p class="muted" style="margin:0;">The only statistic we claim is <strong>97 out of 100</strong> in Class 12 Applied Maths. Invent no other numbers, counts or percentages.</p>
+      </div>
+      <div class="card warn">
+        <h3>③ Stay factual</h3>
+        <p class="muted" style="margin:0;">OK to state: 25+ years, ex-Head of Maths at Navrachana, teaches 9–12 himself, batches max 20, weekly tests, NCERT (CBSE+GSEB), boards+JEE+GUJCET. Unsure? Leave it out.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">4</span> The image</h2>
+    <div class="card">
+      <div class="imgspec">
+        <div class="imgbox">1200 × 900 px<br/>(4:3)</div>
+        <div>
+          <p style="margin:0 0 4px;"><strong>One photo per page, 1200 × 900 px (4:3 shape).</strong> A real classroom / teaching photo is best; you can reuse one across similar pages if needed.</p>
+          <p class="muted" style="margin:0;">Upload it in <strong>Admin → Website → (the page) → Upload</strong>. Any JPG or PNG works and any file size — it is optimized automatically, quality kept. The placeholder disappears once a photo is added.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">5</span> What each page should be about</h2>
+    <p class="muted" style="margin:-2px 0 8px;">Write each page's paragraphs around its own angle, so they stay genuinely different. Use the target phrase once, naturally — no stuffing.</p>
+    <table>
+      <thead><tr><th style="width:23%">Page</th><th style="width:30%">Target phrase</th><th>Angle to lead with</th></tr></thead>
+      <tbody>
+        <tr class="g-class"><td>Class 9</td><td class="kw">class 9 maths coaching Vadodara</td><td>Foundation year — lock the basics before the board years; build confidence early.</td></tr>
+        <tr class="g-class"><td>Class 10</td><td class="kw">class 10 maths coaching Vadodara</td><td>First board year — concept clarity + board-pattern scoring.</td></tr>
+        <tr class="g-class"><td>Class 11 Regular</td><td class="kw">class 11 maths coaching Vadodara</td><td>The steepest jump in school maths; bridge from 10th.</td></tr>
+        <tr class="g-class"><td>Class 11 Applied</td><td class="kw">applied maths class 11 Vadodara</td><td>Applied is new &amp; treated as “easy” elsewhere — it isn't; Sir has a dedicated approach.</td></tr>
+        <tr class="g-class"><td>Class 12 Regular</td><td class="kw">class 12 maths coaching Vadodara</td><td>Boards + JEE + GUJCET together, in depth; final-year stakes.</td></tr>
+        <tr class="g-class"><td>Class 12 Applied</td><td class="kw">applied maths class 12 Vadodara</td><td>Where Inspire scored <strong>97/100</strong> — lead with that proof.</td></tr>
+        <tr class="g-area"><td>New Sama Road</td><td class="kw">maths tuition New Sama Road</td><td>Main branch, offline, close to home; convenience + real address.</td></tr>
+        <tr class="g-area"><td>Alkapuri</td><td class="kw">maths classes Alkapuri</td><td>Second branch on R.C. Dutt Road — central Vadodara convenience.</td></tr>
+        <tr class="g-area"><td>Sama</td><td class="kw">maths classes Sama</td><td>The main branch sits right here on New Sama Road, in Sama.</td></tr>
+        <tr class="g-area"><td>Karelibaug</td><td class="kw">maths classes near Karelibaug</td><td><strong>Near</strong> page — short ride to a branch; nearest-branch help.</td></tr>
+        <tr class="g-area"><td>Fatehgunj</td><td class="kw">maths classes near Fatehgunj</td><td><strong>Near</strong> page — Alkapuri is usually the closer branch.</td></tr>
+        <tr class="g-topic"><td>Best Maths Teacher</td><td class="kw">best maths teacher in Vadodara</td><td>Trust + credentials; answer “who's best &amp; why” with evidence, not boasting.</td></tr>
+        <tr class="g-topic"><td>JEE Maths</td><td class="kw">JEE maths coaching Vadodara</td><td>Strong foundation for JEE; concept depth + competitive questions.</td></tr>
+        <tr class="g-topic"><td>GUJCET Maths</td><td class="kw">GUJCET maths coaching Vadodara</td><td>GSEB Science + GUJCET pattern built into Class 12.</td></tr>
+        <tr class="g-topic"><td>CBSE Maths</td><td class="kw">CBSE maths tuition Vadodara</td><td>NCERT done thoroughly, mapped to the CBSE board pattern.</td></tr>
+        <tr class="g-topic"><td>GSEB Maths</td><td class="kw">GSEB maths coaching Vadodara</td><td>NCERT base serves GSEB; GUJCET prep for Science.</td></tr>
+        <tr class="g-topic"><td>Fees</td><td class="kw">maths tuition fees Vadodara</td><td>Honest value — what the fee includes &amp; why it varies; enquire for exact figure.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">6</span> Fill-in template — copy once per page</h2>
+    <div class="tmpl"><span class="h">PAGE:</span> &lt;e.g. Class 9&gt;
+
+<span class="h">PARAGRAPH 1:</span>
+&lt;...&gt;
+
+<span class="h">PARAGRAPH 2:</span>
+&lt;...&gt;
+
+<span class="h">PARAGRAPH 3 (optional):</span>
+&lt;...&gt;
+
+<span class="h">IMAGE:</span> uploaded in Admin → Website  ☐ done
+
+<span class="h">NEW FAQ (only if genuinely useful):</span>
+Q: &lt;...&gt;   A: &lt;...&gt;</div>
+    <p class="muted" style="margin-top:7px;">Send the finished copy back (one block per page) and we'll put it live. Good pages to start with: <strong>Class 10, Class 12 Applied, Best Maths Teacher.</strong></p>
+  </div>
+
+  <div class="foot">
+    <span>Inspire Academy of Mathematics — internal copywriting brief</span>
+    <span>Questions? Ask before guessing — accuracy matters more than speed.</span>
+  </div>
+
+</body>
+</html>

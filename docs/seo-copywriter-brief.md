@@ -1,101 +1,67 @@
 # SEO page copywriting brief — Inspire Academy of Mathematics
 
-**For:** the person writing the custom content for our SEO pages.
-**Goal:** give each of our 17 SEO pages genuinely unique, trustworthy copy — the way our main pages (Home, About, Method) already read — so they rank well *and* sound like us.
+> A designed, shareable version of this brief is at **`docs/seo-copywriter-brief.pdf`** — send that to the writer.
 
-You do **not** need to touch any code. You write the words into the simple template at
-the bottom (one copy per page) and send them back. We paste them in.
+**Your job, in one line:** for each of our 17 SEO pages, write **2–3 short paragraphs** and pick **one image**. That's it. Everything else on the page already exists. FAQs rarely change — only add one if it's genuinely useful.
 
----
+## How a page is built — and what's yours
+Top to bottom, a page is: title & intro (done) → **your 2–3 paragraphs + 1 image** → who it's for (done) → what every batch includes (done) → how Sir teaches it (done) → why students choose Inspire (done) → common questions / FAQs (done; you add one only rarely) → related pages (done).
 
-## 1. Voice & tone
+The paragraphs sit **beside the image**, and the image side **alternates per page automatically**, so no two pages look alike.
 
-- Warm, plain, human. Like an experienced teacher talking to a worried parent — calm and confident, never salesy.
-- Call him **"Snehal Sir"** or **"Sir"**, never "the faculty" or "our team".
-- Short sentences. No jargon, no hype words ("best-in-class", "world-class", "guaranteed").
-- Write for **parents and students in Vadodara**. Their real worries: *"Will my child actually get attention? Will Sir himself teach? Will marks improve? Is it close enough?"* Answer those.
-- British/Indian spelling is fine (maths, not math, in body copy).
+## Voice & tone
+- Warm, plain, calm — an experienced teacher reassuring a worried parent.
+- Call him **Snehal Sir** or **Sir** (never "the faculty / our team").
+- Short sentences. Answer the real worry: *will my child get attention, will marks improve?*
+- "maths", Indian/British spelling. No hype words ("best-in-class", "guaranteed"). No keyword stuffing.
 
-## 2. What each page is made of (write into these fields)
+## Three hard rules (never break)
+1. **Only two branches** — New Sama Road (main) & Alkapuri. For Karelibaug, Fatehgunj, etc. write **"near / for students from"**, never "in".
+2. **One hard number** — the only stat we claim is **97 out of 100** in Class 12 Applied Maths. Invent no other numbers.
+3. **Stay factual** — OK to state: 25+ years, ex-Head of Maths at Navrachana, teaches 9–12 himself, batches max 20, weekly tests, NCERT (CBSE+GSEB), boards+JEE+GUJCET. Unsure? Leave it out.
 
-Our SEO pages are **not** one block of text — they have a fixed shape. You fill these parts:
+## The image
+**One photo per page, 1200 × 900 px (4:3).** Real classroom/teaching photo is best; reuse one across similar pages if needed. Upload in **Admin → Website → (page) → Upload** — any JPG/PNG, any size, auto-optimized.
 
-1. **Intro** (1 short paragraph, ~2–4 sentences) — sets up the page and naturally uses the page's main phrase once.
-2. **"Who it is for"** — 4 short bullet points describing the student/parent this page suits.
-3. **"How Snehal Sir teaches it"** (1 paragraph, ~3–5 sentences) — the unique heart of the page: how Sir handles *this* class/area/exam specifically.
-4. **3–4 FAQs** — real questions a parent would ask about *this* page, with honest answers.
+## What each page should be about (angle per page)
 
-That's it. Total unique writing per page ≈ **2 short paragraphs + 4 bullets + 3–4 FAQs**. That is plenty — do not pad.
-
-> The page already adds shared sections automatically (what every batch includes, why students choose Inspire, two common FAQs). You don't write those — just the four fields above.
-
-## 3. Hard factual rules (do not break these)
-
-- **Branches:** we have exactly **two** — **New Sama Road** (Sama, main) and **Alkapuri** (R.C. Dutt Road). 
-  - For Karelibaug, Fatehgunj (and any other locality): write **"near / for students from"**, never "in". Students from there **travel to** New Sama Road or Alkapuri. Never imply a branch exists where it doesn't.
-- **The one hard number** we can claim is the **97 out of 100** in Class 12 Applied Maths. Do not invent any other statistics (no "95% scored above 90", no made-up student counts, no years of a specific student).
-- **Credentials** you may state: 25+ years teaching, former Head of the Mathematics Department at Navrachana School, teaches Class 9–12 himself, batches capped at 20, weekly tests, NCERT-based (serves CBSE and GSEB), prepares for boards + JEE + GUJCET.
-- Don't name the co-founder (Sir's wife runs admin — keep her unnamed).
-- If you're unsure whether something is true, **leave it out** and flag it.
-
-## 4. SEO do's and don'ts
-
-- **Do** use the page's target phrase **once** in the intro, and once in a heading if it reads naturally. That's enough.
-- **Don't keyword-stuff.** Repeating "maths classes in Vadodara" ten times *hurts* us now. Write for the parent; the keyword takes care of itself.
-- **Don't reuse the same sentences across pages.** Each page's intro / teaching paragraph / FAQs must be genuinely different. (Shared trust facts are fine — that's the automatic 30%.)
-- Keep each FAQ answer to 2–3 sentences, ending with a gentle nudge to WhatsApp where it fits.
-
-## 5. Per-page angle table (what makes each one different)
-
-Write each page around its **angle** so they don't blur together.
-
-| Page | Target phrase | Unique angle to lead with |
+| Page | Target phrase | Angle to lead with |
 |---|---|---|
-| Class 9 | class 9 maths coaching Vadodara | Foundation year — lock the basics before the board years; build confidence early. |
+| Class 9 | class 9 maths coaching Vadodara | Foundation year — lock the basics before the board years. |
 | Class 10 | class 10 maths coaching Vadodara | First board year — concept clarity + board-pattern scoring. |
-| Class 11 Regular | class 11 maths coaching Vadodara | The steepest jump in school maths; bridge from 10th so students don't fall behind. |
-| Class 11 Applied | applied maths class 11 Vadodara | Applied is new and treated as "easy" elsewhere — it isn't; Sir has a dedicated approach. |
-| Class 12 Regular | class 12 maths coaching Vadodara | Boards + JEE + GUJCET prepared together, in depth; final-year stakes. |
-| Class 12 Applied | applied maths class 12 Vadodara | This is where Inspire scored **97/100** — lead with that proof. |
-| New Sama Road | maths tuition New Sama Road | Main branch, offline, close to home; convenience + the real address. |
-| Alkapuri | maths classes Alkapuri | Second branch on R.C. Dutt Road — central Vadodara convenience. |
-| Sama | maths classes Sama | The main branch sits right here on New Sama Road, in Sama. |
-| Karelibaug | maths classes near Karelibaug | **Near** page — short ride to New Sama Road / Alkapuri; nearest-branch help. |
+| Class 11 Regular | class 11 maths coaching Vadodara | The steepest jump in school maths; bridge from 10th. |
+| Class 11 Applied | applied maths class 11 Vadodara | Applied is new and treated as "easy" elsewhere — it isn't. |
+| Class 12 Regular | class 12 maths coaching Vadodara | Boards + JEE + GUJCET together, in depth. |
+| Class 12 Applied | applied maths class 12 Vadodara | Where Inspire scored **97/100** — lead with that proof. |
+| New Sama Road | maths tuition New Sama Road | Main branch, offline, close to home; real address. |
+| Alkapuri | maths classes Alkapuri | Second branch on R.C. Dutt Road — central convenience. |
+| Sama | maths classes Sama | Main branch sits right here on New Sama Road, in Sama. |
+| Karelibaug | maths classes near Karelibaug | **Near** page — short ride to a branch; nearest-branch help. |
 | Fatehgunj | maths classes near Fatehgunj | **Near** page — Alkapuri is usually the closer branch. |
-| Best Maths Teacher | best maths teacher in Vadodara | Trust + credentials; directly answer "who is the best and why" (no boasting — evidence). |
-| JEE Maths | JEE maths coaching Vadodara | Strong maths foundation for JEE; concept depth + competitive questions. |
+| Best Maths Teacher | best maths teacher in Vadodara | Trust + credentials; answer "who's best & why" with evidence. |
+| JEE Maths | JEE maths coaching Vadodara | Strong foundation for JEE; concept depth + competitive questions. |
 | GUJCET Maths | GUJCET maths coaching Vadodara | GSEB Science + GUJCET pattern built into Class 12. |
-| CBSE Maths | CBSE maths tuition Vadodara | NCERT done thoroughly, mapped to the CBSE board pattern. |
-| GSEB Maths | GSEB maths coaching Vadodara | NCERT base serves GSEB; GUJCET prep included for Science. |
-| Fees | maths tuition fees Vadodara | Honest value — what the fee includes and why it varies; enquire for the exact figure. |
+| CBSE Maths | CBSE maths tuition Vadodara | NCERT done thoroughly, mapped to CBSE board pattern. |
+| GSEB Maths | GSEB maths coaching Vadodara | NCERT base serves GSEB; GUJCET prep for Science. |
+| Fees | maths tuition fees Vadodara | Honest value — what the fee includes & why it varies. |
 
-## 6. Fill-in template (copy this once per page)
-
+## Fill-in template (copy once per page)
 ```
 PAGE: <e.g. Class 9>
 
-INTRO (1 short paragraph):
+PARAGRAPH 1:
 <...>
 
-WHO IT IS FOR (4 bullets):
-- <...>
-- <...>
-- <...>
-- <...>
-
-HOW SNEHAL SIR TEACHES IT (1 paragraph):
+PARAGRAPH 2:
 <...>
 
-FAQs (3–4):
-Q: <...>
-A: <...>
+PARAGRAPH 3 (optional):
+<...>
 
-Q: <...>
-A: <...>
+IMAGE: uploaded in Admin → Website  [ ] done
 
-Q: <...>
-A: <...>
+NEW FAQ (only if genuinely useful):
+Q: <...>   A: <...>
 ```
 
-Send the finished copy back (one block per page) and we'll put it live. Start with whichever
-pages matter most — Class 10, Class 12 Applied, and Best Maths Teacher are good first picks.
+Send the finished copy back (one block per page) and we'll put it live. Good first pages: **Class 10, Class 12 Applied, Best Maths Teacher.**
