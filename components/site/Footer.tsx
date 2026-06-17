@@ -2,14 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MapPin, Phone, Mail, Instagram, Facebook, Youtube } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 import WhatsappIcon from "@/components/icons/WhatsappIcon";
+import { InstagramIcon, FacebookIcon, YoutubeIcon } from "@/components/icons/SocialIcons";
 import { SITE, NAV, AREAS, WA_ENQUIRY, BRANCHES, SOCIAL } from "@/lib/site";
 
-const SOCIAL_ICONS: Record<string, typeof Instagram> = {
-  Instagram,
-  Facebook,
-  YouTube: Youtube,
+const SOCIAL_ICONS: Record<string, (p: { size?: number }) => React.ReactElement> = {
+  Instagram: InstagramIcon,
+  Facebook: FacebookIcon,
+  YouTube: YoutubeIcon,
 };
 
 export default function Footer({ logoUrl = null }: { logoUrl?: string | null }) {
@@ -61,7 +62,7 @@ export default function Footer({ logoUrl = null }: { logoUrl?: string | null }) 
                     aria-label={s.label}
                     className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-ink-muted transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary-strong"
                   >
-                    {Icon && <Icon size={18} strokeWidth={1.75} />}
+                    {Icon && <Icon size={18} />}
                   </a>
                 );
               })}
