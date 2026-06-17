@@ -1,4 +1,4 @@
-import { SITE, AREAS, BRANCHES, SITE_URL } from "./site";
+import { SITE, AREAS, BRANCHES, SITE_URL, SOCIAL } from "./site";
 
 function postalAddress(full: string) {
   return {
@@ -28,6 +28,7 @@ export function organizationLd() {
       address: postalAddress(br.address),
     })),
     areaServed: AREAS.map((a) => `${a}, Vadodara`),
+    sameAs: SOCIAL.map((s) => s.href),
     founder: { "@type": "Person", name: SITE.teacher },
   };
 }

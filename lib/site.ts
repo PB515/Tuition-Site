@@ -77,6 +77,15 @@ export const NAV = [
 
 export const AREAS = ["New Sama Road", "Alkapuri"];
 
+// Official social profiles. Shown in the footer and listed as sameAs in the
+// Organization schema (helps Google tie the profiles to the business).
+// LinkedIn intentionally omitted until the academy page exists.
+export const SOCIAL = [
+  { label: "Instagram", href: "https://www.instagram.com/inspire_math" },
+  { label: "Facebook", href: "https://www.facebook.com/p/Inspire-Academy-of-Mathematics-100054352414542/" },
+  { label: "YouTube", href: "https://www.youtube.com/@snehalsoni289" },
+];
+
 // SEO landing pages, grouped. Used by the footer link hub and the "Related
 // pages" block on each SEO page. Internal links help Google crawl every page
 // and pass link equity to the pages we most want to rank. (These are internal

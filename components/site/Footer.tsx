@@ -2,9 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Facebook, Youtube } from "lucide-react";
 import WhatsappIcon from "@/components/icons/WhatsappIcon";
-import { SITE, NAV, AREAS, WA_ENQUIRY, BRANCHES } from "@/lib/site";
+import { SITE, NAV, AREAS, WA_ENQUIRY, BRANCHES, SOCIAL } from "@/lib/site";
+
+const SOCIAL_ICONS: Record<string, typeof Instagram> = {
+  Instagram,
+  Facebook,
+  YouTube: Youtube,
+};
 
 export default function Footer({ logoUrl = null }: { logoUrl?: string | null }) {
   const pathname = usePathname();
@@ -40,6 +46,26 @@ export default function Footer({ logoUrl = null }: { logoUrl?: string | null }) 
             >
               <Phone size={16} strokeWidth={2} /> Call
             </a>
+          </div>
+          <div className="mt-5">
+            <p className="text-sm font-semibold text-ink">Follow us</p>
+            <div className="mt-3 flex items-center gap-3">
+              {SOCIAL.map((s) => {
+                const Icon = SOCIAL_ICONS[s.label];
+                return (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-ink-muted transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary-strong"
+                  >
+                    {Icon && <Icon size={18} strokeWidth={1.75} />}
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
 
