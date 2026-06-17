@@ -114,37 +114,30 @@ export default async function SeoPage({
         </section>
       )}
 
-      {/* Pages with custom copy: paragraphs beside the image (side alternates). */}
-      {hasBody && (
+      {/* Pages with custom copy: paragraphs beside the image (side alternates).
+          The image area shows a placeholder with the upload size until a photo
+          is added. */}
+      {hasBody && imgSrc && (
         <section className="relative overflow-hidden border-b border-border">
           <FloatingMath preset="band" offset={5} count={2} />
-          {imgUrl && imgSrc ? (
-            <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
-              <div className={bodyImageSide === "right" ? "lg:order-2" : ""}>
-                <SmartImage
-                  src={imgSrc}
-                  alt={content.title}
-                  label={`${content.title} photo`}
-                  className="aspect-[4/3] w-full rounded-2xl border border-border"
-                />
-              </div>
-              <div className="space-y-5">
-                {content.body!.map((p, i) => (
-                  <p key={i} className="text-base leading-relaxed text-ink-muted">
-                    {p}
-                  </p>
-                ))}
-              </div>
+          <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
+            <div className={bodyImageSide === "right" ? "lg:order-2" : ""}>
+              <SmartImage
+                src={imgSrc}
+                alt={content.title}
+                label={`${content.title} photo`}
+                size="Upload 1200 x 900 px (4:3)"
+                className="aspect-[4/3] w-full rounded-2xl border border-border"
+              />
             </div>
-          ) : (
-            <div className="relative z-10 mx-auto max-w-3xl space-y-5 px-4 py-16 sm:px-6 lg:py-20">
+            <div className="space-y-5">
               {content.body!.map((p, i) => (
                 <p key={i} className="text-base leading-relaxed text-ink-muted">
                   {p}
                 </p>
               ))}
             </div>
-          )}
+          </div>
         </section>
       )}
 

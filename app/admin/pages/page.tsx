@@ -64,8 +64,9 @@ export default async function Page() {
       <h1 className="font-heading text-2xl font-bold text-ink">Website pages</h1>
       <p className="mt-1 max-w-2xl text-sm text-ink-muted">
         Every public page, with the search term it targets. Click any to open it in a new tab. On
-        the SEO pages you can also upload that page&apos;s image right here — any JPG or PNG works,
-        it is optimized to WebP automatically.
+        the SEO pages you can also upload that page&apos;s image right here — recommended size{" "}
+        <strong>1200 × 900 px (4:3)</strong>. Any JPG or PNG works; it is optimized to WebP
+        automatically.
       </p>
 
       <div className="mt-6 space-y-8">

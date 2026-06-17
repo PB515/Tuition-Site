@@ -8,15 +8,17 @@ export default async function SmartImage({
   alt,
   label,
   className,
+  size: sizeOverride,
 }: {
   src: string;
   alt: string;
   label: string;
   className?: string;
+  size?: string;
   sizes?: string;
 }) {
   const url = await resolveImage(src);
-  const size = slotMeta(src)?.size;
+  const size = sizeOverride ?? slotMeta(src)?.size;
   return (
     <div className={`group relative overflow-hidden bg-primary-tint/40 ${className ?? ""}`}>
       {url ? (
