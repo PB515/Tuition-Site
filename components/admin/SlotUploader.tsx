@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Upload, Trash2 } from "lucide-react";
 import { uploadSiteImage, removeSiteImage } from "@/app/admin/images/actions";
+import { compressImage, formatBytes } from "@/lib/compress-image";
 
 export default function SlotUploader({
   slot,
@@ -21,20 +22,52 @@ export default function SlotUploader({
   const router = useRouter();
   const [pending, start] = useTransition();
   const [err, setErr] = useState<string | null>(null);
+  const [status, setStatus] = useState<string | null>(null);
+  const [note, setNote] = useState<string | null>(null);
 
   function onFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const fd = new FormData();
-    fd.set("slot", slot);
-    fd.set("file", file);
-    setErr(null);
-    start(async () => {
-      const r = await uploadSiteImage(fd);
-      if (r?.error) setErr(r.error);
-      else router.refresh();
-    });
+    const original = e.target.files?.[0];
     e.target.value = "";
+    if (!original) return;
+    setErr(null);
+    setNote(null);
+    start(async () => {
+      setStatus("Optimizing image...");
+      let file = original;
+      try {
+        file = await compressImage(original);
+      } catch {
+        file = original;
+      }
+      // Backstop: if it is still too big to send, tell the founder clearly
+      // instead of letting the upload fail with a blank/404 page.
+      if (file.size > 5 * 1024 * 1024) {
+        setStatus(null);
+        setErr(
+          "This image is too large to upload, even after optimizing. Please crop it to the recommended size, or save it as a JPG, and try again.",
+        );
+        return;
+      }
+      setStatus("Uploading...");
+      const fd = new FormData();
+      fd.set("slot", slot);
+      fd.set("file", file);
+      try {
+        const r = await uploadSiteImage(fd);
+        if (r?.error) {
+          setErr(r.error);
+        } else {
+          if (file !== original) {
+            setNote(`Optimized: ${formatBytes(original.size)} → ${formatBytes(file.size)} (WebP)`);
+          }
+          router.refresh();
+        }
+      } catch {
+        setErr("Upload failed. Please check your connection and try again.");
+      } finally {
+        setStatus(null);
+      }
+    });
   }
 
   function onRemove() {
@@ -49,6 +82,7 @@ export default function SlotUploader({
     <div className="rounded-2xl border border-border bg-surface p-3">
       <p className="text-xs font-medium text-ink">{label}</p>
       {size && <p className="text-[11px] text-ink-muted">Recommended: {size}</p>}
+      <p className="text-[11px] text-ink-muted">JPG or PNG is fine — we optimize it to WebP and keep the quality.</p>
       <div
         className="relative mt-2 overflow-hidden rounded-lg border border-border bg-primary-tint/30"
         style={{ aspectRatio: ratio }}
@@ -78,7 +112,8 @@ export default function SlotUploader({
           </button>
         )}
       </div>
-      {pending && <p className="mt-1 text-xs text-ink-muted">Working...</p>}
+      {status && <p className="mt-1 text-xs text-ink-muted">{status}</p>}
+      {note && !status && <p className="mt-1 text-xs text-primary-strong">{note}</p>}
       {err && <p className="mt-1 text-xs text-error">{err}</p>}
     </div>
   );
