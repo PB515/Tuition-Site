@@ -38,7 +38,7 @@ export default function HeroCarousel({
   }
 
   const arrowClass =
-    "absolute top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-bg/70 text-ink shadow-sm backdrop-blur transition-all hover:bg-bg hover:scale-105 opacity-100 sm:opacity-0 sm:group-hover:opacity-100";
+    "absolute top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-bg/85 text-ink shadow-md ring-1 ring-border backdrop-blur transition-all hover:bg-bg hover:scale-110";
 
   return (
     <div
