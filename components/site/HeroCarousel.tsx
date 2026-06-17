@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { ImageIcon } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ImageIcon, ChevronLeft, ChevronRight } from "lucide-react";
 
 type Slide = { url: string | null; label: string; src: string };
 
@@ -15,16 +15,39 @@ export default function HeroCarousel({
   frameClass?: string;
 }) {
   const [i, setI] = useState(0);
+  const [paused, setPaused] = useState(false);
   const n = slides.length;
+  const touchX = useRef<number | null>(null);
 
   useEffect(() => {
-    if (n <= 1) return;
+    if (n <= 1 || paused) return;
     const t = setInterval(() => setI((p) => (p + 1) % n), 4000);
     return () => clearInterval(t);
-  }, [n]);
+  }, [n, paused]);
+
+  const go = (dir: number) => setI((p) => (p + dir + n) % n);
+
+  function onTouchStart(e: React.TouchEvent) {
+    touchX.current = e.touches[0].clientX;
+  }
+  function onTouchEnd(e: React.TouchEvent) {
+    if (touchX.current === null || n <= 1) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1); // swipe left = next
+    touchX.current = null;
+  }
+
+  const arrowClass =
+    "absolute top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-bg/70 text-ink shadow-sm backdrop-blur transition-all hover:bg-bg hover:scale-105 opacity-100 sm:opacity-0 sm:group-hover:opacity-100";
 
   return (
-    <div className={`relative w-full overflow-hidden bg-primary-tint/40 ${frameClass} ${aspectClass}`}>
+    <div
+      className={`group relative w-full overflow-hidden bg-primary-tint/40 ${frameClass} ${aspectClass}`}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
       {slides.map((s, idx) => (
         <div
           key={idx}
@@ -44,17 +67,36 @@ export default function HeroCarousel({
       ))}
 
       {n > 1 && (
-        <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
-          {slides.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => setI(idx)}
-              aria-label={`Show slide ${idx + 1}`}
-              className={`h-2 w-2 rounded-full transition-colors ${idx === i ? "bg-primary-strong" : "bg-bg/70"}`}
-            />
-          ))}
-        </div>
+        <>
+          <button
+            type="button"
+            onClick={() => go(-1)}
+            aria-label="Previous slide"
+            className={`${arrowClass} left-2`}
+          >
+            <ChevronLeft size={18} strokeWidth={2} />
+          </button>
+          <button
+            type="button"
+            onClick={() => go(1)}
+            aria-label="Next slide"
+            className={`${arrowClass} right-2`}
+          >
+            <ChevronRight size={18} strokeWidth={2} />
+          </button>
+
+          <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setI(idx)}
+                aria-label={`Show slide ${idx + 1}`}
+                className={`h-2 w-2 rounded-full transition-colors ${idx === i ? "bg-primary-strong" : "bg-bg/70"}`}
+              />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );
