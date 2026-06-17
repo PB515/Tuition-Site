@@ -134,8 +134,15 @@ export default function Footer({
             ))}
           </div>
           <a
-            href={`mailto:${SITE.email}`}
+            href={`tel:${SITE.tel}`}
             className="mt-4 flex items-center gap-2 text-sm text-ink-muted hover:text-primary-strong"
+          >
+            <Phone size={18} strokeWidth={1.75} className="shrink-0 text-primary" />
+            {SITE.phoneDisplay}
+          </a>
+          <a
+            href={`mailto:${SITE.email}`}
+            className="mt-2 flex items-center gap-2 text-sm text-ink-muted hover:text-primary-strong"
           >
             <Mail size={18} strokeWidth={1.75} className="shrink-0 text-primary" />
             {SITE.email}
