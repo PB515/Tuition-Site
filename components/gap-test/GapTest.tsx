@@ -105,7 +105,7 @@ export default function GapTest() {
             href={`tel:${SITE.tel}`}
             className="inline-flex items-center gap-2 rounded-full border border-primary px-6 py-3 text-sm font-semibold text-primary-strong hover:bg-primary-tint"
           >
-            <Phone size={18} strokeWidth={2} /> Call Sir
+            <Phone size={18} strokeWidth={2} /> Call us
           </a>
           <button
             type="button"

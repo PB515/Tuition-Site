@@ -27,7 +27,7 @@ export default function EnquiryBand({
             <WhatsappIcon size={18} strokeWidth={2} /> WhatsApp Enquiry
           </CtaButton>
           <CtaButton href={`tel:${SITE.tel}`} variant="secondary" external>
-            <Phone size={18} strokeWidth={2} /> Call Sir
+            <Phone size={18} strokeWidth={2} /> Call us
           </CtaButton>
         </div>
       </div>
