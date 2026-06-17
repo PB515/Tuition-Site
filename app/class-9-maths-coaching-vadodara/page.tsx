@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "Class 9 Math Coaching & Batches in Vadodara",
   intro:
     "Class 9 math coaching by Snehal Sir that builds the base for the board year. NCERT-based, so it serves both CBSE and GSEB students, with weekly tests and personal doubt-solving.",
+  body: [
+    "Class 9 is the year that quietly decides how the next three go. Nothing is a board exam yet, which is exactly why it gets taken lightly, and exactly why gaps form here that surface painfully in Class 10 and 11.",
+    "Snehal Sir uses Class 9 to build a foundation that holds. Each topic starts from the idea behind it, not the formula, so students understand why a method works before they use it. The teaching is NCERT-based, so CBSE and GSEB students are both covered, and a weekly test keeps every chapter from slipping away.",
+    "Because batches are capped at 20 and Sir teaches every class himself, a student who is shaky on a basic can be caught and corrected early, while it is still easy to fix. Most students leave Class 9 not just ahead on syllabus, but genuinely more confident with maths.",
+  ],
+  bodyImageSide: "left",
   whoFor: [
     "Class 9 students who want a strong base before the Class 10 board year",
     "Students who find math confusing and want it explained slowly and clearly",

@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "Maths Classes near Karelibaug, Vadodara",
   intro:
     "Looking for maths tuition near Karelibaug? Inspire Academy of Mathematics teaches Class 9 to 12 Maths, Applied Maths, JEE Maths and GUJCET Maths at our New Sama Road and Alkapuri branches. Students from Karelibaug and nearby areas can easily join whichever batch location is most convenient.",
+  body: [
+    "Plenty of our students travel in from Karelibaug, and it is an easy trip. We do not have a branch in Karelibaug itself, but both of ours, New Sama Road and Alkapuri, are a short ride away, so students from the area join whichever batch is more convenient.",
+    "Wherever they come from, the teaching is the same: Snehal Sir takes every class himself, Class 9 to 12, Regular and Applied, starting from the concept, building on NCERT, and testing weekly with honest mistake analysis.",
+    "With batches capped at 20, Karelibaug students get the same personal doubt-solving as everyone else. Tell us your school and we will point you to the nearest branch and the right batch.",
+  ],
+  bodyImageSide: "right",
   whoFor: [
     "Students and parents in Karelibaug and nearby areas of east Vadodara",
     "Class 9 to 12 students who want concept-first, NCERT-based teaching",

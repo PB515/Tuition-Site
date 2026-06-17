@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "Maths Tuition Fees in Vadodara",
   intro:
     "Maths tuition fees in Vadodara vary by class, board and the amount of teaching involved. At Inspire Academy of Mathematics we keep it simple: fees depend on the class and batch, and we share the exact figure when you enquire, so you get the right batch first rather than a one-size price.",
+  body: [
+    "Fees are a fair question to ask early, and we keep the answer honest: the fee depends on the class and batch, so we share the exact figure when you enquire rather than quoting a one-size price that does not fit your child.",
+    "What the fee pays for is the thing that actually moves marks, personal teaching by Snehal Sir himself in a batch capped at 20. It includes weekly tests with mistake analysis, his own custom study material, personal doubt-solving, and progress updates for parents. The value is in the teaching, not in a crowd.",
+    "Because the right batch matters more than the lowest number, we focus on placing your child correctly first, then explain the fee clearly, with no surprises later. Message us with the class and school to get the exact figure.",
+  ],
+  bodyImageSide: "left",
   whoFor: [
     "Parents comparing maths tuition fees in Vadodara",
     "Families who want to know what the fee actually includes",

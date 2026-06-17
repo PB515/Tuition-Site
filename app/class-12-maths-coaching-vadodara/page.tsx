@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "Class 12 Regular-Math Coaching & Batches in Vadodara",
   intro:
     "Class 12 math coaching by Snehal Sir, covering the board syllabus and the readiness needed for JEE and GUJCET, with weekly tests and personal doubt-solving.",
+  body: [
+    "Class 12 is where everything is counted at once. The board result, JEE, GUJCET, and the cut-offs that follow all rest on this one year, and maths usually carries the heaviest weight of all.",
+    "Snehal Sir prepares boards and competitive exams together rather than treating them as separate jobs. Every topic is taught to real depth, from the concept up to board-pattern and JEE and GUJCET style questions, with a weekly test and honest mistake analysis so nothing is left to chance in the final months.",
+    "Batches stay capped at 20, so even in the busiest year of school, every student gets personal doubt-solving with Sir. The goal is simple: walk into each exam knowing the maths is genuinely under control.",
+  ],
+  bodyImageSide: "left",
   whoFor: [
     "Class 12 students who want strong board marks in math",
     "Students preparing for GUJCET or JEE alongside boards",

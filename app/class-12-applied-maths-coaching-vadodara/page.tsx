@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "Class 12 Applied-Math Coaching & Batches in Vadodara",
   intro:
     "Class 12 Applied Math coaching by Snehal Sir, where our student Chirayu Jani scored 97 out of 100, the highest in Navrachana Applied Math. Concept-first, with weekly tests and doubt-solving.",
+  body: [
+    "Class 12 Applied Maths is where Inspire's approach shows its results most clearly. This is the subject in which a student scored 97 out of 100. That kind of result does not come from treating Applied as an afterthought.",
+    "Snehal Sir teaches Class 12 Applied with its own dedicated material and method, built around how the subject is actually examined. Concepts first, then real exam questions, with weekly tests and mistake analysis so students steadily tighten up where it matters before the boards.",
+    "It is ideal for commerce and other students who want strong, scoring maths without the science-stream load. In batches capped at 20, Sir gives the personal attention that turns understanding into marks.",
+  ],
+  bodyImageSide: "right",
   whoFor: [
     "Class 12 students taking Applied Math for the board year",
     "Students heading towards commerce, economics, data and management fields",

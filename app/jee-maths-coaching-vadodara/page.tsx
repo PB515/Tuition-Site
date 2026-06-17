@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "JEE Maths Coaching in Vadodara",
   intro:
     "JEE maths is built on the same Class 11 and 12 concepts, taught with more depth and the right practice. At Inspire Academy of Mathematics, Snehal Sir prepares students for JEE Main maths inside the same focused system that covers their boards, so the two reinforce each other.",
+  body: [
+    "JEE maths rewards depth, not shortcuts. It tests whether a student truly understands a concept and can apply it under pressure, which is exactly the kind of maths Snehal Sir has always taught.",
+    "At Inspire, JEE preparation is built on a genuinely strong foundation. Each topic is taught from first principles, then pushed up to competitive-level questions, with weekly tests and mistake analysis so problem-solving sharpens steadily rather than in a last-minute rush. The NCERT base keeps board work and JEE work moving together.",
+    "Batches stay capped at 20, so Sir can work closely with each aspirant on the specific areas they find hard. It suits Class 11 and 12 Science students who want their maths properly understood, not just drilled.",
+  ],
+  bodyImageSide: "left",
   whoFor: [
     "Class 11 and 12 Science students targeting JEE Main",
     "Students who want JEE maths and board maths prepared together, not separately",

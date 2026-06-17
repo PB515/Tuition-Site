@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "Math Tuition in New Sama Road, Vadodara",
   intro:
     "Inspire Academy of Mathematics is on New Sama Road, Vadodara, led by Snehal Sir. Offline math coaching for Class 9 to 12, Applied, JEE and GUJCET, close to home.",
+  body: [
+    "For families on and around New Sama Road, Inspire Academy of Mathematics is genuinely close to home. Our main branch sits at 3, Nand Complex, near Umiyangagar, so students get serious maths coaching without travelling across the city.",
+    "Every class here is taught in person by Snehal Sir himself, for Class 9 to 12, Regular and Applied. The method is the same that has worked for 25+ years: start from the concept, build on NCERT, practise real exam questions, and test every week with honest mistake analysis.",
+    "Because batches are capped at 20, Sir knows each student personally and clears doubts on the spot. For New Sama Road and the areas around it, it is local, experienced, offline coaching, the kind that is getting rare.",
+  ],
+  bodyImageSide: "left",
   whoFor: [
     "Families in New Sama Road, Sama, Karelibaug and nearby areas",
     "Students who want offline, in-person math classes near home",

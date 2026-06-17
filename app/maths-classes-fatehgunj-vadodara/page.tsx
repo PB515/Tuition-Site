@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "Maths Classes near Fatehgunj, Vadodara",
   intro:
     "Looking for maths tuition near Fatehgunj? Inspire Academy of Mathematics teaches Class 9 to 12 Maths, Applied Maths, JEE Maths and GUJCET Maths at our Alkapuri and New Sama Road branches. Students from Fatehgunj and nearby central Vadodara can easily join whichever batch location is most convenient.",
+  body: [
+    "Students from Fatehgunj study with us too, and the trip is short. We do not run a branch in Fatehgunj itself, but our Alkapuri branch on R.C. Dutt Road is usually the closer one, with New Sama Road as the other option.",
+    "The teaching does not change with the address: Snehal Sir teaches every batch himself, Class 9 to 12, Regular and Applied, concept first, built on NCERT, and tested weekly with a proper look at each mistake.",
+    "In batches capped at 20, every Fatehgunj student gets real attention from Sir. Message us with your class and school and we will suggest the easier branch and batch for you.",
+  ],
+  bodyImageSide: "left",
   whoFor: [
     "Students and parents in Fatehgunj, Sayajigunj and central Vadodara",
     "Class 9 to 12 students who want personal attention, not a crowded class",

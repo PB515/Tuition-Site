@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "CBSE Maths Tuition in Vadodara",
   intro:
     "CBSE maths is built on NCERT, and so is our teaching. At Inspire Academy of Mathematics, Snehal Sir prepares CBSE students from Class 9 to 12, Regular and Applied Maths, with the concept-first method that holds up under board pressure.",
+  body: [
+    "CBSE maths is built on NCERT, and so is the way Snehal Sir teaches. Nothing in the book is skipped or rushed, because the questions that decide board marks come straight from a thorough command of it.",
+    "Each chapter starts from the concept, moves through NCERT and board-pattern questions, and is tested every week, with a session afterwards that goes through each mistake. Class 9 to 12 CBSE students get the same concept-first teaching, and the foundation also serves anyone heading towards JEE.",
+    "Batches are capped at 20, so Sir knows where each CBSE student is and clears doubts personally. The aim is a student who is comfortable with the whole syllabus, not just the chapters they liked.",
+  ],
+  bodyImageSide: "left",
   whoFor: [
     "CBSE students from Class 9 to 12 in Vadodara",
     "Students who want NCERT covered thoroughly, not skipped",

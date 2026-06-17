@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "GSEB Maths Coaching in Vadodara",
   intro:
     "GSEB maths follows NCERT, and that is exactly how Snehal Sir teaches it. At Inspire Academy of Mathematics, GSEB students from Class 9 to 12 get concept-first coaching, with GUJCET preparation built in for Class 12 Science.",
+  body: [
+    "GSEB maths follows NCERT, and that is exactly how Snehal Sir teaches it. Whether a student is in Gujarati or English medium, the maths itself is taught from the ground up, clearly and in order.",
+    "Every topic begins with the concept, builds on the NCERT base the GSEB syllabus shares, and is tested weekly with honest mistake analysis. For Class 12 Science students, GUJCET-pattern practice is built in, so board and entrance preparation move together.",
+    "In batches capped at 20, every GSEB student gets real attention and personal doubt-solving with Sir. Send us your class and school and we will guide you to the right batch.",
+  ],
+  bodyImageSide: "right",
   whoFor: [
     "GSEB students from Class 9 to 12 in Vadodara",
     "Class 12 Science students who also need GUJCET preparation",

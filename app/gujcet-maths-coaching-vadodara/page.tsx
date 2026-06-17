@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "GUJCET Maths Coaching in Vadodara",
   intro:
     "GUJCET maths sits right on top of the Class 12 GSEB syllabus, so it is best prepared together with the boards. At Inspire Academy of Mathematics, Snehal Sir covers GUJCET-pattern maths inside the Class 12 system, with the exam format practised, not a simplified version.",
+  body: [
+    "For GSEB Science students, GUJCET is the exam that converts a year of maths into a college seat. The good news is that strong board preparation and GUJCET preparation pull in the same direction when the teaching is right.",
+    "Snehal Sir builds GUJCET practice into Class 12 maths rather than bolting it on. The NCERT base maps straight to the GSEB syllabus, and from there students work through GUJCET-pattern questions, with a weekly test and mistake analysis to fix weak spots while there is still time.",
+    "With batches capped at 20, every GUJCET student gets personal doubt-solving with Sir. Tell us your school and we will guide you to the right batch.",
+  ],
+  bodyImageSide: "right",
   whoFor: [
     "Class 12 Science students appearing for GUJCET",
     "GSEB students who want GUJCET and board maths prepared together",

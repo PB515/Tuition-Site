@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "Maths Classes in Alkapuri, Vadodara",
   intro:
     "Looking for maths classes in Alkapuri? Inspire Academy of Mathematics runs a branch at 202, Dwarkesh Complex, R.C. Dutt Road, Alkapuri, taught personally by Snehal Sir. Class 9 to 12, Regular and Applied Maths, in small batches.",
+  body: [
+    "Our Alkapuri branch puts experienced maths coaching right in central Vadodara, at 202, Dwarkesh Complex, R.C. Dutt Road. For students in and around Alkapuri, it means Sir's teaching without a long commute.",
+    "The Alkapuri batches run exactly like the main branch: Snehal Sir teaches Class 9 to 12 himself, Regular and Applied, starting from concepts, building on NCERT, and running a weekly test with mistake analysis. The teaching, batch size and personal attention are identical at both branches.",
+    "With groups capped at 20, every Alkapuri student gets real doubt-solving time with Sir, not a seat in a crowded hall. It suits students near R.C. Dutt Road, Sayajigunj and the central parts of the city.",
+  ],
+  bodyImageSide: "right",
   whoFor: [
     "Students and parents in and around Alkapuri who want maths classes close to home",
     "Class 9 to 12 students, CBSE or GSEB, who want concept-first teaching",

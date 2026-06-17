@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "Class 11 Applied-Math Coaching & Batches in Vadodara",
   intro:
     "Class 11 Applied Math coaching by Snehal Sir, the data, statistics and real-world math track. Taught concept-first, with weekly tests and personal doubt-solving.",
+  body: [
+    "Applied Maths is still a new subject, and most places treat it as a lighter version of standard maths. It is not. It asks for real, practical mathematical thinking, and it rewards students who are taught it properly rather than handed leftover notes.",
+    "Snehal Sir has built a dedicated approach and his own study material around what Applied Maths actually tests. Class 11 Applied students get the same concept-first teaching, weekly tests and personal doubt-solving as everyone else, aimed at the way this subject is really examined, not a watered-down maths course.",
+    "It suits commerce and other students who need strong, usable maths without the full rigour of the science stream. In small batches capped at 20, Sir makes sure each student actually understands the reasoning, not just the steps.",
+  ],
+  bodyImageSide: "right",
   whoFor: [
     "Class 11 students taking Applied Math instead of core Math",
     "Students heading towards commerce, economics, data and management fields",

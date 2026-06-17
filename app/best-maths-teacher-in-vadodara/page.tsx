@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "Best Maths Teacher in Vadodara",
   intro:
     "If you are looking for the best maths teacher in Vadodara, Snehal Sir teaches every class personally at Inspire Academy of Mathematics. With 25+ years of experience and a record as Head of the Mathematics Department at Navrachana School, he turns students who fear maths into students who understand it.",
+  body: [
+    "Choosing a maths teacher is really a question of trust, and trust should rest on evidence, not slogans. Snehal Sir has taught maths for over 25 years and served as Head of the Mathematics Department at Navrachana School before founding Inspire.",
+    "What sets his teaching apart is consistency and care: he teaches every Class 9 to 12 batch himself, never a substitute, in groups capped at 20. Concepts come before formulas, NCERT is covered thoroughly for both CBSE and GSEB, and a weekly test with mistake analysis keeps every student honest about where they stand.",
+    "The results follow the method, including a 97 out of 100 in Class 12 Applied Maths. For parents in Vadodara wanting an experienced, hands-on maths teacher who actually knows their child, that combination is hard to match.",
+  ],
+  bodyImageSide: "right",
   whoFor: [
     "Parents who want an experienced, proven teacher, not a rotating set of tutors",
     "Students who have struggled with maths and want it explained clearly",

@@ -11,6 +11,12 @@ const content: SeoContent = {
   title: "Maths Classes in Sama, Vadodara",
   intro:
     "Inspire Academy of Mathematics has its main branch in Sama, on New Sama Road, taught personally by Snehal Sir. If you are looking for maths classes in Sama or nearby, this is focused, small-batch coaching for Class 9 to 12, Regular and Applied Maths.",
+  body: [
+    "If you are looking for maths classes in Sama, our main branch is right here, on New Sama Road. Inspire Academy of Mathematics has taught Sama students for years, in person, with Snehal Sir leading every batch.",
+    "The approach is steady and proven: each topic starts from the idea, builds on NCERT so CBSE and GSEB students are both covered, and is tested weekly with a session that goes through exactly what went wrong. Class 9 to 12, Regular and Applied, are all taught here.",
+    "Batches are capped at 20, so Sir knows every student's weak spots and clears doubts personally. For families in Sama, Chhani Jakatnaka and the streets around New Sama Road, it is genuinely local, experienced coaching.",
+  ],
+  bodyImageSide: "left",
   whoFor: [
     "Students and parents in Sama, New Sama Road, Chhani Jakatnaka and nearby",
     "Class 9 to 12 students who want a teacher, not a rotating set of tutors",
