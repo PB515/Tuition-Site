@@ -13,7 +13,13 @@ const SOCIAL_ICONS: Record<string, (p: { size?: number }) => React.ReactElement>
   YouTube: YoutubeIcon,
 };
 
-export default function Footer({ logoUrl = null }: { logoUrl?: string | null }) {
+export default function Footer({
+  logoUrl = null,
+  logoDarkUrl = null,
+}: {
+  logoUrl?: string | null;
+  logoDarkUrl?: string | null;
+}) {
   const pathname = usePathname();
   if (pathname?.startsWith("/admin") || pathname?.startsWith("/parent")) return null;
   return (
@@ -23,7 +29,19 @@ export default function Footer({ logoUrl = null }: { logoUrl?: string | null }) 
           {logoUrl ? (
             <Link href="/" aria-label={SITE.name}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={logoUrl} alt={SITE.name} className="h-16 w-auto sm:h-20" />
+              <img
+                src={logoUrl}
+                alt={SITE.name}
+                className={`h-16 w-auto sm:h-20 ${logoDarkUrl ? "dark:hidden" : ""}`}
+              />
+              {logoDarkUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={logoDarkUrl}
+                  alt={SITE.name}
+                  className="hidden h-16 w-auto dark:block sm:h-20"
+                />
+              )}
             </Link>
           ) : (
             <p className="font-heading text-lg font-bold text-ink">{SITE.name}</p>

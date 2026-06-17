@@ -51,7 +51,8 @@ export const IMAGE_SLOTS: { slot: string; label: string; src: string; ratio: str
   { slot: "results/banner-4", label: "Results banner 4 (group photo)", src: "/images/results/banner-4.jpg", ratio: "3 / 1", size: "full-width banner ~2400 x 800 px" },
   { slot: "results/banner-5", label: "Results banner 5 (group photo)", src: "/images/results/banner-5.jpg", ratio: "3 / 1", size: "full-width banner ~2400 x 800 px" },
   { slot: "contact", label: "Contact - Academy photo", src: "/images/contact.jpg", ratio: "16 / 9", size: "1600 x 900 px" },
-  { slot: "brand/logo", label: "Website logo", src: "/brand/logo.svg", ratio: "5 / 2", size: "~750 x 300 px (5:2). Teal box (#056e6e) + light wordmark so it reads on light & dark" },
+  { slot: "brand/logo", label: "Website logo (light / paper mode)", src: "/brand/logo.svg", ratio: "5 / 2", size: "~750 x 300 px (5:2). Shown on the light theme." },
+  { slot: "brand/logo-dark", label: "Website logo (dark / board mode)", src: "/brand/logo-dark.svg", ratio: "5 / 2", size: "~750 x 300 px (5:2). White / light version, shown on the dark blackboard theme." },
 ];
 
 const SLOT_BY_KEY = new Map(IMAGE_SLOTS.map((s) => [s.slot, s]));

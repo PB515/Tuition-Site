@@ -23,7 +23,13 @@ function Wordmark() {
   );
 }
 
-export default function Nav({ logoUrl = null }: { logoUrl?: string | null }) {
+export default function Nav({
+  logoUrl = null,
+  logoDarkUrl = null,
+}: {
+  logoUrl?: string | null;
+  logoDarkUrl?: string | null;
+}) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -35,8 +41,22 @@ export default function Nav({ logoUrl = null }: { logoUrl?: string | null }) {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
           {logoUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={logoUrl} alt={SITE.name} className="h-8 w-auto sm:h-10" />
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={logoUrl}
+                alt={SITE.name}
+                className={`h-8 w-auto sm:h-10 ${logoDarkUrl ? "dark:hidden" : ""}`}
+              />
+              {logoDarkUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={logoDarkUrl}
+                  alt={SITE.name}
+                  className="hidden h-8 w-auto dark:block sm:h-10"
+                />
+              )}
+            </>
           ) : (
             <Wordmark />
           )}

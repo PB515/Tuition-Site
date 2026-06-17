@@ -56,6 +56,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const logoUrl = await resolveImage("/brand/logo.svg");
+  const logoDarkUrl = await resolveImage("/brand/logo-dark.svg");
   return (
     <html
       lang="en"
@@ -70,9 +71,9 @@ export default async function RootLayout({
           }}
         />
         <JsonLd data={organizationLd()} />
-        <Nav logoUrl={logoUrl} />
+        <Nav logoUrl={logoUrl} logoDarkUrl={logoDarkUrl} />
         <div className="flex-1">{children}</div>
-        <Footer logoUrl={logoUrl} />
+        <Footer logoUrl={logoUrl} logoDarkUrl={logoDarkUrl} />
         <ScrollReveal />
         <ServiceWorkerRegister />
         <Analytics />
