@@ -34,7 +34,7 @@ export default function Page() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 font-semibold text-primary-strong hover:text-primary-deep"
             >
-              <WhatsappIcon size={15} strokeWidth={2} /> Message Snehal Sir
+              <WhatsappIcon size={15} strokeWidth={2} /> Message us
             </a>
           </p>
         </div>

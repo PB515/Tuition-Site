@@ -109,7 +109,7 @@ export default function FloatingMath({
   const showAt = preset === "hero" ? "lg:block" : "xl:block";
 
   return (
-    <div ref={ref} aria-hidden className={`pointer-events-none absolute inset-0 z-20 hidden overflow-hidden ${showAt}`}>
+    <div ref={ref} aria-hidden className={`pointer-events-none absolute inset-0 z-0 hidden overflow-hidden ${showAt}`}>
       {symbols.map((s, i) => (
         <span
           key={i}
