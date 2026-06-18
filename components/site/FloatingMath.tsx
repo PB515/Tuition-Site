@@ -7,21 +7,23 @@ import { useEffect, useRef } from "react";
 // Three presets: hero (rich focal set), band (content sections), header (short
 // inner-page top band).
 
-type Sym = { ch: string; pos: string; size: string; color: string; depth: number; dur: string; delay: string };
+type Sym = { ch: string; pos: string; size: string; color: string; depth: number; dur: string; delay: string; desktopOnly?: boolean };
 
 const SHIFT = 14; // max px the field leans with the cursor
 
 // ---- HERO: the rich focal set on the homepage hero ----
+// Tablet (md) shows only the four edge glyphs; the inner ones are desktopOnly so
+// they never crowd the narrower, single-column tablet layout.
 const HERO_SYMBOLS: Sym[] = [
   { ch: "+", pos: "left-[3%] top-[20%]", size: "text-7xl", color: "text-primary/[0.13]", depth: 1.3, dur: "13s", delay: "0s" },
-  { ch: "√", pos: "left-[9%] top-[52%]", size: "text-6xl", color: "text-accent/[0.12]", depth: 1.1, dur: "16s", delay: "0.3s" },
+  { ch: "√", pos: "left-[9%] top-[52%]", size: "text-6xl", color: "text-accent/[0.12]", depth: 1.1, dur: "16s", delay: "0.3s", desktopOnly: true },
   { ch: "π", pos: "left-[4%] top-[83%]", size: "text-8xl", color: "text-primary/[0.13]", depth: 1.6, dur: "15s", delay: "1.4s" },
   { ch: "×", pos: "right-[7%] top-[12%]", size: "text-7xl", color: "text-accent/[0.13]", depth: 1.3, dur: "11s", delay: "0.7s" },
   { ch: "∑", pos: "right-[3%] top-[46%]", size: "text-8xl", color: "text-primary/[0.12]", depth: 1.6, dur: "14s", delay: "1.1s" },
-  { ch: "∞", pos: "right-[10%] bottom-[8%]", size: "text-7xl", color: "text-accent/[0.12]", depth: 1.3, dur: "15s", delay: "0.2s" },
-  { ch: "÷", pos: "left-[24%] top-[8%]", size: "text-5xl", color: "text-primary/[0.12]", depth: 0.7, dur: "14s", delay: "1.2s" },
-  { ch: "∫", pos: "left-[44%] top-[16%]", size: "text-6xl", color: "text-accent/[0.12]", depth: 0.7, dur: "13s", delay: "0.6s" },
-  { ch: "Δ", pos: "left-[40%] top-[84%]", size: "text-5xl", color: "text-accent/[0.12]", depth: 0.7, dur: "15s", delay: "1.9s" },
+  { ch: "∞", pos: "right-[10%] bottom-[8%]", size: "text-7xl", color: "text-accent/[0.12]", depth: 1.3, dur: "15s", delay: "0.2s", desktopOnly: true },
+  { ch: "÷", pos: "left-[24%] top-[8%]", size: "text-5xl", color: "text-primary/[0.12]", depth: 0.7, dur: "14s", delay: "1.2s", desktopOnly: true },
+  { ch: "∫", pos: "left-[44%] top-[16%]", size: "text-6xl", color: "text-accent/[0.12]", depth: 0.7, dur: "13s", delay: "0.6s", desktopOnly: true },
+  { ch: "Δ", pos: "left-[40%] top-[84%]", size: "text-5xl", color: "text-accent/[0.12]", depth: 0.7, dur: "15s", delay: "1.9s", desktopOnly: true },
 ];
 
 // ---- HEADER: short top band on inner pages (gutters, not clipped) ----
@@ -61,6 +63,7 @@ function pickBand(offset: number, count: number): Sym[] {
     depth: slot.depth,
     dur: slot.dur,
     delay: slot.delay,
+    desktopOnly: k >= 2, // tablet shows just the first two (opposite corners)
   }));
 }
 
@@ -106,14 +109,14 @@ export default function FloatingMath({
 
   const symbols =
     preset === "band" ? pickBand(offset, count) : preset === "header" ? HEADER_SYMBOLS : HERO_SYMBOLS;
-  const showAt = preset === "hero" ? "lg:block" : "xl:block";
+  const showAt = "md:block"; // tablets (md) and up; phones stay clean
 
   return (
     <div ref={ref} aria-hidden className={`pointer-events-none absolute inset-0 z-0 hidden overflow-hidden ${showAt}`}>
       {symbols.map((s, i) => (
         <span
           key={i}
-          className={`absolute ${s.pos} transition-transform duration-500 ease-out`}
+          className={`absolute ${s.pos} ${s.desktopOnly ? "hidden lg:block" : ""} transition-transform duration-500 ease-out`}
           style={{ transform: `translate(calc(var(--px, 0px) * ${s.depth}), calc(var(--py, 0px) * ${s.depth}))` }}
         >
           <span
