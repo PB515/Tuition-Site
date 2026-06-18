@@ -13,12 +13,14 @@ export default function Faq({ items = FAQS }: { items?: Item[] }) {
     <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-bg">
       {items.map((item, i) => {
         const isOpen = open === i;
+        const panelId = `faq-panel-${i}`;
         return (
           <div key={item.q}>
             <button
               type="button"
               onClick={() => setOpen(isOpen ? null : i)}
               aria-expanded={isOpen}
+              aria-controls={panelId}
               className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-surface sm:px-6"
             >
               <span className="font-medium text-ink">{item.q}</span>
@@ -26,9 +28,15 @@ export default function Faq({ items = FAQS }: { items?: Item[] }) {
                 {isOpen ? <Minus size={16} strokeWidth={2} /> : <Plus size={16} strokeWidth={2} />}
               </span>
             </button>
-            {isOpen && (
-              <p className="px-5 pb-5 text-sm leading-relaxed text-ink-muted sm:px-6">{item.a}</p>
-            )}
+            {/* Always rendered in the HTML (crawlable for SEO/AEO); only the
+                visibility is toggled, so collapsed answers are still present. */}
+            <p
+              id={panelId}
+              hidden={!isOpen}
+              className="px-5 pb-5 text-sm leading-relaxed text-ink-muted sm:px-6"
+            >
+              {item.a}
+            </p>
           </div>
         );
       })}

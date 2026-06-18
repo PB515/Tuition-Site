@@ -33,6 +33,15 @@ export function organizationLd() {
   };
 }
 
+export function websiteLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE.name,
+    url: SITE_URL,
+  };
+}
+
 // FAQPage schema -> eligible for FAQ rich results in Google. Pass the same
 // Q&A pairs shown on the page (homepage FAQ or a batch page's FAQs).
 export function faqPageLd(faqs: { q: string; a: string }[]) {

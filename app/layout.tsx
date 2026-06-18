@@ -8,7 +8,7 @@ import Footer from "@/components/site/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 import JsonLd from "@/components/JsonLd";
-import { organizationLd } from "@/lib/structured-data";
+import { organizationLd, websiteLd } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({
@@ -71,6 +71,7 @@ export default async function RootLayout({
           }}
         />
         <JsonLd data={organizationLd()} />
+        <JsonLd data={websiteLd()} />
         <Nav logoUrl={logoUrl} logoDarkUrl={logoDarkUrl} />
         <div className="flex-1">{children}</div>
         <Footer logoUrl={logoUrl} logoDarkUrl={logoDarkUrl} />
