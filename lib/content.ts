@@ -22,6 +22,37 @@ export type TestimonialItem = {
   image_path: string | null;
 };
 
+export type ResultsHighlight = {
+  score: string;
+  out_of: string;
+  student_name: string;
+  description: string;
+};
+
+// Shown before the founder edits it, and if the table is missing.
+export const RESULTS_HIGHLIGHT_DEFAULT: ResultsHighlight = {
+  score: "97",
+  out_of: "100",
+  student_name: "Chirayu Jani",
+  description:
+    "The highest score in Navrachana Applied Math. More board and Applied Math results are added each year, with student permission.",
+};
+
+// The single editable highlight block on the homepage Results section.
+export const getResultsHighlight = cache(async (): Promise<ResultsHighlight> => {
+  try {
+    const supabase = await createClient();
+    const { data } = await supabase
+      .from("results_highlight")
+      .select("score, out_of, student_name, description")
+      .eq("id", 1)
+      .maybeSingle();
+    return data ? (data as ResultsHighlight) : RESULTS_HIGHLIGHT_DEFAULT;
+  } catch {
+    return RESULTS_HIGHLIGHT_DEFAULT;
+  }
+});
+
 export const getResults = cache(async (): Promise<ResultItem[]> => {
   try {
     const supabase = await createClient();

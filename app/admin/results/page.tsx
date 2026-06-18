@@ -1,10 +1,18 @@
 import Link from "next/link";
 import { Trash2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { storagePublicUrl } from "@/lib/site-images";
+import { getSiteImages, storagePublicUrl } from "@/lib/site-images";
+import { getResultsHighlight } from "@/lib/content";
 import ResultForm from "@/components/admin/ResultForm";
+import SlotUploader from "@/components/admin/SlotUploader";
 import DeleteAllButton from "@/components/admin/DeleteAllButton";
-import { createResult, deleteResult, toggleResultPublished, deleteAllResults } from "./actions";
+import {
+  createResult,
+  deleteResult,
+  toggleResultPublished,
+  deleteAllResults,
+  updateResultsHighlight,
+} from "./actions";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Results", robots: { index: false, follow: false } };
@@ -29,6 +37,16 @@ export default async function Page() {
     .order("created_at", { ascending: false });
   const results = (data ?? []) as Row[];
 
+  const h = await getResultsHighlight();
+  const images = await getSiteImages();
+  const urlFor = (slot: string) => {
+    const p = images.get(slot);
+    return p ? storagePublicUrl(p) : null;
+  };
+
+  const inputCls =
+    "mt-1 w-full rounded-lg border border-border bg-bg px-3 py-2 text-sm text-ink focus:border-primary focus:outline-none";
+
   return (
     <div className="px-4 py-8 sm:px-6 lg:px-8">
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -38,6 +56,58 @@ export default async function Page() {
         </div>
         {results.length > 0 && <DeleteAllButton action={deleteAllResults} count={results.length} noun="results" />}
       </div>
+
+      <section className="mt-6 rounded-2xl border border-border bg-surface p-4 sm:p-5">
+        <h2 className="font-heading text-lg font-bold text-ink">Homepage highlight</h2>
+        <p className="mt-1 text-sm text-ink-muted">
+          The big result block on the homepage. Update the score, student and description, and the
+          two images. Change it each year when the topper changes.
+        </p>
+        <form action={updateResultsHighlight} className="mt-4 grid gap-4">
+          <div className="grid gap-4 sm:grid-cols-4">
+            <label className="text-sm font-medium text-ink">
+              Score
+              <input name="score" defaultValue={h.score} className={inputCls} />
+            </label>
+            <label className="text-sm font-medium text-ink">
+              Out of
+              <input name="out_of" defaultValue={h.out_of} className={inputCls} />
+            </label>
+            <label className="text-sm font-medium text-ink sm:col-span-2">
+              Student name
+              <input name="student_name" defaultValue={h.student_name} className={inputCls} />
+            </label>
+          </div>
+          <label className="text-sm font-medium text-ink">
+            Description
+            <textarea name="description" defaultValue={h.description} rows={3} className={inputCls} />
+          </label>
+          <div>
+            <button
+              type="submit"
+              className="rounded-full bg-primary-strong px-5 py-2 text-sm font-semibold text-white hover:bg-primary-deep"
+            >
+              Save highlight
+            </button>
+          </div>
+        </form>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          <SlotUploader
+            slot="results/highlight-1"
+            label="Result image 1"
+            currentUrl={urlFor("results/highlight-1")}
+            ratio="3 / 4"
+            size="1080 x 1440 px (3:4)"
+          />
+          <SlotUploader
+            slot="results/highlight-2"
+            label="Result image 2"
+            currentUrl={urlFor("results/highlight-2")}
+            ratio="3 / 4"
+            size="1080 x 1440 px (3:4)"
+          />
+        </div>
+      </section>
 
       <details className="mt-6 rounded-2xl border border-border bg-surface p-4">
         <summary className="cursor-pointer text-sm font-semibold text-primary-strong">+ Add a result</summary>

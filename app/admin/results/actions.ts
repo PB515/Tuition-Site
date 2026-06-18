@@ -102,6 +102,22 @@ export async function deleteAllResults() {
   revalidatePath("/results");
 }
 
+export async function updateResultsHighlight(formData: FormData) {
+  const supabase = await staffClient();
+  if (!supabase) return;
+  const update = {
+    score: String(formData.get("score") || "").trim() || "0",
+    out_of: String(formData.get("out_of") || "").trim() || "100",
+    student_name: String(formData.get("student_name") || "").trim(),
+    description: String(formData.get("description") || "").trim(),
+    updated_at: new Date().toISOString(),
+  };
+  await supabase.from("results_highlight").update(update).eq("id", 1);
+  revalidatePath("/admin/results");
+  revalidatePath("/");
+  redirect("/admin/results");
+}
+
 export async function toggleResultPublished(formData: FormData) {
   const supabase = await staffClient();
   if (!supabase) return;

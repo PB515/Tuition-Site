@@ -20,7 +20,8 @@ import { faqPageLd } from "@/lib/structured-data";
 import { resolveImage } from "@/lib/site-images";
 import ResultCard from "@/components/site/ResultCard";
 import TestimonialCard from "@/components/site/TestimonialCard";
-import { getResults, getTestimonials } from "@/lib/content";
+import { getResults, getTestimonials, getResultsHighlight } from "@/lib/content";
+import SmartImage from "@/components/site/SmartImage";
 import {
   SITE,
   WA_ENQUIRY,
@@ -73,7 +74,11 @@ export default async function Home() {
   const heroSlides = await Promise.all(
     HERO_SLOTS.map(async (s) => ({ url: await resolveImage(s.src), label: s.label, src: s.src })),
   );
-  const [featuredResults, featuredTestimonials] = await Promise.all([getResults(), getTestimonials()]);
+  const [featuredResults, featuredTestimonials, highlight] = await Promise.all([
+    getResults(),
+    getTestimonials(),
+    getResultsHighlight(),
+  ]);
   return (
     <main>
       {/* 1. HERO (asymmetric split) */}
@@ -333,13 +338,16 @@ export default async function Home() {
             </h2>
             <div className="mt-8 flex items-baseline gap-4">
               <span className="font-heading text-6xl font-bold text-primary-strong sm:text-7xl">
-                97<span className="text-3xl text-ink-muted">/100</span>
+                {highlight.score}
+                <span className="text-3xl text-ink-muted">/{highlight.out_of}</span>
               </span>
               <Award size={28} strokeWidth={1.5} className="text-accent" />
             </div>
+            {highlight.student_name && (
+              <p className="mt-2 text-sm font-semibold text-ink">By {highlight.student_name}</p>
+            )}
             <p className="mt-3 max-w-md text-base leading-relaxed text-ink-muted">
-              The highest score in Navrachana Applied Math, by our student Chirayu Jani. More board
-              and Applied Math results are added each year, with student permission.
+              {highlight.description}
             </p>
             <div className="mt-7">
               <CtaButton href="/results" variant="secondary">
@@ -347,17 +355,22 @@ export default async function Home() {
               </CtaButton>
             </div>
           </div>
-          {/* Result creative slots: drop the real result images here (see docs/image-prompts.md). */}
+          {/* Result images: managed in admin -> Results -> Homepage highlight. */}
           <div className="grid grid-cols-2 gap-4">
-            {["Applied Math 2026 result", "Board results creative"].map((label) => (
-              <div
-                key={label}
-                className="flex aspect-[3/4] flex-col items-center justify-center gap-2 rounded-2xl border border-border bg-bg p-5 text-center"
-              >
-                <Award size={26} strokeWidth={1.5} className="text-primary" />
-                <p className="text-xs font-medium text-ink-muted">{label}</p>
-              </div>
-            ))}
+            <SmartImage
+              src="/images/results/highlight-1.jpg"
+              alt={`Result by ${highlight.student_name}`}
+              label="Result image 1"
+              size="1080 x 1440 px (3:4)"
+              className="aspect-[3/4] rounded-2xl border border-border"
+            />
+            <SmartImage
+              src="/images/results/highlight-2.jpg"
+              alt="Board result"
+              label="Result image 2"
+              size="1080 x 1440 px (3:4)"
+              className="aspect-[3/4] rounded-2xl border border-border"
+            />
           </div>
         </div>
       </section>
