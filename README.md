@@ -8,4 +8,4 @@ Built with the Vibe Coding Toolkit.
 - **Inputs:** [`docs/business-brief.md`](docs/business-brief.md) · [`docs/research-report.md`](docs/research-report.md).
 - **Portal (later):** [`docs/app-prd.md`](docs/app-prd.md) · [`docs/data-model-security.md`](docs/data-model-security.md) · [`docs/app-build-roadmap.md`](docs/app-build-roadmap.md).
 
-Status: **planning complete, 03b approved — next is Phase 0 scaffold.** No app code yet.
+Status: live at https://tuition-site-ruddy.vercel.app. The public site has a free Maths Concept-Gap Test that leads to a WhatsApp enquiry. A staff admin covers attendance, fees, students, tests and marks, reports and parent messages, and there's a parent login.
